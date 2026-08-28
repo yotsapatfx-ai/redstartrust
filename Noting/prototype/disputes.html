@@ -1,0 +1,480 @@
+<title>ข้อพิพาทและการชี้แจง</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Thai:wght@400;500&family=Trirong:wght@600&display=swap">
+
+<style>
+:root{
+  --paper:#FFFFFF;--panel:#F7F4F4;--panel-2:#EFE9E9;
+  --ink:#171213;--ink-2:#5C5053;--ink-3:#736569;
+  --rule:#E7E0E0;--rule-strong:#D3C8C9;
+  --seal:#A3121E;--seal-deep:#7A0D16;--seal-wash:#FCF1F1;
+  --gold:#7A6329;--gold-wash:#F7F2E6;
+  --ok:#1F7A55;--ok-wash:#EEF6F1;
+  --warn:#96650F;--warn-wash:#FAF3E6;
+  --bad:#B3261E;
+  --info:#1F5B7A;--info-wash:#EDF4F8;
+  --lift:0 1px 2px rgba(23,18,19,.05),0 8px 24px -14px rgba(23,18,19,.28);
+  --r:12px;--r-sm:8px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#121011;--panel:#1A1617;--panel-2:#231D1F;
+    --ink:#F4EFEF;--ink-2:#B6A8AA;--ink-3:#928284;
+    --rule:#2B2325;--rule-strong:#3D3335;
+    --seal:#E2606A;--seal-deep:#F19AA0;--seal-wash:#291A1C;
+    --gold:#C9A961;--gold-wash:#241E15;
+    --ok:#5FB68F;--ok-wash:#152420;
+    --warn:#D5A254;--warn-wash:#241D12;
+    --bad:#E6797A;
+    --info:#6FAFCE;--info-wash:#141F26;
+    --lift:0 1px 2px rgba(0,0,0,.5),0 8px 24px -14px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#121011;--panel:#1A1617;--panel-2:#231D1F;
+  --ink:#F4EFEF;--ink-2:#B6A8AA;--ink-3:#928284;
+  --rule:#2B2325;--rule-strong:#3D3335;
+  --seal:#E2606A;--seal-deep:#F19AA0;--seal-wash:#291A1C;
+  --gold:#C9A961;--gold-wash:#241E15;
+  --ok:#5FB68F;--ok-wash:#152420;
+  --warn:#D5A254;--warn-wash:#241D12;
+  --bad:#E6797A;
+  --info:#6FAFCE;--info-wash:#141F26;
+  --lift:0 1px 2px rgba(0,0,0,.5),0 8px 24px -14px rgba(0,0,0,.8);
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans Thai","Segoe UI",system-ui,sans-serif;font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+h1,h2,h3,h4{font-family:Anuphan,"IBM Plex Sans Thai",system-ui,sans-serif;font-weight:600;margin:0;letter-spacing:-.02em;line-height:1.3;text-wrap:balance}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--seal);outline-offset:3px;border-radius:4px}
+.iso{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.06em;border:1px solid var(--rule-strong);border-radius:4px;padding:1px 6px;color:var(--ink-2)}
+.mono{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+
+.masthead{background:var(--panel);border-bottom:1px solid var(--rule);font-size:11.5px;color:var(--ink-2)}
+.masthead .wrap{display:flex;flex-wrap:wrap;gap:6px 26px;justify-content:space-between;padding-top:8px;padding-bottom:8px}
+.masthead b{color:var(--ink);font-weight:500}
+.nav{border-bottom:1px solid var(--rule);background:var(--paper)}
+.nav .wrap{display:flex;align-items:center;gap:30px;padding-top:14px;padding-bottom:14px}
+.brand{font-family:Trirong,serif;font-size:21px;font-weight:600;line-height:1.05;white-space:nowrap}
+.brand span{color:var(--seal)}
+.brand small{display:block;font-family:"IBM Plex Mono",monospace;font-size:8.5px;letter-spacing:.3em;color:var(--gold);font-weight:400;padding-top:3px}
+.nav ul{display:flex;gap:6px;list-style:none;margin:0;padding:0;flex:1}
+.nav ul a{text-decoration:none;color:var(--ink-2);font-size:14.5px;padding:7px 13px;border-radius:99px;transition:background .16s,color .16s;display:block}
+.nav ul a:hover{background:var(--panel);color:var(--ink)}
+.nav ul a[aria-current]{background:var(--seal-wash);color:var(--seal);font-weight:500}
+.btn{font:inherit;font-size:14px;border-radius:99px;padding:9px 20px;cursor:pointer;border:1px solid transparent;transition:background .16s,border-color .16s,transform .12s;text-decoration:none;display:inline-block}
+.btn-solid{background:var(--seal);color:#fff;box-shadow:var(--lift)}
+.btn-solid:hover{background:var(--seal-deep);transform:translateY(-1px)}
+:root[data-theme="dark"] .btn-solid{color:#141011}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn-solid{color:#141011}}
+.btn-ghost{background:transparent;color:var(--ink-2);border-color:var(--rule-strong)}
+.btn-ghost:hover{background:var(--panel);color:var(--ink)}
+.btn-sm{padding:6px 14px;font-size:13px}
+
+.notice{background:var(--gold-wash);border-bottom:1px solid var(--rule);font-size:12.5px;color:var(--ink-2)}
+.notice .wrap{padding:9px 28px}
+.notice b{color:var(--gold)}
+
+.pagehead{padding:36px 0 22px}
+.kicker{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-family:"IBM Plex Mono",monospace;margin-bottom:10px}
+.pagehead h1{font-size:clamp(30px,4vw,42px);font-weight:700;letter-spacing:-.03em}
+.pagehead p{margin:11px 0 0;color:var(--ink-2);max-width:70ch;font-size:14.5px}
+
+/* กฎเหล็ก */
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:14px;margin:24px 0 8px}
+.rule{border:1px solid var(--rule);border-left:3px solid var(--seal);border-radius:var(--r-sm);background:var(--panel);padding:16px 18px}
+.rule h3{font-size:15.5px;margin-bottom:6px}
+.rule p{margin:0;font-size:13px;color:var(--ink-2);line-height:1.6}
+
+/* สถิติสถาบัน */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(176px,1fr));gap:14px;margin:26px 0}
+.stat{border:1px solid var(--rule);border-radius:var(--r);background:var(--paper);padding:18px 20px}
+.stat dt{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);font-family:"IBM Plex Mono",monospace;margin-bottom:7px}
+.stat dd{margin:0;font-family:Anuphan,sans-serif;font-size:27px;font-weight:700;letter-spacing:-.03em;font-variant-numeric:tabular-nums;line-height:1}
+.stat .sub{font-size:12px;color:var(--ink-3);margin-top:7px;line-height:1.5}
+.stat.alert{border-color:color-mix(in srgb,var(--warn) 45%,transparent);background:var(--warn-wash)}
+.stat.alert dd{color:var(--warn)}
+
+/* ตัวกรอง */
+.filters{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:16px 0;background:var(--panel);margin-bottom:26px}
+.frow{display:flex;gap:10px 20px;align-items:center;flex-wrap:wrap}
+.flabel{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);font-family:"IBM Plex Mono",monospace;white-space:nowrap}
+.chips{display:flex;gap:7px;flex-wrap:wrap}
+.chip{font:inherit;font-size:13.5px;padding:6px 14px;border-radius:99px;cursor:pointer;border:1px solid var(--rule-strong);background:var(--paper);color:var(--ink-2);transition:background .16s,color .16s,border-color .16s;display:inline-flex;align-items:center;gap:7px}
+.chip:hover{border-color:var(--seal);color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--seal);border-color:var(--seal);color:#fff;font-weight:500}
+:root[data-theme="dark"] .chip[aria-pressed="true"]{color:#141011}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .chip[aria-pressed="true"]{color:#141011}}
+.chip .n{font-family:"IBM Plex Mono",monospace;font-size:11px;opacity:.7}
+.searchbox{position:relative;flex:1;min-width:230px;max-width:380px}
+.searchbox input{width:100%;font:inherit;font-size:14.5px;padding:9px 16px 9px 38px;border-radius:99px;border:1px solid var(--rule-strong);background:var(--paper);color:var(--ink)}
+.searchbox input:focus{outline:none;border-color:var(--seal)}
+.searchbox .ico{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--ink-3);pointer-events:none}
+
+/* การ์ดข้อพิพาท */
+.list{display:flex;flex-direction:column;gap:14px}
+.case{border:1px solid var(--rule);border-radius:var(--r);background:var(--paper);padding:20px 22px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px 24px;align-items:start;transition:border-color .18s,box-shadow .18s}
+.case:hover{border-color:var(--rule-strong);box-shadow:var(--lift)}
+.case .top{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;margin-bottom:9px;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;color:var(--ink-3)}
+.case h3{font-size:18px;margin-bottom:8px}
+.case .meta{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--ink-2);align-items:center}
+.case .side{display:flex;flex-direction:column;gap:10px;align-items:flex-end;min-width:172px}
+.bk{font-family:Anuphan,sans-serif;font-weight:600;font-size:16px}
+
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-family:"IBM Plex Mono",monospace;padding:3px 11px;border-radius:99px;white-space:nowrap;border:1px solid}
+.pill.waiting{color:var(--warn);border-color:color-mix(in srgb,var(--warn) 45%,transparent);background:var(--warn-wash)}
+.pill.answered{color:var(--info);border-color:color-mix(in srgb,var(--info) 45%,transparent);background:var(--info-wash)}
+.pill.noreply{color:var(--bad);border-color:color-mix(in srgb,var(--bad) 50%,transparent);background:var(--seal-wash)}
+.pill.resolved{color:var(--ok);border-color:color-mix(in srgb,var(--ok) 45%,transparent);background:var(--ok-wash)}
+.pill.unresolved{color:var(--ink-2);border-color:var(--rule-strong);background:var(--panel)}
+.pill.screening{color:var(--ink-3);border-color:var(--rule-strong);border-style:dashed}
+.pill.insufficient{color:var(--ink-3);border-color:var(--rule-strong)}
+
+.clock{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--ink-2);text-align:right;line-height:1.5}
+.clock b{display:block;font-size:16px;color:var(--ink);font-weight:500}
+.clock.late b{color:var(--bad)}
+.clock.fast b{color:var(--ok)}
+
+.screened{border-style:dashed;background:var(--panel)}
+.screened h3{color:var(--ink-2)}
+
+/* กระทู้ */
+.thread{border:1px solid var(--rule);border-radius:var(--r);background:var(--paper);overflow:hidden}
+.thread .th-head{padding:24px 26px;border-bottom:1px solid var(--rule);background:var(--panel)}
+.thread .th-head .top{display:flex;flex-wrap:wrap;gap:9px 14px;align-items:center;font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-3);margin-bottom:10px}
+.thread h2{font-size:23px;font-weight:700;margin-bottom:10px}
+.thread .th-meta{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:13.5px;color:var(--ink-2);align-items:center}
+.msgs{display:flex;flex-direction:column}
+.msg{padding:22px 26px;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:150px minmax(0,1fr);gap:24px}
+.msg:last-child{border-bottom:0}
+.msg .who{font-size:13px;line-height:1.55}
+.msg .who .nm{font-weight:500;color:var(--ink);display:block;font-family:Anuphan,sans-serif;font-size:14.5px}
+.msg .who .rl{color:var(--ink-3);font-size:12.5px}
+.msg .who .dt{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-3);margin-top:7px;display:block}
+.msg .body p{margin:0 0 10px;font-size:14.5px;line-height:1.75}
+.msg .body p:last-child{margin-bottom:0}
+.badge{display:inline-flex;align-items:center;gap:5px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;border-radius:99px;padding:2px 9px;margin-top:8px;border:1px solid}
+.badge.verified{color:var(--info);border-color:color-mix(in srgb,var(--info) 45%,transparent);background:var(--info-wash)}
+.badge.team{color:var(--seal);border-color:color-mix(in srgb,var(--seal) 40%,transparent);background:var(--seal-wash)}
+.badge.user{color:var(--ink-3);border-color:var(--rule-strong)}
+.msg.broker{background:var(--info-wash)}
+.msg.team{background:var(--seal-wash)}
+.evidence{margin-top:12px;font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-3);border-top:1px dashed var(--rule-strong);padding-top:10px}
+.outcome{padding:22px 26px;background:var(--panel);border-top:2px solid var(--rule-strong)}
+.outcome h4{font-size:15px;margin-bottom:8px}
+.outcome p{margin:0;font-size:14px;color:var(--ink-2);max-width:78ch}
+
+/* แผงตัวแทนโบรก */
+.repbox{border:1px solid var(--rule);border-radius:var(--r);background:var(--panel);padding:26px 28px;margin-top:34px;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:34px}
+.repbox h2{font-size:23px;font-weight:700;margin-bottom:10px}
+.repbox p{margin:0 0 12px;font-size:14px;color:var(--ink-2);max-width:62ch}
+.repbox ol{margin:0;padding-left:20px;font-size:13.5px;color:var(--ink-2);line-height:1.8}
+.can{display:flex;flex-direction:column;gap:9px;font-size:13.5px}
+.can div{display:flex;gap:9px;align-items:flex-start}
+.can .y{color:var(--ok);font-weight:600;flex-shrink:0}
+.can .n{color:var(--bad);font-weight:600;flex-shrink:0}
+.can h3{font-size:14.5px;margin-bottom:4px}
+
+.empty{text-align:center;padding:46px 24px;color:var(--ink-3);border:1px solid var(--rule);border-radius:var(--r)}
+.empty strong{display:block;color:var(--ink);font-family:Anuphan,sans-serif;font-size:18px;font-weight:600;margin-bottom:7px}
+.tfoot{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-3);padding:18px 0 0;line-height:1.85}
+
+footer{background:var(--panel);border-top:1px solid var(--rule);margin-top:52px;padding:36px 0 46px;font-size:13px;color:var(--ink-2)}
+footer .legal{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-3);line-height:1.9;max-width:82ch}
+footer .slogan{font-family:Trirong,serif;font-size:18px;color:var(--seal);margin:0 0 14px}
+
+@media (max-width:900px){
+  .nav ul{display:none}
+  .case{grid-template-columns:1fr}
+  .case .side{align-items:flex-start;min-width:0}
+  .clock{text-align:left}
+  .msg{grid-template-columns:1fr;gap:12px}
+  .repbox{grid-template-columns:1fr;gap:24px}
+}
+
+/* ป้ายรหัสประเทศที่อยู่ในชิปซึ่งถูกเลือก ต้องยืมสีจากชิป ไม่งั้นอ่านไม่ออก */
+.chip[aria-pressed="true"] .iso{color:inherit;border-color:currentColor;opacity:.9}
+</style>
+
+<header class="masthead">
+  <div class="wrap">
+    <span>ทะเบียนกลาง · การจัดอันดับตัวกลางทางการเงิน</span>
+    <span>มาตรฐานฉบับ <b>GCSI 2026.1</b> · ระเบียบข้อพิพาทฉบับ <b>DSP 1.0</b> · กำหนดเวลาชี้แจง <b>7 วัน</b></span>
+  </div>
+</header>
+
+<nav class="nav">
+  <div class="wrap">
+    <div class="brand">Red<span>Star</span>Trust<small>★ ★ ★ ★ ★</small></div>
+    <ul>
+      <li><a href="homepage-hall-of-fame.html">ทำเนียบเกียรติยศ</a></li>
+      <li><a href="registry-search.html">ทะเบียนอันดับ</a></li>
+      <li><a href="#" aria-current="page">ข้อพิพาท</a></li>
+      <li><a href="#">รีวิว</a></li>
+      <li><a href="#">ระเบียบวิธี</a></li>
+    </ul>
+    <a href="#file" class="btn btn-solid">ยื่นเรื่อง</a>
+  </div>
+</nav>
+
+<div class="notice">
+  <div class="wrap"><b>ต้นแบบการออกแบบ</b> — ชื่อโบรกเกอร์ เรื่องร้องเรียน คำชี้แจง ชื่อบุคคล และตัวเลขทั้งหมดเป็น<b>ข้อมูลสมมติ</b> ใส่ไว้เพื่อทดสอบการจัดวางเท่านั้น ไม่ใช่ข้อพิพาทจริงของผู้ประกอบการรายใด</div>
+</div>
+
+<div class="pagehead">
+  <div class="wrap">
+    <div class="kicker">พื้นที่ชี้แจงต่อสาธารณะ</div>
+    <h1>ข้อพิพาทและการชี้แจง</h1>
+    <p>ผู้ใช้ยื่นเรื่องพร้อมหลักฐาน · เราตรวจหลักฐานเบื้องต้นก่อนเผยแพร่ · ตัวแทนโบรกเกอร์ที่ยืนยันตัวตนแล้วเข้ามาชี้แจงต่อสาธารณะได้ทุกเรื่อง · ทุกอย่างถูกจับเวลาและบันทึกถาวร</p>
+
+    <div class="rules">
+      <div class="rule"><h3>เราไม่ตัดสินว่าใครถูก</h3><p>RedStarTrust ไม่ใช่หน่วยงานกำกับดูแล ไม่มีอำนาจทางกฎหมาย และไม่ชี้ขาดข้อพิพาท เราเปิดพื้นที่ บันทึก และจับเวลาเท่านั้น</p></div>
+      <div class="rule"><h3>คำชี้แจงไม่เปลี่ยนดาว</h3><p>เนื้อหาคำชี้แจงเป็นความเห็นของคู่กรณี เปลี่ยนดาวหรืออันดับไม่ได้ สิ่งที่นำไปตรวจต่อได้คือ<b>พฤติกรรมการตอบ</b>ซึ่งวัดเป็นตัวเลขได้</p></div>
+      <div class="rule"><h3>ไม่มีหลักฐาน ไม่เผยแพร่</h3><p>เรื่องที่ยื่นเข้ามาจะยังไม่ปรากฏรายละเอียดต่อสาธารณะ จนกว่าจะผ่านการตรวจหลักฐานเบื้องต้น</p></div>
+      <div class="rule"><h3>สิทธิ์ตอบเป็นของโบรกเสมอ</h3><p>ทุกเรื่องที่เผยแพร่ โบรกได้รับแจ้งและมีเวลาชี้แจง 7 วันก่อนเสมอ ไม่มีเรื่องใดขึ้นหน้าเว็บโดยที่อีกฝ่ายไม่รู้ตัว</p></div>
+    </div>
+
+    <dl class="stats" id="stats"></dl>
+  </div>
+</div>
+
+<div class="filters">
+  <div class="wrap">
+    <div class="frow">
+      <span class="flabel">สถานะ</span>
+      <div class="chips" id="st-seg"></div>
+      <div class="searchbox">
+        <span class="ico" aria-hidden="true">⌕</span>
+        <input type="search" id="q" placeholder="ค้นชื่อโบรก หรือเลขเรื่อง DSP-2569" aria-label="ค้นหาข้อพิพาท" autocomplete="off">
+      </div>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+  <div id="view"></div>
+
+  <section class="repbox" id="file">
+    <div>
+      <h2>สำหรับตัวแทนโบรกเกอร์</h2>
+      <p>ทุกโบรกเกอร์ที่อยู่ในทะเบียนขอสิทธิ์ตัวแทนได้ฟรี ไม่มีค่าใช้จ่าย และการมีตัวแทนไม่มีผลต่อดาวหรืออันดับ — สิ่งเดียวที่เปลี่ยนคือคุณได้ตอบด้วยเสียงของตัวเองในหน้าเดียวกับที่มีคนพูดถึงคุณ</p>
+      <ol>
+        <li>ยื่นคำขอด้วยอีเมลโดเมนบริษัท พร้อมหนังสือมอบอำนาจจากนิติบุคคลที่ถือใบอนุญาต</li>
+        <li>ทีมทะเบียนตรวจสอบกับข้อมูลผู้ถือใบอนุญาตในทะเบียนสาธารณะของหน่วยงานกำกับ</li>
+        <li>ได้รับตราตัวแทนที่ยืนยันตัวตนแล้ว แสดงชื่อ-ตำแหน่งจริงกำกับทุกข้อความ</li>
+        <li>ได้รับแจ้งทุกครั้งที่มีเรื่องใหม่ผ่านการตรวจหลักฐาน พร้อมกำหนดเวลาชี้แจง 7 วัน</li>
+      </ol>
+    </div>
+    <div class="can">
+      <h3>ขอบเขตสิทธิ์ของตัวแทน</h3>
+      <div><span class="y">ทำได้</span><span>ตอบทุกเรื่องที่เกี่ยวกับบริษัทตัวเอง ไม่จำกัดจำนวนครั้ง</span></div>
+      <div><span class="y">ทำได้</span><span>แนบหลักฐานโต้แย้ง ซึ่งจะถูกบันทึกในแฟ้มเดียวกัน</span></div>
+      <div><span class="y">ทำได้</span><span>ขอให้ปิดบังข้อมูลส่วนบุคคลของลูกค้าที่หลุดมาในเรื่อง</span></div>
+      <div><span class="n">ทำไม่ได้</span><span>ลบเรื่อง แก้ไขข้อความของผู้อื่น หรือปิดกระทู้</span></div>
+      <div><span class="n">ทำไม่ได้</span><span>จ่ายเงินเพื่อให้เรื่องหายไปหรือให้ขึ้นอันดับดีขึ้น</span></div>
+      <div><span class="n">ทำไม่ได้</span><span>แก้ไขข้อความของตัวเองที่เผยแพร่ไปแล้ว — แก้ได้ด้วยการตอบเพิ่ม และประวัติเดิมยังอยู่</span></div>
+    </div>
+  </section>
+
+  <p class="tfoot">
+    ระเบียบข้อพิพาทฉบับ DSP 1.0 · กำหนดเวลาชี้แจง 7 วันนับจากวันที่แจ้งโบรกเกอร์<br>
+    เรื่องที่ปิดแล้วยังคงแสดงถาวร ไม่ถูกลบออกจากทะเบียน · ชื่อผู้ร้องเรียนถูกปิดบังเสมอ ยกเว้นผู้ร้องขอให้เปิดเอง
+  </p>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="slogan">« หลักฐานมาก่อนความเห็น »</p>
+    <p class="legal">
+      ข้อความในข้อพิพาททั้งหมดเป็นคำกล่าวอ้างของคู่กรณีแต่ละฝ่าย ไม่ใช่ข้อสรุปของ RedStarTrust และไม่ใช่คำวินิจฉัยทางกฎหมาย<br>
+      RedStarTrust ไม่ใช่หน่วยงานกำกับดูแล ไม่มีอำนาจบังคับ และไม่รับดำเนินการแทนคู่กรณีฝ่ายใด<br>
+      ผู้ที่ต้องการการเยียวยาตามกฎหมาย ควรติดต่อหน่วยงานกำกับดูแลในเขตอำนาจที่เกี่ยวข้องโดยตรง
+    </p>
+  </div>
+</footer>
+
+<script>
+/* ── ข้อมูลสมมติทั้งหมด ─────────────────────────────── */
+const B={
+  exness:{n:"Exness",s:"exness"},icm:{n:"IC Markets",s:"ic-markets"},xm:{n:"XM",s:"xm"},
+  pep:{n:"Pepperstone",s:"pepperstone"},eig:{n:"Eightcap",s:"eightcap"},
+  tic:{n:"Tickmill",s:"tickmill"},axi:{n:"Axi",s:"axi"},hfm:{n:"HFM",s:"hfm"}
+};
+const ST={
+  screening:{n:"รอตรวจหลักฐาน",c:"screening"},
+  waiting:{n:"รอโบรกชี้แจง",c:"waiting"},
+  answered:{n:"โบรกชี้แจงแล้ว",c:"answered"},
+  noreply:{n:"ไม่ได้รับคำตอบ",c:"noreply"},
+  resolved:{n:"ปิดเรื่อง · คลี่คลาย",c:"resolved"},
+  unresolved:{n:"ปิดเรื่อง · ไม่คลี่คลาย",c:"unresolved"},
+  insufficient:{n:"ปิดเรื่อง · หลักฐานไม่พอ",c:"insufficient"}
+};
+const CASES=[
+  {id:"DSP-2569-0061",bk:"eig",ctry:"TH",st:"waiting",t:"ถอนเงินค้างระบบ 9 วัน โดยไม่มีการแจ้งเหตุผล",
+   opened:"21 ส.ค. 2569",notified:"21 ส.ค. 2569",due:"28 ส.ค. 2569",left:"เหลือ 2 วัน",evi:"ภาพหน้าจอ 6 ไฟล์ · อีเมลตอบกลับ 2 ฉบับ",
+   thread:[
+     {w:"user",nm:"ผู้ร้องเรียน #4471",rl:"ผู้ใช้ที่ยืนยันบัญชีแล้ว · ไทย",dt:"21 ส.ค. 2569 · 09:14",
+      tx:["สั่งถอน 12 ส.ค. ระบบขึ้นว่ากำลังดำเนินการ ผ่านมา 9 วันยังไม่เข้าบัญชี ติดต่อฝ่ายบริการ 3 ครั้ง ได้คำตอบเดิมว่าอยู่ระหว่างตรวจสอบ ไม่มีการระบุสาเหตุหรือกำหนดเสร็จ","ยอดที่ถอนไม่เกินวงเงินที่เคยถอนสำเร็จมาก่อน และบัญชีผ่านการยืนยันตัวตนครบตั้งแต่เปิดบัญชี"],
+      ev:"แนบหลักฐาน 8 รายการ · ตรวจสอบความครบถ้วนของไฟล์แล้ว ยังไม่ได้ตรวจเนื้อหา"},
+     {w:"team",nm:"ทีมทะเบียนข้อพิพาท",rl:"RedStarTrust",dt:"21 ส.ค. 2569 · 16:02",
+      tx:["ผ่านการตรวจหลักฐานเบื้องต้น — ไฟล์ที่แนบมามีวันเวลากำกับครบและสอดคล้องกับลำดับเหตุการณ์ที่ผู้ร้องบรรยาย เผยแพร่เรื่องและแจ้งตัวแทนโบรกเกอร์แล้ว","การผ่านการตรวจเบื้องต้นไม่ได้แปลว่าเราเชื่อว่าข้อกล่าวอ้างเป็นจริง แปลเพียงว่าเรื่องนี้มีหลักฐานมากพอที่คู่กรณีควรได้ชี้แจงต่อสาธารณะ"]}
+   ]},
+  {id:"DSP-2569-0058",bk:"xm",ctry:"TH",st:"answered",t:"คิดค่าธรรมเนียมบัญชีไม่เคลื่อนไหว โดยไม่ได้แจ้งล่วงหน้า",
+   opened:"14 ส.ค. 2569",notified:"14 ส.ค. 2569",replied:"16 ส.ค. 2569",hours:"41 ชั่วโมง",fast:true,evi:"ภาพหน้าจอ 3 ไฟล์ · รายการเดินบัญชี",
+   thread:[
+     {w:"user",nm:"ผู้ร้องเรียน #4402",rl:"ผู้ใช้ที่ยืนยันบัญชีแล้ว · ไทย",dt:"14 ส.ค. 2569 · 20:30",
+      tx:["ถูกหักค่าธรรมเนียมบัญชีไม่เคลื่อนไหวย้อนหลัง 3 เดือนในครั้งเดียว ไม่เคยได้รับอีเมลแจ้งเตือนล่วงหน้า"]},
+     {w:"team",nm:"ทีมทะเบียนข้อพิพาท",rl:"RedStarTrust",dt:"15 ส.ค. 2569 · 10:11",
+      tx:["ผ่านการตรวจหลักฐานเบื้องต้น แจ้งตัวแทนโบรกเกอร์แล้ว"]},
+     {w:"broker",nm:"Siriwan P.",rl:"Client Relations Manager · ตัวแทนที่ยืนยันตัวตนแล้ว",dt:"16 ส.ค. 2569 · 15:47",
+      tx:["ขอบคุณที่แจ้งเข้ามาครับ เราตรวจสอบบัญชีตามเลขเรื่องแล้ว พบว่าค่าธรรมเนียมถูกเรียกเก็บตามข้อกำหนดข้อ 8.4 ซึ่งระบุเงื่อนไขบัญชีไม่เคลื่อนไหวเกิน 90 วัน","สิ่งที่เราพบว่าเป็นข้อบกพร่องของเราเองคือ อีเมลแจ้งเตือนล่วงหน้าถูกส่งไปยังกล่องจดหมายที่ระบบจัดเป็นจดหมายส่งเสริมการขาย ทำให้ลูกค้าจำนวนหนึ่งไม่ได้เห็น เราได้ปรับช่องทางแจ้งเตือนให้ส่งผ่านระบบแจ้งเตือนในแอปเพิ่มอีกช่องทางตั้งแต่ 16 ส.ค. เป็นต้นไป","สำหรับกรณีนี้เราได้คืนค่าธรรมเนียมส่วนที่ยังไม่พ้นระยะเวลาโต้แย้งให้แล้ว"],
+      ev:"แนบข้อกำหนดฉบับที่อ้างถึง · บันทึกการส่งอีเมล"},
+     {w:"user",nm:"ผู้ร้องเรียน #4402",rl:"ผู้ใช้ที่ยืนยันบัญชีแล้ว · ไทย",dt:"17 ส.ค. 2569 · 08:05",
+      tx:["ได้รับเงินคืนแล้วครับ และเห็นการแจ้งเตือนในแอปแล้วเช่นกัน ขอบคุณครับ"]}
+   ],
+   outcome:{h:"บันทึกของทะเบียน",p:"คู่กรณีแจ้งว่าเรื่องยุติแล้ว · โบรกเกอร์ยอมรับข้อบกพร่องของช่องทางแจ้งเตือนและระบุการแก้ไข · ทะเบียนบันทึกเฉพาะสิ่งที่ทั้งสองฝ่ายยืนยันตรงกัน ไม่ได้ชี้ขาดว่าการเรียกเก็บค่าธรรมเนียมชอบหรือไม่ชอบ"}},
+  {id:"DSP-2569-0055",bk:"axi",ctry:"TH",st:"noreply",t:"ปิดบัญชีลูกค้าโดยไม่แจ้งเหตุผลและยังไม่คืนยอดคงเหลือ",
+   opened:"2 ส.ค. 2569",notified:"2 ส.ค. 2569",due:"9 ส.ค. 2569",left:"เกินกำหนด 17 วัน",evi:"ภาพหน้าจอ 11 ไฟล์ · อีเมล 5 ฉบับ",
+   thread:[
+     {w:"user",nm:"ผู้ร้องเรียน #4310",rl:"ผู้ใช้ที่ยืนยันบัญชีแล้ว · ไทย",dt:"2 ส.ค. 2569 · 11:22",
+      tx:["บัญชีถูกปิดโดยไม่แจ้งล่วงหน้า อีเมลแจ้งเพียงว่าเป็นไปตามดุลพินิจของบริษัท ยอดคงเหลือยังไม่ได้รับคืนจนถึงวันที่ยื่นเรื่อง"]},
+     {w:"team",nm:"ทีมทะเบียนข้อพิพาท",rl:"RedStarTrust",dt:"2 ส.ค. 2569 · 17:40",
+      tx:["ผ่านการตรวจหลักฐานเบื้องต้น แจ้งตัวแทนโบรกเกอร์ทางอีเมลที่ลงทะเบียนไว้แล้ว กำหนดชี้แจงภายใน 9 ส.ค. 2569"]},
+     {w:"team",nm:"ทีมทะเบียนข้อพิพาท",rl:"RedStarTrust",dt:"10 ส.ค. 2569 · 09:00",
+      tx:["ครบกำหนด 7 วันแล้วไม่ได้รับคำชี้แจง ส่งหนังสือแจ้งเตือนครั้งที่สอง","บันทึกสถานะไม่ได้รับคำตอบไว้ในแฟ้ม สถานะนี้จะเปลี่ยนทันทีที่ตัวแทนเข้ามาตอบ ไม่มีกำหนดหมดอายุ"]}
+   ],
+   outcome:{h:"สิ่งที่ทะเบียนบันทึกได้ และบันทึกไม่ได้",p:"บันทึกได้: โบรกเกอร์ได้รับแจ้งเมื่อ 2 ส.ค. และยังไม่มีคำชี้แจงเมื่อครบกำหนด — เป็นข้อเท็จจริงที่วัดเวลาได้ · บันทึกไม่ได้: เหตุผลของการปิดบัญชี และความชอบธรรมของการระงับยอดคงเหลือ ซึ่งต้องอาศัยข้อมูลที่ลูกค้าทั่วไปเข้าถึงไม่ได้"}},
+  {id:"DSP-2569-0052",bk:"pep",ctry:"MY",st:"resolved",t:"ราคาที่ได้รับต่างจากที่แสดงบนหน้าจอในช่วงประกาศตัวเลขเศรษฐกิจ",
+   opened:"28 ก.ค. 2569",notified:"28 ก.ค. 2569",replied:"30 ก.ค. 2569",hours:"52 ชั่วโมง",evi:"ภาพหน้าจอ 4 ไฟล์ · บันทึกคำสั่ง",
+   thread:[
+     {w:"user",nm:"ผู้ร้องเรียน #4288",rl:"ผู้ใช้ที่ยืนยันบัญชีแล้ว · มาเลเซีย",dt:"28 ก.ค. 2569 · 22:41",
+      tx:["คำสั่งถูกดำเนินการที่ราคาห่างจากที่เห็นบนหน้าจอมากผิดปกติ ในช่วงประกาศตัวเลขเศรษฐกิจ"]},
+     {w:"broker",nm:"Daniel Ooi",rl:"Head of Client Experience · ตัวแทนที่ยืนยันตัวตนแล้ว",dt:"30 ก.ค. 2569 · 14:19",
+      tx:["เราดึงบันทึกคำสั่งตามเวลาที่ระบุมาตรวจแล้ว ช่วงเวลานั้นสภาพคล่องบางลงชั่วขณะและคำสั่งถูกจับคู่ที่ราคาถัดไปที่มีอยู่จริงตามเงื่อนไขการดำเนินการที่ประกาศไว้","เราเห็นด้วยว่าหน้าจอไม่ได้สื่อสารให้ผู้ใช้เข้าใจล่วงหน้าว่าจะเกิดอะไรขึ้นในสภาวะแบบนี้ เราจึงเพิ่มคำเตือนบนหน้าคำสั่งช่วงประกาศตัวเลขสำคัญ และเผยแพร่บันทึกคำสั่งย้อนหลังให้ลูกค้าดึงเองได้"],
+      ev:"แนบบันทึกคำสั่งช่วงเวลาที่เกี่ยวข้อง"}
+   ],
+   outcome:{h:"บันทึกของทะเบียน",p:"คู่กรณีตกลงกันได้ · โบรกเกอร์เปิดเผยบันทึกคำสั่งและปรับการสื่อสารบนหน้าจอ · ทะเบียนไม่ได้ตัดสินว่าราคาที่ได้รับเป็นธรรมหรือไม่ เพราะการยืนยันเรื่องนี้ต้องใช้ข้อมูลฝั่งผู้ให้บริการที่ลูกค้าทั่วไปตรวจเองไม่ได้"}},
+  {id:"DSP-2569-0049",bk:"icm",ctry:"TH",st:"unresolved",t:"โบนัสส่งเสริมการขายถูกยกเลิกหลังทำเงื่อนไขครบ",
+   opened:"19 ก.ค. 2569",notified:"19 ก.ค. 2569",replied:"22 ก.ค. 2569",hours:"68 ชั่วโมง",evi:"ภาพหน้าจอ 5 ไฟล์",
+   thread:[
+     {w:"user",nm:"ผู้ร้องเรียน #4256",rl:"ผู้ใช้ที่ยืนยันบัญชีแล้ว · ไทย",dt:"19 ก.ค. 2569 · 13:55",
+      tx:["ทำเงื่อนไขโบนัสครบตามที่ประกาศ แต่โบนัสถูกยกเลิกโดยอ้างว่าเข้าข่ายรูปแบบการเทรดที่ไม่อนุญาต ซึ่งไม่ได้ระบุไว้ในหน้าเงื่อนไขที่เห็นตอนสมัคร"]},
+     {w:"broker",nm:"James Whitfield",rl:"Compliance Officer · ตัวแทนที่ยืนยันตัวตนแล้ว",dt:"22 ก.ค. 2569 · 11:30",
+      tx:["รูปแบบการส่งคำสั่งของบัญชีนี้เข้าข่ายข้อห้ามตามข้อกำหนดโปรแกรมข้อ 5.2 ซึ่งอยู่ในเอกสารเงื่อนไขฉบับเต็มที่ลิงก์ไว้จากหน้าสมัคร เราจึงยืนยันการยกเลิกโบนัสตามเงื่อนไขเดิม"]},
+     {w:"user",nm:"ผู้ร้องเรียน #4256",rl:"ผู้ใช้ที่ยืนยันบัญชีแล้ว · ไทย",dt:"23 ก.ค. 2569 · 09:12",
+      tx:["ข้อ 5.2 ที่อ้างถึงอยู่ในเอกสารแยกอีกฉบับ ไม่ได้อยู่ในหน้าที่แสดงตอนกดรับโบนัส ผมยังไม่เห็นด้วยกับคำอธิบายนี้"]}
+   ],
+   outcome:{h:"ปิดเรื่องโดยยังเห็นต่างกัน",p:"ทั้งสองฝ่ายชี้แจงครบและยังยืนยันจุดยืนคนละทาง ทะเบียนปิดเรื่องโดยบันทึกทั้งสองคำชี้แจงไว้คู่กันถาวร ไม่ตัดสินว่าฝ่ายใดถูก · ประเด็นที่ทั้งสองฝ่ายพูดตรงกันคือเงื่อนไขข้อ 5.2 ไม่ได้แสดงบนหน้าจอที่กดรับโบนัส ซึ่งเป็นข้อสังเกตที่ผู้ตรวจนำไปดูต่อได้ในเสา P07 และ P09"}},
+  {id:"DSP-2569-0064",bk:"tic",ctry:"TH",st:"screening",t:"อยู่ระหว่างตรวจหลักฐานเบื้องต้น ยังไม่เผยแพร่รายละเอียด",
+   opened:"25 ส.ค. 2569",evi:"อยู่ระหว่างตรวจสอบ",screened:true},
+  {id:"DSP-2569-0046",bk:"hfm",ctry:"VN",st:"insufficient",t:"ค่าธรรมเนียมการโอนสูงกว่าที่ประกาศ",
+   opened:"8 ก.ค. 2569",evi:"ภาพหน้าจอ 1 ไฟล์ · ไม่มีวันเวลากำกับ",
+   thread:[
+     {w:"team",nm:"ทีมทะเบียนข้อพิพาท",rl:"RedStarTrust",dt:"11 ก.ค. 2569 · 14:20",
+      tx:["หลักฐานที่แนบมาไม่มีวันเวลากำกับและไม่สามารถเชื่อมโยงกับรายการโอนที่ระบุได้ เราติดต่อขอข้อมูลเพิ่มเติมสองครั้งแล้วไม่ได้รับตอบกลับ","ปิดเรื่องโดยไม่แจ้งโบรกเกอร์ เพราะเรื่องยังไม่เคยถูกเผยแพร่ — เราไม่แจ้งข้อกล่าวหาที่ยังพิสูจน์ความครบถ้วนของหลักฐานไม่ได้ให้คู่กรณีอีกฝ่ายรับทราบ"]}
+   ],
+   outcome:{h:"ปิดเรื่องก่อนเผยแพร่",p:"เรื่องนี้ไม่เคยปรากฏชื่อโบรกเกอร์ต่อสาธารณะในระหว่างดำเนินการ และไม่ถูกนับรวมในสถิติการตอบของโบรกเกอร์ · แสดงไว้ในทะเบียนเพื่อให้เห็นว่าเรื่องที่หลักฐานไม่พอถูกจัดการอย่างไร"}}
+];
+
+let st="all",q="",open=null;
+
+const inCount=k=>CASES.filter(c=>k==="all"||c.st===k).length;
+const FILT=[{k:"all",n:"ทั้งหมด"},{k:"waiting",n:"รอโบรกชี้แจง"},{k:"answered",n:"โบรกชี้แจงแล้ว"},
+  {k:"noreply",n:"ไม่ได้รับคำตอบ"},{k:"resolved",n:"คลี่คลาย"},{k:"unresolved",n:"ไม่คลี่คลาย"},
+  {k:"screening",n:"รอตรวจหลักฐาน"},{k:"insufficient",n:"หลักฐานไม่พอ"}];
+
+function renderStats(){
+  const pub=CASES.filter(c=>c.st!=="screening"&&c.st!=="insufficient");
+  const replied=pub.filter(c=>c.hours);
+  const rate=Math.round(replied.length/pub.filter(c=>c.notified).length*100);
+  const avg=Math.round(replied.reduce((s,c)=>s+parseInt(c.hours),0)/replied.length);
+  document.getElementById("stats").innerHTML=`
+    <div class="stat"><dt>เรื่องที่เผยแพร่อยู่</dt><dd>${pub.length}</dd><div class="sub">ผ่านการตรวจหลักฐานเบื้องต้นแล้ว</div></div>
+    <div class="stat"><dt>อัตราการชี้แจง</dt><dd>${rate}%</dd><div class="sub">ของเรื่องที่แจ้งโบรกเกอร์แล้ว ได้รับคำชี้แจงภายในกำหนด</div></div>
+    <div class="stat"><dt>เวลาชี้แจงเฉลี่ย</dt><dd>${avg} ชม.</dd><div class="sub">นับจากวันที่แจ้งจนถึงคำชี้แจงแรก</div></div>
+    <div class="stat alert"><dt>เกินกำหนดยังไม่ตอบ</dt><dd>${CASES.filter(c=>c.st==="noreply").length}</dd><div class="sub">ตัวเลขนี้เป็นข้อเท็จจริงที่วัดเวลาได้ ไม่ใช่คำตัดสินว่าใครถูก</div></div>`;
+}
+
+function renderFilters(){
+  document.getElementById("st-seg").innerHTML=FILT.map(f=>
+    `<button type="button" class="chip" data-st="${f.k}" aria-pressed="${f.k===st}">${f.n}<span class="n">${inCount(f.k)}</span></button>`).join("");
+}
+
+function caseCard(c){
+  const s=ST[c.st];
+  let clock="";
+  if(c.st==="waiting")clock=`<div class="clock"><b>${c.left}</b>กำหนดชี้แจง ${c.due}</div>`;
+  else if(c.st==="noreply")clock=`<div class="clock late"><b>${c.left}</b>ครบกำหนด ${c.due}</div>`;
+  else if(c.hours)clock=`<div class="clock ${c.fast?"fast":""}"><b>${c.hours}</b>เวลาที่ใช้ชี้แจง</div>`;
+  else if(c.st==="screening")clock=`<div class="clock"><b>—</b>ยังไม่แจ้งโบรกเกอร์</div>`;
+  else clock=`<div class="clock"><b>—</b>ไม่นับในสถิติการตอบ</div>`;
+  return `<article class="case ${c.screened?"screened":""}">
+    <div>
+      <div class="top"><span>${c.id}</span><span class="iso">${c.ctry}</span><span>ยื่นเรื่อง ${c.opened}</span></div>
+      <h3>${c.t}</h3>
+      <div class="meta">
+        <span class="bk">${c.screened?"— ไม่เปิดเผยจนกว่าจะผ่านการตรวจ":B[c.bk].n}</span>
+        <span>หลักฐาน: ${c.evi}</span>
+      </div>
+    </div>
+    <div class="side">
+      <span class="pill ${s.c}">${s.n}</span>
+      ${clock}
+      ${c.thread?`<button type="button" class="btn btn-ghost btn-sm" data-open="${c.id}">เปิดดูแฟ้มเต็ม →</button>`:""}
+    </div>
+  </article>`;
+}
+
+function threadView(c){
+  const s=ST[c.st];
+  const msgs=c.thread.map(m=>{
+    const badge=m.w==="broker"?'<span class="badge verified">✓ ตัวแทนที่ยืนยันตัวตนแล้ว</span>'
+      :m.w==="team"?'<span class="badge team">ทีมทะเบียน</span>'
+      :'<span class="badge user">ผู้ร้องเรียน</span>';
+    return `<div class="msg ${m.w}">
+      <div class="who"><span class="nm">${m.nm}</span><span class="rl">${m.rl}</span>${badge}<span class="dt">${m.dt}</span></div>
+      <div class="body">${m.tx.map(p=>`<p>${p}</p>`).join("")}${m.ev?`<div class="evidence">${m.ev}</div>`:""}</div>
+    </div>`;}).join("");
+  return `<button type="button" class="btn btn-ghost btn-sm" data-back="1" style="margin-bottom:16px">← กลับไปรายการข้อพิพาท</button>
+  <div class="thread">
+    <div class="th-head">
+      <div class="top"><span>${c.id}</span><span class="iso">${c.ctry}</span><span>ยื่นเรื่อง ${c.opened}</span>${c.notified?`<span>แจ้งโบรกเกอร์ ${c.notified}</span>`:""}</div>
+      <h2>${c.t}</h2>
+      <div class="th-meta">
+        <span class="bk">${c.screened?"—":B[c.bk].n}</span>
+        <span class="pill ${s.c}">${s.n}</span>
+        ${c.hours?`<span class="mono">ใช้เวลาชี้แจง ${c.hours}</span>`:""}
+        ${c.left?`<span class="mono">${c.left}</span>`:""}
+        ${!c.screened?`<a class="btn btn-ghost btn-sm" href="/broker/${B[c.bk].s}/review">ดูแฟ้มโบรกเกอร์ →</a>`:""}
+      </div>
+    </div>
+    <div class="msgs">${msgs}</div>
+    ${c.outcome?`<div class="outcome"><h4>${c.outcome.h}</h4><p>${c.outcome.p}</p></div>`:
+      `<div class="outcome"><h4>ยังอยู่ระหว่างดำเนินการ</h4><p>เรื่องนี้ยังไม่ปิด สถานะจะเปลี่ยนทันทีที่ตัวแทนโบรกเกอร์เข้ามาชี้แจง ทุกข้อความที่เพิ่มเข้ามาจะถูกต่อท้ายไว้ ไม่มีการลบหรือแก้ของเดิม</p></div>`}
+  </div>`;
+}
+
+function render(){
+  renderStats();renderFilters();
+  const view=document.getElementById("view");
+  if(open){const c=CASES.find(v=>v.id===open);if(c){view.innerHTML=threadView(c);return;}}
+  const term=q.trim().toLowerCase();
+  const list=CASES.filter(c=>(st==="all"||c.st===st)&&
+    (!term||[c.id,c.t,(B[c.bk]||{}).n||""].join(" ").toLowerCase().includes(term)));
+  view.innerHTML=list.length
+    ?`<div class="list">${list.map(caseCard).join("")}</div>`
+    :`<div class="empty"><strong>ไม่พบข้อพิพาทตามเงื่อนไขนี้</strong>ลองเปลี่ยนสถานะ หรือล้างคำค้น</div>`;
+}
+
+document.getElementById("q").addEventListener("input",e=>{q=e.target.value;open=null;render();});
+document.addEventListener("click",e=>{
+  const o=e.target.closest("[data-open]"),b=e.target.closest("[data-back]"),f=e.target.closest("[data-st]");
+  if(o){open=o.dataset.open;render();window.scrollTo({top:document.getElementById("view").offsetTop-20,behavior:"smooth"});}
+  else if(b){open=null;render();}
+  else if(f){st=f.dataset.st;open=null;render();}
+});
+render();
+</script>
