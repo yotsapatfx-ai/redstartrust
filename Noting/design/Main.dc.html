@@ -83,6 +83,22 @@
         <h1 class="hd-h1">RED STAR · Q2 2026</h1>
         <p class="hd-sub">รางวัลทรงคุณค่าของเรามีชื่อเดียวคือ ดาวแดง — มอบตามหมวดโบรกเกอร์ ระดับบอกด้วยจำนวนดาว 1 ถึง 5 · ตัดสินจากข้อมูลการเทรดจริง ไม่ใช่การโหวตและไม่ใช่การซื้อ</p>
       </div>
+      <div class="hd-page" data-hero="eadetail" hidden>
+        <h1 class="hd-h1" id="edh-title">RedStar EA</h1>
+        <p class="hd-sub" id="edh-sub">รายละเอียดเครื่องมือรายตัว</p>
+      </div>
+      <div class="hd-page" data-hero="newsart" hidden>
+        <h1 class="hd-h1" id="nah-title">บทความ</h1>
+        <p class="hd-sub" id="nah-sub">บทความจากทีม RedStarTrust</p>
+      </div>
+      <div class="hd-page" data-hero="reviewsec" hidden>
+        <h1 class="hd-h1" id="rsh-title">หัวข้อรีวิว</h1>
+        <p class="hd-sub" id="rsh-sub">บทรีวิวแยกรายหัวข้อ เขียนโดยทีม RedStarTrust</p>
+      </div>
+      <div class="hd-page" data-hero="brokerreview" hidden>
+        <h1 class="hd-h1" id="brh-title">รีวิวฉบับเต็ม</h1>
+        <p class="hd-sub" id="brh-sub">บทรีวิวจากทีม RedStarTrust — ตรวจข้อเท็จจริงแยกตามนิติบุคคลก่อนตัดสินใจ</p>
+      </div>
       <div class="hd-page" data-hero="criteria" hidden>
         <h1 class="hd-h1">เกณฑ์การให้ดาว</h1>
         <p class="hd-sub">ดาวแต่ละดวงหมายถึงอะไร ต้องผ่านอะไรบ้าง และเมื่อไหร่ที่ดาวจะถูกถอน — เกณฑ์เดียวกันทุกโบรกเกอร์ ประกาศก่อนตรวจเสมอ</p>
@@ -419,6 +435,10 @@
   </div>
 
   <div class="page" data-page="rating" hidden>
+    <div style="width: 1200px; margin: 0 auto; padding: 52px 0 0;">
+      <div class="sec-rule" aria-hidden="true"></div>
+      <div id="rk-mv"></div>
+    </div>
   <div data-slot="rank">
   <!-- ══ COUNTRY RANKING + COMPARE ══ -->
   <div id="rank-section" style="width: 1200px; margin: 0 auto; padding: 96px 0 0;">
@@ -479,15 +499,19 @@
       <div class="sec-rule" aria-hidden="true"></div>
       <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; max-width: 760px;">
         <h2 style="margin: 0; font-size: 34px; font-weight: 700; letter-spacing: -0.03em;">เทียบกันตัวต่อตัว</h2>
-        <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #475467;">เลือกหมวด ประเทศ และปีผลตรวจ แล้วหยิบสองรายมาเทียบ — ช่องที่ชนะจะถูกไฮไลต์พร้อมส่วนต่าง และมีบทสรุปจาก RedStar Thinking ทางขวา</p>
+        <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #475467;">เลือกหมวด ประเทศ และปีผลตรวจ แล้วเลือกโบรกเกอร์ที่จะเทียบได้เองสูงสุด 5 ราย — ช่องที่ดีที่สุดของแต่ละแถวจะถูกไฮไลต์ และมีบทสรุปจาก RedStar Thinking ทางขวา</p>
       </div>
       <div class="cmp-picks">
         <label class="rk-pick"><span>หมวด</span><select id="cmp-cat" aria-label="เลือกหมวดสินทรัพย์ที่จะเทียบ"></select></label>
         <label class="rk-pick"><span>ประเทศ</span><select id="cmp-iso" aria-label="เลือกประเทศที่จะเทียบ"></select></label>
         <label class="rk-pick"><span>ปีผลตรวจ</span><select id="cmp-year" aria-label="เลือกปีผลตรวจที่จะเทียบ"></select></label>
-        <label class="rk-pick"><span>รายที่ 1</span><select id="cmp-sel-a" aria-label="เลือกโบรกเกอร์รายที่หนึ่ง"></select></label>
-        <span class="cmp-vs">เทียบกับ</span>
-        <label class="rk-pick"><span>รายที่ 2</span><select id="cmp-sel-b" aria-label="เลือกโบรกเกอร์รายที่สอง"></select></label>
+        <span class="cmp-div" aria-hidden="true"></span>
+        <label class="rk-pick cmp-slot"><span>รายที่ 1</span><select id="cmp-s1" data-cmpslot="0" aria-label="เลือกโบรกเกอร์รายที่ 1"></select></label>
+        <label class="rk-pick cmp-slot"><span>รายที่ 2</span><select id="cmp-s2" data-cmpslot="1" aria-label="เลือกโบรกเกอร์รายที่ 2"></select></label>
+        <label class="rk-pick cmp-slot"><span>รายที่ 3</span><select id="cmp-s3" data-cmpslot="2" aria-label="เลือกโบรกเกอร์รายที่ 3"></select></label>
+        <label class="rk-pick cmp-slot"><span>รายที่ 4</span><select id="cmp-s4" data-cmpslot="3" aria-label="เลือกโบรกเกอร์รายที่ 4"></select></label>
+        <label class="rk-pick cmp-slot"><span>รายที่ 5</span><select id="cmp-s5" data-cmpslot="4" aria-label="เลือกโบรกเกอร์รายที่ 5"></select></label>
+        <button type="button" class="cmp-clear" data-cmpclr="1"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M9 7V5h6v2M6.5 7l1 13h9l1-13"></path></svg>ล้างการเลือก</button>
       </div>
       <div class="cmp-grid">
         <div id="cmp-body"></div>
@@ -567,15 +591,17 @@
       <div class="art-ctl">
         <div class="art-cats" id="al-cats" role="group" aria-label="กรองตามสถานะ"></div>
       </div>
+      <div id="al-sum" role="group" aria-label="สรุปตามสถานะ"></div>
       <div id="al-list"></div>
       <p class="art-note" id="al-note"></p>
       <div id="al-cta"></div>
 
-      <div style="margin-top: 68px;">
+      <div class="al-split">
         <div class="sec-rule" aria-hidden="true"></div>
         <div class="art-head">
           <h2 class="art-h1">รู้ทันโบรกเกอร์เถื่อน 6 ข้อ</h2>
-          <span class="art-h2">สัญญาณที่เจอบ่อยที่สุดเวลาเราตรวจ พร้อมตัวอย่างที่เจอจริง</span>
+          <span class="art-h2">ส่วนนี้ไม่ใช่เรื่องร้องเรียนรายบริษัท แต่เป็นวิธีสังเกตที่ใช้ได้กับทุกราย</span>
+          <p>หกข้อนี้คือสัญญาณที่ทีมตรวจเจอบ่อยที่สุด เรียงจากที่พบมากไปน้อย · ตัวอย่างประกอบใช้ชื่อสมมติทั้งหมด</p>
         </div>
         <div class="edu-grid" id="al-edu"></div>
         <p class="art-note" id="al-edunote"></p>
@@ -590,6 +616,56 @@
       <div id="aw-hof"></div>
       <div id="aw-meth"></div>
       <div id="aw-cta"></div>
+    </div>
+  </div>
+
+  <div class="page" data-page="eadetail" hidden>
+    <div style="width: 1200px; margin: 0 auto; padding: 52px 0 0;">
+      <div class="sec-rule" aria-hidden="true"></div>
+      <div id="ed-head"></div>
+      <div id="ed-body"></div>
+      <div id="ed-nav"></div>
+    </div>
+  </div>
+
+  <div class="page" data-page="newsart" hidden>
+    <div style="width: 1200px; margin: 0 auto; padding: 52px 0 0;">
+      <div class="sec-rule" aria-hidden="true"></div>
+      <div id="na-head"></div>
+      <div class="na-cols">
+        <div class="na-main" id="na-main"></div>
+        <aside class="na-side" id="na-side"></aside>
+      </div>
+      <div id="na-more"></div>
+    </div>
+  </div>
+
+  <div class="page" data-page="reviewsec" hidden>
+    <div style="width: 1200px; margin: 0 auto; padding: 52px 0 0;">
+      <div class="sec-rule" aria-hidden="true"></div>
+      <div id="rs-head"></div>
+      <div class="rs-cols">
+        <div class="rs-main" id="rs-main"></div>
+        <aside class="rs-side" id="rs-side"></aside>
+      </div>
+      <div id="rs-foot"></div>
+    </div>
+  </div>
+
+  <div class="page" data-page="brokerreview" hidden>
+    <div style="width: 1200px; margin: 0 auto; padding: 52px 0 0;">
+      <div class="sec-rule" aria-hidden="true"></div>
+      <div id="br-head"></div>
+      <nav id="br-nav" aria-label="หัวข้อรีวิว"></nav>
+      <div class="br-cols">
+        <div class="br-main" id="br-main"></div>
+        <aside class="br-side" id="br-side"></aside>
+      </div>
+      <div id="br-tools"></div>
+      <div id="br-network"></div>
+      <div id="br-latest"></div>
+      <div id="br-faq"></div>
+      <div id="br-note"></div>
     </div>
   </div>
 
@@ -673,9 +749,12 @@
         <span class="art-h2">เครื่องมือวัดต้นทุนการเทรด ใช้ฟรีสำหรับสมาชิก</span>
         <p>คุณได้เครื่องมือวิเคราะห์ระดับมืออาชีพไปใช้ฟรี · เราได้หลักฐานการส่งคำสั่งจริงที่ไม่ระบุตัวตน ไปใช้ทำให้คะแนนโบรกเกอร์แม่นขึ้น</p>
       </div>
+      <div id="ea-intro"></div>
+      <div id="ea-suitehead"></div>
+      <div class="ea-blocks" id="ea-cards"></div>
+      <div id="ea-mt5"></div>
       <div id="ea-dash"></div>
       <div id="ea-legend"></div>
-      <div class="ea-blocks" id="ea-cards"></div>
       <div id="ea-install" class="ea-install"></div>
       <div id="ea-priv"></div>
     </div>
