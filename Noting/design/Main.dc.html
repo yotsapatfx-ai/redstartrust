@@ -448,6 +448,8 @@
       <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #475467;">เลือกประเทศเพื่อดูอันดับของประเทศนั้น — คะแนนรวมคือค่าเฉลี่ยของสี่ด้านที่วัดได้ ไม่ใช่ความเห็น และเป็นคนละระบบกับดาว</p>
     </div>
 
+    <div class="rsframe" data-rsf="rank">
+      <div class="rsfh">ตารางอันดับรายประเทศ<span class="ct" id="rsf-rank"></span></div>
     <div class="rk-picks">
       <label class="rk-pick">
         <span>หมวดโบรกเกอร์</span>
@@ -494,6 +496,7 @@
       </div>
     </div>
     <p class="rk-note" id="rk-note"></p>
+    </div>
 
     <div style="margin-top: 56px;">
       <div class="sec-rule" aria-hidden="true"></div>
@@ -501,6 +504,8 @@
         <h2 style="margin: 0; font-size: 34px; font-weight: 700; letter-spacing: -0.03em;">เทียบกันตัวต่อตัว</h2>
         <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #475467;">เลือกหมวด ประเทศ และปีผลตรวจ แล้วเลือกโบรกเกอร์ที่จะเทียบได้เองสูงสุด 5 ราย — ช่องที่ดีที่สุดของแต่ละแถวจะถูกไฮไลต์ และมีบทสรุปจาก RedStar Thinking ทางขวา</p>
       </div>
+      <div class="rsframe" data-rsf="cmp">
+        <div class="rsfh">เทียบกันตัวต่อตัว<span class="ct" id="rsf-cmp"></span></div>
       <div class="cmp-picks">
         <label class="rk-pick"><span>หมวด</span><select id="cmp-cat" aria-label="เลือกหมวดสินทรัพย์ที่จะเทียบ"></select></label>
         <label class="rk-pick"><span>ประเทศ</span><select id="cmp-iso" aria-label="เลือกประเทศที่จะเทียบ"></select></label>
@@ -516,6 +521,7 @@
       <div class="cmp-grid">
         <div id="cmp-body"></div>
         <aside id="cmp-ai" class="cmp-ai" aria-live="polite"></aside>
+      </div>
       </div>
     </div>
 
@@ -588,9 +594,18 @@
         <h2 class="art-h1">แจ้งเตือนจาก RedStar Team</h2>
         <span class="art-h2">เรื่องที่ทีมตรวจพบ และคำชี้แจงจากโบรกเกอร์ที่สมัครเข้ามาตอบ</span>
       </div>
+      <div id="al-toc"></div>
       <div class="art-ctl">
         <div class="art-cats" id="al-cats" role="group" aria-label="กรองตามสถานะ"></div>
+        <label class="rk-qbox art-qbox">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#667085" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.6-3.6"></path>
+          </svg>
+          <input id="al-q" type="search" placeholder="ค้นหาชื่อโบรกเกอร์..." aria-label="ค้นหาชื่อโบรกเกอร์">
+        </label>
       </div>
+      <p class="art-hits" id="al-hits"></p>
       <div id="al-sum" role="group" aria-label="สรุปตามสถานะ"></div>
       <div id="al-list"></div>
       <p class="art-note" id="al-note"></p>
@@ -785,6 +800,7 @@
   <div class="page" data-page="news" hidden>
     <div style="width: 1200px; margin: 0 auto; padding: 52px 0 0;">
       <div class="sec-rule" aria-hidden="true"></div>
+      <div id="nw-brk"></div>
       <div class="art-ctl">
         <div class="art-cats" id="art-cats" role="group" aria-label="กรองบทความตามหมวด"></div>
         <label class="rk-qbox art-qbox">
