@@ -1,0 +1,62 @@
+---
+title: CME Plans E-mini Equity Factor Futures for 21 September, Splitting Style Bets Into Single Contracts
+slug: cme-emini-equity-factor-futures-launch
+excerpt: CME Group said on 27 August 2026 that it plans to launch E-mini Equity Factor futures on 21 September 2026, pending regulatory review, with a suite covering growth, value, quality, momentum and low volatility on the S&P 500 alongside futures on the Dow Jones US Dividend 100 index.
+category: investment
+subcat: futures
+tags: []
+cover: cover.webp
+cover_alt: A futures trading screen splitting five equity factor charts into separate panels
+cover_caption: CME Group plans to launch its E-mini Equity Factor futures suite on 21 September 2026, pending regulatory review
+date: 2026-08-28
+time: 13:00
+impact: [Launch planned for 21 September 2026 pending regulatory review, Suite spans five S&P 500 factors plus the Dow Jones US Dividend 100 index, Contracts qualify for margin offsets against other cleared equity products at CME]
+verdict: Once a factor stops being a way to explain returns and becomes a contract you can trade, choosing a style gets a price of its own.
+lang: en
+source: WCB Newsroom
+author: WCB News Team
+---
+
+# CME Plans E-mini Equity Factor Futures for 21 September, Splitting Style Bets Into Single Contracts
+
+Momentum. Quality. Value. Growth. Low volatility. Five words investors have long used to describe the shape of a portfolio are about to get futures contracts of their own.
+
+CME Group said Thursday, in a statement reported by LeapRate on 27 August 2026, that it plans to launch **E-mini equity factor futures on 21 September**, pending regulatory review.
+
+## What CME announced
+
+The exchange operator framed the move as an expansion of its equity product suite, with contracts offering **tailored exposure to S&P 500 and Dow Jones indexes**.
+
+The qualifier matters as much as the date. CME's wording is that it plans to launch, pending regulatory review. As of 28 August, 21 September is a target on the calendar, not an outcome.
+
+## What is in the suite
+
+The line-up CME described covers five factors on a single index: **E-mini S&P 500 growth, value, quality, momentum and low volatility futures**.
+
+Beside them sits one contract on a different index, **E-mini Dow Jones US Dividend 100 futures**.
+
+## What a factor is, and why trade one alone
+
+A factor is a shared characteristic used to explain stock returns, such as growth, value or low volatility. Traditionally it has been a lens for reading a portfolio after the fact, a way of saying where performance came from, not something to isolate and hold on its own.
+
+CME describes equity factors as **performance indicators that can help investors capture growth, navigate volatility and diversify holdings**. The company expects the new contracts to **complement single- and multi-factor strategies** while delivering **capital efficiencies for risk management and relative value trading**.
+
+That framing is CME's own, not an outside assessment of how the contracts would behave.
+
+## Both sides of the partnership speak
+
+**Joseph Hickey, global head of equity products at CME Group**, said: "Market participants are increasingly turning to equity factors to target specific components of risk and build more tailor-made portfolios."
+
+He added that the contracts "will provide additional flexibility for gaining and managing exposure to specific factors, with the centralized liquidity, margin offsets and seamless trading that clients rely on at CME Group." The words tailor-made and seamless are his.
+
+**Robert Ross, chief commercial officer at S&P Dow Jones Indices**, said the launch supports a shared focus on delivering transparent and efficient index-based tools, giving market participants more precise ways to express views and manage risk.
+
+## Where they trade and how they clear
+
+The selling point CME leans on is collateral, not the indexes. The contracts are set to be **eligible for margin offsets with other cleared equity products at CME Group** — a margin offset lets positions whose risks cancel each other out require less collateral overall than they would apart.
+
+They will be listed on and subject to the rules of CME, and available on **CME Globex**. Trading can also run through **privately negotiated block trades** — large orders agreed away from the order book, then reported to the exchange — plus **derived blocks** and **Basis Trade at Index Close** transactions.
+
+What comes next is not which factor performs best. It is the regulatory review still outstanding, and whether 21 September turns out to be a launch date at all.
+
+*This article is published for information purposes only and does not constitute investment advice.*
