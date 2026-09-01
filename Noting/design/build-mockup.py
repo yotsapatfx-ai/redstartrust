@@ -1277,6 +1277,17 @@ HEAD = """<title>RedStarTrust Homepage</title>
     color: #101828; text-align: right; }
   .br-scf { padding: 0 22px 20px; }
   .br-scf .btn-solid { display: block; text-align: center; }
+  /* ปุ่มเปิดบัญชี — เป็นปุ่มรอง (outline) จงใจให้เบากว่าปุ่มดูใบรับรอง
+     ตัวตนของเว็บคือการตรวจสอบ ไม่ใช่การพาคนไปสมัคร — ลำดับความเด่นจึงต้องสะท้อนอย่างนั้น */
+  .br-open { display: flex; align-items: center; justify-content: center; gap: 7px;
+    margin-top: 10px; padding: 9px 14px; text-align: center;
+    font: inherit; font-size: 13.5px; font-weight: 600; line-height: 1.45;
+    color: #344054; background: #FFFFFF; border: 1px solid #D0D5DD; border-radius: 10px;
+    text-decoration: none; cursor: pointer;
+    transition: border-color .15s, color .15s, background .15s; }
+  .br-open:hover { border-color: #D92D20; color: #B42318; background: #FEF3F2; }
+  .br-open:focus-visible { outline: 2px solid #D92D20; outline-offset: 2px; }
+  .br-open svg { flex: 0 0 auto; }
   .br-disc { margin: 14px 0 0; padding: 12px 14px; background: #F5F7FA; border-radius: 10px;
     font-size: 11.5px; line-height: 1.7; color: #667085; }
 
@@ -9576,6 +9587,20 @@ function brFind(){
   }
   return "icm";
 }
+/* ปุ่มเปิดบัญชีของการ์ดคะแนนหน้ารีวิว
+   href เป็น "#" เพราะ META ยังไม่มีช่องเว็บทางการของโบรก — ตอนใช้จริงต้องเติม URL ทางการรายโบรก
+   และต้องเป็นลิงก์ธรรมดา ไม่มีพารามิเตอร์ติดตาม ตาม CORE-PILLAR ที่ว่ารายได้ต้องไม่ผูกกับผลคะแนน */
+function brOpenBtn(m){
+  var nm = m && m.n ? m.n : "\u0e42\u0e1a\u0e23\u0e01\u0e19\u0e35\u0e49";
+  return '<a class="br-open" href="#" rel="nofollow noopener" ' +
+    'aria-label="\u0e40\u0e1b\u0e34\u0e14\u0e1a\u0e31\u0e0d\u0e0a\u0e35\u0e01\u0e31\u0e1a ' + nm +
+    ' (\u0e44\u0e1b\u0e40\u0e27\u0e47\u0e1a\u0e17\u0e32\u0e07\u0e01\u0e32\u0e23\u0e02\u0e2d\u0e07\u0e42\u0e1a\u0e23\u0e01)">' +
+    '<span>\u0e40\u0e1b\u0e34\u0e14\u0e1a\u0e31\u0e0d\u0e0a\u0e35\u0e01\u0e31\u0e1a ' + nm + '</span>' +
+    '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+    'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+    '<path d="M14 4h6v6M20 4l-9 9"></path>' +
+    '<path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"></path></svg></a>';
+}
 function brRender(){
   var head = document.getElementById("br-head");
   if (!head) { return; }
@@ -9637,8 +9662,10 @@ function brRender(){
         '<div class="br-fact"><span>\u0e1d\u0e32\u0e01\u0e02\u0e31\u0e49\u0e19\u0e15\u0e48\u0e33</span><b>\u0e40\u0e23\u0e34\u0e48\u0e21 $10</b></div>' +
         '<div class="br-fact"><span>\u0e41\u0e1e\u0e25\u0e15\u0e1f\u0e2d\u0e23\u0e4c\u0e21</span><b>MT4 \xb7 MT5 \xb7 App</b></div></div>' +
       '<div class="br-scf"><a class="btn-solid" href="#/verify">\u0e14\u0e39\u0e43\u0e1a\u0e23\u0e31\u0e1a\u0e23\u0e2d\u0e07\u0e14\u0e32\u0e27</a>' +
+        brOpenBtn(m) +
         '<p class="br-disc">\u0e04\u0e30\u0e41\u0e19\u0e19\u0e41\u0e25\u0e30\u0e14\u0e32\u0e27\u0e21\u0e32\u0e08\u0e32\u0e01\u0e01\u0e32\u0e23\u0e15\u0e23\u0e27\u0e08\u0e02\u0e2d\u0e07\u0e17\u0e35\u0e21\u0e40\u0e23\u0e32\u0e40\u0e2d\u0e07 ' +
-        '<b>\u0e44\u0e21\u0e48\u0e21\u0e35\u0e01\u0e32\u0e23\u0e23\u0e31\u0e1a\u0e40\u0e07\u0e34\u0e19\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e2d\u0e31\u0e19\u0e14\u0e31\u0e1a</b> \u0e41\u0e25\u0e30\u0e2b\u0e19\u0e49\u0e32\u0e19\u0e35\u0e49\u0e44\u0e21\u0e48\u0e21\u0e35\u0e25\u0e34\u0e07\u0e01\u0e4c\u0e2a\u0e21\u0e31\u0e04\u0e23\u0e17\u0e35\u0e48\u0e44\u0e14\u0e49\u0e04\u0e48\u0e32\u0e04\u0e2d\u0e21\u0e21\u0e34\u0e0a\u0e0a\u0e31\u0e48\u0e19</p></div>' +
+        '<b>\u0e44\u0e21\u0e48\u0e21\u0e35\u0e01\u0e32\u0e23\u0e23\u0e31\u0e1a\u0e40\u0e07\u0e34\u0e19\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e2d\u0e31\u0e19\u0e14\u0e31\u0e1a</b> \u00b7 \u0e1b\u0e38\u0e48\u0e21\u0e40\u0e1b\u0e34\u0e14\u0e1a\u0e31\u0e0d\u0e0a\u0e35\u0e40\u0e1b\u0e47\u0e19\u0e25\u0e34\u0e07\u0e01\u0e4c\u0e44\u0e1b\u0e40\u0e27\u0e47\u0e1a\u0e17\u0e32\u0e07\u0e01\u0e32\u0e23\u0e02\u0e2d\u0e07\u0e42\u0e1a\u0e23\u0e01\u0e42\u0e14\u0e22\u0e15\u0e23\u0e07 ' +
+        '<b>\u0e44\u0e21\u0e48\u0e43\u0e0a\u0e48\u0e25\u0e34\u0e07\u0e01\u0e4c\u0e41\u0e19\u0e30\u0e19\u0e33\u0e17\u0e35\u0e48\u0e44\u0e14\u0e49\u0e04\u0e48\u0e32\u0e04\u0e2d\u0e21\u0e21\u0e34\u0e0a\u0e0a\u0e31\u0e48\u0e19</b></p></div>' +
       '</div>';
   }
 
