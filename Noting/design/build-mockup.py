@@ -5300,6 +5300,12 @@ function pkMatch(c){
   return hit;
 }
 function pkCatList(){ return PICK_CATS.filter(pkMatch); }
+/* คำที่ผู้ใช้พิมพ์เอาไปต่อเป็น HTML ต้องหนีอักขระพิเศษก่อนเสมอ
+   ไม่งั้นพิมพ์ " หรือ < แล้วโครง HTML ของช่องค้นหาพังทั้งบล็อก */
+function pkEsc(s){
+  return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
 function renderPicks(){
   var host = document.getElementById("picks");
   if (!host) { return; }
@@ -5315,11 +5321,19 @@ function renderPicks(){
         '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#98A2B3" ' +
         'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
         '<circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4.2-4.2"></path></svg>' +
-        '<input id="pk-q" type="search" value="' + pkQ + '" autocomplete="off" ' +
+        '<input id="pk-q" type="search" value="' + pkEsc(pkQ) + '" autocomplete="off" ' +
         'placeholder="\u0e04\u0e49\u0e19\u0e2b\u0e32\u0e0a\u0e37\u0e48\u0e2d\u0e42\u0e1a\u0e23\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c \u0e2b\u0e23\u0e37\u0e2d\u0e2b\u0e21\u0e27\u0e14 \u0e40\u0e0a\u0e48\u0e19 \u0e01\u0e2d\u0e07\u0e17\u0e38\u0e19" ' +
         'aria-label="\u0e04\u0e49\u0e19\u0e2b\u0e32\u0e42\u0e1a\u0e23\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c\u0e2b\u0e23\u0e37\u0e2d\u0e2b\u0e21\u0e27\u0e14"></span>' +
       '<span class="pk-hits" id="pk-hits"></span></div>' +
-    '<div class="pk-wrap">' + (pkCatList().map(function(c){
+    '<div class="pk-wrap" id="pk-wrap">' + pkGridHTML() + '</div>';
+  pkHits();
+  var qel = document.getElementById("pk-q");
+  if (qel && qel.value !== pkQ) { qel.value = pkQ; }
+  paintLogos();
+}
+/* การ์ดผลลัพธ์อย่างเดียว — แยกออกมาเพื่อให้วาดใหม่ได้โดยไม่แตะช่องค้นหา */
+function pkGridHTML(){
+  return (pkCatList().map(function(c){
       var rows = topPicks(c.k, 3);
       if (!rows.length) {
         return '<div class="pk-col"><h2>' + c.title + '</h2>' +
@@ -5363,15 +5377,23 @@ function renderPicks(){
       return '<div class="pk-col"><h2>' + c.title + '</h2>' + big +
              '<div class="pk-rest">' + rest + '</div></div>';
     }).join("") || '<div class="pk-none">\u0e44\u0e21\u0e48\u0e1e\u0e1a\u0e2b\u0e21\u0e27\u0e14\u0e2b\u0e23\u0e37\u0e2d\u0e42\u0e1a\u0e23\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c\u0e17\u0e35\u0e48\u0e15\u0e23\u0e07\u0e01\u0e31\u0e1a\u0e04\u0e33\u0e04\u0e49\u0e19\u0e19\u0e35\u0e49<br>' +
-      '\u0e25\u0e2d\u0e07\u0e1e\u0e34\u0e21\u0e1e\u0e4c\u0e0a\u0e37\u0e48\u0e2d\u0e2b\u0e21\u0e27\u0e14 \u0e40\u0e0a\u0e48\u0e19 \u0e01\u0e2d\u0e07\u0e17\u0e38\u0e19 \u0e04\u0e23\u0e34\u0e1b\u0e42\u0e15 \u0e1f\u0e34\u0e27\u0e40\u0e08\u0e2d\u0e23\u0e4c\u0e2a \u0e2b\u0e23\u0e37\u0e2d\u0e1e\u0e34\u0e21\u0e1e\u0e4c\u0e0a\u0e37\u0e48\u0e2d\u0e42\u0e1a\u0e23\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c') + '</div>';
+      '\u0e25\u0e2d\u0e07\u0e1e\u0e34\u0e21\u0e1e\u0e4c\u0e0a\u0e37\u0e48\u0e2d\u0e2b\u0e21\u0e27\u0e14 \u0e40\u0e0a\u0e48\u0e19 \u0e01\u0e2d\u0e07\u0e17\u0e38\u0e19 \u0e04\u0e23\u0e34\u0e1b\u0e42\u0e15 \u0e1f\u0e34\u0e27\u0e40\u0e08\u0e2d\u0e23\u0e4c\u0e2a \u0e2b\u0e23\u0e37\u0e2d\u0e1e\u0e34\u0e21\u0e1e\u0e4c\u0e0a\u0e37\u0e48\u0e2d\u0e42\u0e1a\u0e23\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c</div>');
+}
+function pkHits(){
   var hits = document.getElementById("pk-hits");
-  if (hits) {
-    hits.innerHTML = (pkQ || "").trim()
-      ? '\u0e1e\u0e1a <b>' + pkCatList().length + '</b> \u0e2b\u0e21\u0e27\u0e14\u0e17\u0e35\u0e48\u0e15\u0e23\u0e07\u0e01\u0e31\u0e1a \u201c' + pkQ + '\u201d'
-      : '\u0e41\u0e2a\u0e14\u0e07\u0e04\u0e23\u0e1a\u0e17\u0e31\u0e49\u0e07 <b>' + PICK_CATS.length + '</b> \u0e2b\u0e21\u0e27\u0e14';
-  }
-  var qel = document.getElementById("pk-q");
-  if (qel && qel.value !== pkQ) { qel.value = pkQ; }
+  if (!hits) { return; }
+  hits.innerHTML = (pkQ || "").trim()
+    ? '\u0e1e\u0e1a <b>' + pkCatList().length + '</b> \u0e2b\u0e21\u0e27\u0e14\u0e17\u0e35\u0e48\u0e15\u0e23\u0e07\u0e01\u0e31\u0e1a \u201c' + pkEsc(pkQ) + '\u201d'
+    : '\u0e41\u0e2a\u0e14\u0e07\u0e04\u0e23\u0e1a\u0e17\u0e31\u0e49\u0e07 <b>' + PICK_CATS.length + '</b> \u0e2b\u0e21\u0e27\u0e14';
+}
+/* \u0e23\u0e30\u0e2b\u0e27\u0e48\u0e32\u0e07\u0e1e\u0e34\u0e21\u0e1e\u0e4c\u0e43\u0e2b\u0e49\u0e27\u0e32\u0e14\u0e43\u0e2b\u0e21\u0e48\u0e41\u0e04\u0e48\u0e01\u0e32\u0e23\u0e4c\u0e14\u0e01\u0e31\u0e1a\u0e15\u0e31\u0e27\u0e19\u0e31\u0e1a \u0e2b\u0e49\u0e32\u0e21\u0e27\u0e32\u0e14\u0e01\u0e25\u0e48\u0e2d\u0e07\u0e04\u0e49\u0e19\u0e2b\u0e32\u0e43\u0e2b\u0e21\u0e48\u0e40\u0e14\u0e47\u0e14\u0e02\u0e32\u0e14 \u2014
+   \u0e16\u0e49\u0e32\u0e2d\u0e34\u0e19\u0e1e\u0e38\u0e15\u0e16\u0e39\u0e01\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e43\u0e2b\u0e21\u0e48\u0e17\u0e38\u0e01\u0e15\u0e31\u0e27\u0e2d\u0e31\u0e01\u0e29\u0e23 \u0e01\u0e32\u0e23\u0e1b\u0e23\u0e30\u0e01\u0e2d\u0e1a\u0e2a\u0e23\u0e30/\u0e27\u0e23\u0e23\u0e13\u0e22\u0e38\u0e01\u0e15\u0e4c\u0e44\u0e17\u0e22\u0e08\u0e30\u0e2b\u0e25\u0e38\u0e14\u0e25\u0e33\u0e14\u0e31\u0e1a
+   \u0e41\u0e25\u0e30\u0e40\u0e04\u0e2d\u0e23\u0e4c\u0e40\u0e0b\u0e2d\u0e23\u0e4c\u0e08\u0e30\u0e01\u0e23\u0e30\u0e42\u0e14\u0e14\u0e44\u0e1b\u0e17\u0e49\u0e32\u0e22\u0e0a\u0e48\u0e2d\u0e07\u0e17\u0e38\u0e01\u0e04\u0e23\u0e31\u0e49\u0e07 */
+function pkRefresh(){
+  var wrap = document.getElementById("pk-wrap");
+  if (!wrap) { renderPicks(); return; }
+  wrap.innerHTML = pkGridHTML();
+  pkHits();
   paintLogos();
 }
 
@@ -7625,9 +7647,7 @@ document.addEventListener("change", function(ev){
 document.addEventListener("input", function(ev){
   if (ev.target && ev.target.id === "pk-q") {
     pkQ = ev.target.value;
-    renderPicks();
-    var el = document.getElementById("pk-q");
-    if (el) { el.focus(); }
+    pkRefresh();
   }
 });
 document.addEventListener("click", function(ev){

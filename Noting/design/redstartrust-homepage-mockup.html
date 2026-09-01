@@ -6190,6 +6190,12 @@ function pkMatch(c){
   return hit;
 }
 function pkCatList(){ return PICK_CATS.filter(pkMatch); }
+/* คำที่ผู้ใช้พิมพ์เอาไปต่อเป็น HTML ต้องหนีอักขระพิเศษก่อนเสมอ
+   ไม่งั้นพิมพ์ " หรือ < แล้วโครง HTML ของช่องค้นหาพังทั้งบล็อก */
+function pkEsc(s){
+  return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
 function renderPicks(){
   var host = document.getElementById("picks");
   if (!host) { return; }
@@ -6205,11 +6211,19 @@ function renderPicks(){
         '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#98A2B3" ' +
         'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
         '<circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4.2-4.2"></path></svg>' +
-        '<input id="pk-q" type="search" value="' + pkQ + '" autocomplete="off" ' +
+        '<input id="pk-q" type="search" value="' + pkEsc(pkQ) + '" autocomplete="off" ' +
         'placeholder="ค้นหาชื่อโบรกเกอร์ หรือหมวด เช่น กองทุน" ' +
         'aria-label="ค้นหาโบรกเกอร์หรือหมวด"></span>' +
       '<span class="pk-hits" id="pk-hits"></span></div>' +
-    '<div class="pk-wrap">' + (pkCatList().map(function(c){
+    '<div class="pk-wrap" id="pk-wrap">' + pkGridHTML() + '</div>';
+  pkHits();
+  var qel = document.getElementById("pk-q");
+  if (qel && qel.value !== pkQ) { qel.value = pkQ; }
+  paintLogos();
+}
+/* การ์ดผลลัพธ์อย่างเดียว — แยกออกมาเพื่อให้วาดใหม่ได้โดยไม่แตะช่องค้นหา */
+function pkGridHTML(){
+  return (pkCatList().map(function(c){
       var rows = topPicks(c.k, 3);
       if (!rows.length) {
         return '<div class="pk-col"><h2>' + c.title + '</h2>' +
@@ -6253,15 +6267,23 @@ function renderPicks(){
       return '<div class="pk-col"><h2>' + c.title + '</h2>' + big +
              '<div class="pk-rest">' + rest + '</div></div>';
     }).join("") || '<div class="pk-none">ไม่พบหมวดหรือโบรกเกอร์ที่ตรงกับคำค้นนี้<br>' +
-      'ลองพิมพ์ชื่อหมวด เช่น กองทุน คริปโต ฟิวเจอร์ส หรือพิมพ์ชื่อโบรกเกอร์') + '</div>';
+      'ลองพิมพ์ชื่อหมวด เช่น กองทุน คริปโต ฟิวเจอร์ส หรือพิมพ์ชื่อโบรกเกอร์</div>');
+}
+function pkHits(){
   var hits = document.getElementById("pk-hits");
-  if (hits) {
-    hits.innerHTML = (pkQ || "").trim()
-      ? 'พบ <b>' + pkCatList().length + '</b> หมวดที่ตรงกับ “' + pkQ + '”'
-      : 'แสดงครบทั้ง <b>' + PICK_CATS.length + '</b> หมวด';
-  }
-  var qel = document.getElementById("pk-q");
-  if (qel && qel.value !== pkQ) { qel.value = pkQ; }
+  if (!hits) { return; }
+  hits.innerHTML = (pkQ || "").trim()
+    ? 'พบ <b>' + pkCatList().length + '</b> หมวดที่ตรงกับ “' + pkEsc(pkQ) + '”'
+    : 'แสดงครบทั้ง <b>' + PICK_CATS.length + '</b> หมวด';
+}
+/* ระหว่างพิมพ์ให้วาดใหม่แค่การ์ดกับตัวนับ ห้ามวาดกล่องค้นหาใหม่เด็ดขาด —
+   ถ้าอินพุตถูกสร้างใหม่ทุกตัวอักษร การประกอบสระ/วรรณยุกต์ไทยจะหลุดลำดับ
+   และเคอร์เซอร์จะกระโดดไปท้ายช่องทุกครั้ง */
+function pkRefresh(){
+  var wrap = document.getElementById("pk-wrap");
+  if (!wrap) { renderPicks(); return; }
+  wrap.innerHTML = pkGridHTML();
+  pkHits();
   paintLogos();
 }
 
@@ -8515,9 +8537,7 @@ document.addEventListener("change", function(ev){
 document.addEventListener("input", function(ev){
   if (ev.target && ev.target.id === "pk-q") {
     pkQ = ev.target.value;
-    renderPicks();
-    var el = document.getElementById("pk-q");
-    if (el) { el.focus(); }
+    pkRefresh();
   }
 });
 document.addEventListener("click", function(ev){
