@@ -141,6 +141,27 @@ HEAD = """<title>RedStarTrust Homepage</title>
     font-weight: 700; color: #FFFFFF; }
   .mt-panel .rw b.g { color: #6CE9A6; }
   .mt-panel .rw b.r { color: #FDA29B; }
+  /* \u2500 \u0e41\u0e16\u0e27\u0e1b\u0e38\u0e48\u0e21\u0e42\u0e1a\u0e23\u0e01\u0e41\u0e19\u0e30\u0e19\u0e33\u0e43\u0e15\u0e49\u0e41\u0e16\u0e1a\u0e40\u0e17\u0e35\u0e22\u0e1a \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */
+  .mt-bb { display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 12px; padding-top: 12px; border-top: 1px solid #F0F2F5; }
+  .mt-bb > .lb { font-size: 11.5px; color: #667085; margin-right: 2px; }
+  .mt-bb > .lb b { color: #101828; font-weight: 600; }
+  .mt-bx { display: inline-flex; align-items: center; gap: 7px; border: 1px solid #EAECF0;
+    border-radius: 999px; padding: 5px 12px 5px 6px; background: #FFFFFF;
+    text-decoration: none; font-size: 12px; color: #475467; white-space: nowrap;
+    transition: border-color .16s, background .16s, color .16s; }
+  .mt-bx img { display: block; }
+  .mt-bx b { font-weight: 600; color: #101828; }
+  .mt-bx em { font-style: normal; font-family: 'IBM Plex Sans', sans-serif; font-weight: 600;
+    color: #667085; }
+  .mt-bx:hover { border-color: #D92D20; background: #FEF3F2; color: #B42318; }
+  .mt-bx:hover b { color: #B42318; }
+  .mt-bx:focus-visible { outline: 2px solid #D92D20; outline-offset: 2px; }
+  .mt-bx.top { border-color: #FECDCA; background: #FEF9F8; }
+  .mt-bx.top .tag { font-size: 10px; font-weight: 700; letter-spacing: 0.05em;
+    color: #B42318; }
+  .mt-bb .lgm { width: 22px; height: 22px; border-radius: 6px; }
+
   .mt-cap { margin: 10px 0 0; font-size: 11.5px; line-height: 1.65; color: #667085; }
 
   .ea-det h5 { margin: 0 0 9px; font-size: 12px; font-weight: 700; letter-spacing: 0.05em;
@@ -500,6 +521,14 @@ HEAD = """<title>RedStarTrust Homepage</title>
   .al-grp .ln { flex: 1; height: 1px; background: #EAECF0; }
   .al-grp .ct { font-size: 12px; color: #667085; white-space: nowrap; }
   .al-split { margin: 68px 0 0; padding-top: 4px; }
+
+  /* \u0e41\u0e16\u0e27\u0e1b\u0e38\u0e48\u0e21\u0e42\u0e1a\u0e23\u0e01\u0e17\u0e49\u0e32\u0e22\u0e23\u0e32\u0e22\u0e01\u0e32\u0e23\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19 */
+  .al-bb { margin-top: 26px; border: 1px solid #EAECF0; border-radius: 14px;
+    background: #FFFFFF; padding: 16px 18px; }
+  .al-bb .mt-bb { margin-top: 0; padding-top: 0; border-top: 0; }
+  .al-bnote { margin: 12px 0 0; padding-top: 12px; border-top: 1px solid #F2F4F7;
+    font-size: 11.5px; line-height: 1.75; color: #667085; }
+  .al-bnote b { color: #101828; font-weight: 600; }
 
   .al-cta { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-top: 30px;
     border: 1px solid #EAECF0; border-radius: 16px; background: #F9FAFB; padding: 20px 24px; }
@@ -6442,6 +6471,32 @@ var AL_MINI = {
 };
 
 /* \u0e2a\u0e32\u0e23\u0e1a\u0e31\u0e0d\u0e2b\u0e19\u0e49\u0e32 Broker Alerts \u2014 \u0e15\u0e31\u0e27\u0e40\u0e25\u0e02\u0e19\u0e31\u0e1a\u0e08\u0e32\u0e01\u0e02\u0e2d\u0e07\u0e08\u0e23\u0e34\u0e07\u0e17\u0e38\u0e01\u0e0a\u0e48\u0e2d\u0e07 */
+/* \u0e41\u0e16\u0e27\u0e1b\u0e38\u0e48\u0e21\u0e42\u0e1a\u0e23\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c\u0e17\u0e49\u0e32\u0e22\u0e23\u0e32\u0e22\u0e01\u0e32\u0e23\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19 \u2014 \u0e43\u0e0a\u0e49\u0e1b\u0e38\u0e48\u0e21\u0e0a\u0e38\u0e14\u0e40\u0e14\u0e35\u0e22\u0e27\u0e01\u0e31\u0e1a\u0e2b\u0e19\u0e49\u0e32 EA
+   \u0e27\u0e32\u0e07\u0e17\u0e49\u0e32\u0e22\u0e23\u0e32\u0e22\u0e01\u0e32\u0e23 \u0e44\u0e21\u0e48\u0e43\u0e0a\u0e48\u0e43\u0e19\u0e01\u0e32\u0e23\u0e4c\u0e14\u0e23\u0e32\u0e22\u0e40\u0e23\u0e37\u0e48\u0e2d\u0e07 \u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e44\u0e21\u0e48\u0e43\u0e2b\u0e49\u0e2d\u0e48\u0e32\u0e19\u0e40\u0e1b\u0e47\u0e19\u0e01\u0e32\u0e23\u0e02\u0e32\u0e22\u0e02\u0e2d\u0e07\u0e1a\u0e19\u0e40\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e23\u0e49\u0e2d\u0e07\u0e40\u0e23\u0e35\u0e22\u0e19 */
+function alBtns(){
+  var host = document.getElementById("al-btns");
+  if (!host || typeof edPool !== "function") { return; }
+  var pool = edPool("total");
+  if (pool.length < 2) { host.innerHTML = ""; return; }
+  host.className = "al-bb";
+  host.innerHTML =
+    '<div class="mt-bb"><span class="lb"><b>\u0e42\u0e1a\u0e23\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c\u0e17\u0e35\u0e48\u0e15\u0e23\u0e27\u0e08\u0e41\u0e25\u0e49\u0e27\u0e41\u0e25\u0e30\u0e04\u0e30\u0e41\u0e19\u0e19\u0e2a\u0e39\u0e07\u0e2a\u0e38\u0e14\u0e43\u0e19\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19</b> \u00b7 ' +
+      '\u0e01\u0e14\u0e2d\u0e48\u0e32\u0e19\u0e23\u0e35\u0e27\u0e34\u0e27\u0e44\u0e14\u0e49\u0e40\u0e25\u0e22</span>' +
+      pool.slice(0, 4).map(function(x, k){
+        var m = META[x.r.id];
+        return '<a class="mt-bx' + (k ? "" : " top") + '" href="/broker/' + m.slug +
+          '/review" data-review="' + m.slug + '" title="\u0e2d\u0e48\u0e32\u0e19\u0e23\u0e35\u0e27\u0e34\u0e27 ' + m.n + '">' +
+          logoSpan(m, 22, 9) +
+          (k ? "" : '<span class="tag">\u0e2d\u0e31\u0e19\u0e14\u0e31\u0e1a 1</span>') +
+          '<b>' + m.n + '</b><em>' + x.v.toFixed(1) + '</em></a>';
+      }).join("") + '</div>' +
+    '<p class="al-bnote">\u0e0a\u0e37\u0e48\u0e2d\u0e43\u0e19\u0e40\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19\u0e14\u0e49\u0e32\u0e19\u0e1a\u0e19\u0e40\u0e1b\u0e47\u0e19\u0e0a\u0e37\u0e48\u0e2d\u0e2a\u0e21\u0e21\u0e15\u0e34 ' +
+    '\u00b7 \u0e42\u0e1a\u0e23\u0e01\u0e43\u0e19\u0e41\u0e16\u0e27\u0e19\u0e35\u0e49\u0e21\u0e32\u0e08\u0e32\u0e01\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19\u0e17\u0e35\u0e48\u0e15\u0e23\u0e27\u0e08\u0e41\u0e25\u0e49\u0e27 ' +
+    '<b>\u0e44\u0e21\u0e48\u0e40\u0e01\u0e35\u0e48\u0e22\u0e27\u0e02\u0e49\u0e2d\u0e07\u0e01\u0e31\u0e1a\u0e40\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e17\u0e35\u0e48\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19\u0e14\u0e49\u0e32\u0e19\u0e1a\u0e19</b> ' +
+    '\u00b7 <b>\u0e01\u0e32\u0e23\u0e41\u0e19\u0e30\u0e19\u0e33\u0e19\u0e35\u0e49\u0e44\u0e21\u0e48\u0e21\u0e35\u0e04\u0e48\u0e32\u0e15\u0e2d\u0e1a\u0e41\u0e17\u0e19\u0e08\u0e32\u0e01\u0e42\u0e1a\u0e23\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c\u0e43\u0e14</b></p>';
+  if (typeof paintLogos === "function") { paintLogos(); }
+}
+
 function alToc(){
   var host = document.getElementById("al-toc");
   if (!host) { return; }
@@ -6596,6 +6651,7 @@ document.addEventListener("input", function(ev){
 alRender();
 alToc();
 alEdu();
+alBtns();
 
 /* \u2500\u2500 \u0e15\u0e31\u0e27\u0e2d\u0e22\u0e48\u0e32\u0e07 EA \u2014 \u0e01\u0e14 "\u0e23\u0e31\u0e1a\u0e1f\u0e23\u0e35" \u0e41\u0e25\u0e49\u0e27\u0e40\u0e1b\u0e34\u0e14 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
    \u0e01\u0e23\u0e32\u0e1f\u0e41\u0e17\u0e48\u0e07\u0e40\u0e17\u0e35\u0e22\u0e19\u0e27\u0e32\u0e14\u0e15\u0e32\u0e22\u0e15\u0e31\u0e27 \u0e04\u0e48\u0e32\u0e04\u0e07\u0e17\u0e38\u0e01\u0e04\u0e23\u0e31\u0e49\u0e07\u0e17\u0e35\u0e48\u0e40\u0e1b\u0e34\u0e14 \u0e44\u0e21\u0e48\u0e2a\u0e38\u0e48\u0e21\u0e43\u0e2b\u0e21\u0e48\u0e17\u0e38\u0e01\u0e04\u0e23\u0e31\u0e49\u0e07 */
@@ -6796,6 +6852,26 @@ function cmpDelta(c, v){
   return {pct: Math.abs(d), up: d >= 0, good: c.low ? (v < c.med) : (v > c.med)};
 }
 function cmpBar(c, v){ return Math.max(4, Math.min(100, v / c.mx * 100)); }
+/* \u0e41\u0e16\u0e27\u0e1b\u0e38\u0e48\u0e21\u0e40\u0e25\u0e47\u0e01\u0e43\u0e15\u0e49\u0e41\u0e16\u0e1a\u0e40\u0e17\u0e35\u0e22\u0e1a \u2014 \u0e23\u0e32\u0e22\u0e41\u0e23\u0e01\u0e04\u0e37\u0e2d\u0e42\u0e1a\u0e23\u0e01\u0e17\u0e35\u0e48\u0e41\u0e19\u0e30\u0e19\u0e33 \u0e17\u0e35\u0e48\u0e40\u0e2b\u0e25\u0e37\u0e2d\u0e04\u0e37\u0e2d\u0e23\u0e32\u0e22\u0e17\u0e35\u0e48\u0e14\u0e35\u0e01\u0e27\u0e48\u0e32
+   \u0e08\u0e31\u0e14\u0e2d\u0e31\u0e19\u0e14\u0e31\u0e1a\u0e15\u0e32\u0e21\u0e14\u0e49\u0e32\u0e19\u0e17\u0e35\u0e48 EA \u0e15\u0e31\u0e27\u0e19\u0e31\u0e49\u0e19\u0e27\u0e31\u0e14 \u0e08\u0e36\u0e07\u0e44\u0e21\u0e48\u0e43\u0e0a\u0e48\u0e23\u0e32\u0e22\u0e40\u0e14\u0e35\u0e22\u0e27\u0e01\u0e31\u0e19\u0e17\u0e38\u0e01\u0e2b\u0e19\u0e49\u0e32            */
+function eaBtnRow(i){
+  if (typeof edPool !== "function") { return ""; }
+  var dim = (typeof EA_DIM !== "undefined" && EA_DIM[i]) ? EA_DIM[i] : "total";
+  var pool = edPool(dim);
+  if (pool.length < 2) { return ""; }
+  var dn = edDimName(dim);
+  return '<div class="mt-bb"><span class="lb"><b>\u0e14\u0e35\u0e01\u0e27\u0e48\u0e32\u0e14\u0e49\u0e32\u0e19' + dn +
+    '</b> \u00b7 \u0e01\u0e14\u0e2d\u0e48\u0e32\u0e19\u0e23\u0e35\u0e27\u0e34\u0e27\u0e44\u0e14\u0e49\u0e40\u0e25\u0e22</span>' +
+    pool.slice(0, 4).map(function(x, k){
+      var m = META[x.r.id];
+      return '<a class="mt-bx' + (k ? "" : " top") + '" href="/broker/' + m.slug +
+        '/review" data-review="' + m.slug + '" title="\u0e2d\u0e48\u0e32\u0e19\u0e23\u0e35\u0e27\u0e34\u0e27 ' + m.n + '">' +
+        logoSpan(m, 22, 9) +
+        (k ? "" : '<span class="tag">\u0e41\u0e19\u0e30\u0e19\u0e33</span>') +
+        '<b>' + m.n + '</b><em>' + x.v.toFixed(1) + '</em></a>';
+    }).join("") + '</div>';
+}
+
 function eaCmp(i){
   var c = EA_CMP[i];
   c.mx = Math.max(c.me * 1.22, c.med, c.best) ;
@@ -6819,6 +6895,7 @@ function eaCmp(i){
     row("", "\u0e04\u0e48\u0e32\u0e01\u0e25\u0e32\u0e07\u0e02\u0e2d\u0e07\u0e2b\u0e21\u0e27\u0e14", c.med) +
     row("best", c.bn, c.best) +
     '<p class="mt-rank">\u0e2d\u0e22\u0e39\u0e48\u0e2d\u0e31\u0e19\u0e14\u0e31\u0e1a <b>' + c.rk + ' \u0e08\u0e32\u0e01 ' + c.tt + '</b> \u00b7 ' + c.note + '</p>' +
+    eaBtnRow(i) +
     '</div>';
 }
 function cmpTick(i, s){
@@ -8576,7 +8653,7 @@ function brGrade(s){
   if (s >= 7.0) { return "\u0e14\u0e35"; }
   return "\u0e1e\u0e2d\u0e43\u0e0a\u0e49";
 }
-var brSlug = "icm", brCat = "fx", brIso = "TH", brAcct = 0, brFaq = 0, brVote = 0;
+var brSlug = "icm", brCat = "fx", brIso = "TH", brAcct = 0, brFaq = 0;
 function brRow(){
   var rows = rkRows(brCat, brIso, 2026) || [];
   for (var i = 0; i < rows.length; i++) {
@@ -8698,47 +8775,6 @@ function brRender(){
         '\u0e0a\u0e48\u0e2d\u0e07\u0e17\u0e35\u0e48\u0e44\u0e2e\u0e44\u0e25\u0e15\u0e4c\u0e04\u0e37\u0e2d\u0e04\u0e48\u0e32\u0e17\u0e35\u0e48\u0e14\u0e35\u0e17\u0e35\u0e48\u0e2a\u0e38\u0e14\u0e02\u0e2d\u0e07\u0e41\u0e16\u0e27\u0e19\u0e31\u0e49\u0e19</p>' +
         brAcctTable() + brAcctAI() + '</section>';
 
-  }
-
-  var tl = document.getElementById("br-tools");
-  if (tl) {
-    tl.className = "br-sec";
-    tl.id = "br-tools";
-    tl.innerHTML = '<span class="cap">\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e21\u0e37\u0e2d\u0e41\u0e25\u0e30\u0e0a\u0e38\u0e21\u0e0a\u0e19</span>' +
-      '<h2>\u0e25\u0e2d\u0e07\u0e04\u0e33\u0e19\u0e27\u0e13 \u0e41\u0e25\u0e30\u0e42\u0e2b\u0e27\u0e15\u0e43\u0e2b\u0e49\u0e04\u0e30\u0e41\u0e19\u0e19\u0e40\u0e2d\u0e07</h2>' +
-      '<p class="sub">\u0e04\u0e33\u0e19\u0e27\u0e13\u0e21\u0e32\u0e23\u0e4c\u0e08\u0e34\u0e49\u0e19\u0e17\u0e35\u0e48\u0e15\u0e49\u0e2d\u0e07\u0e43\u0e0a\u0e49\u0e01\u0e48\u0e2d\u0e19\u0e40\u0e1b\u0e34\u0e14\u0e2d\u0e2d\u0e40\u0e14\u0e2d\u0e23\u0e4c \u0e41\u0e25\u0e30\u0e23\u0e48\u0e27\u0e21\u0e42\u0e2b\u0e27\u0e15\u0e04\u0e30\u0e41\u0e19\u0e19\u0e08\u0e32\u0e01\u0e40\u0e17\u0e23\u0e14\u0e40\u0e14\u0e2d\u0e23\u0e4c\u0e08\u0e23\u0e34\u0e07</p>' +
-      '<div class="br-tools">' +
-        '<div class="br-tool"><h3>\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e04\u0e33\u0e19\u0e27\u0e13\u0e21\u0e32\u0e23\u0e4c\u0e08\u0e34\u0e49\u0e19</h3>' +
-          '<p>\u0e1b\u0e23\u0e30\u0e40\u0e21\u0e34\u0e19\u0e40\u0e07\u0e34\u0e19\u0e17\u0e35\u0e48\u0e15\u0e49\u0e2d\u0e07\u0e43\u0e0a\u0e49\u0e15\u0e48\u0e2d 1 \u0e2d\u0e2d\u0e40\u0e14\u0e2d\u0e23\u0e4c</p>' +
-          '<label class="br-fld"><span>\u0e2a\u0e34\u0e19\u0e04\u0e49\u0e32 (Instrument)</span><select id="br-ins">' +
-            BR_INSTR.map(function(x){ return '<option value="' + x[0] + '">' + x[1] + '</option>'; }).join("") +
-          '</select></label>' +
-          '<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">' +
-            '<label class="br-fld"><span>\u0e02\u0e19\u0e32\u0e14 (Lots)</span>' +
-              '<input id="br-lot" type="number" value="1" min="0.01" step="0.01" autocomplete="off"></label>' +
-            '<label class="br-fld"><span>\u0e40\u0e25\u0e40\u0e27\u0e2d\u0e40\u0e23\u0e08</span><select id="br-lev">' +
-              BR_LEVS.map(function(l){ return '<option value="' + l + '"' +
-                (l === 2000 ? " selected" : "") + '>1:' + l + '</option>'; }).join("") +
-            '</select></label></div>' +
-          '<div class="br-out"><div><span>\u0e21\u0e39\u0e25\u0e04\u0e48\u0e32\u0e2a\u0e31\u0e0d\u0e0d\u0e32 (Notional)</span><b id="br-not">108,500</b></div>' +
-            '<div><span>\u0e21\u0e32\u0e23\u0e4c\u0e08\u0e34\u0e49\u0e19\u0e17\u0e35\u0e48\u0e15\u0e49\u0e2d\u0e07\u0e43\u0e0a\u0e49</span><b id="br-mar">54.25</b></div></div>' +
-          '<p class="br-disc">* \u0e04\u0e33\u0e19\u0e27\u0e13\u0e14\u0e49\u0e27\u0e22\u0e23\u0e32\u0e04\u0e32\u0e15\u0e25\u0e32\u0e14\u0e42\u0e14\u0e22\u0e1b\u0e23\u0e30\u0e21\u0e32\u0e13\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e01\u0e32\u0e23\u0e28\u0e36\u0e01\u0e29\u0e32 ' +
-          '\u0e23\u0e32\u0e04\u0e32\u0e08\u0e23\u0e34\u0e07\u0e1b\u0e23\u0e31\u0e1a\u0e15\u0e32\u0e21\u0e15\u0e25\u0e32\u0e14\u0e41\u0e25\u0e30\u0e40\u0e07\u0e37\u0e48\u0e2d\u0e19\u0e44\u0e02\u0e1a\u0e31\u0e0d\u0e0a\u0e35</p></div>' +
-        '<div class="br-tool"><h3>\u0e40\u0e17\u0e23\u0e14\u0e40\u0e14\u0e2d\u0e23\u0e4c\u0e43\u0e2b\u0e49\u0e04\u0e30\u0e41\u0e19\u0e19\u0e40\u0e17\u0e48\u0e32\u0e44\u0e2b\u0e23\u0e48?</h3>' +
-          '<p>\u0e42\u0e2b\u0e27\u0e15\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e08\u0e30\u0e2d\u0e31\u0e1b\u0e40\u0e14\u0e15\u0e17\u0e31\u0e19\u0e17\u0e35 (\u0e44\u0e21\u0e48\u0e16\u0e39\u0e01\u0e1a\u0e31\u0e19\u0e17\u0e36\u0e01\u0e43\u0e19\u0e15\u0e49\u0e19\u0e41\u0e1a\u0e1a\u0e19\u0e35\u0e49)</p>' +
-          '<div class="br-vote"><span class="br-vn" id="br-vn">4.6</span>' +
-            '<span class="br-vc">\u0e08\u0e32\u0e01\u0e40\u0e17\u0e23\u0e14\u0e40\u0e14\u0e2d\u0e23\u0e4c <b id="br-vc">1,284</b> \u0e04\u0e19<br>' +
-            '\u0e04\u0e30\u0e41\u0e19\u0e19\u0e42\u0e2b\u0e27\u0e15\u0e44\u0e21\u0e48\u0e21\u0e35\u0e1c\u0e25\u0e15\u0e48\u0e2d\u0e14\u0e32\u0e27\u0e41\u0e25\u0e30\u0e2d\u0e31\u0e19\u0e14\u0e31\u0e1a</span></div>' +
-          '<div class="br-vbtns" role="group" aria-label="\u0e43\u0e2b\u0e49\u0e04\u0e30\u0e41\u0e19\u0e19 1 \u0e16\u0e36\u0e07 5 \u0e14\u0e32\u0e27">' +
-            [1, 2, 3, 4, 5].map(function(n){
-              return '<button type="button" class="br-vb" data-brvote="' + n + '" ' +
-                'aria-pressed="false" aria-label="\u0e43\u0e2b\u0e49 ' + n + ' \u0e14\u0e32\u0e27">' + awardStar(17) + '</button>';
-            }).join("") + '</div>' +
-          [["5 \u0e14\u0e32\u0e27", 59], ["4 \u0e14\u0e32\u0e27", 31], ["3 \u0e14\u0e32\u0e27", 7], ["1\u20132 \u0e14\u0e32\u0e27", 3]].map(function(v){
-            return '<div class="br-vbar"><span>' + v[0] + '</span>' +
-              '<span class="tr"><i style="width:' + v[1] + '%"></i></span>' +
-              '<span class="pc">' + v[1] + '%</span></div>';
-          }).join("") + '</div></div>';
   }
 
   var nw = document.getElementById("br-network");
@@ -8907,18 +8943,6 @@ function brBars(){
     setTimeout(function(){ b.style.width = b.dataset.brbar + "%"; }, 60);
   });
 }
-function brCalc(){
-  var ins = document.getElementById("br-ins"), lot = document.getElementById("br-lot"),
-      lev = document.getElementById("br-lev");
-  if (!ins || !lot || !lev) { return; }
-  var base = 108500;
-  BR_INSTR.forEach(function(x){ if (x[0] === ins.value) { base = x[2]; } });
-  var n = base * Math.max(0.01, parseFloat(lot.value) || 1);
-  var m = n / (parseInt(lev.value, 10) || 1);
-  var a = document.getElementById("br-not"), b = document.getElementById("br-mar");
-  if (a) { a.textContent = Math.round(n).toLocaleString("en-US"); }
-  if (b) { b.textContent = m.toLocaleString("en-US", {minimumFractionDigits: 2, maximumFractionDigits: 2}); }
-}
 document.addEventListener("click", function(ev){
   var f = ev.target.closest("[data-brfaq]");
   if (f) {
@@ -8940,18 +8964,6 @@ document.addEventListener("click", function(ev){
     ev.preventDefault();
     return;
   }
-  var v = ev.target.closest("[data-brvote]");
-  if (v) {
-    var n = parseInt(v.dataset.brvote, 10);
-    document.querySelectorAll("[data-brvote]").forEach(function(b){
-      b.setAttribute("aria-pressed", String(parseInt(b.dataset.brvote, 10) <= n));
-    });
-    brVote = n;
-    var vn = document.getElementById("br-vn"), vc = document.getElementById("br-vc");
-    if (vn) { vn.textContent = ((4.6 * 1284 + n) / 1285).toFixed(1); }
-    if (vc) { vc.textContent = "1,285"; }
-    return;
-  }
   var s = ev.target.closest("[data-brsec]");
   if (s) {
     ev.preventDefault();
@@ -8962,12 +8974,8 @@ document.addEventListener("click", function(ev){
   }
   if (ev.target.closest("[data-brrev]")) { ev.preventDefault(); }
 });
-document.addEventListener("input", function(ev){
-  if (ev.target.closest("#br-ins, #br-lot, #br-lev")) { brCalc(); }
-});
-document.addEventListener("change", function(ev){
-  if (ev.target.closest("#br-ins, #br-lev")) { brCalc(); }
-});
+
+
 
 /* \u2500\u2500 \u0e2b\u0e19\u0e49\u0e32\u0e22\u0e48\u0e2d\u0e22\u0e23\u0e32\u0e22\u0e2b\u0e31\u0e27\u0e02\u0e49\u0e2d\u0e02\u0e2d\u0e07\u0e23\u0e35\u0e27\u0e34\u0e27 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
    \u0e1a\u0e25\u0e47\u0e2d\u0e01\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e40\u0e1b\u0e47\u0e19\u0e02\u0e2d\u0e07 Noting (\u0e14\u0e36\u0e07\u0e08\u0e32\u0e01\u0e0a\u0e38\u0e14\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e40\u0e14\u0e35\u0e22\u0e27\u0e01\u0e31\u0e1a\u0e15\u0e32\u0e23\u0e32\u0e07\u0e2d\u0e31\u0e19\u0e14\u0e31\u0e1a)
@@ -10133,7 +10141,7 @@ function edRender(){
         '<p style="margin:16px 0 0;padding-top:14px;border-top:1px solid #F0F2F5;' +
         'font-size:12.5px;line-height:1.75;color:#667085"><b style="color:#101828">\u0e2a\u0e34\u0e48\u0e07\u0e17\u0e35\u0e48\u0e15\u0e49\u0e2d\u0e07\u0e21\u0e35</b> \u2014 ' +
         EA_REQ.join(" \u00b7 ") + '</p></div></section>' +
-      edBrokers(edIdx) + edReviews(edIdx);
+      edReviews(edIdx);
   }
 
   var nav = document.getElementById("ed-nav");
