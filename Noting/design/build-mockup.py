@@ -1012,7 +1012,11 @@ HEAD = """<title>RedStarTrust Homepage</title>
   .aw-hx:hover { border-color: #C9A227; transform: translateY(-3px);
     box-shadow: 0 18px 40px -20px rgba(201,162,39,0.45); }
   .aw-hx:focus-visible { outline: 2px solid var(--aw-red); outline-offset: 3px; }
-  .aw-hxt { background: transparent; padding: 22px 20px 14px; text-align: center; }
+  /* ต้องประกาศ display เอง — span ที่ปล่อยไว้จะเป็น inline
+     แล้ว text-align: center จะไม่จัดกลางให้แถวดาว */
+  .aw-hxt { display: block; background: transparent; padding: 22px 20px 14px;
+    text-align: center; }
+  .aw-hxb { display: block; }
   .aw-hxlg { display: block; margin: 14px auto 16px; width: 84px; height: 84px;
     border-radius: 22px; background: #FFFFFF; display: flex; align-items: center;
     justify-content: center; box-shadow: 0 0 0 1px rgba(201,162,39,0.5),
@@ -1584,6 +1588,12 @@ HEAD = """<title>RedStarTrust Homepage</title>
     padding: 7px 16px 7px 13px; font: inherit; font-size: 13px; font-weight: 600;
     text-decoration: none; transition: background .18s, border-color .18s, color .18s; }
   .pk-hof:hover { background: #FBF6E7; border-color: #A98420; color: #6A5620; }
+  /* \u0e1a\u0e19\u0e41\u0e1c\u0e07\u0e14\u0e33\u0e02\u0e2d\u0e07 Hall of Fame \u0e15\u0e49\u0e2d\u0e07\u0e01\u0e25\u0e31\u0e1a\u0e2a\u0e35 */
+  .aw-hoft .pk-hof { margin-top: 18px; background: transparent; color: #E8D9A6;
+    border-color: rgba(201,162,39,0.55); }
+  .aw-hoft .pk-hof:hover { background: rgba(201,162,39,0.14); border-color: #C9A227;
+    color: #F4E7BE; }
+  .aw-hoft .pk-hof:focus-visible { outline: 2px solid #C9A227; outline-offset: 3px; }
   .pk-hof:focus-visible { outline: 2px solid #D92D20; outline-offset: 2px; }
 
   /* \u0e2a\u0e48\u0e27\u0e19\u0e19\u0e33 \u2014 \u0e15\u0e2d\u0e1a\u0e2a\u0e32\u0e21\u0e04\u0e33\u0e16\u0e32\u0e21\u0e01\u0e48\u0e2d\u0e19\u0e42\u0e22\u0e19\u0e02\u0e2d\u0e07\u0e43\u0e2a\u0e48\u0e2b\u0e19\u0e49\u0e32 */
@@ -3283,6 +3293,17 @@ HEAD = """<title>RedStarTrust Homepage</title>
   .pk-mini .go { margin-top: auto; border-top: 1px solid #F0F2F5; padding: 9px 12px; text-align: center; }
   .pk-mini .go a { font-size: 12px; font-weight: 600; color: #D92D20; text-decoration: none; }
   .pk-mini .go a:hover { text-decoration: underline; }
+  /* \u0e01\u0e32\u0e23\u0e4c\u0e14\u0e40\u0e25\u0e47\u0e01 \u2014 \u0e23\u0e2b\u0e31\u0e2a\u0e2d\u0e49\u0e32\u0e07\u0e2d\u0e34\u0e07\u0e01\u0e31\u0e1a\u0e27\u0e31\u0e19\u0e17\u0e35\u0e48\u0e15\u0e23\u0e27\u0e08 \u0e0a\u0e38\u0e14\u0e40\u0e14\u0e35\u0e22\u0e27\u0e01\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e4c\u0e14\u0e2d\u0e31\u0e19\u0e14\u0e31\u0e1a 1 */
+  .pk-mini .pk-rank { display: flex; align-items: center; justify-content: space-between;
+    gap: 8px; }
+  .pk-mini .pk-ref { font-size: 9px; letter-spacing: 0.03em; color: #667085; }
+  .pk-mini[data-stars="3"] .pk-ref { color: #7A6329; }
+  .pk-mini .go { display: flex; align-items: center; justify-content: space-between;
+    gap: 10px; text-align: left; }
+  .pk-mini .go .pk-when { margin-top: 0; font-size: 10px; color: #667085; white-space: nowrap; }
+  .pk-mini[data-stars="3"] .go .pk-when { color: #7A6329; }
+
+
 
 
   /* ── ตัวเลือกขอบเขตของบล็อก 3 อันดับแรก ── */
@@ -3295,19 +3316,19 @@ HEAD = """<title>RedStarTrust Homepage</title>
 
 
   /* PREMIUM-GOLD — การ์ดอันดับ 1 กรอบทอง ดาวเด่นกว่าคะแนน */
-  .pk-card.first {
+.pk-card.first[data-stars="3"] {
     border: 1.5px solid #C9A227 !important;
     box-shadow: 0 0 0 3px #FBF3DF, 0 12px 28px -18px rgba(122,99,41,0.4);
   }
-  .pk-card.first:hover {
+.pk-card.first[data-stars="3"]:hover {
     border-color: #B8912F !important;
     box-shadow: 0 0 0 3px #F7EBCD, 0 18px 34px -18px rgba(122,99,41,0.5);
   }
-  .pk-card.first .pk-rank {
+.pk-card.first[data-stars="3"] .pk-rank {
     background: #FBF3DF !important; border-bottom-color: #EFDFB4 !important; color: #7A6329 !important;
     letter-spacing: 0.1em;
   }
-  .pk-card.first .pk-logo { border-color: #EFDFB4; }
+  .pk-card.first[data-stars="3"] .pk-logo { border-color: #EFDFB4; }
 
   /* ── ลายดาวจางพื้นหลังการ์ด — ขึ้นเฉพาะการ์ดที่ได้ดาวตั้งแต่ 1 ดวงขึ้นไป ── */
   .pk-card[data-stars]:not([data-stars="0"]),
@@ -3382,12 +3403,12 @@ HEAD = """<title>RedStarTrust Homepage</title>
 
 
   /* GOLD-BOLD — แถบอันดับทองเข้ม · ดาวใหญ่ขึ้น มีขอบทอง */
-  .pk-card.first .pk-rank {
+.pk-card.first[data-stars="3"] .pk-rank {
     background: #7A6329 !important; border-bottom: 1px solid #5F4C1F !important;
     color: #FDF6E3 !important; font-weight: 700; letter-spacing: 0.12em;
   }
-  .pk-card.first { box-shadow: 0 0 0 3px #F3E6C4, 0 14px 30px -18px rgba(95,76,31,0.45) !important; }
-  .pk-card.first:hover { box-shadow: 0 0 0 3px #EBDBAE, 0 20px 36px -18px rgba(95,76,31,0.55) !important; }
+  .pk-card.first[data-stars="3"] { box-shadow: 0 0 0 3px #F3E6C4, 0 14px 30px -18px rgba(95,76,31,0.45) !important; }
+  .pk-card.first[data-stars="3"]:hover { box-shadow: 0 0 0 3px #EBDBAE, 0 20px 36px -18px rgba(95,76,31,0.55) !important; }
 
   .pk-stars svg { width: 34px !important; height: 34px !important; overflow: visible; }
   .pk-mini .st svg { width: 18px !important; height: 18px !important; overflow: visible; }
@@ -3396,14 +3417,44 @@ HEAD = """<title>RedStarTrust Homepage</title>
 
 
   /* GOLD-CTA — ปุ่มรีวิวของการ์ดอันดับ 1 เป็นปุ่มทองเต็มใบ */
-  .pk-card.first .pk-cta { padding: 12px; border-top-color: #EFDFB4; }
-  .pk-card.first .pk-cta a {
+  /* \u0e23\u0e2b\u0e31\u0e2a\u0e14\u0e32\u0e27\u0e2d\u0e49\u0e32\u0e07\u0e2d\u0e34\u0e07\u0e21\u0e38\u0e21\u0e02\u0e27\u0e32\u0e1a\u0e19 \xb7 \u0e27\u0e31\u0e19\u0e17\u0e35\u0e48\u0e15\u0e23\u0e27\u0e08\u0e25\u0e48\u0e32\u0e2a\u0e38\u0e14\u0e21\u0e38\u0e21\u0e02\u0e27\u0e32\u0e25\u0e48\u0e32\u0e07 */
+  .pk-card.first .pk-rank { display: flex; align-items: center; justify-content: space-between;
+    gap: 10px; }
+  /* \u0e2d\u0e31\u0e19\u0e14\u0e31\u0e1a 1 \u0e41\u0e15\u0e48\u0e22\u0e31\u0e07\u0e44\u0e21\u0e48\u0e16\u0e36\u0e07 3 \u0e14\u0e32\u0e27 \u2014 \u0e43\u0e0a\u0e49\u0e42\u0e17\u0e19\u0e41\u0e14\u0e07
+     \u0e17\u0e2d\u0e07\u0e2a\u0e07\u0e27\u0e19\u0e44\u0e27\u0e49\u0e43\u0e2b\u0e49 3 \u0e14\u0e32\u0e27\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e40\u0e14\u0e35\u0e22\u0e27 \u0e01\u0e23\u0e2d\u0e1a\u0e08\u0e30\u0e44\u0e14\u0e49\u0e21\u0e35\u0e04\u0e27\u0e32\u0e21\u0e2b\u0e21\u0e32\u0e22\u0e40\u0e14\u0e35\u0e22\u0e27\u0e17\u0e31\u0e49\u0e07\u0e40\u0e27\u0e47\u0e1a */
+  .pk-card.first:not([data-stars="3"]) {
+    border: 1.5px solid #FECDCA !important;
+    box-shadow: 0 0 0 3px #FEF3F2, 0 12px 28px -18px rgba(180,35,24,0.30) !important; }
+  .pk-card.first:not([data-stars="3"]):hover {
+    border-color: #F97066 !important;
+    box-shadow: 0 0 0 3px #FEE4E2, 0 18px 34px -18px rgba(180,35,24,0.40) !important; }
+  .pk-card.first:not([data-stars="3"]) .pk-rank {
+    background: #B42318 !important; border-bottom: 1px solid #912018 !important;
+    color: #FEF3F2 !important; font-weight: 700; letter-spacing: 0.12em; }
+  .pk-card.first:not([data-stars="3"]) .pk-logo { border-color: #FECDCA; }
+  .pk-card.first:not([data-stars="3"]) .pk-cta { border-top-color: #FECDCA; }
+  .pk-card.first:not([data-stars="3"]) .pk-cta a {
+    display: block; background: #B42318; color: #FFFFFF !important; border-radius: 8px;
+    padding: 10px 14px; font-size: 13.5px; font-weight: 700; letter-spacing: 0.03em;
+    text-decoration: none; transition: background .16s; }
+  .pk-card.first:not([data-stars="3"]) .pk-cta a:hover { background: #912018; text-decoration: none; }
+  .pk-card.first:not([data-stars="3"]) .pk-cta a:focus-visible {
+    outline: 2px solid #D92D20; outline-offset: 2px; }
+  .pk-card.first:not([data-stars="3"]) .pk-when { color: #B42318; }
+
+  .pk-ref { font-style: normal; font-family: 'IBM Plex Sans', sans-serif; font-size: 9.5px;
+    font-weight: 600; letter-spacing: 0.04em; color: #FDF6E3; white-space: nowrap; }
+  .pk-when { display: block; margin-top: 9px; text-align: right;
+    font-size: 10.5px; letter-spacing: 0; color: #7A6329; }
+  .pk-card.first .pk-cta { padding: 12px; }
+  .pk-card.first[data-stars="3"] .pk-cta { border-top-color: #EFDFB4; }
+.pk-card.first[data-stars="3"] .pk-cta a {
     display: block; background: #7A6329; color: #FDF6E3 !important; border-radius: 8px;
     padding: 10px 14px; font-size: 13.5px; font-weight: 700; letter-spacing: 0.03em;
     text-decoration: none; transition: background .16s;
   }
-  .pk-card.first .pk-cta a:hover { background: #5F4C1F; text-decoration: none; }
-  .pk-card.first .pk-cta a:focus-visible { outline: 2px solid #C9A227; outline-offset: 2px; }
+  .pk-card.first[data-stars="3"] .pk-cta a:hover { background: #5F4C1F; text-decoration: none; }
+  .pk-card.first[data-stars="3"] .pk-cta a:focus-visible { outline: 2px solid #C9A227; outline-offset: 2px; }
 
 
   /* MINI-CAT-BAR — ดาวอันดับ 1 ใหญ่ขึ้น · การ์ดเล็กแสดงชื่อหมวดแทนเลขอันดับ */
@@ -3890,6 +3941,21 @@ document.addEventListener('click', function (ev) {
     select(hk);
     document.querySelector('.map-svg').scrollIntoView({behavior: 'smooth', block: 'center'});
   }
+});
+/* ชี้หมุดแล้วการ์ดเด้งเลย ไม่ต้องคลิก (คำสั่ง Boss 1 ก.ย. 69)
+   หน่วง 90ms กันภาพกระตุกตอนลากเมาส์ผ่านหมุดหลายอันติดกัน
+   คลิกยังใช้ได้เหมือนเดิม สำหรับจอสัมผัสและคีย์บอร์ด */
+var pinHoverT = null;
+document.addEventListener('mouseover', function (ev) {
+  var pin = ev.target.closest('[data-pin]');
+  if (!pin) { return; }
+  var id = TOP[pin.dataset.pin];
+  if (!id || id === cur) { return; }
+  clearTimeout(pinHoverT);
+  pinHoverT = setTimeout(function () { select(id); }, 90);
+});
+document.addEventListener('mouseout', function (ev) {
+  if (ev.target.closest('[data-pin]')) { clearTimeout(pinHoverT); }
 });
 document.addEventListener('keydown', function (ev) {
   if (ev.key !== 'Enter' && ev.key !== ' ') { return; }
@@ -5144,6 +5210,19 @@ function pkControls(){
     '<label class="rk-pick"><span>ประเทศ</span><select id="pk-iso" aria-label="เลือกประเทศของ 3 อันดับแรก">' + countries + '</select></label>' +
     '<span class="pk-live"><i></i>Live Ranking</span></div>';
 }
+/* \u0e23\u0e2b\u0e31\u0e2a\u0e14\u0e32\u0e27\u0e2d\u0e49\u0e32\u0e07\u0e2d\u0e34\u0e07\u0e01\u0e31\u0e1a\u0e27\u0e31\u0e19\u0e17\u0e35\u0e48\u0e15\u0e23\u0e27\u0e08\u0e25\u0e48\u0e32\u0e2a\u0e38\u0e14 \u2014 \u0e04\u0e07\u0e17\u0e35\u0e48\u0e15\u0e48\u0e2d\u0e42\u0e1a\u0e23\u0e01\u0e2b\u0e19\u0e36\u0e48\u0e07\u0e23\u0e32\u0e22 \u0e44\u0e21\u0e48\u0e2a\u0e38\u0e48\u0e21\u0e43\u0e2b\u0e21\u0e48\u0e17\u0e38\u0e01\u0e04\u0e23\u0e31\u0e49\u0e07\u0e17\u0e35\u0e48\u0e40\u0e1b\u0e34\u0e14 */
+var PK_MONTH = ["\u0e21.\u0e04.", "\u0e01.\u0e1e.", "\u0e21\u0e35.\u0e04.", "\u0e40\u0e21.\u0e22.",
+  "\u0e1e.\u0e04.", "\u0e21\u0e34.\u0e22.", "\u0e01.\u0e04.", "\u0e2a.\u0e04.",
+  "\u0e01.\u0e22.", "\u0e15.\u0e04.", "\u0e1e.\u0e22.", "\u0e18.\u0e04."];
+function pkRef(id, iso){
+  var n = 100000 + Math.floor(seed(id + iso + "ref") * 899999);
+  return "RS-" + pkYear + "Q2-" + n;
+}
+function pkAudit(id, iso){
+  var day = 1 + Math.floor(seed(id + iso + "audd") * 28);
+  var mo = 3 + Math.floor(seed(id + iso + "audm") * 3);
+  return day + " " + PK_MONTH[mo] + " " + pkYear;
+}
 function topPicks(cat, n){
   var best = {};
   pkIsoList().forEach(function(iso){
@@ -5229,11 +5308,6 @@ function renderPicks(){
       awardStar(76) +
       '<span class="pk-titxt"><h2><i class="wm-red">RED</i> STAR</h2>' +
       '<span class="pk-award">รางวัลทรงคุณค่า</span>' +
-      '<a class="pk-hof" href="#/awards">' +
-        '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
-        'stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
-        '<path d="M7 4h10v5a5 5 0 0 1-10 0z"></path><path d="M7 5.5H4.5V8a3 3 0 0 0 3 3M17 5.5h2.5V8a3 3 0 0 1-3 3"></path>' +
-        '<path d="M12 14v3.5M8.5 20h7"></path></svg>Hall of Fame</a>' +
       '</span></div>' +
       pkControls() + '</div>' +
     '<div class="pk-search">' +
@@ -5254,7 +5328,9 @@ function renderPicks(){
       }
       var one = rows[0], m1 = META[one.r.id];
       var big = '<article class="pk-card first" data-stars="' + one.r.stars + '">' +
-        '<div class="pk-rank">' + c.label.replace("BEST ", "") + '</div>' +
+        '<div class="pk-rank"><span>' + c.label.replace("BEST ", "") + '</span>' +
+          '<em class="pk-ref" title="\u0e23\u0e2b\u0e31\u0e2a\u0e14\u0e32\u0e27\u0e2d\u0e49\u0e32\u0e07\u0e2d\u0e34\u0e07">' +
+          pkRef(one.r.id, one.iso) + '</em></div>' +
         '<div class="pk-body">' +
           '<span class="pk-logo" data-logo="' + m1.slug + '|' + m1.mono + '"></span>' +
           '<span class="pk-name">' + m1.n + '</span>' +
@@ -5264,19 +5340,24 @@ function renderPicks(){
             CNAME[one.iso] + '</span>' +
           '<span class="pk-stars">' + starHTML(one.r.stars, 27) + '</span>' +
         '</div>' +
-        '<div class="pk-cta"><a href="/broker/' + m1.slug + '/review" data-review="' + m1.slug + '">View Review</a></div>' +
+        '<div class="pk-cta"><a href="/broker/' + m1.slug + '/review" data-review="' + m1.slug + '">View Review</a>' +
+          '<span class="pk-when">\u0e15\u0e23\u0e27\u0e08\u0e25\u0e48\u0e32\u0e2a\u0e38\u0e14 ' +
+          pkAudit(one.r.id, one.iso) + '</span></div>' +
       '</article>';
       var rest = rows.slice(1).map(function(x, i){
         var m = META[x.r.id];
         return '<article class="pk-mini" data-stars="' + x.r.stars + '">' +
-          '<div class="pk-rank">' + c.label.replace("BEST ", "") + '</div>' +
+          '<div class="pk-rank"><span>' + c.label.replace("BEST ", "") + '</span>' +
+            '<em class="pk-ref" title="\u0e23\u0e2b\u0e31\u0e2a\u0e14\u0e32\u0e27\u0e2d\u0e49\u0e32\u0e07\u0e2d\u0e34\u0e07">' +
+            pkRef(x.r.id, x.iso) + '</em></div>' +
           '<div class="mb">' +
             '<span class="pk-logo" data-logo="' + m.slug + '|' + m.mono + '"></span>' +
             '<span class="nm">' + m.n + '</span>' +
             '<span class="lo">' + CNAME[x.iso] + '</span>' +
             '<span class="st">' + starHTML(x.r.stars, 15) + '</span>' +
           '</div>' +
-          '<div class="go"><a href="/broker/' + m.slug + '/review" data-review="' + m.slug + '">รีวิว</a></div>' +
+          '<div class="go"><a href="/broker/' + m.slug + '/review" data-review="' + m.slug + '">รีวิว</a>' +
+            '<span class="pk-when">ตรวจล่าสุด ' + pkAudit(x.r.id, x.iso) + '</span></div>' +
         '</article>';
       }).join("");
       return '<div class="pk-col"><h2>' + c.title + '</h2>' + big +
@@ -8534,8 +8615,7 @@ function awHofCards(dup){
       (dup ? ' aria-hidden="true" tabindex="-1"' : '') + '>' +
       '<span class="aw-hxt"><span class="aw-hxr">No. ' + (hi + 1) + '</span>' +
       '<span class="aw-hxlg">' + awLogo(r.b, 70, 18) + '</span>' +
-      '<span class="aw-hxs">' + awStarRow(AW_STMAX, 22) + '</span>' +
-      '<b>' + r.run + '</b><span>ไตรมาสที่ผ่านติดต่อกัน</span></span>' +
+      '<span class="aw-hxs">' + awStarRow(AW_STMAX, 22) + '</span></span>' +
       '<span class="aw-hxb">' +
       '<strong>' + awName(r.b) + '</strong><em>' + c.n + '</em></span>' +
       '<span class="aw-hxy"><i>ตั้งแต่ ' + r.since + '</i><i>รวม ' + r.q + ' ไตรมาส</i></span></a>';
@@ -8636,6 +8716,24 @@ function awVoices(){
         '<span>\u0e23\u0e32\u0e22\u0e0a\u0e37\u0e48\u0e2d\u0e17\u0e35\u0e48\u0e16\u0e37\u0e2d\u0e14\u0e32\u0e27\u0e04\u0e23\u0e1a\u0e2a\u0e32\u0e21\u0e14\u0e27\u0e07\u0e15\u0e34\u0e14\u0e15\u0e48\u0e2d\u0e01\u0e31\u0e19\u0e22\u0e32\u0e27\u0e17\u0e35\u0e48\u0e2a\u0e38\u0e14\u0e02\u0e2d\u0e07\u0e41\u0e15\u0e48\u0e25\u0e30\u0e2b\u0e21\u0e27\u0e14</span></div>' +
         awHofRow() + awVoices() + '</div>';
   }
+
+  /* Hall of Fame \u0e0a\u0e38\u0e14\u0e2b\u0e19\u0e49\u0e32\u0e41\u0e23\u0e01 \u2014 \u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e0a\u0e38\u0e14\u0e40\u0e14\u0e35\u0e22\u0e27\u0e01\u0e31\u0e1a\u0e2b\u0e19\u0e49\u0e32 Awards
+     \u0e44\u0e21\u0e48\u0e40\u0e2d\u0e32\u0e41\u0e16\u0e1a\u0e04\u0e27\u0e32\u0e21\u0e40\u0e2b\u0e47\u0e19\u0e1c\u0e39\u0e49\u0e15\u0e23\u0e27\u0e08\u0e21\u0e32\u0e14\u0e49\u0e27\u0e22 \u0e40\u0e01\u0e47\u0e1a\u0e44\u0e27\u0e49\u0e17\u0e35\u0e48\u0e2b\u0e19\u0e49\u0e32 Awards \u0e2b\u0e19\u0e49\u0e32\u0e40\u0e14\u0e35\u0e22\u0e27 */
+  var hh = document.getElementById("hof-home");
+  if (hh) {
+    hh.className = "aw-sec";
+    hh.innerHTML =
+      '<div class="aw-hofw"><div class="aw-hoft">' +
+        '<b>Hall of Fame</b>' +
+        '<span>\u0e23\u0e32\u0e22\u0e0a\u0e37\u0e48\u0e2d\u0e17\u0e35\u0e48\u0e16\u0e37\u0e2d\u0e14\u0e32\u0e27\u0e04\u0e23\u0e1a\u0e2a\u0e32\u0e21\u0e14\u0e27\u0e07\u0e15\u0e34\u0e14\u0e15\u0e48\u0e2d\u0e01\u0e31\u0e19\u0e22\u0e32\u0e27\u0e17\u0e35\u0e48\u0e2a\u0e38\u0e14\u0e02\u0e2d\u0e07\u0e41\u0e15\u0e48\u0e25\u0e30\u0e2b\u0e21\u0e27\u0e14</span>' +
+        '<a class="pk-hof" href="#/awards" data-nav="awards">' +
+        '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+        'stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+        '<path d="M7 4h10v5a5 5 0 0 1-10 0z"></path><path d="M7 5.5H4.5V8a3 3 0 0 0 3 3M17 5.5h2.5V8a3 3 0 0 1-3 3"></path>' +
+        '<path d="M12 14v3.5M8.5 20h7"></path></svg>\u0e14\u0e39\u0e2b\u0e19\u0e49\u0e32\u0e23\u0e32\u0e07\u0e27\u0e31\u0e25\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14</a>' +
+        '</div>' + awHofRow() + '</div>';
+  }
+
 
   var mt = document.getElementById("aw-meth");
   if (mt) {

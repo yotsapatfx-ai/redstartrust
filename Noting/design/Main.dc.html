@@ -136,29 +136,8 @@
 
   <div class="page" data-page="home">
   <!-- ══ TOP 3 รายหมวด ══ -->
-  <div class="tkr" id="alert-ticker">
-    <div class="tkr-label">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.1"
-           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M10.3 3.6L1.9 18a2 2 0 001.7 3h16.8a2 2 0 001.7-3L13.7 3.6a2 2 0 00-3.4 0z"></path>
-        <path d="M12 9v4M12 17v.1"></path>
-      </svg>
-      <span>เตือนภัยโบรกเกอร์</span>
-    </div>
-    <div class="tkr-scroll" id="tkr-scroll" tabindex="0"
-         aria-label="ข่าวเตือนภัยโบรกเกอร์ เลื่อนดูได้ด้วยการลากหรือลูกเมาส์">
-      <div class="tkr-track" id="tkr-track"></div>
-    </div>
-    <button type="button" class="tkr-pause" id="tkr-pause" aria-pressed="false"
-            aria-label="หยุดการเลื่อนอัตโนมัติ">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <rect x="7" y="5" width="3.6" height="14" rx="1"></rect>
-        <rect x="13.4" y="5" width="3.6" height="14" rx="1"></rect>
-      </svg>
-    </button>
-  </div>
-
-  <div id="picks" style="width: 1200px; margin: 0 auto; padding: 44px 0 0;"></div>
+  <div id="hof-home" style="width: 1200px; margin: 0 auto; padding: 44px 0 0;"></div>
+  <div id="picks" style="width: 1200px; margin: 0 auto; padding: 56px 0 0;"></div>
 
   <div class="scroll-cue">
     <a href="#coverage" aria-label="เลื่อนลงไปที่แผนที่">
@@ -616,6 +595,28 @@
   </div>
 
   <div class="page" data-page="alerts" hidden>
+  <div class="tkr" id="alert-ticker">
+    <div class="tkr-label">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.1"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M10.3 3.6L1.9 18a2 2 0 001.7 3h16.8a2 2 0 001.7-3L13.7 3.6a2 2 0 00-3.4 0z"></path>
+        <path d="M12 9v4M12 17v.1"></path>
+      </svg>
+      <span>เตือนภัยโบรกเกอร์</span>
+    </div>
+    <div class="tkr-scroll" id="tkr-scroll" tabindex="0"
+         aria-label="ข่าวเตือนภัยโบรกเกอร์ เลื่อนดูได้ด้วยการลากหรือลูกเมาส์">
+      <div class="tkr-track" id="tkr-track"></div>
+    </div>
+    <button type="button" class="tkr-pause" id="tkr-pause" aria-pressed="false"
+            aria-label="หยุดการเลื่อนอัตโนมัติ">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <rect x="7" y="5" width="3.6" height="14" rx="1"></rect>
+        <rect x="13.4" y="5" width="3.6" height="14" rx="1"></rect>
+      </svg>
+    </button>
+  </div>
+
     <div style="width: 1200px; margin: 0 auto; padding: 52px 0 0;">
       <div class="sec-rule" aria-hidden="true"></div>
       <div class="art-head">
