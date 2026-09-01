@@ -953,11 +953,7 @@ HEAD = """<title>RedStarTrust Homepage</title>
     background: linear-gradient(160deg, #E6CE86 0%, #C9A227 100%); }
   .aw-vc .nm { display: block; font-size: 14px; font-weight: 700; color: #FFFFFF;
     letter-spacing: -0.01em; }
-  .aw-vc .dm { display: inline-block; margin-top: 5px; font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 10px; font-weight: 700; letter-spacing: 0.04em; color: #14120C;
-    background: linear-gradient(160deg, #E6CE86 0%, #C9A227 100%);
-    border-radius: 999px; padding: 2px 9px; }
-  .aw-vc .rl { display: block; margin-top: 5px; font-size: 11px; line-height: 1.5;
+  .aw-vc .rl { display: block; margin-top: 3px; font-size: 11px; line-height: 1.5;
     color: #E8D9A6; }
   .aw-vc blockquote { margin: 0; font-size: 12.5px; line-height: 1.85;
     color: rgba(255,255,255,0.80); }
@@ -984,76 +980,46 @@ HEAD = """<title>RedStarTrust Homepage</title>
     font-weight: 700; letter-spacing: 0.34em; text-transform: uppercase; color: #C9A227; }
   .aw-hoft span { display: block; margin-top: 9px; font-size: 13px; line-height: 1.8;
     color: rgba(255,255,255,0.62); }
-  /* แถวเลื่อนอัตโนมัติของ Hall of Fame — เลื่อนไปทางซ้ายวนไม่จบ
-     ใช้ margin-right แทน gap เพื่อให้ทุกใบกว้างเท่ากันเป๊ะ translateX(-50%) จึงต่อเนียนพอดี */
-  .aw-hofx { position: relative; z-index: 2; overflow: hidden;
-    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 72px,
-      #000 calc(100% - 72px), transparent 100%);
-    mask-image: linear-gradient(90deg, transparent 0, #000 72px,
-      #000 calc(100% - 72px), transparent 100%); }
-  .aw-hoftrack { display: flex; width: max-content; animation: awhofroll 42s linear infinite; }
-  .aw-hofx.off .aw-hoftrack, .aw-hofx:hover .aw-hoftrack { animation-play-state: paused; }
-  @keyframes awhofroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-  .aw-hofpz { position: absolute; z-index: 3; right: 30px; top: 30px; border: 1px solid rgba(201,162,39,0.42);
-    background: rgba(201,162,39,0.10); color: #E8D9A6; border-radius: 999px;
-    font: inherit; font-family: 'IBM Plex Sans', sans-serif; font-size: 11px; font-weight: 600;
-    letter-spacing: 0.04em; padding: 5px 14px; cursor: pointer;
-    transition: background .18s ease, color .18s ease; }
-  .aw-hofpz:hover { background: rgba(201,162,39,0.22); color: #FFFFFF; }
-  .aw-hofpz:focus-visible { outline: 2px solid #C9A227; outline-offset: 2px; }
-  @media (prefers-reduced-motion: reduce) {
-    .aw-hoftrack { animation: none; }
-  }
-  .aw-hx { flex: 0 0 264px; width: 264px; margin-right: 18px;
-    border: 1px solid rgba(201,162,39,0.32); border-radius: 14px;
+  .aw-hofx { position: relative; z-index: 2; display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 18px; }
+  .aw-hx { border: 1px solid rgba(201,162,39,0.32); border-radius: 14px;
     background: linear-gradient(180deg, #14120C 0%, #0C0C0C 100%);
     overflow: hidden; text-decoration: none; color: inherit; display: block;
     transition: border-color .22s ease, box-shadow .22s ease, transform .22s ease; }
   .aw-hx:hover { border-color: #C9A227; transform: translateY(-3px);
     box-shadow: 0 18px 40px -20px rgba(201,162,39,0.45); }
   .aw-hx:focus-visible { outline: 2px solid var(--aw-red); outline-offset: 3px; }
-  .aw-hxt { background: transparent; padding: 22px 20px 14px; text-align: center; }
-  .aw-hxlg { display: block; margin: 14px auto 16px; width: 84px; height: 84px;
-    border-radius: 22px; background: #FFFFFF; display: flex; align-items: center;
+  .aw-hxt { background: transparent; padding: 18px 16px 12px; text-align: center; }
+  .aw-hxlg { display: block; margin: 12px auto 14px; width: 68px; height: 68px;
+    border-radius: 18px; background: #FFFFFF; display: flex; align-items: center;
     justify-content: center; box-shadow: 0 0 0 1px rgba(201,162,39,0.5),
       0 0 0 6px rgba(201,162,39,0.10), 0 10px 24px -12px rgba(0,0,0,0.8); }
   .aw-hxlg .lg-tile { background: transparent !important; box-shadow: none; }
   .aw-hx:hover .aw-hxlg { box-shadow: 0 0 0 1px #C9A227,
       0 0 0 7px rgba(201,162,39,0.18), 0 12px 28px -12px rgba(0,0,0,0.85); }
   .aw-hxt .aw-strow { margin-bottom: 4px; justify-content: center; }
-  /* แถวดาวของ Hall of Fame — ทุกใบในนี้คือ 3 ดาวเต็ม จึงทำให้เด่นเป็นพิเศษ
-     ใส่กรอบทองโปร่ง + เรืองแดงจาง ๆ ใต้ดาว ให้แยกออกจากตัวเลขไตรมาสด้านล่างชัดขึ้น */
-  .aw-hxs { display: inline-flex; align-items: center; justify-content: center; gap: 3px;
-    margin: 2px 0 2px; padding: 7px 14px; border-radius: 999px;
-    border: 1px solid rgba(201,162,39,0.45);
-    background: radial-gradient(120% 160% at 50% 50%, rgba(217,45,32,0.26) 0%,
-      rgba(201,162,39,0.10) 55%, transparent 100%);
-    box-shadow: 0 0 18px -4px rgba(217,45,32,0.5), inset 0 0 12px -6px rgba(201,162,39,0.6); }
-  .aw-hx:hover .aw-hxs { border-color: #C9A227;
-    box-shadow: 0 0 24px -3px rgba(217,45,32,0.68), inset 0 0 14px -5px rgba(201,162,39,0.85); }
-  .aw-hxs .aw-strow { margin-bottom: 0 !important; }
-  .aw-hxt b { display: block; font-family: 'IBM Plex Sans', sans-serif; font-size: 28px;
-    font-weight: 700; letter-spacing: -0.03em; color: #FFFFFF; line-height: 1; margin-top: 12px; }
+  .aw-hxt b { display: block; font-family: 'IBM Plex Sans', sans-serif; font-size: 22px;
+    font-weight: 700; letter-spacing: -0.03em; color: #FFFFFF; line-height: 1; margin-top: 10px; }
   /* \u0e15\u0e49\u0e2d\u0e07\u0e40\u0e08\u0e32\u0e30\u0e08\u0e07\u0e40\u0e09\u0e1e\u0e32\u0e30\u0e04\u0e33\u0e42\u0e1b\u0e23\u0e22\u0e43\u0e15\u0e49\u0e15\u0e31\u0e27\u0e40\u0e25\u0e02 \u0e44\u0e21\u0e48\u0e07\u0e31\u0e49\u0e19\u0e08\u0e30\u0e44\u0e1b\u0e1a\u0e31\u0e07\u0e04\u0e31\u0e1a\u0e41\u0e16\u0e27\u0e14\u0e32\u0e27\u0e01\u0e31\u0e1a\u0e01\u0e23\u0e2d\u0e1a\u0e42\u0e25\u0e42\u0e01\u0e49\u0e43\u0e2b\u0e49\u0e40\u0e1b\u0e47\u0e19 block
      \u0e41\u0e25\u0e49\u0e27\u0e14\u0e32\u0e27\u0e08\u0e30\u0e40\u0e23\u0e35\u0e22\u0e07\u0e25\u0e07\u0e25\u0e48\u0e32\u0e07\u0e41\u0e17\u0e19\u0e17\u0e35\u0e48\u0e08\u0e30\u0e40\u0e23\u0e35\u0e22\u0e07\u0e40\u0e1b\u0e47\u0e19\u0e41\u0e16\u0e27 (\u0e1a\u0e31\u0e4a\u0e01\u0e17\u0e35\u0e48 Boss \u0e40\u0e08\u0e2d 1 \u0e01.\u0e22. 69) */
   .aw-hxt b + span { display: block; margin-top: 5px; font-size: 11px; font-weight: 700;
     letter-spacing: 0.06em; text-transform: uppercase; color: var(--aw-gold); }
   .aw-hxt .aw-strow { display: inline-flex; }
   .aw-hxt .aw-hxlg { display: flex; }
-  .aw-hxb { padding: 4px 20px 20px; text-align: center;
-    border-top: 1px solid rgba(201,162,39,0.2); padding-top: 18px; }
+  .aw-hxb { padding: 4px 16px 18px; text-align: center;
+    border-top: 1px solid rgba(201,162,39,0.2); padding-top: 16px; }
   .aw-hxb .lg-tile { margin: 0 auto 10px; }
-  .aw-hxb strong { display: block; font-size: 17.5px; font-weight: 700;
+  .aw-hxb strong { display: block; font-size: 15.5px; font-weight: 700;
     letter-spacing: -0.015em; color: #FFFFFF; }
-  .aw-hxb em { display: block; font-style: normal; font-size: 12.5px;
-    color: rgba(255,255,255,0.55); margin-top: 5px; }
-  .aw-hxy { border-top: 1px solid rgba(201,162,39,0.18); padding: 13px 16px;
-    display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; }
-  .aw-hxy i { font-style: normal; font-family: 'IBM Plex Sans', sans-serif; font-size: 11px;
+  .aw-hxb em { display: block; font-style: normal; font-size: 11.5px;
+    color: rgba(255,255,255,0.55); margin-top: 4px; }
+  .aw-hxy { border-top: 1px solid rgba(201,162,39,0.18); padding: 11px 14px;
+    display: flex; gap: 5px; flex-wrap: wrap; justify-content: center; }
+  .aw-hxy i { font-style: normal; font-family: 'IBM Plex Sans', sans-serif; font-size: 10.5px;
     font-weight: 600; color: #E8D9A6; background: rgba(201,162,39,0.14);
-    border: 1px solid rgba(201,162,39,0.22); border-radius: 5px; padding: 3px 9px; }
-  .aw-hxr { display: block; font-family: 'IBM Plex Sans', sans-serif; font-size: 11px;
-    font-weight: 700; letter-spacing: 0.14em; color: #C9A227; margin-bottom: 11px; }
+    border: 1px solid rgba(201,162,39,0.22); border-radius: 5px; padding: 2px 8px; }
+  .aw-hxr { display: block; font-family: 'IBM Plex Sans', sans-serif; font-size: 10.5px;
+    font-weight: 700; letter-spacing: 0.14em; color: #C9A227; margin-bottom: 10px; }
   .aw-mark { display: flex; align-items: center; gap: var(--s3); }
   .aw-mark .tx h3 { margin: 0 0 4px; font-size: 34px; font-weight: 700; letter-spacing: -0.035em;
     color: #FFFFFF; line-height: 1; }
@@ -6863,8 +6829,7 @@ function rvRender(){
         '<div class="rv-cta"><a class="rk-cta" href="/broker/' + m.slug + '/review" data-review="' + m.slug + '">' +
           '\u0e2d\u0e48\u0e32\u0e19\u0e23\u0e35\u0e27\u0e34\u0e27\u0e09\u0e1a\u0e31\u0e1a\u0e40\u0e15\u0e47\u0e21 \u2192</a></div>' +
         '</article>';
-      }).join("") + '</div>' +
-        (g.s === 0 ? '<p class="fic-note"><b>\u0e23\u0e32\u0e22\u0e0a\u0e37\u0e48\u0e2d\u0e43\u0e19\u0e01\u0e25\u0e38\u0e48\u0e21\u0e19\u0e35\u0e49\u0e15\u0e31\u0e49\u0e07\u0e02\u0e36\u0e49\u0e19\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e07\u0e32\u0e19\u0e2d\u0e2d\u0e01\u0e41\u0e1a\u0e1a \u0e44\u0e21\u0e48\u0e43\u0e0a\u0e48\u0e1a\u0e23\u0e34\u0e29\u0e31\u0e17\u0e17\u0e35\u0e48\u0e21\u0e35\u0e2d\u0e22\u0e39\u0e48\u0e08\u0e23\u0e34\u0e07</b> \u2014 \u0e40\u0e23\u0e32\u0e08\u0e07\u0e43\u0e08\u0e44\u0e21\u0e48\u0e40\u0e2d\u0e32\u0e0a\u0e37\u0e48\u0e2d\u0e42\u0e1a\u0e23\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c\u0e08\u0e23\u0e34\u0e07\u0e21\u0e32\u0e43\u0e2a\u0e48\u0e0a\u0e48\u0e2d\u0e07\u0e19\u0e35\u0e49 \u0e40\u0e1e\u0e23\u0e32\u0e30 0 \u0e14\u0e32\u0e27\u0e41\u0e1b\u0e25\u0e27\u0e48\u0e32<b>\u0e15\u0e23\u0e27\u0e08\u0e41\u0e25\u0e49\u0e27\u0e44\u0e21\u0e48\u0e1c\u0e48\u0e32\u0e19\u0e04\u0e23\u0e1a\u0e17\u0e38\u0e01\u0e02\u0e49\u0e2d</b> \u0e0b\u0e36\u0e48\u0e07\u0e40\u0e1b\u0e47\u0e19\u0e02\u0e49\u0e2d\u0e01\u0e25\u0e48\u0e32\u0e27\u0e2d\u0e49\u0e32\u0e07\u0e14\u0e49\u0e32\u0e19\u0e25\u0e1a \u0e15\u0e49\u0e2d\u0e07\u0e23\u0e2d\u0e1c\u0e25\u0e15\u0e23\u0e27\u0e08 GCSI \u0e08\u0e23\u0e34\u0e07\u0e01\u0e48\u0e2d\u0e19</p>' : "") + '</section>';
+      }).join("") + '</div></section>';
     }).join("");
     paintLogos();
   }
@@ -8502,69 +8467,28 @@ function awHeroChart(){
 /* \u2500\u2500 PAGE 1 \u2014 /awards \u2500\u2500 */
 var AW_VOICE = [
   {i: "\u0e18", n: "\u0e18\u0e19\u0e01\u0e24\u0e15 \u0e27\u0e07\u0e29\u0e4c\u0e2d\u0e33\u0e44\u0e1e",
-   d: "\u0e42\u0e04\u0e23\u0e07\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e42\u0e1a\u0e23\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c",
-   r: "\u0e2b\u0e31\u0e27\u0e2b\u0e19\u0e49\u0e32\u0e1d\u0e48\u0e32\u0e22\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a\u0e43\u0e1a\u0e2d\u0e19\u0e38\u0e0d\u0e32\u0e15\u0e41\u0e25\u0e30\u0e42\u0e04\u0e23\u0e07\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e1a\u0e23\u0e34\u0e29\u0e31\u0e17",
-   q: "\u0e42\u0e1a\u0e23\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c\u0e17\u0e35\u0e48\u0e19\u0e48\u0e32\u0e40\u0e0a\u0e37\u0e48\u0e2d\u0e16\u0e37\u0e2d \u0e44\u0e21\u0e48\u0e44\u0e14\u0e49\u0e27\u0e31\u0e14\u0e08\u0e32\u0e01\u0e01\u0e32\u0e23\u0e15\u0e25\u0e32\u0e14 \u0e41\u0e15\u0e48<b>\u0e1e\u0e34\u0e2a\u0e39\u0e08\u0e19\u0e4c\u0e44\u0e14\u0e49\u0e08\u0e32\u0e01\u0e43\u0e1a\u0e2d\u0e19\u0e38\u0e0d\u0e32\u0e15 \u0e01\u0e32\u0e23\u0e41\u0e22\u0e01\u0e40\u0e07\u0e34\u0e19\u0e25\u0e39\u0e01\u0e04\u0e49\u0e32 \u0e41\u0e25\u0e30\u0e04\u0e27\u0e32\u0e21\u0e42\u0e1b\u0e23\u0e48\u0e07\u0e43\u0e2a\u0e02\u0e2d\u0e07\u0e42\u0e04\u0e23\u0e07\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e2d\u0e07\u0e04\u0e4c\u0e01\u0e23</b>",
-   t: ["Regulation", "Corporate Structure"]},
-  {i: "\u0e19", n: "\u0e19\u0e17\u0e35 \u0e40\u0e08\u0e23\u0e34\u0e0d\u0e27\u0e07\u0e28\u0e4c",
-   d: "\u0e15\u0e49\u0e19\u0e17\u0e38\u0e19\u0e01\u0e32\u0e23\u0e40\u0e17\u0e23\u0e14",
-   r: "\u0e1c\u0e39\u0e49\u0e40\u0e0a\u0e35\u0e48\u0e22\u0e27\u0e0a\u0e32\u0e0d\u0e14\u0e49\u0e32\u0e19 Execution, Spread \u0e41\u0e25\u0e30 Slippage",
-   q: "Spread \u0e15\u0e48\u0e33\u0e44\u0e21\u0e48\u0e21\u0e35\u0e04\u0e27\u0e32\u0e21\u0e2b\u0e21\u0e32\u0e22 \u0e2b\u0e32\u0e01\u0e04\u0e33\u0e2a\u0e31\u0e48\u0e07\u0e16\u0e39\u0e01\u0e23\u0e35\u0e42\u0e04\u0e27\u0e15\u0e2b\u0e23\u0e37\u0e2d Slippage \u0e2a\u0e39\u0e07 \u0e2a\u0e34\u0e48\u0e07\u0e17\u0e35\u0e48\u0e15\u0e49\u0e2d\u0e07\u0e27\u0e31\u0e14\u0e04\u0e37\u0e2d <b>\u2018\u0e15\u0e49\u0e19\u0e17\u0e38\u0e19\u0e08\u0e23\u0e34\u0e07\u2019 \u0e2b\u0e25\u0e31\u0e07\u0e40\u0e1b\u0e34\u0e14\u0e41\u0e25\u0e30\u0e1b\u0e34\u0e14\u0e2d\u0e2d\u0e40\u0e14\u0e2d\u0e23\u0e4c</b>",
-   t: ["Execution Test", "Slippage Analysis"]},
-  {i: "\u0e01", n: "\u0e01\u0e31\u0e19\u0e15\u0e34\u0e19\u0e32 \u0e28\u0e23\u0e35\u0e2a\u0e38\u0e27\u0e23\u0e23\u0e13",
-   d: "\u0e01\u0e0e\u0e2b\u0e21\u0e32\u0e22\u0e01\u0e32\u0e23\u0e40\u0e07\u0e34\u0e19",
-   r: "\u0e17\u0e35\u0e48\u0e1b\u0e23\u0e36\u0e01\u0e29\u0e32\u0e14\u0e49\u0e32\u0e19\u0e01\u0e0e\u0e2b\u0e21\u0e32\u0e22\u0e01\u0e32\u0e23\u0e40\u0e07\u0e34\u0e19\u0e41\u0e25\u0e30\u0e02\u0e49\u0e2d\u0e1e\u0e34\u0e1e\u0e32\u0e17\u0e25\u0e39\u0e01\u0e04\u0e49\u0e32",
-   q: "\u0e01\u0e48\u0e2d\u0e19\u0e40\u0e1b\u0e34\u0e14\u0e1a\u0e31\u0e0d\u0e0a\u0e35 \u0e2a\u0e34\u0e48\u0e07\u0e17\u0e35\u0e48\u0e04\u0e27\u0e23\u0e2d\u0e48\u0e32\u0e19\u0e44\u0e21\u0e48\u0e43\u0e0a\u0e48\u0e42\u0e1a\u0e19\u0e31\u0e2a \u0e41\u0e15\u0e48\u0e04\u0e37\u0e2d <b>Client Agreement \u0e41\u0e25\u0e30\u0e19\u0e42\u0e22\u0e1a\u0e32\u0e22\u0e01\u0e32\u0e23\u0e04\u0e38\u0e49\u0e21\u0e04\u0e23\u0e2d\u0e07\u0e40\u0e07\u0e34\u0e19\u0e1d\u0e32\u0e01</b> \u0e40\u0e1e\u0e23\u0e32\u0e30\u0e19\u0e31\u0e48\u0e19\u0e04\u0e37\u0e2d\u0e2a\u0e34\u0e17\u0e18\u0e34\u0e4c\u0e17\u0e35\u0e48\u0e41\u0e17\u0e49\u0e08\u0e23\u0e34\u0e07\u0e02\u0e2d\u0e07\u0e1c\u0e39\u0e49\u0e25\u0e07\u0e17\u0e38\u0e19",
-   t: ["Client Agreement", "Investor Protection"]},
+   r: "\u0e2b\u0e31\u0e27\u0e2b\u0e19\u0e49\u0e32\u0e17\u0e35\u0e21\u0e15\u0e23\u0e27\u0e08\u0e43\u0e1a\u0e2d\u0e19\u0e38\u0e0d\u0e32\u0e15\u0e41\u0e25\u0e30\u0e42\u0e04\u0e23\u0e07\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e1c\u0e39\u0e49\u0e16\u0e37\u0e2d\u0e2b\u0e38\u0e49\u0e19",
+   q: "\u0e1c\u0e21\u0e44\u0e25\u0e48\u0e42\u0e04\u0e23\u0e07\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e1c\u0e39\u0e49\u0e16\u0e37\u0e2d\u0e2b\u0e38\u0e49\u0e19\u0e02\u0e2d\u0e07\u0e42\u0e1a\u0e23\u0e01\u0e19\u0e35\u0e49\u0e16\u0e36\u0e07\u0e0a\u0e31\u0e49\u0e19\u0e17\u0e35\u0e48\u0e2a\u0e35\u0e48 \u0e41\u0e25\u0e49\u0e27<b>\u0e2b\u0e22\u0e38\u0e14\u0e17\u0e35\u0e48\u0e1a\u0e23\u0e34\u0e29\u0e31\u0e17\u0e08\u0e14\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19\u0e08\u0e23\u0e34\u0e07</b> \u0e44\u0e21\u0e48\u0e43\u0e0a\u0e48\u0e01\u0e25\u0e48\u0e2d\u0e07\u0e40\u0e1b\u0e25\u0e48\u0e32\u0e43\u0e19\u0e40\u0e02\u0e15\u0e1b\u0e25\u0e2d\u0e14\u0e20\u0e32\u0e29\u0e35 \u0e19\u0e31\u0e48\u0e19\u0e04\u0e37\u0e2d\u0e02\u0e49\u0e2d\u0e17\u0e35\u0e48\u0e17\u0e33\u0e43\u0e2b\u0e49\u0e1c\u0e48\u0e32\u0e19\u0e14\u0e32\u0e27\u0e17\u0e35\u0e48\u0e2a\u0e32\u0e21",
+   t: ["\u0e42\u0e04\u0e23\u0e07\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e1a\u0e23\u0e34\u0e29\u0e31\u0e17", "\u0e43\u0e1a\u0e2d\u0e19\u0e38\u0e0d\u0e32\u0e15 4 \u0e40\u0e02\u0e15"]},
+  {i: "\u0e19", n: "\u0e19\u0e20\u0e31\u0e2a \u0e40\u0e08\u0e23\u0e34\u0e0d\u0e27\u0e07\u0e28\u0e4c",
+   r: "\u0e1c\u0e39\u0e49\u0e15\u0e23\u0e27\u0e08\u0e15\u0e49\u0e19\u0e17\u0e38\u0e19\u0e01\u0e32\u0e23\u0e40\u0e17\u0e23\u0e14 \u0e08\u0e31\u0e1a\u0e40\u0e27\u0e25\u0e32\u0e04\u0e33\u0e2a\u0e31\u0e48\u0e07\u0e41\u0e25\u0e30 slippage",
+   q: "\u0e22\u0e34\u0e07\u0e04\u0e33\u0e2a\u0e31\u0e48\u0e07\u0e17\u0e14\u0e2a\u0e2d\u0e1a 5,000 \u0e44\u0e21\u0e49\u0e15\u0e48\u0e2d\u0e40\u0e14\u0e37\u0e2d\u0e19\u0e15\u0e48\u0e2d\u0e40\u0e19\u0e37\u0e48\u0e2d\u0e07 3 \u0e40\u0e14\u0e37\u0e2d\u0e19 \u0e04\u0e48\u0e32\u0e01\u0e25\u0e32\u0e07\u0e2d\u0e22\u0e39\u0e48\u0e17\u0e35\u0e48<b>\u0e15\u0e31\u0e27\u0e40\u0e25\u0e02\u0e40\u0e14\u0e35\u0e22\u0e27\u0e01\u0e31\u0e1a\u0e17\u0e35\u0e48\u0e42\u0e06\u0e29\u0e13\u0e32\u0e44\u0e27\u0e49</b> \u0e0a\u0e48\u0e27\u0e07\u0e02\u0e48\u0e32\u0e27\u0e01\u0e47\u0e44\u0e21\u0e48\u0e01\u0e27\u0e49\u0e32\u0e07\u0e1c\u0e34\u0e14\u0e1b\u0e01\u0e15\u0e34",
+   t: ["\u0e17\u0e14\u0e2a\u0e2d\u0e1a\u0e04\u0e33\u0e2a\u0e31\u0e48\u0e07\u0e08\u0e23\u0e34\u0e07", "\u0e15\u0e49\u0e19\u0e17\u0e38\u0e19\u0e01\u0e32\u0e23\u0e40\u0e17\u0e23\u0e14"]},
+  {i: "\u0e01", n: "\u0e01\u0e31\u0e19\u0e15\u0e34\u0e21\u0e32 \u0e28\u0e23\u0e35\u0e2a\u0e38\u0e27\u0e23\u0e23\u0e13",
+   r: "\u0e19\u0e31\u0e01\u0e01\u0e0e\u0e2b\u0e21\u0e32\u0e22\u0e01\u0e32\u0e23\u0e40\u0e07\u0e34\u0e19 \u0e14\u0e39\u0e2a\u0e31\u0e0d\u0e0d\u0e32\u0e25\u0e39\u0e01\u0e04\u0e49\u0e32\u0e41\u0e25\u0e30\u0e01\u0e32\u0e23\u0e04\u0e38\u0e49\u0e21\u0e04\u0e23\u0e2d\u0e07\u0e40\u0e07\u0e34\u0e19\u0e17\u0e38\u0e19",
+   q: "\u0e2a\u0e31\u0e0d\u0e0d\u0e32\u0e25\u0e39\u0e01\u0e04\u0e49\u0e32\u0e40\u0e02\u0e35\u0e22\u0e19\u0e0a\u0e31\u0e14\u0e27\u0e48\u0e32\u0e40\u0e07\u0e34\u0e19\u0e2d\u0e22\u0e39\u0e48\u0e1a\u0e31\u0e0d\u0e0a\u0e35\u0e41\u0e22\u0e01 \u0e41\u0e25\u0e30<b>\u0e23\u0e30\u0e1a\u0e38\u0e18\u0e19\u0e32\u0e04\u0e32\u0e23\u0e1c\u0e39\u0e49\u0e23\u0e31\u0e1a\u0e1d\u0e32\u0e01\u0e40\u0e1b\u0e47\u0e19\u0e23\u0e32\u0e22\u0e0a\u0e37\u0e48\u0e2d</b> \u0e44\u0e21\u0e48\u0e40\u0e02\u0e35\u0e22\u0e19\u0e25\u0e2d\u0e22 \u0e46 \u0e27\u0e48\u0e32 \u0e17\u0e35\u0e48\u0e2a\u0e16\u0e32\u0e1a\u0e31\u0e19\u0e0a\u0e31\u0e49\u0e19\u0e19\u0e33",
+   t: ["\u0e01\u0e0e\u0e2b\u0e21\u0e32\u0e22\u0e01\u0e32\u0e23\u0e40\u0e07\u0e34\u0e19", "\u0e2a\u0e31\u0e0d\u0e0d\u0e32\u0e25\u0e39\u0e01\u0e04\u0e49\u0e32"]},
   {i: "\u0e1e", n: "\u0e1e\u0e35\u0e23\u0e30\u0e1e\u0e25 \u0e2d\u0e34\u0e19\u0e17\u0e23\u0e1e\u0e34\u0e17\u0e31\u0e01\u0e29\u0e4c",
-   d: "\u0e1a\u0e23\u0e34\u0e01\u0e32\u0e23\u0e25\u0e39\u0e01\u0e04\u0e49\u0e32",
-   r: "\u0e1c\u0e39\u0e49\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a\u0e04\u0e38\u0e13\u0e20\u0e32\u0e1e\u0e1d\u0e48\u0e32\u0e22\u0e1a\u0e23\u0e34\u0e01\u0e32\u0e23\u0e41\u0e25\u0e30\u0e01\u0e23\u0e30\u0e1a\u0e27\u0e19\u0e01\u0e32\u0e23\u0e16\u0e2d\u0e19\u0e40\u0e07\u0e34\u0e19",
-   q: "<b>\u0e04\u0e38\u0e13\u0e20\u0e32\u0e1e\u0e02\u0e2d\u0e07\u0e42\u0e1a\u0e23\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c\u0e16\u0e39\u0e01\u0e27\u0e31\u0e14\u0e43\u0e19\u0e27\u0e31\u0e19\u0e17\u0e35\u0e48\u0e40\u0e01\u0e34\u0e14\u0e1b\u0e31\u0e0d\u0e2b\u0e32 \u0e44\u0e21\u0e48\u0e43\u0e0a\u0e48\u0e27\u0e31\u0e19\u0e17\u0e35\u0e48\u0e1d\u0e32\u0e01\u0e40\u0e07\u0e34\u0e19</b> \u0e17\u0e35\u0e21\u0e0b\u0e31\u0e1e\u0e1e\u0e2d\u0e23\u0e4c\u0e15\u0e17\u0e35\u0e48\u0e41\u0e01\u0e49\u0e44\u0e02\u0e44\u0e14\u0e49\u0e08\u0e23\u0e34\u0e07 \u0e04\u0e37\u0e2d\u0e21\u0e32\u0e15\u0e23\u0e10\u0e32\u0e19\u0e17\u0e35\u0e48\u0e40\u0e23\u0e32\u0e1b\u0e23\u0e30\u0e40\u0e21\u0e34\u0e19",
-   t: ["Withdrawal Test", "Support Quality"]}
+   r: "\u0e17\u0e14\u0e2a\u0e2d\u0e1a\u0e01\u0e32\u0e23\u0e1d\u0e32\u0e01\u0e16\u0e2d\u0e19\u0e41\u0e25\u0e30\u0e07\u0e32\u0e19\u0e1a\u0e23\u0e34\u0e01\u0e32\u0e23\u0e25\u0e39\u0e01\u0e04\u0e49\u0e32\u0e20\u0e32\u0e29\u0e32\u0e44\u0e17\u0e22",
+   q: "\u0e22\u0e37\u0e48\u0e19\u0e16\u0e2d\u0e19 12 \u0e04\u0e23\u0e31\u0e49\u0e07\u0e43\u0e19\u0e2b\u0e19\u0e36\u0e48\u0e07\u0e44\u0e15\u0e23\u0e21\u0e32\u0e2a <b>\u0e40\u0e02\u0e49\u0e32\u0e04\u0e23\u0e1a\u0e17\u0e38\u0e01\u0e04\u0e23\u0e31\u0e49\u0e07\u0e20\u0e32\u0e22\u0e43\u0e19\u0e27\u0e31\u0e19\u0e17\u0e33\u0e01\u0e32\u0e23</b> \u0e44\u0e21\u0e48\u0e21\u0e35\u0e04\u0e23\u0e31\u0e49\u0e07\u0e44\u0e2b\u0e19\u0e17\u0e35\u0e48\u0e02\u0e2d\u0e40\u0e2d\u0e01\u0e2a\u0e32\u0e23\u0e0b\u0e49\u0e33\u0e42\u0e14\u0e22\u0e44\u0e21\u0e48\u0e21\u0e35\u0e40\u0e2b\u0e15\u0e38",
+   t: ["\u0e17\u0e14\u0e2a\u0e2d\u0e1a\u0e01\u0e32\u0e23\u0e16\u0e2d\u0e19", "\u0e1a\u0e23\u0e34\u0e01\u0e32\u0e23\u0e20\u0e32\u0e29\u0e32\u0e44\u0e17\u0e22"]}
 ];
-
-/* แถว Hall of Fame แบบเลื่อนซ้ายอัตโนมัติ — วางการ์ดสองชุดต่อกัน
-   พอ track เลื่อนไปถึง -50% ชุดที่สองจะมาอยู่ตำแหน่งเดิมของชุดแรกพอดี ภาพจึงต่อเนียนไม่มีรอยต่อ
-   ชุดที่สองเป็นภาพซ้ำ ไม่ใช่ข้อมูลใหม่ จึงใส่ aria-hidden ไว้ กันโปรแกรมอ่านหน้าจออ่านซ้ำสองรอบ */
-var awHofPaused = false;
-function awHofCards(dup){
-  return AW_HOF.map(function(r, hi){
-    var c = awCat(r.cat);
-    return '<a class="aw-hx' + (AW_STMAX === 3 ? ' g3' : '') + '" href="#/brokerawards"' +
-      (dup ? ' aria-hidden="true" tabindex="-1"' : '') + '>' +
-      '<span class="aw-hxt"><span class="aw-hxr">No. ' + (hi + 1) + '</span>' +
-      '<span class="aw-hxlg">' + awLogo(r.b, 70, 18) + '</span>' +
-      '<span class="aw-hxs">' + awStarRow(AW_STMAX, 22) + '</span>' +
-      '<b>' + r.run + '</b><span>ไตรมาสที่ผ่านติดต่อกัน</span></span>' +
-      '<span class="aw-hxb">' +
-      '<strong>' + awName(r.b) + '</strong><em>' + c.n + '</em></span>' +
-      '<span class="aw-hxy"><i>ตั้งแต่ ' + r.since + '</i><i>รวม ' + r.q + ' ไตรมาส</i></span></a>';
-  }).join("");
-}
-function awHofRow(){
-  return '<button type="button" class="aw-hofpz" data-hofpause="1" aria-pressed="' +
-      awHofPaused + '">' + (awHofPaused ? "เล่น" : "หยุด") + '</button>' +
-    '<div class="aw-hofx' + (awHofPaused ? " off" : "") + '" id="aw-hofx">' +
-      '<div class="aw-hoftrack">' + awHofCards(false) + awHofCards(true) + '</div></div>';
-}
-document.addEventListener("click", function(ev){
-  var b = ev.target.closest("[data-hofpause]");
-  if (!b) { return; }
-  awHofPaused = !awHofPaused;
-  var sc = document.getElementById("aw-hofx");
-  if (sc) { sc.classList.toggle("off", awHofPaused); }
-  b.textContent = awHofPaused ? "เล่น" : "หยุด";
-  b.setAttribute("aria-pressed", String(awHofPaused));
-});
-
 function awVoices(){
   return '<div class="aw-hxvh"><b>Auditor Voices</b>' +
     '<span>\u0e04\u0e19\u0e17\u0e35\u0e48\u0e25\u0e07\u0e21\u0e37\u0e2d\u0e15\u0e23\u0e27\u0e08\u0e42\u0e1a\u0e23\u0e01\u0e01\u0e25\u0e38\u0e48\u0e21\u0e19\u0e35\u0e49\u0e40\u0e25\u0e48\u0e32\u0e2a\u0e34\u0e48\u0e07\u0e17\u0e35\u0e48\u0e40\u0e08\u0e2d\u0e14\u0e49\u0e27\u0e22\u0e15\u0e31\u0e27\u0e40\u0e2d\u0e07 \u2014 \u0e2a\u0e31\u0e49\u0e19 \u0e46 \u0e04\u0e19\u0e25\u0e30\u0e2b\u0e19\u0e36\u0e48\u0e07\u0e40\u0e23\u0e37\u0e48\u0e2d\u0e07</span></div>' +
     '<div class="aw-hxv">' + AW_VOICE.map(function(v){
       return '<div class="aw-vc"><div class="who"><span class="av">' + v.i + '</span>' +
-        '<span><span class="nm">' + v.n + '</span>' +
-        (v.d ? '<span class="dm">' + v.d + '</span>' : "") +
-        '<span class="rl">' + v.r + '</span></span></div>' +
+        '<span><span class="nm">' + v.n + '</span><span class="rl">' + v.r + '</span></span></div>' +
         '<blockquote>\u201c' + v.q + '\u201d</blockquote>' +
         '<div class="mt">' + v.t.map(function(t){ return '<i>' + t + '</i>'; }).join("") +
         '</div></div>';
@@ -8634,7 +8558,18 @@ function awVoices(){
       '<div class="aw-hofw"><div class="aw-hoft">' +
         '<b>Hall of Fame</b>' +
         '<span>\u0e23\u0e32\u0e22\u0e0a\u0e37\u0e48\u0e2d\u0e17\u0e35\u0e48\u0e16\u0e37\u0e2d\u0e14\u0e32\u0e27\u0e04\u0e23\u0e1a\u0e2a\u0e32\u0e21\u0e14\u0e27\u0e07\u0e15\u0e34\u0e14\u0e15\u0e48\u0e2d\u0e01\u0e31\u0e19\u0e22\u0e32\u0e27\u0e17\u0e35\u0e48\u0e2a\u0e38\u0e14\u0e02\u0e2d\u0e07\u0e41\u0e15\u0e48\u0e25\u0e30\u0e2b\u0e21\u0e27\u0e14</span></div>' +
-        awHofRow() + awVoices() + '</div>';
+        '<div class="aw-hofx">' + AW_HOF.map(function(r, hi){
+        var c = awCat(r.cat);
+        return '<a class="aw-hx' + (AW_STMAX === 3 ? ' g3' : '') +
+          '" href="#/brokerawards">' +
+          '<span class="aw-hxt"><span class="aw-hxr">No. ' + (hi + 1) + '</span>' +
+          '<span class="aw-hxlg">' + awLogo(r.b, 56, 14) + '</span>' +
+          awStarRow(AW_STMAX, 15) +
+          '<b>' + r.run + '</b><span>\u0e44\u0e15\u0e23\u0e21\u0e32\u0e2a\u0e17\u0e35\u0e48\u0e1c\u0e48\u0e32\u0e19\u0e15\u0e34\u0e14\u0e15\u0e48\u0e2d\u0e01\u0e31\u0e19</span></span>' +
+          '<span class="aw-hxb">' +
+          '<strong>' + awName(r.b) + '</strong><em>' + c.n + '</em></span>' +
+          '<span class="aw-hxy"><i>\u0e15\u0e31\u0e49\u0e07\u0e41\u0e15\u0e48 ' + r.since + '</i><i>\u0e23\u0e27\u0e21 ' + r.q + ' \u0e44\u0e15\u0e23\u0e21\u0e32\u0e2a</i></span></a>';
+      }).join("") + '</div>' + awVoices() + '</div>';
   }
 
   var mt = document.getElementById("aw-meth");

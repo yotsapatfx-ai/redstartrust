@@ -1,6 +1,4 @@
-<!doctype html>
-<meta charset="utf-8">
-<title>RedStarTrust Homepage</title>
+<!doctype html><html lang="th"><head><meta charset="utf-8"><style>*,*::before,*::after{box-sizing:border-box}body{margin:0}</style></head><body><title>RedStarTrust Homepage</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Sans:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap">
   <style>
     body { margin: 0; background: #FFFFFF; }
@@ -955,7 +953,11 @@
     background: linear-gradient(160deg, #E6CE86 0%, #C9A227 100%); }
   .aw-vc .nm { display: block; font-size: 14px; font-weight: 700; color: #FFFFFF;
     letter-spacing: -0.01em; }
-  .aw-vc .rl { display: block; margin-top: 3px; font-size: 11px; line-height: 1.5;
+  .aw-vc .dm { display: inline-block; margin-top: 5px; font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.04em; color: #14120C;
+    background: linear-gradient(160deg, #E6CE86 0%, #C9A227 100%);
+    border-radius: 999px; padding: 2px 9px; }
+  .aw-vc .rl { display: block; margin-top: 5px; font-size: 11px; line-height: 1.5;
     color: #E8D9A6; }
   .aw-vc blockquote { margin: 0; font-size: 12.5px; line-height: 1.85;
     color: rgba(255,255,255,0.80); }
@@ -982,46 +984,76 @@
     font-weight: 700; letter-spacing: 0.34em; text-transform: uppercase; color: #C9A227; }
   .aw-hoft span { display: block; margin-top: 9px; font-size: 13px; line-height: 1.8;
     color: rgba(255,255,255,0.62); }
-  .aw-hofx { position: relative; z-index: 2; display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 18px; }
-  .aw-hx { border: 1px solid rgba(201,162,39,0.32); border-radius: 14px;
+  /* แถวเลื่อนอัตโนมัติของ Hall of Fame — เลื่อนไปทางซ้ายวนไม่จบ
+     ใช้ margin-right แทน gap เพื่อให้ทุกใบกว้างเท่ากันเป๊ะ translateX(-50%) จึงต่อเนียนพอดี */
+  .aw-hofx { position: relative; z-index: 2; overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 72px,
+      #000 calc(100% - 72px), transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 72px,
+      #000 calc(100% - 72px), transparent 100%); }
+  .aw-hoftrack { display: flex; width: max-content; animation: awhofroll 42s linear infinite; }
+  .aw-hofx.off .aw-hoftrack, .aw-hofx:hover .aw-hoftrack { animation-play-state: paused; }
+  @keyframes awhofroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .aw-hofpz { position: absolute; z-index: 3; right: 30px; top: 30px; border: 1px solid rgba(201,162,39,0.42);
+    background: rgba(201,162,39,0.10); color: #E8D9A6; border-radius: 999px;
+    font: inherit; font-family: 'IBM Plex Sans', sans-serif; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.04em; padding: 5px 14px; cursor: pointer;
+    transition: background .18s ease, color .18s ease; }
+  .aw-hofpz:hover { background: rgba(201,162,39,0.22); color: #FFFFFF; }
+  .aw-hofpz:focus-visible { outline: 2px solid #C9A227; outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) {
+    .aw-hoftrack { animation: none; }
+  }
+  .aw-hx { flex: 0 0 264px; width: 264px; margin-right: 18px;
+    border: 1px solid rgba(201,162,39,0.32); border-radius: 14px;
     background: linear-gradient(180deg, #14120C 0%, #0C0C0C 100%);
     overflow: hidden; text-decoration: none; color: inherit; display: block;
     transition: border-color .22s ease, box-shadow .22s ease, transform .22s ease; }
   .aw-hx:hover { border-color: #C9A227; transform: translateY(-3px);
     box-shadow: 0 18px 40px -20px rgba(201,162,39,0.45); }
   .aw-hx:focus-visible { outline: 2px solid var(--aw-red); outline-offset: 3px; }
-  .aw-hxt { background: transparent; padding: 18px 16px 12px; text-align: center; }
-  .aw-hxlg { display: block; margin: 12px auto 14px; width: 68px; height: 68px;
-    border-radius: 18px; background: #FFFFFF; display: flex; align-items: center;
+  .aw-hxt { background: transparent; padding: 22px 20px 14px; text-align: center; }
+  .aw-hxlg { display: block; margin: 14px auto 16px; width: 84px; height: 84px;
+    border-radius: 22px; background: #FFFFFF; display: flex; align-items: center;
     justify-content: center; box-shadow: 0 0 0 1px rgba(201,162,39,0.5),
       0 0 0 6px rgba(201,162,39,0.10), 0 10px 24px -12px rgba(0,0,0,0.8); }
   .aw-hxlg .lg-tile { background: transparent !important; box-shadow: none; }
   .aw-hx:hover .aw-hxlg { box-shadow: 0 0 0 1px #C9A227,
       0 0 0 7px rgba(201,162,39,0.18), 0 12px 28px -12px rgba(0,0,0,0.85); }
   .aw-hxt .aw-strow { margin-bottom: 4px; justify-content: center; }
-  .aw-hxt b { display: block; font-family: 'IBM Plex Sans', sans-serif; font-size: 22px;
-    font-weight: 700; letter-spacing: -0.03em; color: #FFFFFF; line-height: 1; margin-top: 10px; }
+  /* แถวดาวของ Hall of Fame — ทุกใบในนี้คือ 3 ดาวเต็ม จึงทำให้เด่นเป็นพิเศษ
+     ใส่กรอบทองโปร่ง + เรืองแดงจาง ๆ ใต้ดาว ให้แยกออกจากตัวเลขไตรมาสด้านล่างชัดขึ้น */
+  .aw-hxs { display: inline-flex; align-items: center; justify-content: center; gap: 3px;
+    margin: 2px 0 2px; padding: 7px 14px; border-radius: 999px;
+    border: 1px solid rgba(201,162,39,0.45);
+    background: radial-gradient(120% 160% at 50% 50%, rgba(217,45,32,0.26) 0%,
+      rgba(201,162,39,0.10) 55%, transparent 100%);
+    box-shadow: 0 0 18px -4px rgba(217,45,32,0.5), inset 0 0 12px -6px rgba(201,162,39,0.6); }
+  .aw-hx:hover .aw-hxs { border-color: #C9A227;
+    box-shadow: 0 0 24px -3px rgba(217,45,32,0.68), inset 0 0 14px -5px rgba(201,162,39,0.85); }
+  .aw-hxs .aw-strow { margin-bottom: 0 !important; }
+  .aw-hxt b { display: block; font-family: 'IBM Plex Sans', sans-serif; font-size: 28px;
+    font-weight: 700; letter-spacing: -0.03em; color: #FFFFFF; line-height: 1; margin-top: 12px; }
   /* ต้องเจาะจงเฉพาะคำโปรยใต้ตัวเลข ไม่งั้นจะไปบังคับแถวดาวกับกรอบโลโก้ให้เป็น block
      แล้วดาวจะเรียงลงล่างแทนที่จะเรียงเป็นแถว (บั๊กที่ Boss เจอ 1 ก.ย. 69) */
   .aw-hxt b + span { display: block; margin-top: 5px; font-size: 11px; font-weight: 700;
     letter-spacing: 0.06em; text-transform: uppercase; color: var(--aw-gold); }
   .aw-hxt .aw-strow { display: inline-flex; }
   .aw-hxt .aw-hxlg { display: flex; }
-  .aw-hxb { padding: 4px 16px 18px; text-align: center;
-    border-top: 1px solid rgba(201,162,39,0.2); padding-top: 16px; }
+  .aw-hxb { padding: 4px 20px 20px; text-align: center;
+    border-top: 1px solid rgba(201,162,39,0.2); padding-top: 18px; }
   .aw-hxb .lg-tile { margin: 0 auto 10px; }
-  .aw-hxb strong { display: block; font-size: 15.5px; font-weight: 700;
+  .aw-hxb strong { display: block; font-size: 17.5px; font-weight: 700;
     letter-spacing: -0.015em; color: #FFFFFF; }
-  .aw-hxb em { display: block; font-style: normal; font-size: 11.5px;
-    color: rgba(255,255,255,0.55); margin-top: 4px; }
-  .aw-hxy { border-top: 1px solid rgba(201,162,39,0.18); padding: 11px 14px;
-    display: flex; gap: 5px; flex-wrap: wrap; justify-content: center; }
-  .aw-hxy i { font-style: normal; font-family: 'IBM Plex Sans', sans-serif; font-size: 10.5px;
+  .aw-hxb em { display: block; font-style: normal; font-size: 12.5px;
+    color: rgba(255,255,255,0.55); margin-top: 5px; }
+  .aw-hxy { border-top: 1px solid rgba(201,162,39,0.18); padding: 13px 16px;
+    display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; }
+  .aw-hxy i { font-style: normal; font-family: 'IBM Plex Sans', sans-serif; font-size: 11px;
     font-weight: 600; color: #E8D9A6; background: rgba(201,162,39,0.14);
-    border: 1px solid rgba(201,162,39,0.22); border-radius: 5px; padding: 2px 8px; }
-  .aw-hxr { display: block; font-family: 'IBM Plex Sans', sans-serif; font-size: 10.5px;
-    font-weight: 700; letter-spacing: 0.14em; color: #C9A227; margin-bottom: 10px; }
+    border: 1px solid rgba(201,162,39,0.22); border-radius: 5px; padding: 3px 9px; }
+  .aw-hxr { display: block; font-family: 'IBM Plex Sans', sans-serif; font-size: 11px;
+    font-weight: 700; letter-spacing: 0.14em; color: #C9A227; margin-bottom: 11px; }
   .aw-mark { display: flex; align-items: center; gap: var(--s3); }
   .aw-mark .tx h3 { margin: 0 0 4px; font-size: 34px; font-weight: 700; letter-spacing: -0.035em;
     color: #FFFFFF; line-height: 1; }
@@ -2222,6 +2254,11 @@
     transition: background .15s, border-color .15s; }
   .g-btn:hover { background: #F9FAFB; border-color: #98A2B3; }
   .g-btn:focus-visible { outline: 2px solid #D92D20; outline-offset: 2px; }
+  .g-auth { margin-bottom: 4px; }
+  .g-mock { margin: 10px 0 0; padding: 10px 12px; background: #FFFAEB;
+    border: 1px solid #FEDF89; border-radius: 9px; font-size: 12px; line-height: 1.7;
+    color: #93370D; }
+  .g-mock b { color: #7A2E0E; font-weight: 700; }
   .g-or { display: flex; align-items: center; gap: 12px; margin: 16px 0;
     font-size: 12px; color: #98A2B3; }
   .g-or::before, .g-or::after { content: ""; flex: 1; height: 1px; background: #EAECF0; }
@@ -2252,6 +2289,10 @@
     background: #F9FAFB; border-bottom: 1px solid #EAECF0; font-size: 14px; font-weight: 600;
     color: #101828; }
   .mb-card > .hd span { margin-left: auto; font-size: 12px; font-weight: 500; color: #667085; }
+  a.mb-t.go { text-decoration: none; border-color: #FCCFCB; background: #FFFBFA; }
+  a.mb-t.go:hover { border-color: #D92D20; box-shadow: 0 10px 22px -14px rgba(217,45,32,0.4); }
+  a.mb-t.go span { color: #B42318; font-weight: 600; }
+  a.mb-t.go:focus-visible { outline: 2px solid #D92D20; outline-offset: 2px; }
   .mb-w { display: grid; grid-template-columns: 38px minmax(0, 1fr) 96px 128px 104px;
     gap: 12px; align-items: center; padding: 13px 20px; border-bottom: 1px solid #F2F4F7; }
   .mb-w:last-child { border-bottom: 0; }
@@ -3278,6 +3319,59 @@
     background-position: center right;
   }
 
+  /* ─ กรอบทองของโบรก  3 ดาว (คำสั่ง Boss 1 ก.ย. 69) ──────
+     ดาวสูงสุดต้องแยกออกจากการ์ดอื่นตั้งแต่เห็นครั้งแรก ไม่ต้องอ่านตัวหนังสือก่อน */
+  /* ─ โบรกที่ยังไม่ได้ดาว — กรอบเทา ไม่มีสีส่งสัญญาณ ── */
+  .rv-card[data-stars="0"],
+  .pk-card[data-stars="0"],
+  .pk-mini[data-stars="0"] {
+    border-color: #D0D5DD;
+    background-color: #FCFCFD;
+    box-shadow: none;
+  }
+  .rv-card[data-stars="0"]:hover,
+  .pk-card[data-stars="0"]:hover,
+  .pk-mini[data-stars="0"]:hover {
+    border-color: #98A2B3;
+    box-shadow: 0 10px 24px -16px rgba(16,24,40,0.28);
+  }
+  .rv-card[data-stars="0"] .rv-score { color: #475467; }
+  .rv-card[data-stars="0"] .rv-stars .n { color: #667085; font-weight: 600; }
+  .rsframe.grey0 { border-color: #D0D5DD; }
+  .rsframe.grey0 > .rsfh,
+  #rv-grid.grouped .rsframe.grey0 > .rsfh {
+    background: #F9FAFB; border-bottom-color: #EAECF0; color: #475467; }
+  .rsframe.grey0 > .rsfh::before,
+  #rv-grid.grouped .rsframe.grey0 > .rsfh::before { background: #98A2B3; }
+  .rsframe.grey0 > .rsfh .ct,
+  #rv-grid.grouped .rsframe.grey0 > .rsfh .ct { background: #EAECF0; color: #475467; }
+  .fic-note { margin: 12px 0 0; padding: 11px 14px; background: #FFFAEB;
+    border: 1px solid #FEDF89; border-radius: 10px; font-size: 12.5px; line-height: 1.75;
+    color: #93370D; }
+  .fic-note b { color: #7A2E0E; font-weight: 700; }
+
+  .rv-card[data-stars="3"],
+  .pk-card[data-stars="3"],
+  .pk-mini[data-stars="3"] {
+    border-color: #C9A227;
+    box-shadow: 0 0 0 3px rgba(201,162,39,0.13),
+      0 18px 40px -22px rgba(122,94,10,0.40);
+  }
+  .rv-card[data-stars="3"]:hover,
+  .pk-card[data-stars="3"]:hover,
+  .pk-mini[data-stars="3"]:hover {
+    border-color: #A98420;
+    box-shadow: 0 0 0 3px rgba(201,162,39,0.20),
+      0 20px 44px -20px rgba(122,94,10,0.52);
+  }
+  /* หัวกลุ่ม "3 ดาว RedStar" ในหน้า Review ให้เข้าชุดเดียวกัน */
+  .rsframe.gold3 { border-color: #E3D08A; }
+  .rsframe.gold3 > .rsfh,
+  #rv-grid.grouped .rsframe.gold3 > .rsfh {
+    background: #FDFAF0; border-bottom-color: #E3D08A; color: #6A5620; }
+  .rsframe.gold3 > .rsfh .ct,
+  #rv-grid.grouped .rsframe.gold3 > .rsfh .ct { background: #F4E7BE; color: #6A5620; }
+
   /* ดาวเป็นพระเอก คะแนนรองลงมา */
   .pk-card.first .pk-name { font-size: 22px; }
   .pk-stars { gap: 5px !important; margin-top: 4px; }
@@ -3929,7 +4023,18 @@
         <div class="sec-rule" aria-hidden="true"></div>
         <h2 class="auth-h">เข้าสู่ระบบ</h2>
         <p class="auth-sub">เข้ามาดูโบรกเกอร์ที่ติดตามไว้ และรายการเปรียบเทียบที่บันทึกไว้</p>
-        <div class="lg-demo"><b>บัญชีทดลองสำหรับดูหน้าสมาชิก</b>
+        <div class="g-auth"><button type="button" class="g-btn" data-gsignin="1">
+        <svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true">
+          <path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-3.2-.4-4.7H24v8.9h11.8c-.5 2.7-2 5-4.4 6.6v5.5h7.1c4.2-3.8 6.6-9.5 6.6-16.3z"></path>
+          <path fill="#34A853" d="M24 46c6 0 11-2 14.6-5.4l-7.1-5.5c-2 1.3-4.5 2.1-7.5 2.1-5.8 0-10.7-3.9-12.4-9.1H4.3v5.7C7.9 41.1 15.4 46 24 46z"></path>
+          <path fill="#FBBC05" d="M11.6 28.1c-.4-1.3-.7-2.7-.7-4.1s.3-2.8.7-4.1v-5.7H4.3C2.8 17.2 2 20.5 2 24s.8 6.8 2.3 9.8l7.3-5.7z"></path>
+          <path fill="#EA4335" d="M24 10.8c3.3 0 6.2 1.1 8.5 3.3l6.3-6.3C34.9 4.3 30 2 24 2 15.4 2 7.9 6.9 4.3 14.2l7.3 5.7c1.7-5.2 6.6-9.1 12.4-9.1z"></path>
+        </svg>ดำเนินการต่อด้วย Google</button>
+        <p class="g-mock"><b>ปุ่มนี้เป็นภาพในต้นแบบ</b> — กดแล้วเข้าหน้าสมาชิกทดลองทันที
+        ต้นแบบนี้<b>ไม่ได้ต่อกับ Google จริง</b>
+        ไม่มีการขอสิทธิ์เข้าถึงบัญชี และไม่มีการส่งข้อมูลออกไปไหน</p>
+        <div class="g-or">หรือใช้อีเมล</div></div>
+      <div class="lg-demo"><b>บัญชีทดลองสำหรับดูหน้าสมาชิก</b>
           อีเมล <code>demo@redstartrust.com</code> · รหัสผ่าน <code>redstar2026</code><br>
           บัญชีนี้มีไว้ดูหน้าตาเท่านั้น ตรวจรหัสในเบราว์เซอร์ ไม่มีการส่งข้อมูลออกไปไหน
           <button type="button" class="lg-fill" data-demofill="1">กรอกให้อัตโนมัติ</button></div>
@@ -4867,6 +4972,17 @@ var ROSTER = {
 var META = {
   /* ชื่อทั้งหมดเป็นผู้ให้บริการที่มีอยู่จริง แต่ คะแนน/ดาว/ต้นทุนทุกตัวเป็นข้อมูลสมมติ
      หน่วยกำกับที่ระบุคือหน่วยกำกับหลักของแต่ละราย ยังไม่ได้แยกรายประเทศ — ดูเรื่องค้างข้อ 11 ใน STATE.md */
+  northgate:{n:"Northgate Markets",mono:"NG",slug:"northgate-markets",reg:"FSA Seychelles",fic:1},
+  apexg:{n:"Apex Global FX",mono:"AG",slug:"apex-global-fx",reg:"FSCA South Africa",fic:1},
+  sterlingw:{n:"Sterling Wave Capital",mono:"SW",slug:"sterling-wave",reg:"CySEC Cyprus",fic:1},
+  vertexb:{n:"Vertex Bridge Markets",mono:"VB",slug:"vertex-bridge",reg:"VFSC Vanuatu",fic:1},
+  oriontg:{n:"Orion Trade Group",mono:"OT",slug:"orion-trade-group",reg:"FSA Seychelles",fic:1},
+  novaprime:{n:"Nova Prime Markets",mono:"NP",slug:"nova-prime",reg:"FSCA South Africa",fic:1},
+  halcyonfx:{n:"Halcyon FX Ltd",mono:"HF",slug:"halcyon-fx",reg:"VFSC Vanuatu",fic:1},
+  crownridge:{n:"Crown Ridge Trading",mono:"CR",slug:"crown-ridge",reg:"FSC Mauritius",fic:1},
+  zenpeak:{n:"Zen Peak Securities",mono:"ZP",slug:"zen-peak",reg:"FSC Mauritius",fic:1},
+  kestrelfx:{n:"Kestrel FX",mono:"KF",slug:"kestrel-fx",reg:"IFSC Belize",fic:1},
+  vantabridge:{n:"Vantabridge",mono:"VT",slug:"vantabridge",reg:"FSA Seychelles",fic:1},
   icm:{n:"IC Markets",mono:"IC",slug:"ic-markets",reg:"ASIC Regulated"},
   pep:{n:"Pepperstone",mono:"PS",slug:"pepperstone",reg:"ASIC Regulated"},
   exness:{n:"Exness",mono:"EX",slug:"exness",reg:"CySEC Regulated"},
@@ -4933,6 +5049,12 @@ var META = {
 /* ค่าตั้งต้นรายเดียวต่อโบรก [ดาว, ต้นทุน, แพลตฟอร์ม, บริการ, ฝาก–ถอน]
    ใช้ตอนที่โบรกนั้นไม่มีแถวที่เขียนไว้ใน ROSTER ของประเทศนั้น — ข้อมูลสมมติทั้งหมด */
 var BASE = {
+  northgate:[0,7.9,7.6,7.2,7.4], apexg:[0,7.6,7.4,6.9,7.0],
+  sterlingw:[0,8.0,7.8,7.4,7.5], vertexb:[0,7.4,7.2,6.8,6.9],
+  oriontg:[0,7.8,7.5,7.1,7.2], novaprime:[0,7.7,7.7,7.3,7.3],
+  halcyonfx:[0,7.3,7.1,6.9,7.0], crownridge:[0,8.1,7.9,7.5,7.6],
+  zenpeak:[0,7.9,7.8,7.4,7.4], kestrelfx:[0,7.5,7.3,7.0,7.1],
+  vantabridge:[0,7.7,7.4,7.2,7.1],
   icm:[3,9.6,9.5,9.3,9.5], pep:[3,9.4,9.3,9.2,9.2], exness:[3,9.3,9.0,8.9,9.1],
   xm:[2,8.7,8.6,8.6,8.4], tickmill:[2,9.0,8.7,8.7,8.7], ig:[2,8.8,9.3,9.0,8.9],
   oanda:[1,8.5,8.9,8.8,8.7], equiti:[1,8.5,8.6,8.7,8.5], hfm:[1,8.4,8.3,8.4,8.4],
@@ -4961,17 +5083,24 @@ var BASE = {
 var CAT_MEMBERS = {
   fx:       ["icm","pep","exness","xm","tickmill","ig","oanda","equiti","hfm","axi","fpm","eig",
              "saxo","cmc","fxpro","admirals","think","vantage","fxtm","capital","plus500",
-             "avatrade","forexcom","blackbull","fusion","tastyfx"],
+             "avatrade","forexcom","blackbull","fusion","tastyfx",
+             "northgate","apexg","sterlingw","vertexb","oriontg","novaprime",
+             "halcyonfx","crownridge","zenpeak","kestrelfx","vantabridge"],
   futures:  ["ibkr","ninja","tradovate","ampf","optimus","tradestation","edgeclear","stage5",
-             "ig","saxo","cmc","tickmill","plus500","oanda"],
+             "ig","saxo","cmc","tickmill","plus500","oanda",
+             "crownridge","zenpeak","oriontg"],
   stocks:   ["ibkr","schwab","fidelity","etoro","robinhood","webull","t212","degiro","tiger",
-             "moomoo","saxo","ig","xm","pep","capital"],
+             "moomoo","saxo","ig","xm","pep","capital",
+             "zenpeak","crownridge","novaprime"],
   crypto:   ["etoro","plus500","pep","ig","exness","xm","capital","vantage","eig","avatrade",
-             "axi","hfm","icm","admirals","fxpro"],
+             "axi","hfm","icm","admirals","fxpro",
+             "northgate","apexg","halcyonfx","kestrelfx","vantabridge"],
   exchange: ["binance","coinbase","kraken","okx","bybit","kucoin","bitget","gateio","bitstamp",
-             "cryptocom","gemini","bitfinex","etoro"],
+             "cryptocom","gemini","bitfinex","etoro",
+             "oriontg","vertexb","novaprime"],
   fund:     ["vanguard","hl","ajbell","ii","fineco","allfunds","schwab","fidelity","ibkr",
-             "saxo","degiro","t212","ig"]
+             "saxo","degiro","t212","ig",
+             "zenpeak","crownridge"]
 };
 
 function seed(str){
@@ -5007,14 +5136,15 @@ function baseRow(id, iso){
   };
   return [id, b[0], j(b[1], "c"), j(b[2], "p"), j(b[3], "s"), j(b[4], "f")];
 }
-function rosterFor(cat, iso){
+function rosterFor(cat, iso, all){
   var members = CAT_MEMBERS[cat] || [];
   var authored = (ROSTER[iso] || []).filter(function(r){ return members.indexOf(r[0]) >= 0; });
   var have = authored.map(function(r){ return r[0]; });
   var rest = members.filter(function(id){ return have.indexOf(id) < 0; })
     .sort(function(a, b){ return seed(cat + iso + a) - seed(cat + iso + b); });
-  var out = authored.slice(0, ROWS_PER_CAT);
-  for (var i = 0; i < rest.length && out.length < ROWS_PER_CAT; i++) {
+  var cap = all ? (authored.length + rest.length) : ROWS_PER_CAT;
+  var out = authored.slice(0, cap);
+  for (var i = 0; i < rest.length && out.length < cap; i++) {
     out.push(baseRow(rest[i], iso));
   }
   return out;
@@ -5055,14 +5185,16 @@ function costSeries(cat, iso, id){
     return Math.round((p[0] + p[1] + p[2]) * 100) / 100;
   });
 }
-function rkRows(cat, iso, year){
+function rkRows(cat, iso, year, all){
   var yi = YEARS3.indexOf(year || 2026); if (yi < 0) { yi = YEARS3.length - 1; }
   var sh = function(v, d){ return Math.max(6.5, Math.min(10, Math.round((v + d) * 10) / 10)); };
-  return rosterFor(cat, iso).map(function(r){
+  return rosterFor(cat, iso, all).map(function(r){
     var d = dimShift(cat, r[0], iso);
     var vals = {cost:sh(r[2],d), platform:sh(r[3],d), service:sh(r[4],d), funding:sh(r[5],d)};
     var total = (vals.cost + vals.platform + vals.service + vals.funding) / 4;
-    var stars = cat === "fx" ? r[1] : Math.max(1, r[1] - (seed(cat + r[0] + iso + "st") > 0.62 ? 1 : 0));
+    /* รายที่ตั้งต้นเป็น 0 ดาว ต้องคง 0 ทุกหมวด — ห้ามดันขึ้นเป็น 1 */
+    var stars = r[1] === 0 ? 0 :
+      (cat === "fx" ? r[1] : Math.max(1, r[1] - (seed(cat + r[0] + iso + "st") > 0.62 ? 1 : 0)));
     var dimSer = {};
     DIMS.forEach(function(d){ dimSer[d[0]] = dimSeries(cat, iso, r[0], d[0], vals[d[0]]); });
     var scoreSer = scoreSeriesFromDims(dimSer);
@@ -5087,6 +5219,8 @@ function bestPerDim(rows){
   return best;
 }
 var rkCat = "fx", rkIso = "AU", cmpA = null, cmpB = null;
+/* หน้า Rating โชว์ทั้งหมด ส่วนบล็อกเดียวกันที่หน้าแรกคงสิบรายตามเดิม (คำสั่ง Boss 1 ก.ย. 69) */
+var RK_ALL = false;
 
 var rkYear = 2026, pkYear = 2026;
 function yearOptions(sel, cur){
@@ -5419,11 +5553,11 @@ function rkRender(){
   rkCatTabs(); rkTabs(); buildYearSelects();
   rkMvRender();
   var c = CATS[rkCat];
-  if (!rosterFor(rkCat, rkIso).length) {
-    var alt = ["AU","CY","GB","SG","US","AE","ZA"].filter(function(i){ return rosterFor(rkCat, i).length; })[0];
+  if (!rosterFor(rkCat, rkIso, RK_ALL).length) {
+    var alt = ["AU","CY","GB","SG","US","AE","ZA"].filter(function(i){ return rosterFor(rkCat, i, RK_ALL).length; })[0];
     if (alt) { rkIso = alt; rkTabs(); }
   }
-  var rows = rkRows(rkCat, rkIso, rkYear), best = bestPerDim(rows);
+  var rows = rkRows(rkCat, rkIso, rkYear, RK_ALL), best = bestPerDim(rows);
   var rkQ = (document.getElementById("rk-q") || {}).value || "";
   var qq = rkQ.trim().toLowerCase();
   var shown = qq ? rows.filter(function(r){ return META[r.id].n.toLowerCase().indexOf(qq) >= 0; }) : rows;
@@ -5467,6 +5601,10 @@ function rkRender(){
     'ตัวเลขข้างกราฟย่อคือส่วนต่างจากการตรวจปี 2024 สีเขียวคือดีขึ้น สีส้มคือแย่ลง · ' +
     'กราฟเส้นทุกช่องคือค่าย้อนหลัง 3 ปี ปี 2024 &rarr; 2025 &rarr; 2026 · คะแนนยิ่งสูงยิ่งดี ส่วน' + c.metric + 'และต้นทุนรวมยิ่งต่ำยิ่งดี ' +
     'จึงใช้คำว่าดีขึ้น/แย่ลงกำกับแทนลูกศร<br>' +
+    (rows.some(function(r){ return r.stars === 0; })
+      ? 'รายที่ยังไม่ได้ดาวในตารางนี้<b>ใช้ชื่อสมมติ</b> — เราจงใจไม่เอาชื่อโบรกเกอร์จริงมาใส่ในช่อง 0 ดาว ' +
+        'เพราะ 0 ดาวแปลว่าตรวจแล้วไม่ผ่านครบทุกข้อ<br>'
+      : "") +
     'ตัวเลขทั้งหมดเป็นข้อมูลตัวอย่างสำหรับงานออกแบบ ยังไม่ใช่ผลตรวจจริง';
 
   document.getElementById("rk-cost-h").textContent = "ต้นทุนรวม (" + c.costUnit + ")";
@@ -7544,7 +7682,7 @@ var rvCat = "fx", rvQ = "", rvSort = "score";
 function rvList(){
   var best = {};
   CM_ISOS.forEach(function(iso){
-    rkRows(rvCat, iso, 2026).forEach(function(r){
+    rkRows(rvCat, iso, 2026, true).forEach(function(r){
       if (!best[r.id] || r.total > best[r.id].r.total) { best[r.id] = {r:r, iso:iso}; }
     });
   });
@@ -7577,7 +7715,7 @@ function rvRender(){
   if (!grid) { return; }
   var list = rvList(), c = CATS[rvCat];
   var total = Object.keys((function(){ var o = {}; CM_ISOS.forEach(function(i){
-    rkRows(rvCat, i, 2026).forEach(function(r){ o[r.id] = 1; }); }); return o; })()).length;
+    rkRows(rvCat, i, 2026, true).forEach(function(r){ o[r.id] = 1; }); }); return o; })()).length;
   if (!list.length) {
     grid.classList.remove("grouped");
     grid.innerHTML = '<div class="art-empty">ไม่พบโบรกเกอร์ที่ตรงกับคำค้นนี้ในหมวดที่เลือก<br>' +
@@ -7585,12 +7723,15 @@ function rvRender(){
   } else {
     grid.classList.add("grouped");
     /* แบ่งเป็นชั้นดาว 3 / 2 / 1 แล้วตีกรอบทีละชั้น ชั้นไหนไม่มีใครก็ไม่ต้องขึ้นกรอบเปล่า */
-    var byStar = [3, 2, 1].map(function(s){
+    var byStar = [3, 2, 1, 0].map(function(s){
       return {s: s, rows: list.filter(function(x){ return x.r.stars === s; })};
     }).filter(function(g){ return g.rows.length; });
     grid.innerHTML = byStar.map(function(g){
-      return '<section class="rsframe"><div class="rsfh">' + g.s +
-        ' ดาว RedStar<span class="st">' + starHTML(g.s, 15) + '</span>' +
+      var head = g.s === 0
+        ? 'ตรวจแล้ว ยังไม่ได้ดาว'
+        : g.s + ' ดาว RedStar<span class="st">' + starHTML(g.s, 15) + '</span>';
+      return '<section class="rsframe' + (g.s === 3 ? " gold3" : (g.s === 0 ? " grey0" : "")) +
+        '"><div class="rsfh">' + head +
         '<span class="ct">' + g.rows.length + ' ราย</span></div><div class="rv-cards">' +
       g.rows.map(function(x){
       var m = META[x.r.id];
@@ -7602,14 +7743,17 @@ function rvRender(){
           '<span class="rv-of">/10</span>' +
           '<span class="rv-cap">คะแนนรวมสูงสุดที่ ' + CNAME[x.iso] + '</span></span>' +
           '<span class="rv-stars"><span class="rk-stars">' + starHTML(x.r.stars, 15) + '</span>' +
-          '<span class="n">' + x.r.stars + ' ดาว RedStar</span></span></div>' +
+          '<span class="n">' + (x.r.stars === 0
+            ? 'ยังไม่ได้ดาว'
+            : x.r.stars + ' ดาว RedStar') + '</span></span></div>' +
         '<div class="rv-meta"><b>' + c.metric + '</b> ' + x.r.metric.toFixed(2) + ' ' + c.unit +
           ' · ต้นทุนรวม ' + (x.r.parts[0] + x.r.parts[1] + x.r.parts[2]).toFixed(2) +
           ' (' + c.costUnit + ')</div>' +
         '<div class="rv-cta"><a class="rk-cta" href="/broker/' + m.slug + '/review" data-review="' + m.slug + '">' +
           'อ่านรีวิวฉบับเต็ม →</a></div>' +
         '</article>';
-      }).join("") + '</div></section>';
+      }).join("") + '</div>' +
+        (g.s === 0 ? '<p class="fic-note"><b>รายชื่อในกลุ่มนี้ตั้งขึ้นเพื่องานออกแบบ ไม่ใช่บริษัทที่มีอยู่จริง</b> — เราจงใจไม่เอาชื่อโบรกเกอร์จริงมาใส่ช่องนี้ เพราะ 0 ดาวแปลว่า<b>ตรวจแล้วไม่ผ่านครบทุกข้อ</b> ซึ่งเป็นข้อกล่าวอ้างด้านลบ ต้องรอผลตรวจ GCSI จริงก่อน</p>' : "") + '</section>';
     }).join("");
     paintLogos();
   }
@@ -9247,28 +9391,69 @@ function awHeroChart(){
 /* ── PAGE 1 — /awards ── */
 var AW_VOICE = [
   {i: "ธ", n: "ธนกฤต วงษ์อำไพ",
-   r: "หัวหน้าทีมตรวจใบอนุญาตและโครงสร้างผู้ถือหุ้น",
-   q: "ผมไล่โครงสร้างผู้ถือหุ้นของโบรกนี้ถึงชั้นที่สี่ แล้ว<b>หยุดที่บริษัทจดทะเบียนจริง</b> ไม่ใช่กล่องเปล่าในเขตปลอดภาษี นั่นคือข้อที่ทำให้ผ่านดาวที่สาม",
-   t: ["โครงสร้างบริษัท", "ใบอนุญาต 4 เขต"]},
-  {i: "น", n: "นภัส เจริญวงศ์",
-   r: "ผู้ตรวจต้นทุนการเทรด จับเวลาคำสั่งและ slippage",
-   q: "ยิงคำสั่งทดสอบ 5,000 ไม้ต่อเดือนต่อเนื่อง 3 เดือน ค่ากลางอยู่ที่<b>ตัวเลขเดียวกับที่โฆษณาไว้</b> ช่วงข่าวก็ไม่กว้างผิดปกติ",
-   t: ["ทดสอบคำสั่งจริง", "ต้นทุนการเทรด"]},
-  {i: "ก", n: "กันติมา ศรีสุวรรณ",
-   r: "นักกฎหมายการเงิน ดูสัญญาลูกค้าและการคุ้มครองเงินทุน",
-   q: "สัญญาลูกค้าเขียนชัดว่าเงินอยู่บัญชีแยก และ<b>ระบุธนาคารผู้รับฝากเป็นรายชื่อ</b> ไม่เขียนลอย ๆ ว่า ที่สถาบันชั้นนำ",
-   t: ["กฎหมายการเงิน", "สัญญาลูกค้า"]},
+   d: "โครงสร้างโบรกเกอร์",
+   r: "หัวหน้าฝ่ายตรวจสอบใบอนุญาตและโครงสร้างบริษัท",
+   q: "โบรกเกอร์ที่น่าเชื่อถือ ไม่ได้วัดจากการตลาด แต่<b>พิสูจน์ได้จากใบอนุญาต การแยกเงินลูกค้า และความโปร่งใสของโครงสร้างองค์กร</b>",
+   t: ["Regulation", "Corporate Structure"]},
+  {i: "น", n: "นที เจริญวงศ์",
+   d: "ต้นทุนการเทรด",
+   r: "ผู้เชี่ยวชาญด้าน Execution, Spread และ Slippage",
+   q: "Spread ต่ำไม่มีความหมาย หากคำสั่งถูกรีโควตหรือ Slippage สูง สิ่งที่ต้องวัดคือ <b>‘ต้นทุนจริง’ หลังเปิดและปิดออเดอร์</b>",
+   t: ["Execution Test", "Slippage Analysis"]},
+  {i: "ก", n: "กันตินา ศรีสุวรรณ",
+   d: "กฎหมายการเงิน",
+   r: "ที่ปรึกษาด้านกฎหมายการเงินและข้อพิพาทลูกค้า",
+   q: "ก่อนเปิดบัญชี สิ่งที่ควรอ่านไม่ใช่โบนัส แต่คือ <b>Client Agreement และนโยบายการคุ้มครองเงินฝาก</b> เพราะนั่นคือสิทธิ์ที่แท้จริงของผู้ลงทุน",
+   t: ["Client Agreement", "Investor Protection"]},
   {i: "พ", n: "พีระพล อินทรพิทักษ์",
-   r: "ทดสอบการฝากถอนและงานบริการลูกค้าภาษาไทย",
-   q: "ยื่นถอน 12 ครั้งในหนึ่งไตรมาส <b>เข้าครบทุกครั้งภายในวันทำการ</b> ไม่มีครั้งไหนที่ขอเอกสารซ้ำโดยไม่มีเหตุ",
-   t: ["ทดสอบการถอน", "บริการภาษาไทย"]}
+   d: "บริการลูกค้า",
+   r: "ผู้ตรวจสอบคุณภาพฝ่ายบริการและกระบวนการถอนเงิน",
+   q: "<b>คุณภาพของโบรกเกอร์ถูกวัดในวันที่เกิดปัญหา ไม่ใช่วันที่ฝากเงิน</b> ทีมซัพพอร์ตที่แก้ไขได้จริง คือมาตรฐานที่เราประเมิน",
+   t: ["Withdrawal Test", "Support Quality"]}
 ];
+
+/* แถว Hall of Fame แบบเลื่อนซ้ายอัตโนมัติ — วางการ์ดสองชุดต่อกัน
+   พอ track เลื่อนไปถึง -50% ชุดที่สองจะมาอยู่ตำแหน่งเดิมของชุดแรกพอดี ภาพจึงต่อเนียนไม่มีรอยต่อ
+   ชุดที่สองเป็นภาพซ้ำ ไม่ใช่ข้อมูลใหม่ จึงใส่ aria-hidden ไว้ กันโปรแกรมอ่านหน้าจออ่านซ้ำสองรอบ */
+var awHofPaused = false;
+function awHofCards(dup){
+  return AW_HOF.map(function(r, hi){
+    var c = awCat(r.cat);
+    return '<a class="aw-hx' + (AW_STMAX === 3 ? ' g3' : '') + '" href="#/brokerawards"' +
+      (dup ? ' aria-hidden="true" tabindex="-1"' : '') + '>' +
+      '<span class="aw-hxt"><span class="aw-hxr">No. ' + (hi + 1) + '</span>' +
+      '<span class="aw-hxlg">' + awLogo(r.b, 70, 18) + '</span>' +
+      '<span class="aw-hxs">' + awStarRow(AW_STMAX, 22) + '</span>' +
+      '<b>' + r.run + '</b><span>ไตรมาสที่ผ่านติดต่อกัน</span></span>' +
+      '<span class="aw-hxb">' +
+      '<strong>' + awName(r.b) + '</strong><em>' + c.n + '</em></span>' +
+      '<span class="aw-hxy"><i>ตั้งแต่ ' + r.since + '</i><i>รวม ' + r.q + ' ไตรมาส</i></span></a>';
+  }).join("");
+}
+function awHofRow(){
+  return '<button type="button" class="aw-hofpz" data-hofpause="1" aria-pressed="' +
+      awHofPaused + '">' + (awHofPaused ? "เล่น" : "หยุด") + '</button>' +
+    '<div class="aw-hofx' + (awHofPaused ? " off" : "") + '" id="aw-hofx">' +
+      '<div class="aw-hoftrack">' + awHofCards(false) + awHofCards(true) + '</div></div>';
+}
+document.addEventListener("click", function(ev){
+  var b = ev.target.closest("[data-hofpause]");
+  if (!b) { return; }
+  awHofPaused = !awHofPaused;
+  var sc = document.getElementById("aw-hofx");
+  if (sc) { sc.classList.toggle("off", awHofPaused); }
+  b.textContent = awHofPaused ? "เล่น" : "หยุด";
+  b.setAttribute("aria-pressed", String(awHofPaused));
+});
+
 function awVoices(){
   return '<div class="aw-hxvh"><b>Auditor Voices</b>' +
     '<span>คนที่ลงมือตรวจโบรกกลุ่มนี้เล่าสิ่งที่เจอด้วยตัวเอง — สั้น ๆ คนละหนึ่งเรื่อง</span></div>' +
     '<div class="aw-hxv">' + AW_VOICE.map(function(v){
       return '<div class="aw-vc"><div class="who"><span class="av">' + v.i + '</span>' +
-        '<span><span class="nm">' + v.n + '</span><span class="rl">' + v.r + '</span></span></div>' +
+        '<span><span class="nm">' + v.n + '</span>' +
+        (v.d ? '<span class="dm">' + v.d + '</span>' : "") +
+        '<span class="rl">' + v.r + '</span></span></div>' +
         '<blockquote>“' + v.q + '”</blockquote>' +
         '<div class="mt">' + v.t.map(function(t){ return '<i>' + t + '</i>'; }).join("") +
         '</div></div>';
@@ -9338,18 +9523,7 @@ function awVoices(){
       '<div class="aw-hofw"><div class="aw-hoft">' +
         '<b>Hall of Fame</b>' +
         '<span>รายชื่อที่ถือดาวครบสามดวงติดต่อกันยาวที่สุดของแต่ละหมวด</span></div>' +
-        '<div class="aw-hofx">' + AW_HOF.map(function(r, hi){
-        var c = awCat(r.cat);
-        return '<a class="aw-hx' + (AW_STMAX === 3 ? ' g3' : '') +
-          '" href="#/brokerawards">' +
-          '<span class="aw-hxt"><span class="aw-hxr">No. ' + (hi + 1) + '</span>' +
-          '<span class="aw-hxlg">' + awLogo(r.b, 56, 14) + '</span>' +
-          awStarRow(AW_STMAX, 15) +
-          '<b>' + r.run + '</b><span>ไตรมาสที่ผ่านติดต่อกัน</span></span>' +
-          '<span class="aw-hxb">' +
-          '<strong>' + awName(r.b) + '</strong><em>' + c.n + '</em></span>' +
-          '<span class="aw-hxy"><i>ตั้งแต่ ' + r.since + '</i><i>รวม ' + r.q + ' ไตรมาส</i></span></a>';
-      }).join("") + '</div>' + awVoices() + '</div>';
+        awHofRow() + awVoices() + '</div>';
   }
 
   var mt = document.getElementById("aw-meth");
@@ -11841,7 +12015,7 @@ function mbRender(){
       '<div class="mb-t"><b>' + rows.length + '</b><span>โบรกเกอร์ที่ติดตาม</span></div>' +
       '<div class="mb-t"><b>2</b><span>รายการเปรียบเทียบที่บันทึกไว้</span></div>' +
       '<div class="mb-t"><b>' + MB_FEED.length + '</b><span>แจ้งเตือนที่ยังไม่ได้อ่าน</span></div>' +
-      '<div class="mb-t"><b>6</b><span>EA ที่ดาวน์โหลดได้</span></div>' +
+      '<div class="mb-t"><b>6</b><span>EA ที่ดาวน์โหลดได้</span></div><a class="mb-t go" href="#/usercase" data-nav="usercase"><b>3</b><span>เรื่องร้องเรียนของคุณ →</span></a>' +
     '</div>';
 
   bd.innerHTML = '<div class="mb-grid"><div>' +
@@ -12045,6 +12219,12 @@ function showPage(p){
   if (p === "analytics" && typeof eaTocMeasure === "function") { eaTocMeasure(); }
   if (p === "analytics" && typeof dgFillBroker === "function") { dgFillBroker(); }
   if (p === "news" && typeof nwbRender === "function") { nwbRender(); }
+  /* หน้า Rating โชว์ครบทุกราย ส่วนหน้าอื่นคงสิบอันดับแรกเหมือนเดิม */
+  var wantAll = (p === "rating");
+  if (typeof RK_ALL !== "undefined" && RK_ALL !== wantAll) {
+    RK_ALL = wantAll;
+    if (typeof rkRender === "function") { rkRender(); }
+  }
   if (p === "rating" && typeof rsfCounts === "function") { rsfCounts(); }
   if (typeof artFit === "function") { artFit(); }
   if (p === "member" && typeof mbRender === "function") { mbRender(); }
@@ -12077,3 +12257,4 @@ window.addEventListener("hashchange", routeFromHash);
 routeFromHash();
 
 </script>
+</body></html>
