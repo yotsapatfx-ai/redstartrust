@@ -598,6 +598,37 @@
     padding: var(--s9) 0 var(--s8); }
   .aw-hwm { position: absolute; right: -60px; top: 50%; transform: translateY(-50%);
     width: 560px; opacity: 0.05; pointer-events: none; }
+  .aw-hchart { position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+    width: 46%; max-width: 620px; min-width: 380px; pointer-events: none; }
+  .aw-hchart .grid-ln { stroke: rgba(255,255,255,0.08); stroke-width: 1; }
+  .aw-hchart .globe-dot { fill: rgba(255,255,255,0.22); }
+  .aw-hchart .area-fill { opacity: 0; animation: awChartFade 1.4s ease-out .3s forwards; }
+  .aw-hchart .line-path { stroke-dasharray: 900; stroke-dashoffset: 900;
+    animation: awChartDraw 2.1s cubic-bezier(.25,.8,.3,1) .15s forwards; }
+  .aw-hchart .node { opacity: 0; transform-origin: center; animation: awChartPop .5s ease-out forwards; }
+  .aw-hchart .node.n1 { animation-delay: .6s; }
+  .aw-hchart .node.n2 { animation-delay: 1.0s; }
+  .aw-hchart .node.n3 { animation-delay: 1.4s; }
+  .aw-hchart .node.n4 { animation-delay: 1.85s; }
+  .aw-hchart .pulse { animation: awChartPulse 2.6s ease-out infinite; }
+  .aw-hchart .pulse.p2 { animation-delay: .7s; }
+  .aw-hchart .pulse.p3 { animation-delay: 1.4s; }
+  .aw-hchart .pulse.p4 { animation-delay: 2.1s; }
+  .aw-hchart .cap-tag { opacity: 0; animation: awChartFade .6s ease-out 2.1s forwards; }
+  @keyframes awChartDraw { to { stroke-dashoffset: 0; } }
+  @keyframes awChartFade { to { opacity: 1; } }
+  @keyframes awChartPop { from { opacity: 0; transform: scale(0); } to { opacity: 1; transform: scale(1); } }
+  @keyframes awChartPulse {
+    0% { r: 4; opacity: 0.55; }
+    75% { r: 20; opacity: 0; }
+    100% { r: 20; opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .aw-hchart .area-fill, .aw-hchart .cap-tag { opacity: 1; animation: none; }
+    .aw-hchart .line-path { stroke-dashoffset: 0; animation: none; }
+    .aw-hchart .node { opacity: 1; animation: none; }
+    .aw-hchart .pulse { animation: none; opacity: 0; }
+  }
   .aw-hin { position: relative; width: 1200px; margin: 0 auto; }
   .aw-hin .aw-cap { color: rgba(255,255,255,0.55); margin-bottom: var(--s2); }
   .aw-hin h1 { margin: 0 0 var(--s3); font-size: 62px; font-weight: 700; line-height: 1.04;
@@ -2631,20 +2662,23 @@
     font-variant-numeric: tabular-nums; color: #101828; line-height: 1; }
   .mcell .mtrend { font-size: 11px; font-weight: 500; letter-spacing: 0; white-space: nowrap; }
   .mcell .mtrend.down { color: #067647; }
-  .mcell .mtrend.up { color: #B54708; }
+  .mcell .mtrend.up { color: #B42318; }
   .mcell .mtrend.flat { color: #667085; }
   .rk-charts { grid-template-columns: 1fr !important; }
 
 
   /* ── ช่องกราฟย่อแบบกะทัดรัด สำหรับคะแนนรายด้าน ── */
-  .mini { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
-  .mini .v { font-family: 'IBM Plex Sans', sans-serif; font-size: 14.5px; font-weight: 600;
-    font-variant-numeric: tabular-nums; color: #101828; line-height: 1; }
-  .mini .r { display: flex; align-items: center; gap: 5px; }
+  .mini { display: flex; flex-direction: column; align-items: stretch; gap: 5px; min-width: 76px; }
+  .mini .top { display: flex; align-items: baseline; justify-content: flex-end; }
+  .mini .v { font-family: 'IBM Plex Sans', sans-serif; font-size: 16px; font-weight: 700;
+    font-variant-numeric: tabular-nums; letter-spacing: -0.02em; color: #101828; line-height: 1; }
+  .mini .tr { height: 7px; border-radius: 4px; background: #F2F4F7; overflow: hidden;
+    width: 100%; min-width: 62px; }
+  .mini .tr i { display: block; height: 100%; border-radius: 4px; background: #D92D20; }
   .mini .d { font-family: 'IBM Plex Sans', sans-serif; font-size: 10.5px; font-weight: 600;
-    font-variant-numeric: tabular-nums; white-space: nowrap; }
+    font-variant-numeric: tabular-nums; white-space: nowrap; text-align: right; }
   .mini .d.down { color: #067647; }
-  .mini .d.up { color: #B54708; }
+  .mini .d.up { color: #B42318; }
   .mini .d.flat { color: #667085; }
   .rk-sub.best { color: #B42318; font-weight: 600; }
   .mini.best .v { color: #B42318; }
@@ -4881,14 +4915,17 @@ function miniCell(series, opts){
   var eps = Math.pow(10, -dp) / 2;
   var cls = gain > eps ? "down" : (gain < -eps ? "up" : "flat");
   var word = cls === "down" ? "ดีขึ้น" : (cls === "up" ? "แย่ลง" : "เท่าเดิม");
-  var txt = cls === "flat" ? "เท่าเดิม" : (raw > 0 ? "+" : "−") + Math.abs(raw).toFixed(dp);
+  var txt = cls === "flat" ? "เท่าเดิม" : word + " " + Math.abs(gain).toFixed(dp);
   var label = opts.name + " ปี 2026 เท่ากับ " + last.toFixed(dp) +
               " · ผลตรวจย้อนหลัง " + series.map(function(v){ return v.toFixed(dp); }).join(" ") +
-              " · " + word;
+              " · " + txt;
+  /* หลอดวัดจากช่วง 6-10 ที่คะแนนรายด้านใช้จริง
+     ถ้าวัดจาก 0-10 ทุกหลอดจะยาวเกือบเท่ากันหมด มองไม่ออกว่าใครดีกว่า */
+  var pct = Math.max(6, Math.min(100, ((last - 6) / 4) * 100));
   return '<div class="mini' + (opts.best ? " best" : "") + '" role="img" aria-label="' + label + '">' +
-    '<span class="top"><span class="v">' + last.toFixed(dp) + '</span>' +
-    '<span class="d ' + cls + '">' + txt + '</span></span>' +
-    sparkLine(series, 44, 14) + '</div>';
+    '<span class="top"><span class="v">' + last.toFixed(dp) + '</span></span>' +
+    '<span class="tr"><i style="width:' + pct.toFixed(0) + '%"></i></span>' +
+    '<span class="d ' + cls + '">' + txt + '</span></div>';
 }
 function dp0(v){ return v; }
 /* คะแนนรายด้านย้อนหลัง — ปี 2026 คือค่าปัจจุบัน */
@@ -8735,12 +8772,62 @@ function awQR(txt, px){
     eye(0, 0) + eye(n - 7, 0) + eye(0, n - 7) + '</svg>';
 }
 
+/* ── กราฟเคลื่อนไหวประกอบ Hero หน้า Awards — สื่อว่าเป็นมาตรฐานระดับโลก
+   เส้นแนวโน้มขาขึ้น + จุดกระจายทั่วพื้นหลังแทนเครือข่ายทั่วโลก + ตัวเลขไต่ขึ้นที่จุดสุดท้าย ── */
+function awHeroChart(){
+  var W = 560, H = 400;
+  var pts = [[20, 330], [140, 268], [230, 300], [320, 190], [420, 150], [520, 64]];
+  var line = pts.map(function(p, i){ return (i === 0 ? "M" : "L") + p[0] + " " + p[1]; }).join(" ");
+  var area = line + " L " + pts[pts.length - 1][0] + " " + H + " L " + pts[0][0] + " " + H + " Z";
+  var dots = "";
+  var dseed = 91;
+  function rnd(){ dseed = (dseed * 1103515245 + 12345) >>> 0; return (dseed >>> 8) / 16777216; }
+  for (var i = 0; i < 46; i++) {
+    dots += '<circle class="globe-dot" cx="' + (rnd() * W).toFixed(0) + '" cy="' +
+      (rnd() * H).toFixed(0) + '" r="' + (rnd() < 0.15 ? 2.2 : 1.2).toFixed(1) + '"/>';
+  }
+  var grid = "";
+  for (var gy = 0; gy < 5; gy++) {
+    var y = gy * (H / 4);
+    grid += '<line class="grid-ln" x1="0" y1="' + y + '" x2="' + W + '" y2="' + y + '"/>';
+  }
+  var nodeClasses = ["n1", "n2", "n3", "n4"];
+  var nodePts = [pts[1], pts[3], pts[4], pts[5]];
+  var nodes = "";
+  for (var k = 0; k < nodePts.length; k++) {
+    var p = nodePts[k], cls = nodeClasses[k];
+    nodes += '<circle class="pulse ' + (k === 0 ? "" : "p" + (k + 1)) + '" cx="' + p[0] + '" cy="' + p[1] +
+      '" r="4" fill="none" stroke="#D92D20" stroke-width="1.6"/>' +
+      '<circle class="node ' + cls + '" cx="' + p[0] + '" cy="' + p[1] + '" r="' + (k === nodePts.length - 1 ? 6 : 4) +
+      '" fill="' + (k === nodePts.length - 1 ? "#F5C453" : "#D92D20") + '" stroke="#0A0A0A" stroke-width="2"/>';
+  }
+  var peak = pts[pts.length - 1];
+  return '<svg class="aw-hchart" viewBox="0 0 ' + W + ' ' + H + '" fill="none" aria-hidden="true" focusable="false">' +
+    '<defs><linearGradient id="awhcGrad" x1="0" y1="0" x2="0" y2="1">' +
+      '<stop offset="0%" stop-color="#D92D20" stop-opacity="0.32"/>' +
+      '<stop offset="100%" stop-color="#D92D20" stop-opacity="0"/></linearGradient>' +
+      '<linearGradient id="awhcLine" x1="0" y1="1" x2="1" y2="0">' +
+      '<stop offset="0%" stop-color="#8A1B12"/><stop offset="55%" stop-color="#D92D20"/>' +
+      '<stop offset="100%" stop-color="#F5C453"/></linearGradient></defs>' +
+    dots + grid +
+    '<path class="area-fill" d="' + area + '" fill="url(#awhcGrad)"/>' +
+    '<path class="line-path" d="' + line + '" stroke="url(#awhcLine)" stroke-width="3.4" ' +
+      'stroke-linecap="round" stroke-linejoin="round"/>' +
+    nodes +
+    '<g class="cap-tag"><rect x="' + (peak[0] - 78) + '" y="' + (peak[1] - 40) + '" width="130" height="30" rx="8" ' +
+      'fill="#FFFFFF"/><circle cx="' + (peak[0] - 61) + '" cy="' + (peak[1] - 25) + '" r="3" fill="#067647"/>' +
+      '<text x="' + (peak[0] - 50) + '" y="' + (peak[1] - 20) + '" text-anchor="start" ' +
+      'font-family="Inter,sans-serif" font-size="12.5" font-weight="700" fill="#0A0A0A">เกณฑ์เดียวกันทุกโบรก</text></g>' +
+    '</svg>';
+}
+
 /* ── PAGE 1 — /awards ── */
 (function(){
   var h = document.getElementById("aw-hero");
   if (!h) { return; }
   h.innerHTML =
     '<div class="aw-hwm" aria-hidden="true">' + awardStar(560) + '</div>' +
+    awHeroChart() +
     '<div class="aw-hin">' +
       '<div class="aw-mark" style="margin-bottom:26px">' + awardStar(76) +
       '<span class="tx"><h3><i>RED</i> STAR</h3>' +
@@ -11095,4 +11182,3 @@ window.addEventListener("hashchange", routeFromHash);
 routeFromHash();
 
 </script>
-
