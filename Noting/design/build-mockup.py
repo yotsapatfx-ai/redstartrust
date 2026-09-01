@@ -797,6 +797,17 @@ HEAD = """<title>RedStarTrust Homepage</title>
     display: flex; align-items: center; gap: var(--s1); font-size: 11.5px; color: var(--aw-ink-3); }
   .ba-trf .aw-mono { margin-left: auto; color: var(--aw-ink-2); }
 
+  .cert-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: var(--s3); margin-bottom: var(--s7); }
+  .cert-tile { display: block; border-radius: 15px; transition: transform .15s, box-shadow .15s;
+    text-decoration: none; }
+  .cert-tile:hover { transform: translateY(-3px); box-shadow: 0 14px 28px -14px rgba(10,10,10,0.38); }
+  .cert-tile:focus-visible { outline: 2px solid var(--aw-red); outline-offset: 3px; }
+  .cert-tile .bdg { width: 100%; height: auto; display: block; }
+  .cert-tile .cert-cap { display: block; margin-top: 9px; text-align: center; font-size: 12px;
+    color: var(--aw-ink-3); }
+  .cert-tile .cert-cap b { color: var(--aw-ink); font-weight: 600; }
+
   /* \u2500 PAGE 5 partner \u2500 */
   .pt-shell { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: var(--s6);
     align-items: start; }
@@ -1752,6 +1763,56 @@ HEAD = """<title>RedStarTrust Homepage</title>
     padding: 4px 11px; background: #ECFDF3; color: #05603A;
     font-family: 'IBM Plex Sans', sans-serif; font-size: 11.5px; font-weight: 600; }
   .rvw-when { font-size: 11.5px; color: #667085; }
+
+  /* \u2500 \u0e42\u0e1a\u0e23\u0e01\u0e17\u0e35\u0e48 EA \u0e15\u0e31\u0e27\u0e19\u0e35\u0e49\u0e0a\u0e35\u0e49\u0e43\u0e2b\u0e49\u0e40\u0e2b\u0e47\u0e19 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */
+  .edb-wrap { display: grid; grid-template-columns: 380px minmax(0, 1fr); gap: 22px;
+    align-items: start; }
+  .edb-pick { border: 1.5px solid #D92D20; border-radius: 16px; background: #FFFFFF;
+    overflow: hidden; }
+  .edb-pick .hd { padding: 11px 18px; background: #FEF3F2; border-bottom: 1.5px solid #FECDCA;
+    font-size: 11.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    color: #B42318; }
+  .edb-pick .bd { padding: 20px; display: flex; flex-direction: column; gap: 11px; }
+  .edb-who { display: flex; align-items: center; gap: 12px; }
+  .edb-who .nm { display: block; font-size: 19px; font-weight: 700; letter-spacing: -0.02em;
+    color: #101828; }
+  .edb-who .rg { display: block; font-size: 12px; color: #667085; margin-top: 2px; }
+  .edb-st { display: flex; align-items: center; gap: 9px; }
+  .edb-st .st { display: flex; gap: 3px; line-height: 0; }
+  .edb-st .sc { font-family: 'IBM Plex Sans', sans-serif; font-size: 12.5px; color: #667085; }
+  .edb-st .sc b { font-size: 17px; font-weight: 700; color: #101828; }
+  .edb-why { margin: 0; padding: 11px 13px; border-radius: 10px; background: #F9FAFB;
+    font-size: 12.5px; line-height: 1.7; color: #475467; }
+  .edb-why b { color: #101828; font-weight: 600; }
+  .edb-go { display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    border-radius: 10px; padding: 11px 16px; background: #D92D20; color: #FFFFFF;
+    text-decoration: none; font-size: 14px; font-weight: 600; transition: background .16s; }
+  .edb-go:hover { background: #B42318; color: #FFFFFF; }
+  .edb-go:focus-visible { outline: 2px solid #D92D20; outline-offset: 2px; }
+
+  .edb-list { border: 1px solid #EAECF0; border-radius: 16px; background: #FFFFFF;
+    overflow: hidden; }
+  .edb-list .hd { display: flex; align-items: center; gap: 10px; padding: 13px 18px;
+    background: #F9FAFB; border-bottom: 1px solid #EAECF0; font-size: 13.5px;
+    font-weight: 600; color: #101828; }
+  .edb-list .hd span { margin-left: auto; font-size: 11.5px; font-weight: 500; color: #667085; }
+  .edb-r { display: grid; grid-template-columns: 34px minmax(0, 1fr) 132px 104px;
+    gap: 13px; align-items: center; padding: 13px 18px; border-bottom: 1px solid #F2F4F7; }
+  .edb-r:last-child { border-bottom: 0; }
+  .edb-r .nm { font-size: 14px; font-weight: 600; color: #101828; }
+  .edb-r .rg { display: block; font-size: 11.5px; color: #667085; margin-top: 1px; }
+  .edb-bar { display: flex; align-items: center; gap: 8px; }
+  .edb-bar s { text-decoration: none; flex: 1; height: 6px; border-radius: 3px;
+    background: #F2F4F7; overflow: hidden; }
+  .edb-bar s i { display: block; height: 100%; border-radius: 3px; background: #D92D20; }
+  .edb-bar em { font-style: normal; font-family: 'IBM Plex Sans', sans-serif; font-size: 12.5px;
+    font-weight: 600; color: #101828; }
+  .edb-rv { justify-self: end; border: 1px solid #D0D5DD; border-radius: 8px; padding: 6px 12px;
+    background: #FFFFFF; font-size: 12.5px; font-weight: 600; color: #B42318;
+    text-decoration: none; white-space: nowrap; transition: border-color .16s, background .16s; }
+  .edb-rv:hover { border-color: #D92D20; background: #FEF3F2; color: #B42318; }
+  .edb-rv:focus-visible { outline: 2px solid #D92D20; outline-offset: 2px; }
+  .edb-none { padding: 22px 18px; font-size: 13px; line-height: 1.8; color: #667085; }
 
   .rvw-shots { display: flex; gap: 9px; flex-wrap: wrap; margin-top: 2px; }
   .rvw-sh { position: relative; width: 128px; height: 80px; border-radius: 9px;
@@ -7702,6 +7763,12 @@ function awBadge(w, h, opt){
       '" fill="rgba(255,255,255,0.5)">VERIFIED \u00b7 ' + cid + '</text>') +
     '</svg>';
 }
+function certCard(t, cat){
+  return '<a class="cert-tile" href="#/verify" aria-label="\u0e43\u0e1a Certificate ' + t.y +
+    ' \u0e40\u0e25\u0e02 ' + t.id + ' \u2014 \u0e01\u0e14\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e44\u0e1b\u0e2b\u0e19\u0e49\u0e32\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a">' +
+    awBadge(220, 220, {cat: cat, per: t.y, cid: t.id, st: t.sr}) +
+    '<span class="cert-cap"><b>' + t.y + '</b> \u00b7 ' + t.sr + ' \u0e14\u0e32\u0e27</span></a>';
+}
 /* \u2500\u2500 QR \u2014 \u0e20\u0e32\u0e1e\u0e41\u0e17\u0e19\u0e17\u0e35\u0e48\u0e04\u0e07\u0e17\u0e35\u0e48\u0e15\u0e48\u0e2d\u0e40\u0e25\u0e02\u0e43\u0e1a\u0e23\u0e31\u0e1a\u0e23\u0e2d\u0e07 \u2014 \u0e22\u0e31\u0e07\u0e2a\u0e41\u0e01\u0e19\u0e44\u0e21\u0e48\u0e44\u0e14\u0e49 \u2500\u2500 */
 function awQR(txt, px){
   var n = 25, c = (px || 150) / n, h = seed(txt), out = "";
@@ -8031,7 +8098,7 @@ var VF_TL = [
   var B = AW_WIN[0].b;
   h.className = "ba-hero";
   h.innerHTML =
-    '<div><div class="ba-id">' + awLogo(B, 68, 15) +
+    '<div><div class="ba-id">' + awLogo(B, 96, 20) +
       '<span><h2>' + awName(B) + '</h2><span>' + awReg(B) +
       ' \u00b7 \u0e2d\u0e22\u0e39\u0e48\u0e43\u0e19\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19 RedStarTrust \u0e15\u0e31\u0e49\u0e07\u0e41\u0e15\u0e48\u0e44\u0e15\u0e23\u0e21\u0e32\u0e2a Q1 2024</span></span></div>' +
       '<div class="ba-st"><div><b>9</b><span>\u0e44\u0e15\u0e23\u0e21\u0e32\u0e2a\u0e17\u0e35\u0e48\u0e44\u0e14\u0e49 3 \u0e14\u0e32\u0e27</span></div>' +
@@ -8053,7 +8120,14 @@ var VF_TL = [
   if (b) {
     b.className = "ba-body";
     b.innerHTML =
-      '<div><div class="aw-shd" style="margin-bottom:32px"><div class="tx">' +
+      '<div><div class="aw-shd" style="margin-bottom:20px"><div class="tx">' +
+        '<p class="aw-cap">All Certificates</p>' +
+        '<h2 class="aw-h2">ใบ Certificate ทั้งหมด</h2>' +
+        '<p>ใบรับรองจริงของทุกไตรมาสที่ได้ดาว — กดใบใดก็ได้เพื่อไปหน้าตรวจสอบ</p></div></div>' +
+        '<div class="cert-gallery">' + VF_TL.filter(function(t){ return !!t.id; }).map(function(t){
+          return certCard(t, awCat(B.cat).n);
+        }).join("") + '</div>' +
+      '<div class="aw-shd" style="margin-bottom:32px"><div class="tx">' +
         '<p class="aw-cap">Awards Timeline</p>' +
         '<h2 class="aw-h2">\u0e1b\u0e23\u0e30\u0e27\u0e31\u0e15\u0e34\u0e23\u0e32\u0e07\u0e27\u0e31\u0e25\u0e22\u0e49\u0e2d\u0e19\u0e2b\u0e25\u0e31\u0e07</h2>' +
         '<p>\u0e41\u0e2a\u0e14\u0e07\u0e17\u0e38\u0e01\u0e1b\u0e35\u0e17\u0e35\u0e48\u0e40\u0e23\u0e32\u0e15\u0e23\u0e27\u0e08 \u0e23\u0e27\u0e21\u0e1b\u0e35\u0e17\u0e35\u0e48\u0e44\u0e21\u0e48\u0e1c\u0e48\u0e32\u0e19\u0e40\u0e01\u0e13\u0e11\u0e4c \u2014 \u0e40\u0e23\u0e32\u0e44\u0e21\u0e48\u0e0b\u0e48\u0e2d\u0e19\u0e1b\u0e35\u0e17\u0e35\u0e48\u0e44\u0e21\u0e48\u0e44\u0e14\u0e49</p></div></div>' +
@@ -9873,6 +9947,80 @@ document.addEventListener("keydown", function(ev){
   if (ev.key === "Escape") { edShotClose(); }
 });
 
+/* \u2500\u2500 \u0e42\u0e1a\u0e23\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c\u0e41\u0e19\u0e30\u0e19\u0e33 \u0e01\u0e31\u0e1a \u0e42\u0e1a\u0e23\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c\u0e17\u0e35\u0e48\u0e14\u0e35\u0e01\u0e27\u0e48\u0e32 \u0e17\u0e49\u0e32\u0e22\u0e2b\u0e19\u0e49\u0e32 EA \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+   EA \u0e41\u0e15\u0e48\u0e25\u0e30\u0e15\u0e31\u0e27\u0e27\u0e31\u0e14\u0e04\u0e19\u0e25\u0e30\u0e14\u0e49\u0e32\u0e19 \u0e08\u0e36\u0e07\u0e08\u0e31\u0e14\u0e2d\u0e31\u0e19\u0e14\u0e31\u0e1a\u0e15\u0e32\u0e21\u0e14\u0e49\u0e32\u0e19\u0e17\u0e35\u0e48\u0e15\u0e31\u0e27\u0e19\u0e31\u0e49\u0e19\u0e27\u0e31\u0e14 \u0e44\u0e21\u0e48\u0e43\u0e0a\u0e48\u0e04\u0e30\u0e41\u0e19\u0e19\u0e23\u0e27\u0e21\u0e40\u0e2b\u0e21\u0e37\u0e2d\u0e19\u0e01\u0e31\u0e19\u0e2b\u0e21\u0e14 */
+var EA_DIM = ["cost", "cost", "platform", "service", "funding", "total"];
+var EA_DIMWHY = [
+  "\u0e14\u0e49\u0e32\u0e19\u0e15\u0e49\u0e19\u0e17\u0e38\u0e19 \u0e40\u0e1e\u0e23\u0e32\u0e30 EA \u0e15\u0e31\u0e27\u0e19\u0e35\u0e49\u0e27\u0e31\u0e14\u0e2a\u0e40\u0e1b\u0e23\u0e14 \u0e04\u0e2d\u0e21\u0e21\u0e34\u0e0a\u0e0a\u0e31\u0e19 \u0e41\u0e25\u0e30\u0e2a\u0e27\u0e2d\u0e1b",
+  "\u0e14\u0e49\u0e32\u0e19\u0e15\u0e49\u0e19\u0e17\u0e38\u0e19 \u0e40\u0e1e\u0e23\u0e32\u0e30 EA \u0e15\u0e31\u0e27\u0e19\u0e35\u0e49\u0e40\u0e17\u0e35\u0e22\u0e1a\u0e04\u0e48\u0e32\u0e43\u0e0a\u0e49\u0e08\u0e48\u0e32\u0e22\u0e23\u0e27\u0e21\u0e15\u0e48\u0e2d\u0e1b\u0e35",
+  "\u0e14\u0e49\u0e32\u0e19\u0e41\u0e1e\u0e25\u0e15\u0e1f\u0e2d\u0e23\u0e4c\u0e21 \u0e40\u0e1e\u0e23\u0e32\u0e30 EA \u0e15\u0e31\u0e27\u0e19\u0e35\u0e49\u0e27\u0e31\u0e14\u0e04\u0e27\u0e32\u0e21\u0e40\u0e23\u0e47\u0e27\u0e41\u0e25\u0e30\u0e04\u0e38\u0e13\u0e20\u0e32\u0e1e\u0e01\u0e32\u0e23\u0e2a\u0e48\u0e07\u0e04\u0e33\u0e2a\u0e31\u0e48\u0e07",
+  "\u0e14\u0e49\u0e32\u0e19\u0e1a\u0e23\u0e34\u0e01\u0e32\u0e23 \u0e40\u0e1e\u0e23\u0e32\u0e30 EA \u0e15\u0e31\u0e27\u0e19\u0e35\u0e49\u0e14\u0e39\u0e27\u0e48\u0e32\u0e40\u0e27\u0e25\u0e32\u0e21\u0e35\u0e1b\u0e31\u0e0d\u0e2b\u0e32\u0e41\u0e25\u0e49\u0e27\u0e42\u0e1a\u0e23\u0e01\u0e23\u0e31\u0e1a\u0e21\u0e37\u0e2d\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e44\u0e23",
+  "\u0e14\u0e49\u0e32\u0e19\u0e1d\u0e32\u0e01\u2013\u0e16\u0e2d\u0e19 \u0e40\u0e1e\u0e23\u0e32\u0e30 EA \u0e15\u0e31\u0e27\u0e19\u0e35\u0e49\u0e08\u0e31\u0e1a\u0e40\u0e27\u0e25\u0e32\u0e16\u0e2d\u0e19\u0e40\u0e07\u0e34\u0e19\u0e08\u0e23\u0e34\u0e07",
+  "\u0e04\u0e30\u0e41\u0e19\u0e19\u0e23\u0e27\u0e21\u0e17\u0e31\u0e49\u0e07\u0e2a\u0e35\u0e48\u0e14\u0e49\u0e32\u0e19 \u0e40\u0e1e\u0e23\u0e32\u0e30 EA \u0e15\u0e31\u0e27\u0e19\u0e35\u0e49\u0e23\u0e27\u0e1a\u0e2b\u0e25\u0e31\u0e01\u0e10\u0e32\u0e19\u0e17\u0e38\u0e01\u0e14\u0e49\u0e32\u0e19\u0e40\u0e02\u0e49\u0e32\u0e2a\u0e39\u0e15\u0e23"
+];
+function edDimName(k){
+  if (k === "total") { return "\u0e04\u0e30\u0e41\u0e19\u0e19\u0e23\u0e27\u0e21"; }
+  for (var i = 0; i < DIMS.length; i++) { if (DIMS[i][0] === k) { return DIMS[i][1]; } }
+  return k;
+}
+function edScore(r, k){ return k === "total" ? r.total : (r.vals[k] || 0); }
+/* \u0e23\u0e27\u0e21\u0e17\u0e38\u0e01\u0e1b\u0e23\u0e30\u0e40\u0e17\u0e28\u0e41\u0e25\u0e49\u0e27\u0e40\u0e01\u0e47\u0e1a\u0e1c\u0e25\u0e17\u0e35\u0e48\u0e14\u0e35\u0e17\u0e35\u0e48\u0e2a\u0e38\u0e14\u0e02\u0e2d\u0e07\u0e42\u0e1a\u0e23\u0e01\u0e41\u0e15\u0e48\u0e25\u0e30\u0e23\u0e32\u0e22 \u0e08\u0e30\u0e44\u0e14\u0e49\u0e44\u0e21\u0e48\u0e19\u0e31\u0e1a\u0e0b\u0e49\u0e33 */
+function edPool(dim){
+  var best = {};
+  (typeof CM_ISOS !== "undefined" ? CM_ISOS : ["AU"]).forEach(function(iso){
+    (rkRows("fx", iso, 2026) || []).forEach(function(r){
+      var v = edScore(r, dim);
+      if (!best[r.id] || v > best[r.id].v) { best[r.id] = {r: r, iso: iso, v: v}; }
+    });
+  });
+  return Object.keys(best).map(function(k){ return best[k]; })
+    .sort(function(a, b){ return b.v - a.v; });
+}
+function edBrokers(i){
+  var dim = EA_DIM[i] || "total";
+  var pool = edPool(dim);
+  if (pool.length < 2) { return ""; }
+  var top = pool[0], rest = pool.slice(1, 4);
+  var mid = pool[Math.floor(pool.length / 2)].v;
+  var m = META[top.r.id];
+  var dn = edDimName(dim);
+  return '<section class="ed-sec"><span class="cap">\u0e42\u0e1a\u0e23\u0e01\u0e17\u0e35\u0e48\u0e40\u0e01\u0e35\u0e48\u0e22\u0e27\u0e02\u0e49\u0e2d\u0e07</span>' +
+    '<h2>\u0e42\u0e1a\u0e23\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c\u0e17\u0e35\u0e48 EA \u0e15\u0e31\u0e27\u0e19\u0e35\u0e49\u0e0a\u0e35\u0e49\u0e43\u0e2b\u0e49\u0e40\u0e2b\u0e47\u0e19</h2>' +
+    '<p class="sub">\u0e08\u0e31\u0e14\u0e2d\u0e31\u0e19\u0e14\u0e31\u0e1a\u0e15\u0e32\u0e21<b>' + (EA_DIMWHY[i] || "") +
+    '</b> \u00b7 \u0e04\u0e48\u0e32\u0e01\u0e25\u0e32\u0e07\u0e02\u0e2d\u0e07\u0e2b\u0e21\u0e27\u0e14\u0e2d\u0e22\u0e39\u0e48\u0e17\u0e35\u0e48 ' + mid.toFixed(1) + '</p>' +
+    '<div class="edb-wrap">' +
+      '<div class="edb-pick"><div class="hd">\u0e42\u0e1a\u0e23\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c\u0e41\u0e19\u0e30\u0e19\u0e33</div>' +
+        '<div class="bd"><div class="edb-who">' + logoSpan(m, 48, 16) +
+          '<span><span class="nm">' + m.n + '</span>' +
+          '<span class="rg">' + m.reg + ' \u00b7 ' + CNAME[top.iso] + '</span></span></div>' +
+        '<div class="edb-st"><span class="st">' + starHTML(top.r.stars, 16) + '</span>' +
+          '<span class="sc"><b>' + top.v.toFixed(1) + '</b>/10 \u0e14\u0e49\u0e32\u0e19' + dn + '</span></div>' +
+        '<p class="edb-why">\u0e2a\u0e39\u0e07\u0e01\u0e27\u0e48\u0e32\u0e04\u0e48\u0e32\u0e01\u0e25\u0e32\u0e07\u0e02\u0e2d\u0e07\u0e2b\u0e21\u0e27\u0e14 <b>+' +
+          (top.v - mid).toFixed(1) + '</b> \u0e04\u0e30\u0e41\u0e19\u0e19 \u00b7 ' +
+          '\u0e04\u0e30\u0e41\u0e19\u0e19\u0e23\u0e27\u0e21 <b>' + top.r.total.toFixed(1) + '</b>/10</p>' +
+        '<a class="edb-go" href="/broker/' + m.slug + '/review" data-review="' + m.slug + '">' +
+          '\u0e2d\u0e48\u0e32\u0e19\u0e23\u0e35\u0e27\u0e34\u0e27\u0e42\u0e1a\u0e23\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c\u0e19\u0e35\u0e49' +
+          '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+          'stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+          '<path d="M5 12h13M13 6l6 6-6 6"></path></svg></a></div></div>' +
+      '<div class="edb-list"><div class="hd">\u0e42\u0e1a\u0e23\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c\u0e17\u0e35\u0e48\u0e14\u0e35\u0e01\u0e27\u0e48\u0e32' +
+        '<span>\u0e23\u0e2d\u0e07\u0e08\u0e32\u0e01\u0e2d\u0e31\u0e19\u0e14\u0e31\u0e1a 1 \u0e14\u0e49\u0e32\u0e19' + dn + '</span></div>' +
+        rest.map(function(x, k){
+          var mm = META[x.r.id];
+          return '<div class="edb-r">' + logoSpan(mm, 34, 12) +
+            '<span><span class="nm">' + mm.n + '</span>' +
+            '<span class="rg">' + mm.reg + ' \u00b7 ' + CNAME[x.iso] + '</span></span>' +
+            '<span class="edb-bar"><s><i style="width:' + (x.v * 10).toFixed(0) + '%"></i></s>' +
+            '<em>' + x.v.toFixed(1) + '</em></span>' +
+            '<a class="edb-rv" href="/broker/' + mm.slug + '/review" data-review="' + mm.slug + '">' +
+            '\u0e2d\u0e48\u0e32\u0e19\u0e23\u0e35\u0e27\u0e34\u0e27 \u2192</a></div>';
+        }).join("") + '</div></div>' +
+    '<p class="art-note" style="margin-top:16px">\u0e08\u0e31\u0e14\u0e08\u0e32\u0e01\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19\u0e2b\u0e21\u0e27\u0e14 Forex / CFD \u0e1c\u0e25\u0e15\u0e23\u0e27\u0e08\u0e1b\u0e35 2026 ' +
+    '\u0e40\u0e01\u0e47\u0e1a\u0e1c\u0e25\u0e17\u0e35\u0e48\u0e14\u0e35\u0e17\u0e35\u0e48\u0e2a\u0e38\u0e14\u0e02\u0e2d\u0e07\u0e41\u0e15\u0e48\u0e25\u0e30\u0e23\u0e32\u0e22 \u0e44\u0e21\u0e48\u0e19\u0e31\u0e1a\u0e0b\u0e49\u0e33 \u00b7 ' +
+    '<b>\u0e04\u0e30\u0e41\u0e19\u0e19\u0e43\u0e19\u0e15\u0e49\u0e19\u0e41\u0e1a\u0e1a\u0e40\u0e1b\u0e47\u0e19\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e2a\u0e21\u0e21\u0e15\u0e34</b> \u00b7 ' +
+    '<b>\u0e01\u0e32\u0e23\u0e41\u0e19\u0e30\u0e19\u0e33\u0e19\u0e35\u0e49\u0e44\u0e21\u0e48\u0e21\u0e35\u0e04\u0e48\u0e32\u0e15\u0e2d\u0e1a\u0e41\u0e17\u0e19\u0e08\u0e32\u0e01\u0e42\u0e1a\u0e23\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c\u0e43\u0e14</b></p></section>';
+}
+
 function edRevStats(i){
   var e = EA_LIST[i], k = e.n;
   /* \u0e17\u0e38\u0e01\u0e04\u0e48\u0e32\u0e1c\u0e39\u0e01\u0e01\u0e31\u0e1a\u0e0a\u0e37\u0e48\u0e2d EA \u0e08\u0e36\u0e07\u0e04\u0e07\u0e17\u0e35\u0e48 \u0e44\u0e21\u0e48\u0e2a\u0e38\u0e48\u0e21\u0e43\u0e2b\u0e21\u0e48\u0e17\u0e38\u0e01\u0e04\u0e23\u0e31\u0e49\u0e07\u0e17\u0e35\u0e48\u0e40\u0e1b\u0e34\u0e14\u0e2b\u0e19\u0e49\u0e32 */
@@ -9985,7 +10133,7 @@ function edRender(){
         '<p style="margin:16px 0 0;padding-top:14px;border-top:1px solid #F0F2F5;' +
         'font-size:12.5px;line-height:1.75;color:#667085"><b style="color:#101828">\u0e2a\u0e34\u0e48\u0e07\u0e17\u0e35\u0e48\u0e15\u0e49\u0e2d\u0e07\u0e21\u0e35</b> \u2014 ' +
         EA_REQ.join(" \u00b7 ") + '</p></div></section>' +
-      edReviews(edIdx);
+      edBrokers(edIdx) + edReviews(edIdx);
   }
 
   var nav = document.getElementById("ed-nav");
@@ -10002,6 +10150,7 @@ function edRender(){
         : '<a class="rs-nb next" href="#/analytics" data-nav="analytics"><span>\u0e04\u0e23\u0e1a\u0e41\u0e25\u0e49\u0e27</span>' +
           '<b>\u0e01\u0e25\u0e31\u0e1a\u0e2b\u0e19\u0e49\u0e32 Trade Analytics</b><em>\u0e14\u0e39 EA \u0e17\u0e31\u0e49\u0e07 6 \u0e15\u0e31\u0e27</em></a>');
   }
+  if (typeof paintLogos === "function") { paintLogos(); }
   eaStart(edIdx);
 }
 document.addEventListener("click", function(ev){
