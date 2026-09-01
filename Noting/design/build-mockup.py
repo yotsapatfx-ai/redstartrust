@@ -605,28 +605,21 @@ HEAD = """<title>RedStarTrust Homepage</title>
   .aw-hchart .area-fill { opacity: 0; animation: awChartFade 1.4s ease-out .3s forwards; }
   .aw-hchart .line-path { stroke-dasharray: 900; stroke-dashoffset: 900;
     animation: awChartDraw 2.1s cubic-bezier(.25,.8,.3,1) .15s forwards; }
-  .aw-hchart .node { opacity: 0; transform-origin: center; animation: awChartPop .5s ease-out forwards; }
-  .aw-hchart .node.n1 { animation-delay: .6s; }
-  .aw-hchart .node.n2 { animation-delay: 1.0s; }
-  .aw-hchart .node.n3 { animation-delay: 1.4s; }
-  .aw-hchart .node.n4 { animation-delay: 1.85s; }
+  .aw-hchart .node { transform-origin: center; }
   .aw-hchart .pulse { animation: awChartPulse 2.6s ease-out infinite; }
   .aw-hchart .pulse.p2 { animation-delay: .7s; }
   .aw-hchart .pulse.p3 { animation-delay: 1.4s; }
   .aw-hchart .pulse.p4 { animation-delay: 2.1s; }
-  .aw-hchart .cap-tag { opacity: 0; animation: awChartFade .6s ease-out 2.1s forwards; }
   @keyframes awChartDraw { to { stroke-dashoffset: 0; } }
   @keyframes awChartFade { to { opacity: 1; } }
-  @keyframes awChartPop { from { opacity: 0; transform: scale(0); } to { opacity: 1; transform: scale(1); } }
   @keyframes awChartPulse {
     0% { r: 4; opacity: 0.55; }
     75% { r: 20; opacity: 0; }
     100% { r: 20; opacity: 0; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .aw-hchart .area-fill, .aw-hchart .cap-tag { opacity: 1; animation: none; }
+    .aw-hchart .area-fill { opacity: 1; animation: none; }
     .aw-hchart .line-path { stroke-dashoffset: 0; animation: none; }
-    .aw-hchart .node { opacity: 1; animation: none; }
     .aw-hchart .pulse { animation: none; opacity: 0; }
   }
   .aw-hin { position: relative; width: 1200px; margin: 0 auto; }
@@ -2427,11 +2420,14 @@ HEAD = """<title>RedStarTrust Homepage</title>
   .rk-sub { font-family: 'IBM Plex Sans', sans-serif; font-size: 14.5px; font-variant-numeric: tabular-nums; color: #475467; }
   .rk-sub.best { color: #B42318; font-weight: 600; }
   .rk-cta {
-    display: inline-block; font-size: 13.5px; font-weight: 600; color: #D92D20;
-    border: 1px solid #FECDCA; background: #FFFFFF; border-radius: 8px; padding: 7px 14px;
-    white-space: nowrap; cursor: pointer; transition: background .15s, border-color .15s;
+    display: inline-flex; align-items: center; gap: 6px; font-size: 13.5px; font-weight: 600;
+    color: #FFFFFF; border: 1px solid #D92D20; background: #D92D20; border-radius: 9px;
+    padding: 9px 16px; white-space: nowrap; cursor: pointer;
+    box-shadow: 0 1px 2px rgba(16,24,40,0.06);
+    transition: background .15s, border-color .15s, transform .15s;
   }
-  .rk-cta:hover { background: #FEF3F2; border-color: #D92D20; }
+  .rk-cta:hover { background: #B42318; border-color: #B42318; transform: translateY(-1px); }
+  .rk-cta:focus-visible { outline: 2px solid #D92D20; outline-offset: 2px; }
   .rk-note { font-size: 12.5px; color: #667085; margin: 14px 0 0; line-height: 1.7; }
 
   /* ── เทียบตัวต่อตัว ── */
@@ -2557,7 +2553,10 @@ HEAD = """<title>RedStarTrust Homepage</title>
 
   .m5-row.hd { border-bottom: 1px solid #EAECF0; }
   .m5-row.hd > div { padding: 0; }
-  .m5-hc { position: relative; padding: 30px 16px 15px; height: 100%; background: #FFFFFF; }
+  /* ต้องเจาะจงกว่า .m5-row.hd > div ไม่งั้น padding โดนล้างเป็น 0
+     แล้วแถบ "ดีที่สุดรวม" จะไปทับชื่อโบรก (บั๊กนี้เคยเกิดมาแล้วครั้งหนึ่ง) */
+  .m5-row.hd > .m5-hc { position: relative; padding: 30px 16px 15px; height: 100%;
+    background: #FFFFFF; }
   .m5-hc.win { background: #FEF9F8; }
   .m5-hc .rib { position: absolute; left: 0; right: 0; top: 0; padding: 4px 0;
     text-align: center; background: #F2F4F7; color: #475467; font-size: 9.5px;
@@ -2657,10 +2656,19 @@ HEAD = """<title>RedStarTrust Homepage</title>
 
 
   /* ── กราฟเส้นย่อในช่องตาราง ── */
-  .mcell { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; }
-  .mcell .mval { font-family: 'IBM Plex Sans', sans-serif; font-size: 15px; font-weight: 600;
-    font-variant-numeric: tabular-nums; color: #101828; line-height: 1; }
-  .mcell .mtrend { font-size: 11px; font-weight: 500; letter-spacing: 0; white-space: nowrap; }
+  .mcell { display: flex; flex-direction: column; align-items: stretch; gap: 5px;
+    min-width: 92px; }
+  .mcell .top { display: flex; align-items: baseline; justify-content: flex-end; gap: 5px; }
+  .mcell .mval { font-family: 'IBM Plex Sans', sans-serif; font-size: 16px; font-weight: 700;
+    font-variant-numeric: tabular-nums; letter-spacing: -0.02em; color: #101828; line-height: 1; }
+  .mcell .tr { height: 7px; border-radius: 4px; background: #F2F4F7; overflow: hidden;
+    width: 100%; min-width: 72px; }
+  .mcell .tr i { display: block; height: 100%; border-radius: 4px; background: #D92D20; }
+  .mcell .unit { font-size: 10.5px; color: #667085; }
+  .mcell.nobar { gap: 7px; min-width: 78px; }
+  .mcell .mtrend { font-family: 'IBM Plex Sans', sans-serif; font-size: 10.5px;
+    font-weight: 600; font-variant-numeric: tabular-nums; letter-spacing: 0;
+    white-space: nowrap; text-align: right; }
   .mcell .mtrend.down { color: #067647; }
   .mcell .mtrend.up { color: #B42318; }
   .mcell .mtrend.flat { color: #667085; }
@@ -2668,6 +2676,37 @@ HEAD = """<title>RedStarTrust Homepage</title>
 
 
   /* ── ช่องกราฟย่อแบบกะทัดรัด สำหรับคะแนนรายด้าน ── */
+  /* \u2500 \u0e04\u0e30\u0e41\u0e19\u0e19 4 \u0e14\u0e49\u0e32\u0e19\u0e23\u0e27\u0e21\u0e43\u0e19\u0e0a\u0e48\u0e2d\u0e07\u0e40\u0e14\u0e35\u0e22\u0e27 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */
+  /* \u0e2a\u0e32\u0e21\u0e40\u0e2b\u0e25\u0e35\u0e48\u0e22\u0e21\u0e14\u0e35\u0e02\u0e36\u0e49\u0e19/\u0e41\u0e22\u0e48\u0e25\u0e07 \u2014 \u0e43\u0e0a\u0e49\u0e0a\u0e38\u0e14\u0e40\u0e14\u0e35\u0e22\u0e27\u0e17\u0e31\u0e49\u0e07\u0e15\u0e32\u0e23\u0e32\u0e07 */
+  .dt { display: inline-flex; align-items: center; gap: 4px;
+    font-family: 'IBM Plex Sans', sans-serif; font-size: 11px; font-weight: 600;
+    font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .dt svg { display: block; flex-shrink: 0; }
+  .dt.down { color: #067647; }
+  .dt.down svg { fill: #067647; }
+  .dt.up { color: #B42318; }
+  .dt.up svg { fill: #B42318; }
+  .dt.flat { color: #667085; }
+  .dt em { font-style: normal; font-weight: 500; font-size: 10px; color: #667085;
+    margin-left: 3px; }
+
+  .dquad { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; text-align: left; }
+  .dq { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .dq .lb { display: flex; align-items: baseline; gap: 8px; }
+  .dq .lb span { font-size: 12px; color: #475467; white-space: nowrap;
+    overflow: hidden; text-overflow: ellipsis; }
+  .dq .lb b { margin-left: auto; font-family: 'IBM Plex Sans', sans-serif; font-size: 15px;
+    font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: -0.02em;
+    color: #101828; }
+  .dq.best .lb b { color: #B42318; }
+  .dq .tr { height: 6px; border-radius: 3px; background: #F2F4F7; overflow: hidden; }
+  .dq .tr i { display: block; height: 100%; border-radius: 3px; background: #D92D20; }
+  .dq .d { font-family: 'IBM Plex Sans', sans-serif; font-size: 10.5px; font-weight: 600;
+    font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+  .dq .d.down { color: #067647; }
+  .dq .d.up { color: #B42318; }
+  .dq .d.flat { color: #667085; }
+
   .mini { display: flex; flex-direction: column; align-items: stretch; gap: 5px; min-width: 76px; }
   .mini .top { display: flex; align-items: baseline; justify-content: flex-end; }
   .mini .v { font-family: 'IBM Plex Sans', sans-serif; font-size: 16px; font-weight: 700;
@@ -4082,6 +4121,43 @@ function dimSeries(cat, iso, id, dim, now){
     return Math.round(Math.max(6.0, Math.min(10, v)) * 10) / 10;
   });
 }
+/* \u0e04\u0e30\u0e41\u0e19\u0e19\u0e2a\u0e35\u0e48\u0e14\u0e49\u0e32\u0e19\u0e23\u0e27\u0e21\u0e43\u0e19\u0e0a\u0e48\u0e2d\u0e07\u0e40\u0e14\u0e35\u0e22\u0e27 \u0e08\u0e31\u0e14\u0e40\u0e1b\u0e47\u0e19 2x2 \u0e15\u0e32\u0e21\u0e17\u0e35\u0e48 Boss \u0e43\u0e2b\u0e49\u0e15\u0e31\u0e27\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e21\u0e32 */
+/* \u0e14\u0e35\u0e02\u0e36\u0e49\u0e19 = \u0e2a\u0e32\u0e21\u0e40\u0e2b\u0e25\u0e35\u0e48\u0e22\u0e21\u0e40\u0e02\u0e35\u0e22\u0e27\u0e2b\u0e31\u0e19\u0e02\u0e36\u0e49\u0e19 \xb7 \u0e41\u0e22\u0e48\u0e25\u0e07 = \u0e2a\u0e32\u0e21\u0e40\u0e2b\u0e25\u0e35\u0e48\u0e22\u0e21\u0e41\u0e14\u0e07\u0e2b\u0e31\u0e19\u0e25\u0e07
+   \u0e15\u0e31\u0e27\u0e40\u0e25\u0e02\u0e2a\u0e48\u0e27\u0e19\u0e15\u0e48\u0e32\u0e07\u0e22\u0e31\u0e07\u0e2d\u0e22\u0e39\u0e48 \u0e2a\u0e48\u0e27\u0e19\u0e04\u0e33\u0e40\u0e15\u0e47\u0e21\u0e22\u0e49\u0e32\u0e22\u0e44\u0e1b\u0e2d\u0e22\u0e39\u0e48\u0e43\u0e19 title \u0e01\u0e31\u0e1a aria-label */
+function shortUnit(u){
+  if (!u) { return ""; }
+  return String(u).split(" ")[0];
+}
+function deltaMark(cls, num, dp, unit){
+  var uu = shortUnit(unit);
+  if (cls === "flat") {
+    return '<span class="dt flat" title="\u0e40\u0e17\u0e48\u0e32\u0e40\u0e14\u0e34\u0e21">\u2014</span>';
+  }
+  var up = cls === "down";
+  var word = (up ? "\u0e14\u0e35\u0e02\u0e36\u0e49\u0e19 " : "\u0e41\u0e22\u0e48\u0e25\u0e07 ") + Math.abs(num).toFixed(dp) +
+    (uu ? " " + uu : "");
+  return '<span class="dt ' + cls + '" title="' + word + '" aria-label="' + word + '">' +
+    '<svg width="9" height="8" viewBox="0 0 10 9" aria-hidden="true">' +
+    '<path d="' + (up ? "M5 0l5 9H0z" : "M5 9L0 0h10z") + '"/></svg>' +
+    Math.abs(num).toFixed(dp) + (uu ? '<em>' + uu + '</em>' : "") + '</span>';
+}
+
+function dimQuad(r, best){
+  return '<div class="dquad">' + DIMS.map(function(d){
+    var ser = r.dimSer[d[0]], last = r.vals[d[0]];
+    var first = ser[0], gain = last - first;
+    var cls = gain > 0.05 ? "down" : (gain < -0.05 ? "up" : "flat");
+    /* \u0e44\u0e21\u0e48\u0e15\u0e49\u0e2d\u0e07\u0e43\u0e2a\u0e48\u0e2b\u0e19\u0e48\u0e27\u0e22 "\u0e04\u0e30\u0e41\u0e19\u0e19" \u0e43\u0e19\u0e0a\u0e48\u0e2d\u0e07\u0e19\u0e35\u0e49 \u0e40\u0e1e\u0e23\u0e32\u0e30\u0e2b\u0e31\u0e27\u0e04\u0e2d\u0e25\u0e31\u0e21\u0e19\u0e4c\u0e1a\u0e2d\u0e01\u0e27\u0e48\u0e32\u0e04\u0e30\u0e41\u0e19\u0e19 4 \u0e14\u0e49\u0e32\u0e19\u0e2d\u0e22\u0e39\u0e48\u0e41\u0e25\u0e49\u0e27 */
+    var txt = deltaMark(cls, gain, 1);
+    /* \u0e2b\u0e25\u0e2d\u0e14\u0e27\u0e31\u0e14\u0e08\u0e32\u0e01\u0e0a\u0e48\u0e27\u0e07 6-10 \u0e17\u0e35\u0e48\u0e04\u0e30\u0e41\u0e19\u0e19\u0e23\u0e32\u0e22\u0e14\u0e49\u0e32\u0e19\u0e43\u0e0a\u0e49\u0e08\u0e23\u0e34\u0e07 */
+    var pct = Math.max(6, Math.min(100, ((last - 6) / 4) * 100));
+    return '<div class="dq' + (last === best[d[0]] ? " best" : "") + '">' +
+      '<span class="lb"><span>' + d[1] + '</span><b>' + last.toFixed(1) + '</b></span>' +
+      '<span class="tr"><i style="width:' + pct.toFixed(0) + '%"></i></span>' +
+      '<span class="d">' + txt + '</span></div>';
+  }).join("") + '</div>';
+}
+
 function trendCell(series, opts){
   if (series.length < 2) { series = [series[0], series[0]]; }
   var dp = opts.dp === undefined ? 2 : opts.dp;
@@ -4089,16 +4165,29 @@ function trendCell(series, opts){
   var gain = opts.lowerBetter ? (first - last) : (last - first);
   var eps = Math.pow(10, -dp) / 2;
   var cls = gain > eps ? "down" : (gain < -eps ? "up" : "flat");
-  var word = cls === "down" ? "ดีขึ้น " + gain.toFixed(dp)
-           : cls === "up"   ? "แย่ลง " + Math.abs(gain).toFixed(dp)
-           : "เท่าเดิม";
-  var label = opts.name + " ปี 2026 เท่ากับ " + last.toFixed(dp) + (opts.unit ? " " + opts.unit : "") +
-              " · ย้อนหลังสามปี " + series.map(function(v){ return v.toFixed(dp); }).join(" ") +
-              " · " + word;
-  return '<div class="mcell" role="img" aria-label="' + label + '">' +
-    '<span class="top"><span class="mval">' + last.toFixed(dp) + '</span>' +
-    '<span class="mtrend ' + cls + '">' + word + '</span></span>' +
-    sparkLine(series, 58, 16) + '</div>';
+  var word = cls === "down" ? "\u0e14\u0e35\u0e02\u0e36\u0e49\u0e19 " + gain.toFixed(dp)
+           : cls === "up"   ? "\u0e41\u0e22\u0e48\u0e25\u0e07 " + Math.abs(gain).toFixed(dp)
+           : "\u0e40\u0e17\u0e48\u0e32\u0e40\u0e14\u0e34\u0e21";
+  var mark = deltaMark(cls, gain, dp, opts.unit || "\u0e04\u0e30\u0e41\u0e19\u0e19");
+  /* \u0e2b\u0e25\u0e2d\u0e14\u0e22\u0e32\u0e27 = \u0e14\u0e35 \u0e40\u0e2a\u0e21\u0e2d \xb7 \u0e04\u0e2d\u0e25\u0e31\u0e21\u0e19\u0e4c\u0e17\u0e35\u0e48\u0e22\u0e34\u0e48\u0e07\u0e19\u0e49\u0e2d\u0e22\u0e22\u0e34\u0e48\u0e07\u0e14\u0e35\u0e15\u0e49\u0e2d\u0e07\u0e01\u0e25\u0e31\u0e1a\u0e14\u0e49\u0e32\u0e19
+     \u0e44\u0e21\u0e48\u0e07\u0e31\u0e49\u0e19\u0e42\u0e1a\u0e23\u0e01\u0e17\u0e35\u0e48\u0e41\u0e1e\u0e07\u0e17\u0e35\u0e48\u0e2a\u0e38\u0e14\u0e08\u0e30\u0e44\u0e14\u0e49\u0e2b\u0e25\u0e2d\u0e14\u0e22\u0e32\u0e27\u0e17\u0e35\u0e48\u0e2a\u0e38\u0e14 \u0e0b\u0e36\u0e48\u0e07\u0e2d\u0e48\u0e32\u0e19\u0e1c\u0e34\u0e14\u0e04\u0e27\u0e32\u0e21\u0e2b\u0e21\u0e32\u0e22 */
+  var lo = opts.lo, hi = opts.hi, pct = 100;
+  if (lo !== undefined && hi !== undefined && hi > lo) {
+    var t = (last - lo) / (hi - lo);
+    if (opts.lowerBetter) { t = 1 - t; }
+    pct = 12 + t * 88;
+  }
+  var label = opts.name + " \u0e1b\u0e35 2026 \u0e40\u0e17\u0e48\u0e32\u0e01\u0e31\u0e1a " + last.toFixed(dp) +
+              (opts.unit ? " " + opts.unit : "") +
+              " \u00b7 \u0e22\u0e49\u0e2d\u0e19\u0e2b\u0e25\u0e31\u0e07\u0e2a\u0e32\u0e21\u0e1b\u0e35 " + series.map(function(v){ return v.toFixed(dp); }).join(" ") +
+              " \u00b7 " + word;
+  return '<div class="mcell' + (opts.bar === false ? " nobar" : "") + '" role="img" ' +
+    'aria-label="' + label + '">' +
+    '<span class="top"><span class="mval">' + last.toFixed(dp) + '</span></span>' +
+    (opts.bar === false ? "" :
+      '<span class="tr"><i style="width:' + pct.toFixed(0) + '%"></i></span>') +
+    '<span class="mtrend">' + mark + '</span></div>';
+
 }
 /* \u2500\u2500 \u0e01\u0e32\u0e23\u0e02\u0e22\u0e31\u0e1a\u0e2d\u0e31\u0e19\u0e14\u0e31\u0e1a: \u0e40\u0e17\u0e35\u0e22\u0e1a\u0e25\u0e33\u0e14\u0e31\u0e1a\u0e1b\u0e35\u0e17\u0e35\u0e48\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e01\u0e31\u0e1a\u0e1b\u0e35\u0e01\u0e48\u0e2d\u0e19\u0e2b\u0e19\u0e49\u0e32 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
    \u0e17\u0e38\u0e01\u0e04\u0e48\u0e32\u0e04\u0e33\u0e19\u0e27\u0e13\u0e08\u0e32\u0e01\u0e0a\u0e38\u0e14\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e40\u0e14\u0e35\u0e22\u0e27\u0e01\u0e31\u0e1a\u0e15\u0e32\u0e23\u0e32\u0e07 \u0e44\u0e21\u0e48\u0e44\u0e14\u0e49\u0e41\u0e15\u0e48\u0e07\u0e15\u0e31\u0e27\u0e40\u0e25\u0e02\u0e43\u0e2b\u0e21\u0e48           */
@@ -4237,6 +4326,14 @@ function rkRender(){
       'ไม่พบ &ldquo;' + rkQ.trim() + '&rdquo; ในหมวด' + c.n + ' ของ' + CNAME[rkIso] +
       ' — ลองเปลี่ยนหมวดหรือประเทศ</td></tr>';
   } else {
+  /* \u0e0a\u0e48\u0e27\u0e07\u0e15\u0e48\u0e33\u0e2a\u0e38\u0e14-\u0e2a\u0e39\u0e07\u0e2a\u0e38\u0e14\u0e02\u0e2d\u0e07\u0e41\u0e15\u0e48\u0e25\u0e30\u0e04\u0e2d\u0e25\u0e31\u0e21\u0e19\u0e4c\u0e43\u0e19\u0e15\u0e32\u0e23\u0e32\u0e07\u0e17\u0e35\u0e48\u0e01\u0e33\u0e25\u0e31\u0e07\u0e41\u0e2a\u0e14\u0e07 \u0e43\u0e0a\u0e49\u0e01\u0e33\u0e2b\u0e19\u0e14\u0e04\u0e27\u0e32\u0e21\u0e22\u0e32\u0e27\u0e2b\u0e25\u0e2d\u0e14 */
+  function rng(pick){
+    var v = shown.map(pick);
+    return {lo: Math.min.apply(null, v), hi: Math.max.apply(null, v)};
+  }
+  var gSco = rng(function(r){ return r.total; });
+  var gMet = rng(function(r){ return r.metric; });
+  var gCost = rng(function(r){ return r.costSeries[r.costSeries.length - 1]; });
   document.getElementById("rk-body").innerHTML = shown.map(function(r, i){
     var m = META[r.id];
     var rk = rows.indexOf(r) + 1;
@@ -4249,13 +4346,10 @@ function rkRender(){
       '<td><div class="rk-name">' + logoSpan(m, 34, 12) +
         '<span class="t"><b>' + m.n + '</b><span>' + m.reg + '</span></span></div></td>' +
       '<td><div class="rk-stars">' + starHTML(r.stars, 15) + '</div></td>' +
-      '<td class="num">' + trendCell(r.scoreSeries, {name:"คะแนนรวม", dp:1}) + '</td>' +
-      '<td class="num">' + trendCell(r.series, {name:c.metric, unit:c.unit, lowerBetter:true, dp:2}) + '</td>' +
-      '<td class="num">' + trendCell(r.costSeries, {name:"ต้นทุนรวม", unit:c.costUnit, lowerBetter:true, dp:2}) + '</td>' +
-      DIMS.map(function(d){
-        var v = r.vals[d[0]];
-        return '<td class="num">' + miniCell(r.dimSer[d[0]], {name:d[1], dp:1, best:(v === best[d[0]])}) + '</td>';
-      }).join("") +
+      '<td class="num">' + trendCell(r.scoreSeries, {name:"คะแนนรวม", dp:1, lo:gSco.lo, hi:gSco.hi}) + '</td>' +
+      '<td class="num">' + trendCell(r.series, {name:c.metric, unit:c.unit, lowerBetter:true, dp:2, bar:false}) + '</td>' +
+      '<td class="num">' + trendCell(r.costSeries, {name:"ต้นทุนรวม", unit:c.costUnit, lowerBetter:true, dp:2, bar:false}) + '</td>' +
+      '<td class="num">' + dimQuad(r, best) + '</td>' +
       '<td class="rk-sticky"><span class="rk-cta" data-review="' + m.slug + '" tabindex="0" role="button">อ่านรีวิว &rarr;</span></td>' +
     '</tr>';
   }).join("");
@@ -7930,17 +8024,15 @@ function awHeroChart(){
     var y = gy * (H / 4);
     grid += '<line class="grid-ln" x1="0" y1="' + y + '" x2="' + W + '" y2="' + y + '"/>';
   }
-  var nodeClasses = ["n1", "n2", "n3", "n4"];
   var nodePts = [pts[1], pts[3], pts[4], pts[5]];
   var nodes = "";
   for (var k = 0; k < nodePts.length; k++) {
-    var p = nodePts[k], cls = nodeClasses[k];
+    var p = nodePts[k];
+    var starSz = k === nodePts.length - 1 ? 40 : 30;
     nodes += '<circle class="pulse ' + (k === 0 ? "" : "p" + (k + 1)) + '" cx="' + p[0] + '" cy="' + p[1] +
       '" r="4" fill="none" stroke="#D92D20" stroke-width="1.6"/>' +
-      '<circle class="node ' + cls + '" cx="' + p[0] + '" cy="' + p[1] + '" r="' + (k === nodePts.length - 1 ? 6 : 4) +
-      '" fill="' + (k === nodePts.length - 1 ? "#F5C453" : "#D92D20") + '" stroke="#0A0A0A" stroke-width="2"/>';
+      '<g class="node">' + awBadgeStar(p[0] - starSz / 2, p[1] - starSz / 2, starSz) + '</g>';
   }
-  var peak = pts[pts.length - 1];
   return '<svg class="aw-hchart" viewBox="0 0 ' + W + ' ' + H + '" fill="none" aria-hidden="true" focusable="false">' +
     '<defs><linearGradient id="awhcGrad" x1="0" y1="0" x2="0" y2="1">' +
       '<stop offset="0%" stop-color="#D92D20" stop-opacity="0.32"/>' +
@@ -7949,14 +8041,10 @@ function awHeroChart(){
       '<stop offset="0%" stop-color="#8A1B12"/><stop offset="55%" stop-color="#D92D20"/>' +
       '<stop offset="100%" stop-color="#F5C453"/></linearGradient></defs>' +
     dots + grid +
+    nodes +
     '<path class="area-fill" d="' + area + '" fill="url(#awhcGrad)"/>' +
     '<path class="line-path" d="' + line + '" stroke="url(#awhcLine)" stroke-width="3.4" ' +
       'stroke-linecap="round" stroke-linejoin="round"/>' +
-    nodes +
-    '<g class="cap-tag"><rect x="' + (peak[0] - 78) + '" y="' + (peak[1] - 40) + '" width="130" height="30" rx="8" ' +
-      'fill="#FFFFFF"/><circle cx="' + (peak[0] - 61) + '" cy="' + (peak[1] - 25) + '" r="3" fill="#067647"/>' +
-      '<text x="' + (peak[0] - 50) + '" y="' + (peak[1] - 20) + '" text-anchor="start" ' +
-      'font-family="Inter,sans-serif" font-size="12.5" font-weight="700" fill="#0A0A0A">\u0e40\u0e01\u0e13\u0e11\u0e4c\u0e40\u0e14\u0e35\u0e22\u0e27\u0e01\u0e31\u0e19\u0e17\u0e38\u0e01\u0e42\u0e1a\u0e23\u0e01</text></g>' +
     '</svg>';
 }
 
