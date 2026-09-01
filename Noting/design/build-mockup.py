@@ -3494,7 +3494,7 @@ function mountLogo(el,slug,mono){
   var old=el.querySelector("img");if(old){old.parentNode.removeChild(old);}
   var img=new Image();
   img.alt="";
-  img.onload=function(){sp.style.display="none";el.style.background="#fff";var inner=Math.max(16,el.clientWidth-6);var w=Math.min(img.naturalWidth||inner,inner);img.style.width=w+"px";img.style.height="auto";img.style.left="50%";img.style.top="50%";img.style.transform="translate(-50%,-50%)";img.style.padding="0";el.appendChild(img);};
+  img.onload=function(){sp.style.display="none";el.style.background="#fff";var declared=parseInt(el.style.width,10);var inner=Math.max(16,(declared||el.clientWidth)-6);img.style.width=inner+"px";img.style.height="auto";img.style.left="50%";img.style.top="50%";img.style.transform="translate(-50%,-50%)";img.style.padding="0";el.appendChild(img);};
   img.src=(typeof LOGO_DATA!=="undefined"&&LOGO_DATA[slug])||("logos/"+slug+".svg");
 }
 function paintLogos(){
@@ -8098,7 +8098,7 @@ var VF_TL = [
   var B = AW_WIN[0].b;
   h.className = "ba-hero";
   h.innerHTML =
-    '<div><div class="ba-id">' + awLogo(B, 96, 20) +
+    '<div><div class="ba-id">' + awLogo(B, 120, 24) +
       '<span><h2>' + awName(B) + '</h2><span>' + awReg(B) +
       ' \u00b7 \u0e2d\u0e22\u0e39\u0e48\u0e43\u0e19\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19 RedStarTrust \u0e15\u0e31\u0e49\u0e07\u0e41\u0e15\u0e48\u0e44\u0e15\u0e23\u0e21\u0e32\u0e2a Q1 2024</span></span></div>' +
       '<div class="ba-st"><div><b>9</b><span>\u0e44\u0e15\u0e23\u0e21\u0e32\u0e2a\u0e17\u0e35\u0e48\u0e44\u0e14\u0e49 3 \u0e14\u0e32\u0e27</span></div>' +
