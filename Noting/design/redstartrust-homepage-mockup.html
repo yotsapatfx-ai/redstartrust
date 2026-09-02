@@ -3876,6 +3876,217 @@
     border-radius: 6px;
     white-space: nowrap;
   }
+
+  /* REDESIGN-HOME-V2 — structural pass after design review. */
+  .frame:has(.page[data-page="home"]:not([hidden])) .hero-dark {
+    padding-bottom: 76px !important;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .hero-dark::after {
+    display: none;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] {
+    width: 1200px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) minmax(340px, .75fr);
+    grid-template-areas:
+      "kicker evidence"
+      "title evidence"
+      "lede evidence"
+      "search evidence";
+    column-gap: 86px;
+    align-items: start;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"]::before {
+    grid-area: kicker;
+    align-self: end;
+    margin: 0 0 22px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] .hd-h1 {
+    grid-area: title;
+    max-width: 10ch;
+    margin: 0 0 24px;
+    font-size: 78px;
+    line-height: .98;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] .hd-sub {
+    grid-area: lede;
+    width: auto;
+    max-width: 590px;
+    margin: 0 0 32px;
+    font-size: 19px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] .mh-search {
+    grid-area: search;
+    width: 100%;
+    max-width: 650px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] .hd-stats {
+    grid-area: evidence;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-content: start;
+    gap: 0;
+    min-height: 410px;
+    margin: 0;
+    padding: 32px;
+    border: 0;
+    border-radius: 3px;
+    background: var(--rst-red);
+    box-shadow: 24px 24px 0 var(--rst-red-wash);
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] .hd-stats::before {
+    content: "AUDIT REGISTER  /  LIVE SCOPE";
+    grid-column: 1 / -1;
+    align-self: start;
+    padding-bottom: 24px;
+    color: var(--rst-paper-raised);
+    font: 600 10px/1.2 var(--rst-display);
+    letter-spacing: .16em;
+    opacity: .76;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] .hd-stats > div {
+    display: flex;
+    min-width: 0;
+    padding: 24px 14px 22px 0;
+    border-top: 1px solid rgba(255,255,255,.24);
+    color: var(--rst-paper-raised) !important;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] .hd-stats > div:nth-of-type(even) {
+    padding-left: 22px;
+    border-left: 1px solid rgba(255,255,255,.24);
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] .hd-stats b {
+    order: -1;
+    color: var(--rst-paper-raised) !important;
+    font-family: var(--rst-display) !important;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -.05em;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] .hd-stats svg {
+    display: none;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] .hd-stats .hd-fine {
+    grid-column: 1 / -1;
+    align-self: end;
+    min-height: 0;
+    margin: 0;
+    padding: 18px 0 0;
+    border: 0;
+    color: var(--rst-paper-raised) !important;
+    font-size: 10px;
+    line-height: 1.55;
+    opacity: .72;
+  }
+
+  /* Recompose the homepage: awards first, recognition second, exploration third. */
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-page="home"] {
+    display: flex;
+    flex-direction: column;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) #picks { order: 1; }
+  .frame:has(.page[data-page="home"]:not([hidden])) #hof-home { order: 2; }
+  .frame:has(.page[data-page="home"]:not([hidden])) .scroll-cue { order: 3; }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-page="home"] > div:nth-of-type(4) { order: 4; }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-page="home"] > [data-slot="vol"] { order: 5; }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-page="home"] > [data-slot="rank"] { order: 6; }
+  .frame:has(.page[data-page="home"]:not([hidden])) #art-home { order: 7; }
+  .frame:has(.page[data-page="home"]:not([hidden])) #picks {
+    padding-top: 78px !important;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) #hof-home {
+    padding-top: 108px !important;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-head {
+    display: grid;
+    grid-template-columns: minmax(0, .9fr) minmax(560px, 1.4fr);
+    align-items: end;
+    gap: 72px;
+    padding-bottom: 34px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-title {
+    align-items: flex-start;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-title > svg {
+    width: 64px;
+    height: 64px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-picks-ctl {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-picks-ctl .rk-pick select {
+    width: 100%;
+    min-width: 0;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-search {
+    justify-content: space-between;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-sbox {
+    max-width: 530px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-wrap {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-col {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+    grid-template-rows: auto 1fr;
+    gap: 0 16px;
+    padding: 0 18px 18px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-col > h2 {
+    grid-column: 1 / -1;
+    margin-bottom: 18px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-rest {
+    grid-template-columns: minmax(0, 1fr);
+    align-content: start;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-card .pk-body {
+    min-height: 180px;
+    justify-content: center;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .aw-hofw {
+    position: relative;
+    padding: 52px 0 42px;
+    border-radius: 0;
+    box-shadow: 32px 32px 0 var(--rst-red-wash);
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .aw-hoft {
+    width: 420px;
+    margin: 0 auto 38px;
+    text-align: left;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .aw-hoft b {
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255,255,255,.22);
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .aw-hoft span {
+    font-size: 15px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .aw-hoft .pk-hof {
+    justify-content: flex-start;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .map-head {
+    display: grid;
+    grid-template-columns: minmax(0, .9fr) minmax(560px, 1.4fr);
+    gap: 72px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .map-picks {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .map-head .rk-pick select {
+    width: 100%;
+    min-width: 0;
+  }
 </style>
 
 <div class="stage">
