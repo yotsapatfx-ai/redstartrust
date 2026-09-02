@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RedStarTrust · Ranking Section · 10 Directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Noto+Serif+Thai:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Hallmark · pre-emit critique: P5 H5 E4 S5 R5 V5
+ * genre: editorial · artifact: ten-option section study · palette: red and white
+ */
+:root{--red:#c9232b;--deep:#650d13;--ink:#3f090d;--mid:#93464b;--line:#efc9cc;--wash:#fff4f5;--paper:#fff;--shadow:rgba(101,13,19,.12);--sans:'IBM Plex Sans Thai',sans-serif;--serif:'Noto Serif Thai',serif}
+*{box-sizing:border-box}html,body{margin:0;overflow-x:clip;background:#f6f2f3;color:var(--ink);font-family:var(--sans)}
+body{padding:48px 24px 120px}.intro{max-width:1180px;margin:0 auto 44px}.eyebrow{color:var(--red);font-size:12px;font-weight:700;letter-spacing:.16em}.intro h1{max-width:800px;margin:12px 0 10px;font-family:var(--serif);font-size:clamp(38px,6vw,68px);line-height:1.05}.intro p{max-width:680px;margin:0;color:var(--mid);font-size:16px;line-height:1.7}
+.gallery{max-width:1180px;margin:auto;display:grid;gap:32px}.option{position:relative;padding:38px;background:var(--paper);border:1px solid var(--line);border-radius:24px;box-shadow:0 18px 54px var(--shadow)}.num{position:absolute;right:22px;top:18px;color:var(--line);font-size:46px;font-weight:700;line-height:1}.label{margin:0 0 24px;color:var(--red);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}.head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:22px}.head h2{margin:0;font:600 26px/1.2 var(--serif)}.scope{color:var(--mid);font-size:12px}.logo{width:38px;height:38px;display:grid;place-items:center;border:1px solid var(--line);border-radius:11px;background:var(--wash);color:var(--red);font-weight:700}.stars{color:var(--red);letter-spacing:2px;white-space:nowrap}.name{font-weight:700}.country{color:var(--mid);font-size:11px}.review{color:var(--red);font-size:11px;font-weight:700;text-decoration:none;white-space:nowrap}.review:hover{text-decoration:underline}.broker{min-width:0}.broker span{display:block}
+/* 01 — Quiet table */
+.v1{display:grid}.v1 .row{display:grid;grid-template-columns:42px 44px minmax(0,1fr) 90px 80px;align-items:center;gap:12px;padding:13px 0;border-top:1px solid var(--line)}.v1 .rank{color:var(--red);font-weight:700}.v1 .country{margin-top:2px}
+/* 02 — Equal cards */
+.v2{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.v2 .row{min-height:174px;padding:16px;border:1px solid var(--line);border-radius:18px;display:flex;flex-direction:column}.v2 .rank{margin-bottom:18px;color:var(--red);font-size:11px;font-weight:700}.v2 .logo{margin-bottom:10px}.v2 .country{margin:3px 0 10px}.v2 .review{margin-top:auto}
+/* 03 — Red first place */
+.v3{display:grid;grid-template-columns:1.15fr 1fr 1fr;gap:12px}.v3 .row{min-height:154px;padding:18px;border-radius:18px;background:var(--wash);display:grid;grid-template-columns:42px 1fr;gap:12px;align-content:center}.v3 .row:first-child{color:#fff;background:var(--deep)}.v3 .row:first-child .country,.v3 .row:first-child .review,.v3 .row:first-child .stars{color:#fff}.v3 .rank{grid-column:1/-1;font-size:11px;font-weight:700}.v3 .review{grid-column:2;margin-top:5px}
+/* 04 — Editorial lines */
+.v4{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:2px solid var(--deep);border-bottom:1px solid var(--line)}.v4 .row{padding:22px 20px;border-right:1px solid var(--line)}.v4 .row:last-child{border:0}.v4 .rank{color:var(--red);font:600 34px/1 var(--serif)}.v4 .logo{margin:20px 0 11px}.v4 .country{margin:4px 0 12px}.v4 .review{display:block;margin-top:12px}
+/* 05 — Compact podium */
+.v5{display:grid;grid-template-columns:1fr 1.12fr 1fr;align-items:end;gap:12px;padding-top:28px}.v5 .row{height:145px;padding:16px;border:1px solid var(--line);border-radius:18px;background:#fff}.v5 .row:first-child{order:2;height:175px;border:2px solid var(--red);box-shadow:0 14px 34px var(--shadow)}.v5 .row:nth-child(2){order:1}.v5 .row:nth-child(3){order:3}.v5 .rank{float:right;color:var(--red);font-weight:700}.v5 .country{margin:3px 0 9px}.v5 .review{display:block;margin-top:8px}
+/* 06 — Logo rail */
+.v6{display:flex;gap:0;border:1px solid var(--line);border-radius:18px;overflow:hidden}.v6 .row{flex:1;padding:17px;display:grid;grid-template-columns:46px 1fr;gap:12px;border-right:1px solid var(--line)}.v6 .row:last-child{border:0}.v6 .logo{grid-row:1/4}.v6 .rank{color:var(--red);font-size:10px;font-weight:700}.v6 .country{margin-top:2px}.v6 .review{grid-column:2;margin-top:7px}
+/* 07 — Selection list */
+.v7{display:grid;gap:8px}.v7 .row{display:grid;grid-template-columns:54px 42px minmax(0,1fr) auto auto;align-items:center;gap:12px;padding:11px 14px;border-radius:14px;background:var(--wash)}.v7 .row:first-child{color:#fff;background:var(--red)}.v7 .row:first-child .country,.v7 .row:first-child .review,.v7 .row:first-child .stars{color:#fff}.v7 .rank{font-weight:700}
+/* 08 — Magazine shortlist */
+.v8{display:grid;grid-template-columns:2fr 1fr;gap:24px}.v8 .row:first-child{grid-row:span 2;min-height:220px;padding:26px;border-radius:20px;background:var(--deep);color:#fff}.v8 .row:not(:first-child){display:grid;grid-template-columns:40px 1fr auto;align-items:center;gap:10px;padding:14px 0;border-top:1px solid var(--line)}.v8 .row:first-child .logo{margin:42px 0 12px}.v8 .row:first-child .country,.v8 .row:first-child .review,.v8 .row:first-child .stars{color:#fff}.v8 .row:first-child .stars{display:block;margin:12px 0}.v8 .rank{color:var(--red);font-size:11px;font-weight:700}.v8 .row:first-child .rank{color:#fff}.v8 .row:not(:first-child) .rank{grid-column:1}.v8 .row:not(:first-child) .logo{grid-column:1;grid-row:2}.v8 .row:not(:first-child) .broker{grid-column:2;grid-row:1/3}.v8 .row:not(:first-child) .stars{grid-column:3;grid-row:1}.v8 .row:not(:first-child) .review{grid-column:3;grid-row:2}
+/* 09 — Award tickets */
+.v9{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.v9 .row{position:relative;min-height:152px;padding:19px;border:1px solid var(--line);border-left:5px solid var(--red);border-radius:4px 18px 18px 4px}.v9 .rank{position:absolute;right:15px;top:15px;color:var(--line);font-size:30px;font-weight:700}.v9 .country{margin:4px 0 12px}.v9 .review{display:block;margin-top:10px}
+/* 10 — Minimal names */
+.v10{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}.v10 .row{padding-top:14px;border-top:3px solid var(--deep)}.v10 .rank{color:var(--red);font-size:10px;font-weight:700}.v10 .logo{margin:24px 0 14px;width:46px;height:46px}.v10 .name{font:600 21px/1.25 var(--serif)}.v10 .country{margin:5px 0 13px}.v10 .review{display:block;margin-top:14px}
+
+/* Expressive pass — more ceremony, depth and visual authorship. */
+.option{overflow:hidden}.option::after{content:'★';position:absolute;right:-24px;bottom:-78px;color:var(--wash);font-size:210px;line-height:1;pointer-events:none}.option>div{position:relative;z-index:1}
+.v1{border-left:7px solid var(--red);padding-left:22px}.v1 .row:first-child{background:var(--wash);border-radius:16px;padding-inline:14px}.v1 .rank{font-size:18px}.v1 .row:first-child .rank{color:var(--deep)}
+.option:has(.v2){background:var(--deep);color:#fff}.option:has(.v2) .label,.option:has(.v2) .scope{color:#fff}.option:has(.v2) .num{color:var(--mid)}.option:has(.v2)::after{color:var(--mid);opacity:.18}.v2 .row{background:#fff;color:var(--ink);border:0;box-shadow:0 18px 40px rgba(63,9,13,.24)}.v2 .row:nth-child(2){transform:translateY(14px)}.v2 .row:nth-child(3){transform:translateY(28px)}
+.v3{padding:18px;background:var(--wash);border-radius:26px}.v3 .row:first-child{transform:scale(1.04);box-shadow:0 22px 46px var(--shadow)}.v3 .row:not(:first-child){background:#fff;border:1px solid var(--line)}
+.option:has(.v4){border-radius:4px}.v4 .rank{font-size:68px;letter-spacing:-.08em;opacity:.26}.v4 .row{position:relative;min-height:250px}.v4 .logo{position:absolute;right:20px;top:26px}.v4 .name{font:600 23px/1.2 var(--serif)}
+.v5::before{content:'';position:absolute;left:8%;right:8%;bottom:0;height:44%;background:var(--wash);border-radius:50% 50% 0 0}.v5 .row{position:relative;background:#fff}.v5 .row:first-child::after{content:'★';position:absolute;right:14px;top:-34px;width:48px;height:48px;display:grid;place-items:center;border-radius:50%;color:#fff;background:var(--red);box-shadow:0 10px 24px var(--shadow)}
+.option:has(.v6){padding-inline:24px}.v6{padding:9px;background:var(--deep);border:0;border-radius:24px;box-shadow:0 22px 48px var(--shadow)}.v6 .row{background:#fff;border:0;margin-right:8px;border-radius:16px}.v6 .row:last-child{margin:0}.v6 .logo{background:var(--red);color:#fff}
+.v7{position:relative;padding-left:54px}.v7::before{content:'TOP\A03';white-space:pre;position:absolute;left:0;top:0;bottom:0;width:42px;display:grid;place-items:center;color:#fff;background:var(--deep);border-radius:14px;font-weight:700;font-size:11px;line-height:1.3;text-align:center}.v7 .row{transition:transform .2s}.v7 .row:first-child{transform:translateX(12px);box-shadow:0 14px 30px var(--shadow)}
+.v8 .row:first-child{position:relative;overflow:hidden}.v8 .row:first-child::after{content:'01';position:absolute;right:-8px;bottom:-28px;color:var(--red);font:700 120px/1 var(--serif);opacity:.55}.v8 .row:first-child>*{position:relative;z-index:1}.v8 .row:not(:first-child){padding:22px 18px;background:var(--wash);border:0;border-radius:18px}
+.v9 .row{background:var(--wash);border:0;border-left:7px solid var(--red);box-shadow:0 14px 30px var(--shadow)}.v9 .row::before,.v9 .row::after{content:'';position:absolute;left:-11px;width:16px;height:16px;border-radius:50%;background:#fff}.v9 .row::before{top:-8px}.v9 .row::after{bottom:-8px}.v9 .rank{color:var(--red);opacity:.3;font-size:54px}
+.option:has(.v10){padding-top:70px}.option:has(.v10) .head{position:absolute;left:38px;right:38px;top:32px}.v10{gap:0;border-top:1px solid var(--line)}.v10 .row{min-height:230px;padding:26px;border-top:0;border-right:1px solid var(--line)}.v10 .row:last-child{border:0}.v10 .rank{font-size:64px;line-height:1;color:var(--wash);-webkit-text-stroke:1px var(--red)}.v10 .logo{margin:12px 0}.v10 .name{font-size:26px}
+@media(max-width:760px){body{padding:24px 12px 80px}.option{padding:24px 18px}.v2,.v3,.v4,.v5,.v9,.v10{grid-template-columns:1fr}.v5 .row,.v5 .row:first-child{order:initial;height:auto}.v6{display:grid}.v6 .row{border-right:0;border-bottom:1px solid var(--line)}.v1 .row,.v7 .row{grid-template-columns:34px 40px minmax(0,1fr)}.v1 .stars,.v1 .review,.v7 .stars,.v7 .review{display:none}.v8{grid-template-columns:1fr}.head{align-items:start;flex-direction:column}}
+</style>
+</head>
+<body>
+<header class="intro"><span class="eyebrow">REDSTARTRUST · DESIGN STUDY</span><h1>เลือกทิศทางของ Ranking Section</h1><p>ทั้ง 10 แบบใช้ข้อมูลเดียวกันและใช้เฉพาะสีแดง–ขาว เลือกจากโครงสร้างและจังหวะการอ่านก่อน รายละเอียดจริงจะนำไปใช้กับทั้ง 6 หมวดภายหลัง</p></header>
+<main class="gallery" id="gallery"></main>
+<script>
+const brokers=[{name:'IC Markets',country:'Australia',logo:'IC',stars:3},{name:'Pepperstone',country:'Australia',logo:'P',stars:3},{name:'Exness',country:'Cyprus',logo:'EX',stars:3}];
+const labels=['Quiet Registry Table','Balanced Nominee Cards','Red First Place','Editorial Columns','Compact Podium','Logo Rail','Selected Ranking List','Magazine Shortlist','Award Tickets','Minimal Nameplates'];
+function row(b,i){return `<article class="row"><span class="rank">${String(i+1).padStart(2,'0')}</span><span class="logo">${b.logo}</span><span class="broker"><span class="name">${b.name}</span><span class="country">${b.country}</span></span><span class="stars" aria-label="${b.stars} ดาว">${'★'.repeat(b.stars)}</span><a class="review" href="#">View Review</a></article>`}
+document.querySelector('#gallery').innerHTML=labels.map((label,i)=>`<section class="option"><span class="num">${String(i+1).padStart(2,'0')}</span><p class="label">Option ${i+1} · ${label}</p><div class="head"><h2>Forex Broker</h2><span class="scope">Top 3 · Q2 2026</span></div><div class="v${i+1}">${brokers.map(row).join('')}</div></section>`).join('');
+document.addEventListener('click',e=>{if(e.target.closest('a'))e.preventDefault()});
+</script>
+</body>
+</html>
