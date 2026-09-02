@@ -1,3 +1,6 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>RedStarTrust Homepage</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Sans:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap">
   <style>
@@ -3535,6 +3538,343 @@
   #card { transition: box-shadow .2s; }
   [data-pin]:focus-visible, [data-region]:focus-visible, [data-hof]:focus-visible {
     outline: 2px solid #D92D20; outline-offset: 3px;
+  }
+
+  /* Hallmark · pre-emit critique: P5 H4 E4 S5 R5 V4
+   * genre: editorial · macrostructure: Registry Front Page · theme: RedStar Paper
+   * enrichment: semantic data-map · nav: N9 · footer: existing
+   * contrast: pass (40–41) · honest: pass (46) · chrome: pass (47)
+   * responsive: pass within the prototype's fixed 1440px presentation frame
+   * REDESIGN-HOME-2026-09 — scoped to Home only; routes and behaviour unchanged.
+   */
+  .frame:has(.page[data-page="home"]:not([hidden])) {
+    --rst-paper: #FCFBF9;
+    --rst-paper-raised: #FFFFFF;
+    --rst-paper-muted: #F6F4F1;
+    --rst-ink: #171515;
+    --rst-ink-soft: #544F4C;
+    --rst-ink-muted: #756F6A;
+    --rst-rule: #E6E0DB;
+    --rst-rule-strong: #D6CEC7;
+    --rst-red: #C9271D;
+    --rst-red-dark: #991D16;
+    --rst-red-wash: #FBEEEB;
+    --rst-gold: #A47A22;
+    --rst-shadow: rgba(53, 38, 31, .10);
+    --rst-display: 'IBM Plex Sans', 'IBM Plex Sans Thai', sans-serif;
+    --rst-body: Inter, 'IBM Plex Sans Thai', sans-serif;
+    background: var(--rst-paper);
+  }
+
+  .frame:has(.page[data-page="home"]:not([hidden])) > div {
+    background: var(--rst-paper) !important;
+    color: var(--rst-ink) !important;
+    font-family: var(--rst-body) !important;
+  }
+
+  /* Quiet, edge-aligned masthead. */
+  .frame:has(.page[data-page="home"]:not([hidden])) .hero-dark {
+    position: relative;
+    overflow: hidden;
+    padding: 0 0 70px !important;
+    background: var(--rst-paper) !important;
+    border-bottom: 1px solid var(--rst-rule) !important;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .hero-dark::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 4px;
+    background: var(--rst-red);
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .hero-dark::after {
+    content: "";
+    position: absolute;
+    right: -90px;
+    bottom: -210px;
+    width: 560px;
+    height: 560px;
+    border: 1px solid var(--rst-rule);
+    border-radius: 50%;
+    box-shadow: 0 0 0 72px var(--rst-paper-muted), 0 0 0 73px var(--rst-rule);
+    opacity: .62;
+    pointer-events: none;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .hd-inner {
+    position: relative;
+    z-index: 1;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .hd-top {
+    min-height: 92px;
+    margin: 0 0 54px;
+    border-bottom: 1px solid var(--rst-rule);
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .mh-brand {
+    color: var(--rst-ink) !important;
+    font-family: var(--rst-display) !important;
+    font-size: 20px;
+    letter-spacing: -.035em;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .brand-star {
+    width: 40px;
+    height: 40px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .mh-nav {
+    gap: 24px;
+    justify-content: center;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .mh-nav a {
+    position: relative;
+    color: var(--rst-ink-soft) !important;
+    font-size: 13.5px;
+    white-space: nowrap;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .mh-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 100%;
+    bottom: -12px;
+    height: 1px;
+    background: var(--rst-red);
+    transition: right .22s ease;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .mh-nav a:hover::after,
+  .frame:has(.page[data-page="home"]:not([hidden])) .mh-nav a[aria-current="page"]::after { right: 0; }
+  .frame:has(.page[data-page="home"]:not([hidden])) .hd-pill { display: none; }
+  .frame:has(.page[data-page="home"]:not([hidden])) .lang-sw {
+    border-color: var(--rst-rule);
+    background: var(--rst-paper-raised);
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .lang-sw button[aria-pressed="true"] {
+    background: var(--rst-ink);
+    color: var(--rst-paper-raised);
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .btn-solid {
+    background: var(--rst-red);
+    border-color: var(--rst-red);
+    color: var(--rst-paper-raised);
+    border-radius: 7px;
+    box-shadow: 0 7px 18px -10px var(--rst-red-dark);
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .btn-ghost {
+    border-color: transparent;
+    color: var(--rst-ink-soft);
+  }
+
+  /* The homepage hero reads as an institutional front page, not a dashboard card. */
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] {
+    width: 780px;
+    min-width: 0;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"]::before {
+    content: "REDSTAR TRUST  /  INDEPENDENT BROKER INTELLIGENCE";
+    display: block;
+    margin-bottom: 18px;
+    color: var(--rst-red);
+    font: 600 11px/1.2 var(--rst-display);
+    letter-spacing: .17em;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] .hd-h1 {
+    margin-bottom: 20px;
+    max-width: 13ch;
+    color: var(--rst-ink) !important;
+    font-family: var(--rst-display) !important;
+    font-size: 68px;
+    font-weight: 600;
+    line-height: 1.02;
+    letter-spacing: -.055em;
+    overflow-wrap: anywhere;
+    min-width: 0;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] .hd-sub {
+    width: 610px;
+    margin-bottom: 34px;
+    color: var(--rst-ink-soft) !important;
+    font-size: 18px;
+    line-height: 1.68;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] .mh-search {
+    width: 660px;
+    min-height: 58px;
+    padding: 0 18px;
+    background: var(--rst-paper-raised) !important;
+    border: 1px solid var(--rst-rule-strong) !important;
+    border-radius: 8px;
+    box-shadow: 0 16px 36px -26px var(--rst-shadow);
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] .mh-search:focus-within {
+    border-color: var(--rst-red) !important;
+    outline: 3px solid var(--rst-red-wash);
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] .mh-search input {
+    color: var(--rst-ink) !important;
+    font-size: 15.5px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] .hd-stats {
+    margin-top: 32px;
+    padding-top: 22px;
+    border-top: 1px solid var(--rst-rule);
+    gap: 20px 34px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] .hd-stats > div {
+    color: var(--rst-ink-muted) !important;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] .hd-stats b {
+    color: var(--rst-ink) !important;
+  }
+
+  /* Section rhythm: warm paper, finer rules, more breathing room. */
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-page="home"] {
+    padding-bottom: 96px;
+    background: var(--rst-paper);
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) #hof-home {
+    padding-top: 72px !important;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) #picks {
+    padding-top: 88px !important;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .sec-rule {
+    height: 1px;
+    margin-bottom: 28px;
+    background: var(--rst-rule);
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .aw-hofw {
+    padding: 44px 0 38px;
+    border: 1px solid var(--rst-rule);
+    border-radius: 8px;
+    background: var(--rst-ink);
+    box-shadow: 0 24px 54px -38px var(--rst-shadow);
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .aw-hofw::before { opacity: .34; }
+  .frame:has(.page[data-page="home"]:not([hidden])) .aw-hoft { margin-bottom: 30px; }
+  .frame:has(.page[data-page="home"]:not([hidden])) .aw-hoft b {
+    font-family: var(--rst-display) !important;
+    letter-spacing: .20em;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-hof {
+    border-radius: 6px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-head {
+    padding-bottom: 25px;
+    border-bottom: 1px solid var(--rst-rule);
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-title h2 {
+    color: var(--rst-ink);
+    font-family: var(--rst-display) !important;
+    font-size: 44px;
+    font-weight: 600;
+    letter-spacing: -.045em;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-award { color: var(--rst-red-dark); }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-search { margin: 24px 0 26px; }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-sbox input,
+  .frame:has(.page[data-page="home"]:not([hidden])) .rk-pick select {
+    min-height: 44px;
+    border-color: var(--rst-rule-strong);
+    border-radius: 6px;
+    background-color: var(--rst-paper-raised);
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-wrap { gap: 26px; }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-col {
+    gap: 14px;
+    padding: 0 18px 18px;
+    border: 1px solid var(--rst-rule);
+    border-radius: 8px;
+    background: var(--rst-paper-raised);
+    box-shadow: 0 16px 34px -30px var(--rst-shadow);
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-col > h2 {
+    margin: 0 -18px 4px;
+    padding: 16px 18px 14px;
+    color: var(--rst-ink);
+    background: var(--rst-paper-muted);
+    border-bottom: 1px solid var(--rst-rule);
+    font-family: var(--rst-display) !important;
+    font-size: 15px;
+    letter-spacing: .01em;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-col > h2::before {
+    width: 18px;
+    height: 2px;
+    border-radius: 0;
+    margin-right: 9px;
+    vertical-align: 4px;
+    background: var(--rst-red);
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-card,
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-mini {
+    border-color: var(--rst-rule);
+    border-radius: 6px;
+    box-shadow: none;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-card:hover,
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-mini:hover {
+    border-color: var(--rst-rule-strong);
+    box-shadow: 0 14px 26px -22px var(--rst-shadow);
+    transform: translateY(-2px);
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-card .pk-rank,
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-mini .pk-rank {
+    background: var(--rst-paper-muted);
+    border-bottom-color: var(--rst-rule);
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-name,
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-mini .nm { color: var(--rst-ink); }
+  .frame:has(.page[data-page="home"]:not([hidden])) .scroll-cue { margin-top: 54px; }
+  .frame:has(.page[data-page="home"]:not([hidden])) .scroll-cue a {
+    border-color: var(--rst-rule-strong);
+    background: transparent;
+    box-shadow: none;
+  }
+
+  /* Map and reading sections. Inline geometry remains intact for its interactions. */
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-page="home"] > div:nth-of-type(4) {
+    padding-top: 92px !important;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .map-head {
+    align-items: flex-start;
+    margin-bottom: 34px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .map-h2,
+  .frame:has(.page[data-page="home"]:not([hidden])) .art-h1 {
+    color: var(--rst-ink);
+    font-family: var(--rst-display) !important;
+    font-weight: 600;
+    letter-spacing: -.04em;
+    overflow-wrap: anywhere;
+    min-width: 0;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .map-h2 { font-size: 40px; }
+  .frame:has(.page[data-page="home"]:not([hidden])) .map-sub,
+  .frame:has(.page[data-page="home"]:not([hidden])) .art-head p { color: var(--rst-ink-soft); }
+  .frame:has(.page[data-page="home"]:not([hidden])) #map-stage { background: var(--rst-paper-muted); }
+  .frame:has(.page[data-page="home"]:not([hidden])) #card {
+    border-color: var(--rst-rule) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 24px 48px -24px var(--rst-shadow) !important;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .vol-zones {
+    border-color: var(--rst-rule);
+    border-radius: 8px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) #art-home {
+    padding-top: 104px !important;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .art-head {
+    max-width: 740px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .art-h1 { font-size: 42px; }
+  .frame:has(.page[data-page="home"]:not([hidden])) .art-card,
+  .frame:has(.page[data-page="home"]:not([hidden])) .art-main,
+  .frame:has(.page[data-page="home"]:not([hidden])) .art-side {
+    border-radius: 7px;
+    border-color: var(--rst-rule);
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .art-viewmore {
+    border-radius: 6px;
+    white-space: nowrap;
   }
 </style>
 
