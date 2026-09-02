@@ -13,6 +13,7 @@
     --ink:#0A0A0A; --body:#344054; --muted:#667085;
     --line:#EAECF0; --line-dk:#D0D5DD;
     --wash:#F9FAFB; --wash2:#F2F4F7;
+    --page:#F7F6F2;
     --ok:#067647; --ok-bg:#ECFDF3; --ok-line:#ABEFC6;
     --plan:#175CD3; --plan-bg:#EFF8FF; --plan-line:#B2DDFF;
     --none:#667085; --none-bg:#F2F4F7; --none-line:#D0D5DD;
@@ -20,46 +21,125 @@
   }
   *,*::before,*::after{box-sizing:border-box}
   body{
-    margin:0; background:#FFFFFF; color:var(--body);
+    margin:0; background:var(--page); color:var(--body);
     font-family:"Inter","IBM Plex Sans Thai",-apple-system,"Segoe UI",sans-serif;
     font-size:15px; line-height:1.62; -webkit-font-smoothing:antialiased;
   }
-  .wrap{max-width:1120px; margin:0 auto; padding:0 32px 96px}
   h1,h2,h3,h4{color:var(--ink); font-weight:700; line-height:1.28; margin:0}
   p{margin:0}
-  a{color:var(--red-dk)}
-  code,.mono{font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace; font-size:.88em}
+  .mono,code{font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace}
 
-  /* ── หัวเอกสาร ── */
-  .top{border-top:4px solid var(--red); padding:44px 0 28px}
-  .eyebrow{font-size:11.5px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--red); margin-bottom:14px}
-  h1{font-size:38px; letter-spacing:-.02em}
-  .lede{margin-top:14px; max-width:760px; font-size:16.5px; color:var(--body)}
-  .meta{margin-top:20px; padding-top:16px; border-top:1px solid var(--line); display:flex; flex-wrap:wrap; gap:8px 26px; font-size:13px; color:var(--muted)}
-  .meta b{color:var(--ink); font-weight:600}
+  /* ══ แถบแท็บด้านบน ══ */
+  .tabs{position:sticky; top:0; z-index:20; background:#fff; border-bottom:1px solid var(--line); box-shadow:0 1px 2px rgba(16,24,40,.04)}
+  .tabs-in{max-width:1400px; margin:0 auto; padding:0 26px; display:flex; gap:4px; overflow-x:auto}
+  .tab{appearance:none; border:0; background:none; font:inherit; font-size:13.5px; font-weight:600; color:var(--muted);
+       padding:15px 14px 13px; border-bottom:2px solid transparent; cursor:pointer; white-space:nowrap}
+  .tab:hover{color:var(--ink)}
+  .tab[aria-selected="true"]{color:var(--ink); border-bottom-color:var(--red)}
 
-  /* ── บล็อกมาตรฐาน: เส้นแดงคาดบน ── */
-  .sec{margin-top:52px; border-top:2px solid var(--red); padding-top:22px}
-  .sec > h2{font-size:23px; letter-spacing:-.01em}
-  .sec > .sub{margin-top:8px; max-width:820px; color:var(--muted); font-size:14.5px}
+  .wrap{max-width:1400px; margin:0 auto; padding:26px 26px 90px}
 
-  /* ── กล่องเตือน ── */
-  .note{margin-top:26px; background:var(--wash); border:1px solid var(--line); border-left:3px solid var(--red); border-radius:6px; padding:18px 20px}
-  .note h3{font-size:15px; margin-bottom:8px}
-  .note p + p{margin-top:8px}
-  .note ul{margin:8px 0 0; padding-left:20px}
-  .note li{margin-top:5px}
+  /* ══ แผงใหญ่ ══ */
+  .panel{background:#fff; border:1px solid var(--line); border-radius:12px; overflow:hidden}
+  .panel-head{padding:20px 26px; border-bottom:1px solid var(--line); display:flex; gap:20px; align-items:flex-start; flex-wrap:wrap; justify-content:space-between}
+  .panel-head h2{font-size:17px}
+  .panel-head .sub{margin-top:5px; font-size:13px; color:var(--muted); max-width:640px}
+  .legend{display:flex; flex-wrap:wrap; gap:7px}
+  .lg{display:inline-flex; align-items:center; gap:6px; font-size:11.5px; font-weight:600; padding:4px 10px; border-radius:100px; border:1px solid; white-space:nowrap}
+  .lg::before{content:""; width:7px; height:7px; border-radius:50%}
+  .lg-ok{color:var(--ok); background:var(--ok-bg); border-color:var(--ok-line)}
+  .lg-ok::before{background:var(--ok)}
+  .lg-plan{color:var(--plan); background:var(--plan-bg); border-color:var(--plan-line)}
+  .lg-plan::before{background:var(--plan)}
+  .lg-none{color:var(--none); background:var(--none-bg); border-color:var(--none-line)}
+  .lg-none::before{background:var(--none)}
+  .lg-menu{color:var(--red-dk); background:#FEF3F2; border-color:#FEE4E2}
+  .lg-menu::before{background:var(--red)}
+  .lg-flow-pub{color:#0E7490; background:#ECFAFD; border-color:#8FD3E8}
+  .lg-flow-pub::before{background:#0E7490}
+  .lg-flow-lock{color:#3538CD; background:#EEF0FF; border-color:#A5A8F5}
+  .lg-flow-lock::before{background:#3538CD}
+  .lg-flow-ext{color:var(--red-dk); background:#FEF3F2; border-color:#FDA29B}
+  .lg-flow-ext::before{background:var(--red-dk)}
 
-  /* ── ตัวเลขสรุป ── */
-  .stats{margin-top:24px; display:grid; grid-template-columns:repeat(5,1fr); gap:0; border:1px solid var(--line); border-radius:8px; overflow:hidden}
-  .stat{padding:18px 20px; border-right:1px solid var(--line); background:#fff}
+  /* ══ ผืนผ้าใบแผนผัง ══ */
+  .canvas{overflow-x:auto; padding:34px 26px 40px; background:
+      linear-gradient(#FCFCFD 1px, transparent 1px) 0 0/100% 26px,
+      linear-gradient(90deg,#FCFCFD 1px, transparent 1px) 0 0/26px 100%, #fff}
+  .board{min-width:1320px}
+
+  .hub{display:flex; justify-content:center}
+  .n-home{background:var(--ink); color:#fff; border-radius:10px; padding:14px 34px; text-align:center; box-shadow:0 2px 6px rgba(16,24,40,.18)}
+  .n-home b{display:block; font-size:15.5px; font-weight:700; letter-spacing:.01em}
+  .n-home span{display:block; margin-top:3px; font-family:"SFMono-Regular",Consolas,monospace; font-size:11.5px; color:#D0D5DD}
+
+  .drop{height:26px; position:relative}
+  .drop::before{content:""; position:absolute; left:50%; top:0; bottom:0; width:2px; background:var(--line-dk); transform:translateX(-1px)}
+
+  .bus{height:2px; background:var(--line-dk); margin:0 84px}
+
+  .cols{display:flex; gap:22px; align-items:flex-start; padding-top:0}
+  .col{flex:1 1 0; min-width:210px}
+
+  .stub{height:26px; position:relative}
+  .stub::before{content:""; position:absolute; left:50%; top:0; bottom:0; width:2px; background:var(--line-dk); transform:translateX(-1px)}
+  .stub::after{content:""; position:absolute; left:50%; bottom:0; width:9px; height:9px; border-right:2px solid var(--line-dk); border-bottom:2px solid var(--line-dk);
+               transform:translateX(-50%) rotate(45deg)}
+
+  .col-head{background:var(--c); color:#fff; border-radius:9px; padding:12px 16px; text-align:center; box-shadow:0 1px 3px rgba(16,24,40,.14)}
+  .col-head b{display:block; font-size:14.5px; font-weight:700}
+  .col-head span{display:block; margin-top:2px; font-size:11px; opacity:.85; font-family:"SFMono-Regular",Consolas,monospace}
+
+  .stack{position:relative; margin-top:22px; padding-left:20px}
+  .stack::before{content:""; position:absolute; left:8px; top:-22px; bottom:20px; width:2px; background:var(--line-dk)}
+  .card{position:relative; margin-bottom:10px; border-radius:8px; padding:9px 12px;
+        background:color-mix(in srgb, var(--c) 8%, #fff); border:1.5px solid color-mix(in srgb, var(--c) 34%, #fff)}
+  .card::before{content:""; position:absolute; left:-12px; top:19px; width:12px; height:2px; background:var(--line-dk)}
+  .card b{display:block; font-size:13.5px; font-weight:600; color:var(--ink); line-height:1.35}
+  .card .rt{display:block; margin-top:2px; font-family:"SFMono-Regular",Consolas,monospace; font-size:10.5px; color:color-mix(in srgb, var(--c) 78%, #000)}
+  .card .note{display:block; margin-top:4px; font-size:11px; color:var(--muted); line-height:1.4}
+
+  /* หน้าย่อยที่เปิดจากการกดในหน้าแม่ */
+  .card.sub{margin-left:20px; background:#fff; border-style:dashed}
+  .card.sub::before{left:-32px; width:32px}
+  /* ยังไม่มีในเว็บ */
+  .card.none{background:var(--none-bg); border:1.5px dashed var(--none-line)}
+  .card.none b{color:var(--muted)}
+  .card.none .rt{color:var(--muted)}
+  /* มีสเปกหรือต้นแบบแยกแล้ว */
+  .card.spec{background:var(--plan-bg); border:1.5px dashed var(--plan-line)}
+  .card.spec .rt{color:var(--plan)}
+  /* จุดแดง = เข้าถึงได้จากเมนูบน */
+  .card.menu::after{content:""; position:absolute; right:9px; top:11px; width:7px; height:7px; border-radius:50%; background:var(--red)}
+  .card.menu b{padding-right:14px}
+
+  .board-note{margin-top:26px; padding:14px 16px; border:1px solid var(--line); border-left:3px solid var(--red); background:var(--wash); border-radius:6px; font-size:13px; max-width:960px}
+  .board-note b{color:var(--ink)}
+
+  /* ══ ส่วนเนื้อหาแบบเอกสาร ══ */
+  .doc{margin-top:0}
+  .doc .head{padding:26px 26px 0}
+  .doc h2{font-size:22px}
+  .doc .sub{margin-top:8px; color:var(--muted); font-size:14.5px; max-width:880px}
+  .doc .body{padding:0 26px 30px}
+
+  .stats{margin-top:22px; display:grid; grid-template-columns:repeat(5,1fr); border:1px solid var(--line); border-radius:8px; overflow:hidden}
+  .stat{padding:16px 18px; border-right:1px solid var(--line)}
   .stat:last-child{border-right:0}
-  .stat .n{font-size:28px; font-weight:700; color:var(--ink); letter-spacing:-.02em; line-height:1.1}
+  .stat .n{font-size:26px; font-weight:700; color:var(--ink); letter-spacing:-.02em; line-height:1.1}
   .stat .n.zero{color:var(--red)}
-  .stat .l{margin-top:6px; font-size:12.5px; color:var(--muted); line-height:1.45}
+  .stat .l{margin-top:5px; font-size:12.5px; color:var(--muted); line-height:1.45}
 
-  /* ── ป้ายสถานะ ── */
-  .tag{display:inline-flex; align-items:center; gap:6px; font-size:11.5px; font-weight:600; padding:3px 9px; border-radius:100px; white-space:nowrap; border:1px solid}
+  .tw{margin-top:22px; overflow-x:auto; border:1px solid var(--line); border-radius:8px}
+  table{border-collapse:collapse; width:100%; min-width:860px; font-size:13.5px}
+  th{background:var(--wash2); color:var(--ink); font-weight:600; text-align:left; padding:11px 14px; border-bottom:1px solid var(--line-dk); font-size:12.5px; white-space:nowrap}
+  td{padding:11px 14px; border-bottom:1px solid var(--line); vertical-align:top}
+  tbody tr:last-child td{border-bottom:0}
+  tbody tr:hover{background:#FCFCFD}
+  td .rt{font-family:"SFMono-Regular",Consolas,monospace; font-size:12.5px; color:var(--red-dk); white-space:nowrap}
+  td .nm{color:var(--ink); font-weight:600; display:block}
+  .num{color:var(--muted); font-variant-numeric:tabular-nums; width:34px}
+  .tag{display:inline-flex; align-items:center; gap:6px; font-size:11.5px; font-weight:600; padding:3px 9px; border-radius:100px; border:1px solid; white-space:nowrap}
   .tag::before{content:""; width:6px; height:6px; border-radius:50%}
   .t-ok{color:var(--ok); background:var(--ok-bg); border-color:var(--ok-line)}
   .t-ok::before{background:var(--ok)}
@@ -67,280 +147,463 @@
   .t-plan::before{background:var(--plan)}
   .t-none{color:var(--none); background:var(--none-bg); border-color:var(--none-line)}
   .t-none::before{background:var(--none)}
-  .legend{margin-top:20px; display:flex; flex-wrap:wrap; gap:10px 18px; align-items:center; font-size:13px; color:var(--muted)}
 
-  /* ── ผังต้นไม้ ── */
-  .tree{margin-top:26px; background:var(--wash); border:1px solid var(--line); border-radius:8px; padding:26px 28px; overflow-x:auto}
-  .tree ul{list-style:none; margin:0; padding:0 0 0 26px; position:relative}
-  .tree > ul{padding-left:0}
-  .tree ul ul::before{content:""; position:absolute; left:8px; top:0; bottom:14px; width:1px; background:var(--line-dk)}
-  .tree li{position:relative; padding:5px 0 0}
-  .tree ul ul > li::before{content:""; position:absolute; left:-18px; top:20px; width:14px; height:1px; background:var(--line-dk)}
-  .tree .grp{font-weight:700; color:var(--ink); font-size:15.5px; padding-top:16px}
-  .tree .grp:first-child{padding-top:0}
-  .tree .grp .hint{display:block; font-weight:400; font-size:12.5px; color:var(--muted); margin-top:2px}
-  .tree .r{font-family:"SFMono-Regular",Consolas,monospace; font-size:12.5px; color:var(--red-dk); background:#FEF3F2; border:1px solid #FEE4E2; border-radius:4px; padding:1px 6px; margin-right:8px}
-  .tree .nm{color:var(--ink); font-weight:600}
-  .tree .d{color:var(--muted); font-size:13px}
-  .tree .arrow{color:var(--muted); font-size:13px}
-
-  /* ── ตาราง ── */
-  .tw{margin-top:24px; overflow-x:auto; border:1px solid var(--line); border-radius:8px}
-  table{border-collapse:collapse; width:100%; min-width:820px; font-size:13.5px}
-  th{background:var(--wash2); color:var(--ink); font-weight:600; text-align:left; padding:11px 14px; border-bottom:1px solid var(--line-dk); white-space:nowrap; font-size:12.5px}
-  td{padding:11px 14px; border-bottom:1px solid var(--line); vertical-align:top}
-  tbody tr:last-child td{border-bottom:0}
-  tbody tr:hover{background:#FCFCFD}
-  td .rt{font-family:"SFMono-Regular",Consolas,monospace; font-size:12.5px; color:var(--red-dk); white-space:nowrap}
-  td .nm{color:var(--ink); font-weight:600; display:block}
-  .num{color:var(--muted); font-variant-numeric:tabular-nums; width:34px}
-
-  /* ── รายการประเด็น ── */
-  .issues{margin-top:26px; display:grid; gap:14px}
-  .issue{border:1px solid var(--line); border-radius:8px; padding:18px 20px; background:#fff}
+  .issues{margin-top:22px; display:grid; gap:14px}
+  .issue{border:1px solid var(--line); border-radius:8px; padding:18px 20px}
   .issue h3{font-size:15.5px; display:flex; gap:10px; align-items:baseline}
   .issue h3 .i{color:var(--red); font-weight:700; font-variant-numeric:tabular-nums}
   .issue p{margin-top:7px; font-size:14px}
   .issue .why{margin-top:10px; padding-top:10px; border-top:1px dashed var(--line-dk); font-size:13.5px; color:var(--muted)}
   .issue .why b{color:var(--ink); font-weight:600}
 
-  .foot{margin-top:56px; border-top:1px solid var(--line); padding-top:20px; font-size:12.5px; color:var(--muted)}
+  .note{margin-top:22px; background:var(--wash); border:1px solid var(--line); border-left:3px solid var(--red); border-radius:6px; padding:18px 20px}
+  .note h3{font-size:15px; margin-bottom:8px}
+  .note ul{margin:8px 0 0; padding-left:20px}
+  .note li{margin-top:5px}
 
-  @media (max-width:900px){
-    .wrap{padding:0 20px 72px}
-    h1{font-size:30px}
-    .stats{grid-template-columns:repeat(2,1fr)}
-    .stat{border-bottom:1px solid var(--line)}
-  }
+  .foot{margin-top:26px; font-size:12.5px; color:var(--muted); text-align:center}
+
+  [hidden]{display:none !important}
+
   @media print{
-    body{font-size:11pt}
-    .sec{page-break-inside:avoid}
-    .tw, .tree{overflow:visible}
+    body{background:#fff}
+    .tabs{display:none}
+    .view[hidden]{display:block !important}
+    .panel{border:0; margin-bottom:24px; page-break-inside:auto}
+    .canvas{overflow:visible; background:#fff}
+    .board{min-width:0}
+    .tw{overflow:visible}
+    .issue,.stat{page-break-inside:avoid}
   }
 </style>
 </head>
 <body>
+
+<nav class="tabs">
+  <div class="tabs-in" role="tablist">
+    <button class="tab" role="tab" aria-selected="true"  data-v="map">แผนผังเว็บ</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="flow">เส้นเชื่อมระหว่างหน้า</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="routes">ทุกหน้าและ route</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="missing">หน้าที่ยังไม่มี</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="issues">ประเด็นโครงสร้าง</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="about">ที่มาของเอกสาร</button>
+  </div>
+</nav>
+
 <div class="wrap">
 
-  <header class="top">
-    <div class="eyebrow">RedStarTrust · Information Architecture</div>
-    <h1>ผังเว็บ RedStarTrust</h1>
-    <p class="lede">บันทึกว่าเว็บนี้ <b>มีหน้าอะไรอยู่จริงตอนนี้</b> เชื่อมถึงกันอย่างไร และหน้าไหนที่เอกสารกลยุทธ์เรียกร้องไว้แต่ยังไม่ถูกสร้าง — ทุกบรรทัดในเอกสารนี้อ่านจากต้นแบบที่บิลด์ล่าสุด ไม่ได้เขียนจากความจำหรือจากแผนบนกระดาษ</p>
-    <div class="meta">
-      <span><b>จัดทำโดย</b> Noting (นักออกแบบ UX/UI)</span>
-      <span><b>วันที่</b> 2 กันยายน 2569</span>
-      <span><b>อ่านจาก</b> redstartrust-homepage-mockup.html (บิลด์ 1 ก.ย. 2569)</span>
-      <span><b>เทียบกับ</b> CORE-PILLAR.md 0.4 · SITEMAP-FEATURES-DRAFT.md</span>
-    </div>
-  </header>
+  <!-- ═════════════ 1. แผนผัง ═════════════ -->
+  <section class="view" data-view="map">
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h2>Website Sitemap — ลำดับชั้นของหน้า</h2>
+          <p class="sub">อ่านจากต้นแบบที่บิลด์ล่าสุด · 21 หน้าที่มีอยู่จริง + 9 หน้าที่เอกสารเรียกร้องแต่ยังไม่ถูกสร้าง · route ที่เขียนใต้ชื่อหน้าเป็น hash ของต้นแบบ ยังไม่ใช่ URL จริงของเว็บ</p>
+        </div>
+        <div class="legend">
+          <span class="lg lg-ok">สร้างแล้ว</span>
+          <span class="lg lg-plan">มีสเปก/ต้นแบบแยก</span>
+          <span class="lg lg-none">ยังไม่มี</span>
+          <span class="lg lg-menu">อยู่ในเมนูบน</span>
+        </div>
+      </div>
 
-  <div class="note">
-    <h3>อ่านสามบรรทัดนี้ก่อน</h3>
-    <ul>
-      <li><b>ผังนี้คือสิ่งที่มีอยู่ ไม่ใช่สิ่งที่อนุมัติแล้ว</b> — RedStarTrust ยังไม่เคยมี sitemap ที่ Boss อนุมัติเป็นทางการ ร่างของ Doing เมื่อ 21 ส.ค. 2569 ก็ยังเป็นการสังเคราะห์ที่รออนุมัติอยู่</li>
-      <li><b>URL จริงยังไม่ถูกออกแบบ</b> — ต้นแบบทั้ง 21 หน้าอยู่ในไฟล์เดียวและสลับด้วย hash (<span class="mono">#/rating</span>) เพราะ Artifact หนึ่งลิงก์เก็บได้ไฟล์เดียว · โครงสร้าง URL จริงของเว็บเป็นเรื่องที่ยังต้องตัดสิน</li>
-      <li><b>ข้อมูลในต้นแบบเป็นข้อมูลสมมติทั้งหมด</b> ยกเว้นโลโก้โบรกเกอร์ที่ดึงจากโดเมนทางการ — เอกสารนี้พูดเรื่องโครงสร้างหน้า ไม่ได้รับรองตัวเลขใดบนหน้าเว็บ</li>
-    </ul>
-  </div>
+      <div class="canvas">
+        <div class="board">
 
-  <!-- ═══════════ 1. ตัวเลขสรุป ═══════════ -->
-  <section class="sec">
-    <h2>1. สรุปสภาพปัจจุบัน</h2>
-    <p class="sub">นับจากต้นแบบที่บิลด์ล่าสุด — ตัวเลขทุกตัวตรวจสอบซ้ำได้จากตัวไฟล์เอง</p>
+          <div class="hub">
+            <div class="n-home"><b>Homepage</b><span>#/ · หน้าแรก</span></div>
+          </div>
+          <div class="drop"></div>
+          <div class="bus"></div>
 
-    <div class="stats">
-      <div class="stat"><div class="n">21</div><div class="l">หน้าที่สร้างแล้วในต้นแบบ</div></div>
-      <div class="stat"><div class="n">8</div><div class="l">หน้าที่เข้าถึงได้จากเมนูบน</div></div>
-      <div class="stat"><div class="n">13</div><div class="l">หน้าที่เข้าได้จากลิงก์ในหน้าอื่นเท่านั้น</div></div>
-      <div class="stat"><div class="n zero">0</div><div class="l">ลิงก์ในฟุตเตอร์ — เพราะยังไม่มีฟุตเตอร์</div></div>
-      <div class="stat"><div class="n">9</div><div class="l">หน้าที่เอกสารเรียกร้องแต่ยังไม่มี</div></div>
-    </div>
+          <div class="cols">
 
-    <div class="legend">
-      <span class="tag t-ok">สร้างแล้วในต้นแบบ</span>
-      <span class="tag t-plan">มีสเปก/ต้นแบบแยกแล้ว ยังไม่ต่อเข้าเว็บ</span>
-      <span class="tag t-none">ยังไม่มี — เสนอให้พิจารณา</span>
+            <!-- ── กลุ่ม ก ── -->
+            <div class="col" style="--c:#0E7490">
+              <div class="stub"></div>
+              <div class="col-head"><b>แกนสาธารณะ</b><span>10 หน้า</span></div>
+              <div class="stack">
+                <div class="card menu"><b>ตารางอันดับรายประเทศ</b><span class="rt">#/rating</span><span class="note">แยกหมวดสินทรัพย์และปีผลตรวจ + เทียบตัวต่อตัว</span></div>
+                <div class="card menu"><b>รีวิวโบรกเกอร์</b><span class="rt">#/review</span><span class="note">ทะเบียนทุกราย จัดกลุ่มด้วยจำนวนดาว</span></div>
+                <div class="card sub"><b>หน้ารีวิวรายโบรก</b><span class="rt">#/brokerreview</span><span class="note">เปิดจากการกดการ์ดโบรก · แท็บ 10 ด้าน</span></div>
+                <div class="card sub"><b>หัวข้อเจาะลึกรายด้าน</b><span class="rt">#/reviewsec</span></div>
+                <div class="card menu"><b>ข่าวและบทความ</b><span class="rt">#/news</span><span class="note">14 บทความ คัดกรองตามหมวด</span></div>
+                <div class="card sub"><b>บทความรายชิ้น</b><span class="rt">#/newsart</span></div>
+                <div class="card menu"><b>Trade Analytics</b><span class="rt">#/analytics</span><span class="note">ชุด EA 6 ตัว วัดต้นทุนจริงจากการเทรด</span></div>
+                <div class="card sub"><b>รายละเอียด EA</b><span class="rt">#/eadetail</span></div>
+                <div class="card menu"><b>Broker Alerts</b><span class="rt">#/alerts</span><span class="note">เรื่องที่ทีมตรวจแจ้ง + วิธีสังเกตโบรกเถื่อน</span></div>
+              </div>
+            </div>
+
+            <!-- ── กลุ่ม ข ── -->
+            <div class="col" style="--c:#B42318">
+              <div class="stub"></div>
+              <div class="col-head"><b>รางวัลดาวแดง</b><span>6 หน้า · ไม่มีในเมนู</span></div>
+              <div class="stack">
+                <div class="card"><b>RED STAR · รอบล่าสุด</b><span class="rt">#/awards</span><span class="note">หน้าแม่ของกลุ่ม — เข้าได้จากหน้าแรกจุดเดียว</span></div>
+                <div class="card sub"><b>โบรกที่ได้ดาว Q2 2026</b><span class="rt">#/awards2026</span></div>
+                <div class="card sub"><b>เกณฑ์การให้ดาว</b><span class="rt">#/criteria</span><span class="note">ผ่านครบทุกข้อ ไม่ใช่คะแนนเฉลี่ย</span></div>
+                <div class="card sub"><b>ตรวจสอบใบรับรอง</b><span class="rt">#/verify</span><span class="note">ปลายทางของตราที่โบรกฝังบนเว็บตัวเอง</span></div>
+                <div class="card sub"><b>Hall of Fame รายโบรก</b><span class="rt">#/brokerawards</span><span class="note">ใบรับรองทั้งหมด + ประวัติย้อนหลัง</span></div>
+                <div class="card sub"><b>Partner Dashboard</b><span class="rt">#/partner</span><span class="note">ฝั่งโบรกที่ได้รางวัล — ตรา ฝังโค้ด สถิติ</span></div>
+              </div>
+            </div>
+
+            <!-- ── กลุ่ม ค ── -->
+            <div class="col" style="--c:#3538CD">
+              <div class="stub"></div>
+              <div class="col-head"><b>บัญชีผู้ใช้</b><span>4 หน้า</span></div>
+              <div class="stack">
+                <div class="card menu"><b>เข้าสู่ระบบ</b><span class="rt">#/login</span><span class="note">อีเมล/รหัสผ่าน + ต่อด้วย Google</span></div>
+                <div class="card menu"><b>สมัครสมาชิก</b><span class="rt">#/signup</span><span class="note">เลือก 2 แบบ: ผู้ใช้ทั่วไป / ตัวแทนโบรก</span></div>
+                <div class="card sub"><b>หน้าสมาชิก</b><span class="rt">#/member</span><span class="note">ติดตามโบรก · เปรียบเทียบ · แจ้งเตือน · EA</span></div>
+                <div class="card sub"><b>เรื่องร้องเรียนของคุณ</b><span class="rt">#/usercase</span><span class="note">ไทม์ไลน์ 4 ขั้น + หลักฐานแนบ</span></div>
+              </div>
+            </div>
+
+            <!-- ── กลุ่ม ง ── -->
+            <div class="col" style="--c:#475467">
+              <div class="stub"></div>
+              <div class="col-head"><b>ฝั่งโบรกเกอร์</b><span>1 หน้า + 1 ใช้ร่วม</span></div>
+              <div class="stack">
+                <div class="card"><b>Broker Dashboard</b><span class="rt">#/brokerdash</span><span class="note">รับทราบเรื่องที่ถูกแจ้ง ส่งคำชี้แจง ติดตามสถานะ</span></div>
+                <div class="card"><b>Partner Dashboard</b><span class="rt">#/partner</span><span class="note">หน้าเดียวกับกลุ่มรางวัล — นับครั้งเดียว</span></div>
+                <div class="card none"><b>ยืนยันตัวตนตัวแทนโบรก</b><span class="rt">ยังไม่ออกแบบ</span><span class="note">ตอนนี้กดเลือกเองในหน้าสมัครได้เลย</span></div>
+              </div>
+            </div>
+
+            <!-- ── กลุ่ม จ ── -->
+            <div class="col" style="--c:#667085">
+              <div class="stub"></div>
+              <div class="col-head"><b>ยังไม่มีในเว็บ</b><span>9 หน้าที่เสนอ</span></div>
+              <div class="stack">
+                <div class="card none"><b>เกี่ยวกับสถาบัน</b><span class="rt">ยังไม่มี</span><span class="note">ตัวตนสถาบันไม่มีที่ยืนบนเว็บเลยสักหน้า</span></div>
+                <div class="card spec"><b>ระเบียบวิธีฉบับเปิดเผย</b><span class="rt">gcsi/checklist_interactive.html</span><span class="note">มีต้นแบบแยก ยังไม่ต่อเข้าเว็บ</span></div>
+                <div class="card none"><b>ค้นหา / ไดเรกทอรีโบรก</b><span class="rt">ยังไม่มี</span><span class="note">มีช่องค้นหา แต่ไม่มีหน้าผลลัพธ์</span></div>
+                <div class="card spec"><b>ไทม์ไลน์ประวัติรายโบรก</b><span class="rt">มีแค่ประวัติรางวัล</span><span class="note">Core Pillar ข้อ 1 ต้องการมากกว่านี้</span></div>
+                <div class="card spec"><b>อันดับรายประเด็น (ผลผลิต B)</b><span class="rt">มีแค่อันดับรายประเทศ</span></div>
+                <div class="card spec"><b>พื้นที่ข้อพิพาทสาธารณะ</b><span class="rt">prototype/disputes.html</span></div>
+                <div class="card spec"><b>ทะเบียนค้นหาข้ามปี</b><span class="rt">prototype/registry-search.html</span></div>
+                <div class="card none"><b>เงื่อนไข + นโยบายความเป็นส่วนตัว</b><span class="rt">ยังไม่มี</span><span class="note">หน้าสมัครให้ติ๊กยอมรับไปแล้ว</span></div>
+                <div class="card none"><b>ติดต่อ / ส่งเบาะแสโดยไม่ต้องสมัคร</b><span class="rt">ยังไม่มี</span></div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="board-note">
+            <b>อ่านผังนี้ยังไง:</b> การ์ดที่มีจุดแดงมุมขวาคือหน้าที่กดจากเมนูบนได้ · การ์ดเส้นประที่เยื้องเข้าไปคือหน้าที่เปิดจากการกดในหน้าแม่เท่านั้น ไม่มีทางเข้าตรง ·
+            เส้นทั้งหมดในผังคือทางที่<b>กดได้จริงในต้นแบบวันนี้</b> ไม่ใช่ทางที่ควรจะมี — ทางที่ควรจะมีแต่ยังไม่มี อยู่ในแท็บ “ประเด็นโครงสร้าง”
+          </div>
+
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- ═══════════ 2. ผังต้นไม้ ═══════════ -->
-  <section class="sec">
-    <h2>2. ผังเว็บที่มีอยู่จริง</h2>
-    <p class="sub">จัดกลุ่มตามหน้าที่ ไม่ใช่ตามลำดับที่เขียนโค้ด · ลูกศร <span class="arrow">→</span> คือทางที่กดต่อได้จริงจากหน้านั้น</p>
+  <!-- ═════════════ 1.5 เส้นเชื่อมระหว่างหน้า ═════════════ -->
+  <section class="view" data-view="flow" hidden>
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h2>Cross-page connections — หน้าไหนพาไปหน้าไหน</h2>
+          <p class="sub">ลูกศรคือปุ่มหรือลิงก์ที่<b>กดได้จริงในต้นแบบวันนี้</b> · ป้ายบนเส้นคือสิ่งที่ผู้ใช้กด ไม่ใช่ชื่อหน้า · เส้นประแดงคือทางที่พาผู้ใช้ออกนอกเว็บเรา</p>
+        </div>
+        <div class="legend">
+          <span class="lg lg-flow-pub">หน้าสาธารณะ</span>
+          <span class="lg lg-flow-lock">ต้องเข้าสู่ระบบก่อน</span>
+          <span class="lg lg-flow-ext">เข้า/ออกนอกเว็บ</span>
+        </div>
+      </div>
+      <div class="canvas">
+        <div id="flowboard" style="min-width:1280px"></div>
+        <div class="board-note">
+          <b>สามเส้นที่ควรดูก่อน:</b>
+          (1) <b>หน้าแรก → กลุ่มรางวัล</b> เป็นเส้นเดียวที่พาเข้ากลุ่มรางวัลทั้งกลุ่ม ถ้าผู้ใช้ไม่เลื่อนถึงบล็อกนั้นก็จบ ·
+          (2) <b>หน้ารีวิว → เปิดบัญชี</b> เป็นทางเดียวที่พาผู้ใช้ออกนอกเว็บ — ปุ่มนี้ยังไม่มีปลายทางจริง (<span class="mono">href="#"</span>) และยังรอ Boss ตัดสินว่าโบรก 0 ดาวจะมีปุ่มนี้ด้วยไหม ·
+          (3) <b>ทุกเส้นที่เข้าพื้นที่สมาชิกต้องผ่านด่านเข้าสู่ระบบเสมอ</b> รวมถึงการยื่นเรื่องร้องเรียน
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <div class="tree">
-      <ul>
-        <li class="grp">ก. แกนสาธารณะ — เข้าได้จากเมนูบน<span class="hint">6 รายการในเมนู + ปุ่มเข้าสู่ระบบ/สมัครสมาชิก</span>
+  <!-- ═════════════ 2. ทุกหน้าและ route ═════════════ -->
+  <section class="view" data-view="routes" hidden>
+    <div class="panel doc">
+      <div class="head">
+        <h2>ทุกหน้าและ route ทั้ง 21 หน้า</h2>
+        <p class="sub">“เข้าจาก” คือทางเข้าที่มีอยู่จริงในต้นแบบ ไม่ใช่ทางที่ควรจะมี</p>
+      </div>
+      <div class="body">
+        <div class="stats">
+          <div class="stat"><div class="n">21</div><div class="l">หน้าที่สร้างแล้วในต้นแบบ</div></div>
+          <div class="stat"><div class="n">8</div><div class="l">หน้าที่เข้าถึงได้จากเมนูบน</div></div>
+          <div class="stat"><div class="n">13</div><div class="l">หน้าที่เข้าได้จากลิงก์ในหน้าอื่นเท่านั้น</div></div>
+          <div class="stat"><div class="n zero">0</div><div class="l">ลิงก์ในฟุตเตอร์ — เพราะยังไม่มีฟุตเตอร์</div></div>
+          <div class="stat"><div class="n">9</div><div class="l">หน้าที่เอกสารเรียกร้องแต่ยังไม่มี</div></div>
+        </div>
+
+        <div class="tw">
+          <table>
+            <thead>
+              <tr><th class="num">#</th><th>Route</th><th>หน้า</th><th>บทบาท</th><th>เข้าจาก</th><th>กดต่อไปที่</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="num">1</td><td><span class="rt">#/</span></td><td><span class="nm">หน้าแรก</span></td><td>จุดเข้าหลัก รวมดาว อันดับ แผนที่ และบทความไว้ในหน้าเดียว</td><td>เมนู</td><td>รางวัล · Hall of Fame · ข่าว</td></tr>
+              <tr><td class="num">2</td><td><span class="rt">#/rating</span></td><td><span class="nm">ตารางอันดับรายประเทศ</span></td><td>อันดับแยกประเทศ/หมวด/ปี + เทียบตัวต่อตัว</td><td>เมนู</td><td>หน้ารีวิวรายโบรก</td></tr>
+              <tr><td class="num">3</td><td><span class="rt">#/review</span></td><td><span class="nm">รีวิวโบรกเกอร์</span></td><td>ทะเบียนทุกรายแยกตามจำนวนดาว</td><td>เมนู</td><td>หน้ารีวิวรายโบรก</td></tr>
+              <tr><td class="num">4</td><td><span class="rt">#/brokerreview</span></td><td><span class="nm">หน้ารีวิวรายโบรก</span></td><td>ศูนย์กลางข้อมูลรายโบรก — แท็บ 10 ด้าน คะแนน บัญชี FAQ</td><td>กดการ์ดโบรกจากหน้า Rating/Review</td><td>หัวข้อเจาะลึก · ตรวจสอบใบรับรอง · ข่าว</td></tr>
+              <tr><td class="num">5</td><td><span class="rt">#/reviewsec</span></td><td><span class="nm">หัวข้อเจาะลึกรายด้าน</span></td><td>ขยาย 1 ใน 10 ด้านของรีวิวให้ละเอียด</td><td>แท็บบนหน้ารีวิวรายโบรก</td><td>กลับหน้ารีวิว</td></tr>
+              <tr><td class="num">6</td><td><span class="rt">#/news</span></td><td><span class="nm">ข่าวและบทความ</span></td><td>ศูนย์รวมบทความ 14 บท คัดกรองตามหมวด</td><td>เมนู · หน้าแรก</td><td>บทความรายชิ้น</td></tr>
+              <tr><td class="num">7</td><td><span class="rt">#/newsart</span></td><td><span class="nm">บทความรายชิ้น</span></td><td>เนื้อบทความเต็ม</td><td>การ์ดข่าวในหลายหน้า</td><td>กลับ</td></tr>
+              <tr><td class="num">8</td><td><span class="rt">#/analytics</span></td><td><span class="nm">Trade Analytics</span></td><td>ชุด EA 6 ตัว + ตัวอย่างหน้าจอสมาชิก + นโยบายว่าเก็บ/ไม่เก็บอะไร</td><td>เมนู</td><td>รายละเอียด EA · สมัครสมาชิก</td></tr>
+              <tr><td class="num">9</td><td><span class="rt">#/eadetail</span></td><td><span class="nm">รายละเอียด EA</span></td><td>สเปกและวิธีใช้ EA รายตัว</td><td>การ์ด EA</td><td>กลับ</td></tr>
+              <tr><td class="num">10</td><td><span class="rt">#/alerts</span></td><td><span class="nm">Broker Alerts</span></td><td>เรื่องแจ้งเตือน + คำชี้แจงโบรก + วิธีสังเกตโบรกเถื่อน 6 ข้อ</td><td>เมนู</td><td>Broker Dashboard · สมัครสมาชิก</td></tr>
+              <tr><td class="num">11</td><td><span class="rt">#/awards</span></td><td><span class="nm">RED STAR · Q2 2026</span></td><td>หน้าแม่ของระบบรางวัล อธิบายหมวดและน้ำหนักตัดสิน</td><td>หน้าแรกเท่านั้น</td><td>ทั้ง 5 หน้าในกลุ่มรางวัล</td></tr>
+              <tr><td class="num">12</td><td><span class="rt">#/awards2026</span></td><td><span class="nm">โบรกที่ได้ดาวรอบล่าสุด</span></td><td>รายชื่อผู้ได้ดาวพร้อมตัวกรอง</td><td>หน้า Awards</td><td>ตรวจสอบใบรับรอง</td></tr>
+              <tr><td class="num">13</td><td><span class="rt">#/criteria</span></td><td><span class="nm">เกณฑ์การให้ดาว</span></td><td>ดาวมาจากการผ่านครบทุกข้อ · เงื่อนไขความประพฤติ · เมื่อไหร่ดาวถูกถอน</td><td>หน้า Awards · หน้า Verify</td><td>กลับหน้า Awards</td></tr>
+              <tr><td class="num">14</td><td><span class="rt">#/verify</span></td><td><span class="nm">ตรวจสอบใบรับรอง</span></td><td>ยืนยันตราบนเว็บโบรกว่าเป็นของจริงและยังไม่ถูกเพิกถอน</td><td>Awards · Awards2026 · Hall of Fame · หน้ารีวิว</td><td>Hall of Fame · เกณฑ์</td></tr>
+              <tr><td class="num">15</td><td><span class="rt">#/brokerawards</span></td><td><span class="nm">Hall of Fame รายโบรก</span></td><td>ใบรับรองทั้งหมด + ประวัติรางวัลย้อนหลัง</td><td>หน้าแรก · Awards · แถวรางวัล</td><td>ตรวจสอบใบรับรอง</td></tr>
+              <tr><td class="num">16</td><td><span class="rt">#/partner</span></td><td><span class="nm">Partner Dashboard</span></td><td>ฝั่งโบรกที่ได้รางวัล — ตรา ฝังโค้ด สถิติการแสดงผล</td><td>หน้า Awards</td><td>ไม่มีทางออกในหน้า</td></tr>
+              <tr><td class="num">17</td><td><span class="rt">#/brokerdash</span></td><td><span class="nm">Broker Dashboard</span></td><td>ฝั่งโบรกที่ถูกแจ้ง — รับทราบ ชี้แจง ติดตามสถานะ</td><td>Broker Alerts · หน้าสมัคร</td><td>Broker Alerts</td></tr>
+              <tr><td class="num">18</td><td><span class="rt">#/login</span></td><td><span class="nm">เข้าสู่ระบบ</span></td><td>อีเมล/รหัสผ่าน + ต่อด้วย Google</td><td>ปุ่มมุมขวาบน</td><td>หน้าสมาชิก · สมัครสมาชิก</td></tr>
+              <tr><td class="num">19</td><td><span class="rt">#/signup</span></td><td><span class="nm">สมัครสมาชิก</span></td><td>เลือก 2 แบบ: ผู้ใช้ทั่วไป / ตัวแทนโบรกเกอร์</td><td>ปุ่มมุมขวาบน · หลายหน้า</td><td>เข้าสู่ระบบ · Broker Dashboard</td></tr>
+              <tr><td class="num">20</td><td><span class="rt">#/member</span></td><td><span class="nm">หน้าสมาชิก</span></td><td>โบรกที่ติดตาม · รายการเปรียบเทียบ · แจ้งเตือน · ดาวน์โหลด EA</td><td>หลังเข้าสู่ระบบ</td><td>เรื่องร้องเรียน · หน้ารีวิว · EA</td></tr>
+              <tr><td class="num">21</td><td><span class="rt">#/usercase</span></td><td><span class="nm">เรื่องร้องเรียนของคุณ</span></td><td>ไทม์ไลน์ 4 ขั้นต่อเรื่อง + หลักฐานแนบ + ฟอร์มยื่นใหม่</td><td>หน้าสมาชิก</td><td>กลับหน้าสมาชิก</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════════ 3. หน้าที่ยังไม่มี ═════════════ -->
+  <section class="view" data-view="missing" hidden>
+    <div class="panel doc">
+      <div class="head">
+        <h2>หน้าที่เอกสารเรียกร้องไว้ แต่ยังไม่มีในเว็บ</h2>
+        <p class="sub">ทุกแถวมีที่มาจากเอกสารของทีมเอง ไม่ใช่ไอเดียลอย ๆ — คอลัมน์สุดท้ายบอกว่าถ้าไม่มี จะขัดกับอะไร</p>
+      </div>
+      <div class="body">
+        <div class="tw">
+          <table>
+            <thead>
+              <tr><th class="num">#</th><th>หน้าที่เสนอ</th><th>สถานะ</th><th>ที่มา</th><th>ถ้าไม่มี จะขัดกับอะไร</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="num">1</td><td><span class="nm">เกี่ยวกับสถาบัน (About)</span></td><td><span class="tag t-none">ยังไม่มี</span></td><td>SITEMAP-FEATURES-DRAFT §2</td><td>ตัวตน “สถาบันมาตรฐานระดับโลก” ไม่มีที่ยืนบนเว็บเลยสักหน้า</td></tr>
+              <tr><td class="num">2</td><td><span class="nm">ระเบียบวิธีฉบับเปิดเผย</span></td><td><span class="tag t-plan">มีต้นแบบแยก</span></td><td>CORE-PILLAR เสาที่ 1 · <span class="mono">gcsi/checklist_interactive.html</span></td><td>เสาความน่าเชื่อถือข้อ 1 บอกว่าตัวเกณฑ์เองต้องเปิดให้ตรวจสอบ ไม่ใช่แค่ผลตรวจ · หน้า <span class="mono">#/criteria</span> อธิบายเฉพาะกติกาดาว ยังไม่ใช่ชุดข้อตรวจ</td></tr>
+              <tr><td class="num">3</td><td><span class="nm">ค้นหา/ไดเรกทอรีโบรกทั้งหมด</span></td><td><span class="tag t-none">ยังไม่มี</span></td><td>SITEMAP-FEATURES-DRAFT ฟีเจอร์ #6</td><td>ช่องค้นหาบนหน้าแรกมีอยู่ แต่ไม่มีหน้าผลลัพธ์การค้นหาเป็นของตัวเอง</td></tr>
+              <tr><td class="num">4</td><td><span class="nm">ไทม์ไลน์ประวัติรายโบรกตลอดอายุ</span></td><td><span class="tag t-plan">มีบางส่วน</span></td><td>CORE-PILLAR ข้อ 1 + ผลผลิตที่ 4</td><td>ตอนนี้ประวัติมีเฉพาะ “ประวัติรางวัล” ใน Hall of Fame · ยังไม่ครอบคลุมผลตรวจทุกไตรมาส เหตุการณ์สำคัญ และการเปลี่ยนใบอนุญาต</td></tr>
+              <tr><td class="num">5</td><td><span class="nm">จัดอันดับรายประเด็น (ผลผลิต B)</span></td><td><span class="tag t-plan">มีบางส่วน</span></td><td>CORE-PILLAR §5 ผลผลิต B</td><td>หน้า Rating จัดอันดับ “รวมรายประเทศ” แต่ยังไม่มีหน้าอันดับรายหัวข้อ (ถอนไวสุด/ต้นทุนต่ำสุด/มือใหม่)</td></tr>
+              <tr><td class="num">6</td><td><span class="nm">พื้นที่ข้อพิพาทสาธารณะ</span></td><td><span class="tag t-plan">มีสเปก + ต้นแบบแยก</span></td><td><span class="mono">Noting/DISPUTES-SPEC.md</span> · <span class="mono">prototype/disputes.html</span></td><td>ต้นแบบหลักมีเฉพาะ “เรื่องร้องเรียนของคุณ” ที่เป็นของส่วนตัว ยังไม่มีฝั่งสาธารณะ · ตัวฟีเจอร์ยังค้างรอ Boss ยืนยัน</td></tr>
+              <tr><td class="num">7</td><td><span class="nm">ทะเบียนค้นหาข้ามปี</span></td><td><span class="tag t-plan">มีสเปก + ต้นแบบแยก</span></td><td><span class="mono">Noting/REGISTRY-SEARCH-SPEC.md</span> · <span class="mono">prototype/registry-search.html</span></td><td>ค้นย้อนหลังข้ามปียังทำไม่ได้ในต้นแบบหลัก</td></tr>
+              <tr><td class="num">8</td><td><span class="nm">เงื่อนไขการใช้งาน + นโยบายความเป็นส่วนตัว</span></td><td><span class="tag t-none">ยังไม่มี</span></td><td>หน้าสมัครสมาชิกให้ติ๊กยอมรับทั้งสองอย่าง</td><td>ให้ผู้ใช้ยอมรับเอกสารที่ยังไม่มีตัวตน · หน้า Trade Analytics เก็บข้อมูลการเทรด จึงยิ่งต้องมีนโยบายรองรับ</td></tr>
+              <tr><td class="num">9</td><td><span class="nm">ติดต่อทีมงาน / ส่งเบาะแสโดยไม่ต้องสมัคร</span></td><td><span class="tag t-none">ยังไม่มี</span></td><td>SESSION-LOG-2569-08-17 ข้อ 8 (หัวข้อเปิด)</td><td>คนที่โดนโกงต้องสมัครสมาชิกก่อนถึงจะพูดกับเราได้ ซึ่งเป็นด่านที่สูงสำหรับคนกลุ่มนั้น</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════════ 4. ประเด็นโครงสร้าง ═════════════ -->
+  <section class="view" data-view="issues" hidden>
+    <div class="panel doc">
+      <div class="head">
+        <h2>ประเด็นโครงสร้างที่เจอตอนไล่ผัง</h2>
+        <p class="sub">เรียงตามผลกระทบ · ทุกข้อยังไม่ได้แก้ รอ Boss ตัดสินว่าจะแก้ข้อไหนก่อน</p>
+      </div>
+      <div class="body">
+        <div class="issues">
+          <div class="issue">
+            <h3><span class="i">1</span> เว็บยังไม่มีฟุตเตอร์เลยสักหน้า</h3>
+            <p>ทั้งเว็บมีทางเดินอยู่ทางเดียวคือเมนูบน 6 รายการ เมื่อผู้ใช้เลื่อนถึงท้ายหน้าใดก็ตาม จะไม่มีอะไรพาไปต่อ</p>
+            <p class="why"><b>ทำไมสำคัญ:</b> ฟุตเตอร์เป็นที่อยู่ตามธรรมชาติของ About · ระเบียบวิธี · นโยบาย · ติดต่อ — ซึ่งบังเอิญเป็นสี่หน้าที่ยังไม่มีพอดี การเพิ่มฟุตเตอร์จึงแก้สองปัญหาพร้อมกัน</p>
+          </div>
+          <div class="issue">
+            <h3><span class="i">2</span> กลุ่มรางวัลทั้งกลุ่มแขวนอยู่กับหน้าแรกจุดเดียว</h3>
+            <p>หกหน้าในกลุ่มรางวัลไม่มีชื่ออยู่ในเมนู ผู้ใช้ที่เข้าเว็บมาแล้วไม่ได้เลื่อนถึงบล็อกรางวัลบนหน้าแรก จะไม่มีทางรู้ว่ามีอยู่</p>
+            <p class="why"><b>ทำไมสำคัญ:</b> ดาวแดงคือผลผลิต A ซึ่งเป็นแกนของทั้งสถาบัน การให้มันเข้าถึงยากกว่าข่าวหรือ EA ขัดกับลำดับความสำคัญของตัวเว็บเอง</p>
+          </div>
+          <div class="issue">
+            <h3><span class="i">3</span> โครงสร้าง URL จริงยังไม่ถูกตัดสิน</h3>
+            <p>ต้นแบบใช้ hash (<span class="mono">#/rating</span>) เพราะข้อจำกัดของไฟล์เดียว · จุดเดียวในเว็บที่เขียน URL แบบเส้นทางจริงคือลิงก์ในหน้าสมาชิกที่เขียนว่า <span class="mono">/broker/&lt;slug&gt;/review</span> และในเอกสารมอบหมายงานที่อ้างถึง <span class="mono">/broker/&lt;slug&gt;/awards</span></p>
+            <p class="why"><b>ทำไมสำคัญ:</b> ถ้าจะเป็นมาตรฐานที่คนอ้างอิงข้ามปี URL ต้องอยู่ถาวรและเดาได้ — โดยเฉพาะหน้าใบรับรองที่โบรกจะเอาไปฝังบนเว็บตัวเอง ควรตัดสินเรื่องนี้ก่อนมีลิงก์ภายนอกชี้เข้ามา</p>
+          </div>
+          <div class="issue">
+            <h3><span class="i">4</span> สี่หน้าเป็นทางตัน ต้องกดปุ่มกลับอย่างเดียว</h3>
+            <p>หัวข้อเจาะลึก · บทความรายชิ้น · รายละเอียด EA · Partner Dashboard — ทั้งสี่หน้าไม่มีทางไปต่อนอกจากย้อนกลับ</p>
+            <p class="why"><b>ทำไมสำคัญ:</b> ขัดกับ Core Pillar ข้อ 2 ที่ว่าทุกหน้าต้องพาไปสู่การตัดสินใจเลือกโบรก · อย่างน้อยควรมีทางกลับไปหน้ารีวิวของโบรกที่กำลังพูดถึง</p>
+          </div>
+          <div class="issue">
+            <h3><span class="i">5</span> ฉบับภาษาอังกฤษยังแปลไม่ครบ และหน้าเว็บบอกตรง ๆ ว่าไม่ครบ</h3>
+            <p>ปุ่ม ไทย/EN ทำงานจริง ป้ายอินเทอร์เฟซแปลแล้ว แต่บทความ รีวิว และเนื้อหายาวยังเป็นภาษาไทย โดยมีแถบอธิบายไว้ตรง ๆ ว่ากำลังทยอยแปล</p>
+            <p class="why"><b>ทำไมสำคัญ:</b> ตัวตนที่ประกาศไว้คือมาตรฐานกลางของคนทั้งโลก แต่สถานะจริงตอนนี้คือเว็บไทยที่มีอังกฤษบางส่วน — การเขียนกำกับตรง ๆ แบบนี้ถูกต้องแล้ว แต่เป็นช่องว่างที่ต้องมีแผนปิด</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════════ 5. ที่มา ═════════════ -->
+  <section class="view" data-view="about" hidden>
+    <div class="panel doc">
+      <div class="head">
+        <h2>ที่มาของเอกสารและข้อจำกัด</h2>
+        <p class="sub">จัดทำโดย Noting (นักออกแบบ UX/UI) · 2 กันยายน 2569</p>
+      </div>
+      <div class="body">
+        <div class="note">
+          <h3>อ่านสามบรรทัดนี้ก่อน</h3>
           <ul>
-            <li><span class="r">#/</span><span class="nm">หน้าแรก</span> <span class="d">— Hall of Fame · รางวัลดาวแดง · แผนที่ 91 ประเทศ · ตารางอันดับ · บทความ</span>
-              <ul>
-                <li><span class="arrow">→</span> <span class="d">กลุ่มรางวัล (ข.) · Hall of Fame รายโบรก · ข่าว</span></li>
-              </ul>
-            </li>
-            <li><span class="r">#/rating</span><span class="nm">ตารางอันดับรายประเทศ</span> <span class="d">— แยกหมวดสินทรัพย์และปีผลตรวจ พร้อมเทียบตัวต่อตัว</span>
-              <ul><li><span class="arrow">→</span> <span class="nm">หน้ารีวิวรายโบรก</span> <span class="d">(กดการ์ดโบรก)</span></li></ul>
-            </li>
-            <li><span class="r">#/review</span><span class="nm">รีวิวโบรกเกอร์</span> <span class="d">— ทะเบียนทุกรายแยกตามหมวด จัดกลุ่มด้วยจำนวนดาว</span>
-              <ul>
-                <li><span class="r">#/brokerreview</span><span class="nm">หน้ารีวิวรายโบรก</span> <span class="d">— แท็บ 10 ด้าน · คะแนนแยกหมวด · เทียบ 4 ประเภทบัญชี · FAQ</span>
-                  <ul>
-                    <li><span class="r">#/reviewsec</span><span class="nm">หัวข้อเจาะลึกรายด้าน</span> <span class="d">— 10 หัวข้อ กดกลับหน้ารีวิวได้</span></li>
-                    <li><span class="arrow">→</span> <span class="d">ตรวจสอบใบรับรอง · บทความที่เกี่ยวข้อง</span></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li><span class="r">#/news</span><span class="nm">ข่าวและบทความโบรกเกอร์</span> <span class="d">— 14 บท คัดกรองตามหมวด</span>
-              <ul><li><span class="r">#/newsart</span><span class="nm">หน้าบทความรายชิ้น</span></li></ul>
-            </li>
-            <li><span class="r">#/analytics</span><span class="nm">Trade Analytics</span> <span class="d">— ชุด EA 6 ตัวที่วัดต้นทุนจริงจากการเทรดของผู้ใช้</span>
-              <ul><li><span class="r">#/eadetail</span><span class="nm">รายละเอียด EA รายตัว</span></li></ul>
-            </li>
-            <li><span class="r">#/alerts</span><span class="nm">Broker Alerts</span> <span class="d">— เรื่องที่ทีมตรวจแจ้งเตือน + วิธีสังเกตโบรกไม่น่าไว้ใจ 6 ข้อ</span>
-              <ul><li><span class="arrow">→</span> <span class="d">Broker Dashboard (ฝั่งโบรกเข้ามาชี้แจง)</span></li></ul>
-            </li>
+            <li><b>ผังนี้คือสิ่งที่มีอยู่ ไม่ใช่สิ่งที่อนุมัติแล้ว</b> — RedStarTrust ยังไม่เคยมี sitemap ที่ Boss อนุมัติเป็นทางการ ร่างของ Doing เมื่อ 21 ส.ค. 2569 ก็ยังเป็นการสังเคราะห์ที่รออนุมัติอยู่</li>
+            <li><b>URL จริงยังไม่ถูกออกแบบ</b> — ต้นแบบทั้ง 21 หน้าอยู่ในไฟล์เดียวและสลับด้วย hash เพราะ Artifact หนึ่งลิงก์เก็บได้ไฟล์เดียว · โครงสร้าง URL จริงของเว็บเป็นเรื่องที่ยังต้องตัดสิน</li>
+            <li><b>ข้อมูลในต้นแบบเป็นข้อมูลสมมติทั้งหมด</b> ยกเว้นโลโก้โบรกเกอร์ที่ดึงจากโดเมนทางการ — เอกสารนี้พูดเรื่องโครงสร้างหน้า ไม่ได้รับรองตัวเลขใดบนหน้าเว็บ</li>
           </ul>
-        </li>
+        </div>
 
-        <li class="grp">ข. กลุ่มรางวัลดาวแดง — <b>ไม่มีในเมนู</b><span class="hint">ทางเข้าเดียวคือบล็อกรางวัลบนหน้าแรก · ถ้าผู้ใช้เลื่อนผ่านไป จะไม่มีทางเจอทั้งกลุ่มนี้เลย</span>
-          <ul>
-            <li><span class="r">#/awards</span><span class="nm">RED STAR · Q2 2026</span> <span class="d">— หน้าแม่ของกลุ่ม: หมวดที่มอบดาว น้ำหนักตัดสิน ผู้ได้รับรางวัล</span>
-              <ul>
-                <li><span class="r">#/awards2026</span><span class="nm">โบรกเกอร์ที่ได้ดาว Q2 2026</span> <span class="d">— รายชื่อทั้งหมด กรองตามภูมิภาค/หมวด/หน่วยงานกำกับ</span></li>
-                <li><span class="r">#/criteria</span><span class="nm">เกณฑ์การให้ดาว</span> <span class="d">— ดาวมาจากการผ่านครบทุกข้อ ไม่ใช่คะแนนเฉลี่ย · เมื่อไหร่ดาวถูกถอน</span></li>
-                <li><span class="r">#/verify</span><span class="nm">ตรวจสอบใบรับรอง</span> <span class="d">— ยืนยันว่าตราบนเว็บโบรกเป็นของจริงและยังไม่ถูกเพิกถอน</span></li>
-                <li><span class="r">#/brokerawards</span><span class="nm">Hall of Fame รายโบรก</span> <span class="d">— ใบรับรองทั้งหมด + ประวัติรางวัลย้อนหลัง</span></li>
-                <li><span class="r">#/partner</span><span class="nm">Partner Dashboard</span> <span class="d">— ดาวน์โหลดตรารางวัล ฝังโค้ด ดูสถิติการแสดงผล</span></li>
-              </ul>
-            </li>
-          </ul>
-        </li>
+        <div class="tw">
+          <table>
+            <thead><tr><th>ข้อมูลในเอกสารนี้มาจากไหน</th><th>วิธีที่ใช้เก็บ</th></tr></thead>
+            <tbody>
+              <tr><td><span class="nm">รายชื่อหน้าทั้ง 21 หน้า</span></td><td>อ่านจากตัวแปร <span class="mono">PAGE_IDS</span> ในต้นแบบที่เปิดรันจริง ไม่ได้นับจากซอร์ส</td></tr>
+              <tr><td><span class="nm">เส้นเชื่อมระหว่างหน้า</span></td><td>ไล่เก็บลิงก์ <span class="mono">#/</span> จาก DOM ทีละหน้าหลังสั่งให้ทุกหน้า render แล้ว</td></tr>
+              <tr><td><span class="nm">ทางเข้าที่เกิดจากการกดการ์ด</span></td><td>ไล่จุดที่เรียก <span class="mono">showPage()</span> ในซอร์ส เพราะทางพวกนี้ไม่ใช่ลิงก์ จึงไม่โผล่ใน DOM</td></tr>
+              <tr><td><span class="nm">หน้าที่ยังไม่มี</span></td><td>เทียบกับ CORE-PILLAR.md 0.4 · SITEMAP-FEATURES-DRAFT.md · DISPUTES-SPEC.md · REGISTRY-SEARCH-SPEC.md</td></tr>
+            </tbody>
+          </table>
+        </div>
 
-        <li class="grp">ค. บัญชีผู้ใช้<span class="hint">เข้าจากปุ่มมุมขวาบน · หน้าสมาชิกและหน้าร้องเรียนจะขึ้นข้อความ “ยังไม่ได้เข้าสู่ระบบ” ถ้ายังไม่ล็อกอิน</span>
-          <ul>
-            <li><span class="r">#/login</span><span class="nm">เข้าสู่ระบบ</span> <span class="d">— อีเมล/รหัสผ่าน + ปุ่มดำเนินการต่อด้วย Google</span></li>
-            <li><span class="r">#/signup</span><span class="nm">สมัครสมาชิก</span> <span class="d">— เลือกได้ 2 แบบ: ผู้ใช้ทั่วไป / ตัวแทนโบรกเกอร์</span></li>
-            <li><span class="r">#/member</span><span class="nm">หน้าสมาชิก</span> <span class="d">— โบรกที่ติดตาม · รายการเปรียบเทียบ · แจ้งเตือน · ดาวน์โหลด EA</span>
-              <ul><li><span class="r">#/usercase</span><span class="nm">เรื่องร้องเรียนของคุณ</span> <span class="d">— ไทม์ไลน์ 4 ขั้นต่อเรื่อง + รายการหลักฐาน + ฟอร์มยื่นเรื่องใหม่</span></li></ul>
-            </li>
-          </ul>
-        </li>
-
-        <li class="grp">ง. พื้นที่ฝั่งโบรกเกอร์<span class="hint">คนละเส้นทางกับผู้ใช้ทั่วไป — เข้าจากหน้าสมัคร (เลือกตัวแทนโบรกเกอร์) หรือจากหน้า Broker Alerts</span>
-          <ul>
-            <li><span class="r">#/brokerdash</span><span class="nm">Broker Dashboard</span> <span class="d">— รับทราบเรื่องที่ทีมตรวจแจ้ง ส่งคำชี้แจง ติดตามสถานะ</span></li>
-            <li><span class="r">#/partner</span><span class="nm">Partner Dashboard</span> <span class="d">— เฉพาะโบรกที่ได้รางวัล (อยู่ในกลุ่ม ข. ด้วย)</span></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ═══════════ 3. ตารางรายหน้า ═══════════ -->
-  <section class="sec">
-    <h2>3. ตารางรายหน้า 21 หน้า</h2>
-    <p class="sub">“เข้าจาก” คือทางเข้าที่มีอยู่จริงในต้นแบบ ไม่ใช่ทางที่ควรจะมี</p>
-
-    <div class="tw">
-      <table>
-        <thead>
-          <tr><th class="num">#</th><th>Route</th><th>หน้า</th><th>บทบาท</th><th>เข้าจาก</th><th>กดต่อไปที่</th></tr>
-        </thead>
-        <tbody>
-          <tr><td class="num">1</td><td><span class="rt">#/</span></td><td><span class="nm">หน้าแรก</span></td><td>จุดเข้าหลัก รวมดาว อันดับ แผนที่ และบทความไว้ในหน้าเดียว</td><td>เมนู</td><td>รางวัล · Hall of Fame · ข่าว</td></tr>
-          <tr><td class="num">2</td><td><span class="rt">#/rating</span></td><td><span class="nm">ตารางอันดับรายประเทศ</span></td><td>อันดับแยกประเทศ/หมวด/ปี + เทียบตัวต่อตัว</td><td>เมนู</td><td>หน้ารีวิวรายโบรก</td></tr>
-          <tr><td class="num">3</td><td><span class="rt">#/review</span></td><td><span class="nm">รีวิวโบรกเกอร์</span></td><td>ทะเบียนทุกรายแยกตามจำนวนดาว</td><td>เมนู</td><td>หน้ารีวิวรายโบรก</td></tr>
-          <tr><td class="num">4</td><td><span class="rt">#/brokerreview</span></td><td><span class="nm">หน้ารีวิวรายโบรก</span></td><td>ศูนย์กลางข้อมูลรายโบรก — แท็บ 10 ด้าน คะแนน บัญชี FAQ</td><td>กดการ์ดโบรกจากหน้า Rating/Review</td><td>หัวข้อเจาะลึก · ตรวจสอบใบรับรอง · ข่าว</td></tr>
-          <tr><td class="num">5</td><td><span class="rt">#/reviewsec</span></td><td><span class="nm">หัวข้อเจาะลึกรายด้าน</span></td><td>ขยาย 1 ใน 10 ด้านของรีวิวให้ละเอียด</td><td>แท็บบนหน้ารีวิวรายโบรก</td><td>กลับหน้ารีวิว</td></tr>
-          <tr><td class="num">6</td><td><span class="rt">#/news</span></td><td><span class="nm">ข่าวและบทความ</span></td><td>ศูนย์รวมบทความ 14 บท คัดกรองตามหมวด</td><td>เมนู · หน้าแรก</td><td>บทความรายชิ้น</td></tr>
-          <tr><td class="num">7</td><td><span class="rt">#/newsart</span></td><td><span class="nm">บทความรายชิ้น</span></td><td>เนื้อบทความเต็ม</td><td>การ์ดข่าวในหลายหน้า</td><td>กลับ</td></tr>
-          <tr><td class="num">8</td><td><span class="rt">#/analytics</span></td><td><span class="nm">Trade Analytics</span></td><td>ชุด EA 6 ตัว + ตัวอย่างหน้าจอสมาชิก + นโยบายว่าเก็บ/ไม่เก็บอะไร</td><td>เมนู</td><td>รายละเอียด EA · สมัครสมาชิก</td></tr>
-          <tr><td class="num">9</td><td><span class="rt">#/eadetail</span></td><td><span class="nm">รายละเอียด EA</span></td><td>สเปกและวิธีใช้ EA รายตัว</td><td>การ์ด EA</td><td>กลับ</td></tr>
-          <tr><td class="num">10</td><td><span class="rt">#/alerts</span></td><td><span class="nm">Broker Alerts</span></td><td>เรื่องแจ้งเตือน + คำชี้แจงโบรก + วิธีสังเกตโบรกเถื่อน 6 ข้อ</td><td>เมนู</td><td>Broker Dashboard · สมัครสมาชิก</td></tr>
-          <tr><td class="num">11</td><td><span class="rt">#/awards</span></td><td><span class="nm">RED STAR · Q2 2026</span></td><td>หน้าแม่ของระบบรางวัล อธิบายหมวดและน้ำหนักตัดสิน</td><td>หน้าแรกเท่านั้น</td><td>ทั้ง 5 หน้าในกลุ่มรางวัล</td></tr>
-          <tr><td class="num">12</td><td><span class="rt">#/awards2026</span></td><td><span class="nm">โบรกที่ได้ดาวรอบล่าสุด</span></td><td>รายชื่อผู้ได้ดาวพร้อมตัวกรอง</td><td>หน้า Awards</td><td>ตรวจสอบใบรับรอง</td></tr>
-          <tr><td class="num">13</td><td><span class="rt">#/criteria</span></td><td><span class="nm">เกณฑ์การให้ดาว</span></td><td>ดาวมาจากการผ่านครบทุกข้อ · เงื่อนไขความประพฤติ · เมื่อไหร่ดาวถูกถอน</td><td>หน้า Awards · หน้า Verify</td><td>กลับหน้า Awards</td></tr>
-          <tr><td class="num">14</td><td><span class="rt">#/verify</span></td><td><span class="nm">ตรวจสอบใบรับรอง</span></td><td>ยืนยันตราบนเว็บโบรกว่าเป็นของจริงและยังไม่ถูกเพิกถอน</td><td>Awards · Awards2026 · Hall of Fame · หน้ารีวิว</td><td>Hall of Fame · เกณฑ์</td></tr>
-          <tr><td class="num">15</td><td><span class="rt">#/brokerawards</span></td><td><span class="nm">Hall of Fame รายโบรก</span></td><td>ใบรับรองทั้งหมด + ประวัติรางวัลย้อนหลัง (รับใช้ Core Pillar ข้อ 1 บางส่วน)</td><td>หน้าแรก · Awards · แถวรางวัล</td><td>ตรวจสอบใบรับรอง</td></tr>
-          <tr><td class="num">16</td><td><span class="rt">#/partner</span></td><td><span class="nm">Partner Dashboard</span></td><td>ฝั่งโบรกที่ได้รางวัล — ตรา ฝังโค้ด สถิติการแสดงผล</td><td>หน้า Awards</td><td>ไม่มีทางออกในหน้า</td></tr>
-          <tr><td class="num">17</td><td><span class="rt">#/brokerdash</span></td><td><span class="nm">Broker Dashboard</span></td><td>ฝั่งโบรกที่ถูกแจ้ง — รับทราบ ชี้แจง ติดตามสถานะ</td><td>Broker Alerts · หน้าสมัคร</td><td>Broker Alerts</td></tr>
-          <tr><td class="num">18</td><td><span class="rt">#/login</span></td><td><span class="nm">เข้าสู่ระบบ</span></td><td>อีเมล/รหัสผ่าน + ต่อด้วย Google</td><td>ปุ่มมุมขวาบน</td><td>หน้าสมาชิก · สมัครสมาชิก</td></tr>
-          <tr><td class="num">19</td><td><span class="rt">#/signup</span></td><td><span class="nm">สมัครสมาชิก</span></td><td>เลือก 2 แบบ: ผู้ใช้ทั่วไป / ตัวแทนโบรกเกอร์</td><td>ปุ่มมุมขวาบน · หลายหน้า</td><td>เข้าสู่ระบบ · Broker Dashboard</td></tr>
-          <tr><td class="num">20</td><td><span class="rt">#/member</span></td><td><span class="nm">หน้าสมาชิก</span></td><td>โบรกที่ติดตาม · รายการเปรียบเทียบ · แจ้งเตือน · ดาวน์โหลด EA</td><td>หลังเข้าสู่ระบบ</td><td>เรื่องร้องเรียน · หน้ารีวิว · EA</td></tr>
-          <tr><td class="num">21</td><td><span class="rt">#/usercase</span></td><td><span class="nm">เรื่องร้องเรียนของคุณ</span></td><td>ไทม์ไลน์ 4 ขั้นต่อเรื่อง + หลักฐานแนบ + ฟอร์มยื่นใหม่</td><td>หน้าสมาชิก</td><td>กลับหน้าสมาชิก</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- ═══════════ 4. หน้าที่ยังไม่มี ═══════════ -->
-  <section class="sec">
-    <h2>4. หน้าที่เอกสารเรียกร้องไว้ แต่ยังไม่มีในเว็บ</h2>
-    <p class="sub">ทุกแถวมีที่มาจากเอกสารของทีมเอง ไม่ใช่ไอเดียลอย ๆ — คอลัมน์สุดท้ายบอกว่าถ้าไม่มี จะขัดกับอะไร</p>
-
-    <div class="tw">
-      <table>
-        <thead>
-          <tr><th class="num">#</th><th>หน้าที่เสนอ</th><th>สถานะ</th><th>ที่มา</th><th>ถ้าไม่มี จะขัดกับอะไร</th></tr>
-        </thead>
-        <tbody>
-          <tr><td class="num">1</td><td><span class="nm">เกี่ยวกับสถาบัน (About)</span></td><td><span class="tag t-none">ยังไม่มี</span></td><td>SITEMAP-FEATURES-DRAFT §2</td><td>ตัวตน “สถาบันมาตรฐานระดับโลก” ไม่มีที่ยืนบนเว็บเลยสักหน้า</td></tr>
-          <tr><td class="num">2</td><td><span class="nm">ระเบียบวิธีฉบับเปิดเผย (Methodology)</span></td><td><span class="tag t-plan">มีต้นแบบแยก</span></td><td>CORE-PILLAR เสาที่ 1 · <span class="mono">gcsi/checklist_interactive.html</span></td><td>เสาความน่าเชื่อถือข้อ 1 บอกว่าตัวเกณฑ์เองต้องเปิดให้ตรวจสอบ ไม่ใช่แค่ผลตรวจ · หน้า <span class="mono">#/criteria</span> อธิบายเฉพาะกติกาดาว ยังไม่ใช่ชุดข้อตรวจ</td></tr>
-          <tr><td class="num">3</td><td><span class="nm">ค้นหา/ไดเรกทอรีโบรกทั้งหมด</span></td><td><span class="tag t-none">ยังไม่มี</span></td><td>SITEMAP-FEATURES-DRAFT ฟีเจอร์ #6</td><td>ช่องค้นหาบนหน้าแรกมีอยู่ แต่ไม่มีหน้าผลลัพธ์การค้นหาเป็นของตัวเอง</td></tr>
-          <tr><td class="num">4</td><td><span class="nm">ไทม์ไลน์ประวัติรายโบรกตลอดอายุ</span></td><td><span class="tag t-plan">มีบางส่วน</span></td><td>CORE-PILLAR ข้อ 1 + ผลผลิตที่ 4</td><td>ตอนนี้ประวัติมีเฉพาะ “ประวัติรางวัล” ใน Hall of Fame · ยังไม่ครอบคลุมผลตรวจทุกไตรมาส เหตุการณ์สำคัญ และการเปลี่ยนใบอนุญาต</td></tr>
-          <tr><td class="num">5</td><td><span class="nm">จัดอันดับรายประเด็น (ผลผลิต B)</span></td><td><span class="tag t-plan">มีบางส่วน</span></td><td>CORE-PILLAR §5 ผลผลิต B</td><td>หน้า Rating จัดอันดับ “รวมรายประเทศ” แต่ยังไม่มีหน้าอันดับรายหัวข้อ (ถอนไวสุด/ต้นทุนต่ำสุด/มือใหม่)</td></tr>
-          <tr><td class="num">6</td><td><span class="nm">พื้นที่ข้อพิพาทสาธารณะ</span></td><td><span class="tag t-plan">มีสเปก + ต้นแบบแยก</span></td><td><span class="mono">Noting/DISPUTES-SPEC.md</span> · <span class="mono">prototype/disputes.html</span></td><td>ต้นแบบหลักมีเฉพาะ “เรื่องร้องเรียนของคุณ” ที่เป็นของส่วนตัว ยังไม่มีฝั่งสาธารณะ · ตัวฟีเจอร์ยังค้างรอ Boss ยืนยัน</td></tr>
-          <tr><td class="num">7</td><td><span class="nm">ทะเบียนค้นหาข้ามปี</span></td><td><span class="tag t-plan">มีสเปก + ต้นแบบแยก</span></td><td><span class="mono">Noting/REGISTRY-SEARCH-SPEC.md</span> · <span class="mono">prototype/registry-search.html</span></td><td>ค้นย้อนหลังข้ามปียังทำไม่ได้ในต้นแบบหลัก</td></tr>
-          <tr><td class="num">8</td><td><span class="nm">เงื่อนไขการใช้งาน + นโยบายความเป็นส่วนตัว</span></td><td><span class="tag t-none">ยังไม่มี</span></td><td>หน้าสมัครสมาชิกให้ติ๊กยอมรับทั้งสองอย่าง</td><td>ให้ผู้ใช้ยอมรับเอกสารที่ยังไม่มีตัวตน · หน้า Trade Analytics เก็บข้อมูลการเทรด จึงยิ่งต้องมีนโยบายรองรับ</td></tr>
-          <tr><td class="num">9</td><td><span class="nm">ติดต่อทีมงาน / ส่งเบาะแสโดยไม่ต้องสมัคร</span></td><td><span class="tag t-none">ยังไม่มี</span></td><td>SESSION-LOG-2569-08-17 ข้อ 8 (หัวข้อเปิด)</td><td>คนที่โดนโกงต้องสมัครสมาชิกก่อนถึงจะพูดกับเราได้ ซึ่งเป็นด่านที่สูงสำหรับคนกลุ่มนั้น</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- ═══════════ 5. ประเด็นโครงสร้าง ═══════════ -->
-  <section class="sec">
-    <h2>5. ประเด็นโครงสร้างที่เจอตอนไล่ผัง</h2>
-    <p class="sub">เรียงตามผลกระทบ · ทุกข้อยังไม่ได้แก้ รอ Boss ตัดสินว่าจะแก้ข้อไหนก่อน</p>
-
-    <div class="issues">
-      <div class="issue">
-        <h3><span class="i">1</span> เว็บยังไม่มีฟุตเตอร์เลยสักหน้า</h3>
-        <p>ทั้งเว็บมีทางเดินอยู่ทางเดียวคือเมนูบน 6 รายการ เมื่อผู้ใช้เลื่อนถึงท้ายหน้าใดก็ตาม จะไม่มีอะไรพาไปต่อ</p>
-        <p class="why"><b>ทำไมสำคัญ:</b> ฟุตเตอร์เป็นที่อยู่ตามธรรมชาติของ About · ระเบียบวิธี · นโยบาย · ติดต่อ — ซึ่งบังเอิญเป็นสี่หน้าที่ยังไม่มีพอดี การเพิ่มฟุตเตอร์จึงแก้สองปัญหาพร้อมกัน</p>
-      </div>
-
-      <div class="issue">
-        <h3><span class="i">2</span> กลุ่มรางวัลทั้งกลุ่มแขวนอยู่กับหน้าแรกจุดเดียว</h3>
-        <p>ห้าหน้า (Awards · รายชื่อผู้ได้ดาว · เกณฑ์ · ตรวจสอบใบรับรอง · Hall of Fame) ไม่มีชื่ออยู่ในเมนู ผู้ใช้ที่เข้าเว็บมาแล้วไม่ได้เลื่อนถึงบล็อกรางวัลบนหน้าแรก จะไม่มีทางรู้ว่ามีอยู่</p>
-        <p class="why"><b>ทำไมสำคัญ:</b> ดาวแดงคือผลผลิต A ซึ่งเป็นแกนของทั้งสถาบัน การให้มันเข้าถึงยากกว่าข่าวหรือ EA ขัดกับลำดับความสำคัญของตัวเว็บเอง</p>
-      </div>
-
-      <div class="issue">
-        <h3><span class="i">3</span> โครงสร้าง URL จริงยังไม่ถูกตัดสิน</h3>
-        <p>ต้นแบบใช้ hash (<span class="mono">#/rating</span>) เพราะข้อจำกัดของไฟล์เดียว · จุดเดียวในเว็บที่เขียน URL แบบเส้นทางจริงคือลิงก์ในหน้าสมาชิกที่เขียนว่า <span class="mono">/broker/&lt;slug&gt;/review</span> และในเอกสารมอบหมายงานที่อ้างถึง <span class="mono">/broker/&lt;slug&gt;/awards</span></p>
-        <p class="why"><b>ทำไมสำคัญ:</b> ถ้าจะเป็นมาตรฐานที่คนอ้างอิงข้ามปี URL ต้องอยู่ถาวรและเดาได้ — โดยเฉพาะหน้าใบรับรองที่โบรกจะเอาไปฝังบนเว็บตัวเอง ควรตัดสินเรื่องนี้ก่อนมีลิงก์ภายนอกชี้เข้ามา</p>
-      </div>
-
-      <div class="issue">
-        <h3><span class="i">4</span> สี่หน้าเป็นทางตัน ต้องกดปุ่มกลับอย่างเดียว</h3>
-        <p>หัวข้อเจาะลึก · บทความรายชิ้น · รายละเอียด EA · Partner Dashboard — ทั้งสี่หน้าไม่มีทางไปต่อนอกจากย้อนกลับ</p>
-        <p class="why"><b>ทำไมสำคัญ:</b> ขัดกับ Core Pillar ข้อ 2 ที่ว่าทุกหน้าต้องพาไปสู่การตัดสินใจเลือกโบรก · อย่างน้อยควรมีทางกลับไปหน้ารีวิวของโบรกที่กำลังพูดถึง</p>
-      </div>
-
-      <div class="issue">
-        <h3><span class="i">5</span> ฉบับภาษาอังกฤษยังแปลไม่ครบ และหน้าเว็บบอกตรง ๆ ว่าไม่ครบ</h3>
-        <p>ปุ่ม ไทย/EN ทำงานจริง ป้ายอินเทอร์เฟซแปลแล้ว แต่บทความ รีวิว และเนื้อหายาวยังเป็นภาษาไทย โดยมีแถบอธิบายไว้ตรง ๆ ว่ากำลังทยอยแปล</p>
-        <p class="why"><b>ทำไมสำคัญ:</b> ตัวตนที่ประกาศไว้คือมาตรฐานกลางของคนทั้งโลก แต่สถานะจริงตอนนี้คือเว็บไทยที่มีอังกฤษบางส่วน — การเขียนกำกับตรง ๆ แบบนี้ถูกต้องแล้ว แต่เป็นช่องว่างที่ต้องมีแผนปิด</p>
+        <p class="foot" style="text-align:left; margin-top:22px">
+          ไฟล์คู่กัน: <span class="mono">user-info.html</span> — กลุ่มผู้ใช้ 5 กลุ่มและเส้นทางการใช้งานของแต่ละกลุ่ม
+        </p>
       </div>
     </div>
   </section>
 
-  <p class="foot">
-    เอกสารนี้เป็นงานออกแบบภายใน ยังไม่ผ่านการอนุมัติจาก Boss · ตัวเลขและชื่อโบรกเกอร์ทุกจุดในต้นแบบเป็นข้อมูลสมมติ ยกเว้นโลโก้ที่ดึงจากโดเมนทางการของโบรกเกอร์เอง<br>
-    ไฟล์คู่กัน: <span class="mono">user-info.html</span> — กลุ่มผู้ใช้เว็บและเส้นทางการใช้งานของแต่ละกลุ่ม
-  </p>
-
+  <p class="foot">เอกสารงานออกแบบภายใน ยังไม่ผ่านการอนุมัติจาก Boss · ข้อมูลบนต้นแบบเป็นข้อมูลสมมติ</p>
 </div>
+
+<script>
+/* ══ แผนผังเส้นเชื่อมระหว่างหน้า — วาดจาก link graph ที่เก็บจากต้นแบบจริง ══ */
+(function(){
+  var W = 1280, H = 630, NH = 56;
+  var C = { c1:20, c2:250, c3:530, c4:810, c5:1060 };
+  var WD = { c1:180, c2:200, c3:210, c4:190, c5:180 };
+
+  // kind: pub = หน้าสาธารณะ · lock = ต้องเข้าสู่ระบบ · ext = นอกเว็บ
+  var N = {
+    home:        {col:'c1', y:150, t:'หน้าแรก',                r:'#/',              k:'pub'},
+    badge:       {col:'c1', y:420, t:'ตราบนเว็บโบรกเกอร์',      r:'ลิงก์เข้าจากภายนอก', k:'ext'},
+    rating:      {col:'c2', y:40,  t:'ตารางอันดับรายประเทศ',    r:'#/rating',        k:'pub'},
+    review:      {col:'c2', y:130, t:'รีวิวโบรกเกอร์',          r:'#/review',        k:'pub'},
+    analytics:   {col:'c2', y:240, t:'Trade Analytics',        r:'#/analytics',     k:'pub'},
+    awards:      {col:'c2', y:350, t:'กลุ่มรางวัลดาวแดง',       r:'#/awards',        k:'pub'},
+    alerts:      {col:'c2', y:490, t:'Broker Alerts',          r:'#/alerts',        k:'pub'},
+    brokerreview:{col:'c3', y:85,  t:'หน้ารีวิวรายโบรก',        r:'#/brokerreview',  k:'pub'},
+    hof:         {col:'c3', y:300, t:'Hall of Fame รายโบรก',    r:'#/brokerawards',  k:'pub'},
+    verify:      {col:'c3', y:410, t:'ตรวจสอบใบรับรอง',        r:'#/verify',        k:'pub'},
+    brokerdash:  {col:'c3', y:520, t:'Broker Dashboard',       r:'#/brokerdash',    k:'lock'},
+    reviewsec:   {col:'c4', y:40,  t:'หัวข้อเจาะลึกรายด้าน',    r:'#/reviewsec',     k:'pub'},
+    cta:         {col:'c4', y:150, t:'เปิดบัญชีกับโบรกเกอร์',   r:'เว็บทางการของโบรก', k:'ext'},
+    login:       {col:'c4', y:270, t:'ด่านเข้าสู่ระบบ',         r:'#/login · #/signup', k:'lock'},
+    member:      {col:'c5', y:270, t:'หน้าสมาชิก',             r:'#/member',        k:'lock'},
+    usercase:    {col:'c5', y:390, t:'เรื่องร้องเรียนของคุณ',   r:'#/usercase',      k:'lock'}
+  };
+
+  var E = [
+    {a:'home', b:'rating'},
+    {a:'home', b:'review'},
+    {a:'home', b:'awards',      l:'ทางเข้าเดียวของกลุ่มรางวัล', lx:150, ly:308},
+    {a:'rating', b:'brokerreview', l:'กดการ์ดโบรก'},
+    {a:'review', b:'brokerreview', l:'กดการ์ดโบรก'},
+    {a:'brokerreview', b:'reviewsec', l:'แท็บ 10 ด้าน'},
+    {a:'brokerreview', b:'cta',    l:'ปุ่มเปิดบัญชี', k:'ext'},
+    {a:'brokerreview', b:'verify', l:'ดูใบรับรองดาว', bend:'left', ly:205},
+    {a:'awards', b:'hof'},
+    {a:'awards', b:'verify'},
+    {a:'badge',  b:'verify',      l:'คนที่เห็นตราแล้วมากดตรวจ', k:'ext'},
+    {a:'alerts', b:'brokerdash',  l:'โบรกเข้ามาชี้แจง', k:'lock'},
+    {a:'analytics', b:'login',    l:'ดาวน์โหลด EA ต้องเป็นสมาชิก', k:'lock'},
+    {a:'login', b:'member'},
+    {a:'member', b:'usercase',    l:'ยื่นเรื่อง + ติดตามสถานะ', k:'lock', dir:'down'}
+  ];
+
+  var STYLE = {
+    pub:  {fill:'#ECFAFD', stroke:'#8FD3E8', dash:'', text:'#0A0A0A', rt:'#0E7490'},
+    lock: {fill:'#EEF0FF', stroke:'#A5A8F5', dash:'5 4',  text:'#0A0A0A', rt:'#3538CD'},
+    ext:  {fill:'#FEF3F2', stroke:'#FDA29B', dash:'5 4',  text:'#0A0A0A', rt:'#B42318'}
+  };
+  var LINE = {def:'#98A2B3', lock:'#3538CD', ext:'#B42318'};
+
+  function box(id){ var n=N[id]; return {x:C[n.col], y:n.y, w:WD[n.col], h:NH}; }
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  var svg = ['<svg viewBox="0 0 '+W+' '+H+'" width="'+W+'" height="'+H+'" xmlns="http://www.w3.org/2000/svg" font-family="Inter, IBM Plex Sans Thai, sans-serif">'];
+  svg.push('<defs>');
+  ['def','lock','ext'].forEach(function(k){
+    svg.push('<marker id="ah-'+k+'" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">'
+      +'<path d="M0,0 L10,5 L0,10 z" fill="'+LINE[k]+'"/></marker>');
+  });
+  svg.push('</defs>');
+
+  // ── เส้นเชื่อม (วาดก่อนเพื่อให้อยู่ใต้กล่อง) ──
+  E.forEach(function(e){
+    var A=box(e.a), B=box(e.b), k=e.k||'def', col=LINE[k], dash=(k==='ext'?'6 5':(k==='lock'?'5 4':''));
+    var x1,y1,x2,y2,d,lx,ly;
+    if(e.dir==='down'){
+      x1=A.x+A.w/2; y1=A.y+A.h; x2=B.x+B.w/2; y2=B.y;
+      d='M '+x1+' '+y1+' L '+x2+' '+y2;
+      lx=x1+10; ly=(y1+y2)/2;
+    } else if(e.bend==='left'){
+      x1=A.x; y1=A.y+A.h/2; x2=B.x; y2=B.y+B.h/2;
+      var bx=Math.min(x1,x2)-52;
+      d='M '+x1+' '+y1+' C '+bx+' '+y1+' '+bx+' '+y2+' '+x2+' '+y2;
+      lx=bx-4; ly=(y1+y2)/2;
+    } else {
+      x1=A.x+A.w; y1=A.y+A.h/2; x2=B.x; y2=B.y+B.h/2;
+      var dx=Math.max(38,(x2-x1)*0.5);
+      d='M '+x1+' '+y1+' C '+(x1+dx)+' '+y1+' '+(x2-dx)+' '+y2+' '+x2+' '+y2;
+      lx=(x1+x2)/2; ly=(y1+y2)/2-7;
+    }
+    if(e.lx!=null) lx=e.lx;
+    if(e.ly!=null) ly=e.ly;
+    svg.push('<path d="'+d+'" fill="none" stroke="'+col+'" stroke-width="1.6"'+(dash?' stroke-dasharray="'+dash+'"':'')+' marker-end="url(#ah-'+k+')"/>');
+    if(e.l){
+      svg.push('<text x="'+lx+'" y="'+ly+'" text-anchor="'+(e.bend==='left'?'end':(e.dir==='down'?'start':'middle'))+'" font-size="11" fill="'+(k==='def'?'#667085':col)+'" '
+        +'stroke="#ffffff" stroke-width="4" paint-order="stroke" stroke-linejoin="round">'+esc(e.l)+'</text>');
+    }
+  });
+
+  // ── กล่องหน้า ──
+  Object.keys(N).forEach(function(id){
+    var n=N[id], b=box(id), s=STYLE[n.k];
+    svg.push('<g>'
+      +'<rect x="'+b.x+'" y="'+b.y+'" width="'+b.w+'" height="'+b.h+'" rx="9" fill="'+s.fill+'" stroke="'+s.stroke+'" stroke-width="1.6"'+(s.dash?' stroke-dasharray="'+s.dash+'"':'')+'/>'
+      +'<text x="'+(b.x+b.w/2)+'" y="'+(b.y+23)+'" text-anchor="middle" font-size="13.5" font-weight="600" fill="'+s.text+'">'+esc(n.t)+'</text>'
+      +'<text x="'+(b.x+b.w/2)+'" y="'+(b.y+40)+'" text-anchor="middle" font-size="10.5" font-family="SFMono-Regular, Consolas, monospace" fill="'+s.rt+'">'+esc(n.r)+'</text>'
+      +'</g>');
+  });
+
+  svg.push('</svg>');
+  var host = document.getElementById('flowboard');
+  if(host){ host.innerHTML = svg.join(''); }
+})();
+
+(function(){
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  var views = Array.prototype.slice.call(document.querySelectorAll('.view'));
+  function show(name){
+    tabs.forEach(function(t){ t.setAttribute('aria-selected', String(t.dataset.v === name)); });
+    views.forEach(function(v){ v.hidden = (v.dataset.view !== name); });
+    window.scrollTo(0, 0);
+  }
+  tabs.forEach(function(t){
+    t.addEventListener('click', function(){ show(t.dataset.v); });
+  });
+})();
+</script>
 </body>
 </html>
