@@ -84,6 +84,46 @@
         <h1 class="hd-h1">RED STAR · Q2 2026</h1>
         <p class="hd-sub">รางวัลทรงคุณค่าของเรามีชื่อเดียวคือ ดาวแดง — มอบตามหมวดโบรกเกอร์ ระดับบอกด้วยจำนวนดาว 1 ถึง 5 · ตัดสินจากข้อมูลการเทรดจริง ไม่ใช่การโหวตและไม่ใช่การซื้อ</p>
       </div>
+      <div class="hd-page" data-hero="eadetail" hidden>
+        <h1 class="hd-h1" id="edh-title">RedStar EA</h1>
+        <p class="hd-sub" id="edh-sub">รายละเอียดเครื่องมือรายตัว</p>
+      </div>
+      <div class="hd-page" data-hero="newsart" hidden>
+        <h1 class="hd-h1" id="nah-title">บทความ</h1>
+        <p class="hd-sub" id="nah-sub">บทความจากทีม RedStarTrust</p>
+      </div>
+      <div class="hd-page" data-hero="reviewsec" hidden>
+        <h1 class="hd-h1" id="rsh-title">หัวข้อรีวิว</h1>
+        <p class="hd-sub" id="rsh-sub">บทรีวิวแยกรายหัวข้อ เขียนโดยทีม RedStarTrust</p>
+      </div>
+      <div class="hd-page" data-hero="brokerreview" hidden>
+        <h1 class="hd-h1" id="brh-title">รีวิวฉบับเต็ม</h1>
+        <p class="hd-sub" id="brh-sub">บทรีวิวจากทีม RedStarTrust — ตรวจข้อเท็จจริงแยกตามนิติบุคคลก่อนตัดสินใจ</p>
+      </div>
+      <div class="hd-page" data-hero="criteria" hidden>
+        <h1 class="hd-h1">เกณฑ์การให้ดาว</h1>
+        <p class="hd-sub">ดาวแต่ละดวงหมายถึงอะไร ต้องผ่านอะไรบ้าง และเมื่อไหร่ที่ดาวจะถูกถอน — เกณฑ์เดียวกันทุกโบรกเกอร์ ประกาศก่อนตรวจเสมอ</p>
+      </div>
+      <div class="hd-page" data-hero="awards2026" hidden>
+        <h1 class="hd-h1">โบรกเกอร์ที่ได้ดาว Q2 2026</h1>
+        <p class="hd-sub">รายชื่อทั้งหมดพร้อมคะแนน ใบรับรอง และปุ่มตรวจสอบ — กรองตามภูมิภาค หมวดรางวัล และหน่วยงานกำกับ</p>
+      </div>
+      <div class="hd-page" data-hero="verify" hidden>
+        <h1 class="hd-h1">ตรวจสอบใบรับรอง</h1>
+        <p class="hd-sub">ยืนยันว่ารางวัลที่แสดงบนเว็บไซต์โบรกเกอร์เป็นของจริง ออกโดย RedStarTrust และยังไม่ถูกเพิกถอน</p>
+      </div>
+      <div class="hd-page" data-hero="brokerawards" hidden>
+        <h1 class="hd-h1">Hall of Fame</h1>
+        <p class="hd-sub">ประวัติรางวัลรายโบรกเกอร์ ย้อนหลังทุกปีที่เราตรวจ พร้อมคะแนนและเหตุผลที่ได้รับ</p>
+      </div>
+      <div class="hd-page" data-hero="partner" hidden>
+        <h1 class="hd-h1">Partner Dashboard</h1>
+        <p class="hd-sub">พื้นที่ของโบรกเกอร์ที่ได้รับรางวัล — ดาวน์โหลดตรารางวัล ฝังโค้ด และดูสถิติการแสดงผล</p>
+      </div>
+      <div class="hd-page" data-hero="brokerdash" hidden>
+        <h1 class="hd-h1">Broker Dashboard</h1>
+        <p class="hd-sub">พื้นที่ของตัวแทนโบรกเกอร์ที่ยืนยันตัวตนแล้ว — รับทราบเรื่องที่ทีมตรวจแจ้ง ส่งคำชี้แจง และติดตามสถานะได้ทุกขั้นตอน</p>
+      </div>
       <div class="hd-page" data-hero="analytics" hidden>
         <h1 class="hd-h1">Trade Analytics</h1>
         <p class="hd-sub">ชุดเครื่องมือ EA ที่วัดต้นทุนจริงของโบรกเกอร์จากการเทรดจริงของคุณ — ใช้ฟรีสำหรับสมาชิก และเป็นหลักฐานเบื้องหลังของคะแนน RedStar</p>
