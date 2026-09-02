@@ -4915,6 +4915,9 @@ function aiIcon(kind){
 var cmpN = 5;
 var cmpPick = [];   /* \u0e23\u0e32\u0e22\u0e0a\u0e37\u0e48\u0e2d id \u0e17\u0e35\u0e48\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e40\u0e2d\u0e07 \u2014 null \u0e04\u0e37\u0e2d\u0e43\u0e0a\u0e49\u0e15\u0e32\u0e21\u0e2d\u0e31\u0e19\u0e14\u0e31\u0e1a */
 function cmpRender(){
+  /* บล็อก "เทียบกันตัวต่อตัว" ถูกถอดออกจากหน้าแล้ว (คำสั่ง Boss 1 ก.ย. 69)
+     ไม่มีที่ให้วาด ต้องหยุดตรงนี้ — ถ้าปล่อยผ่านจะ setInnerHTML ของ null แล้วสคริปต์ตายทั้งไฟล์ */
+  if (!document.getElementById("cmp-body")) { return; }
   cmpFixIso();
   var rows = cmpRows();
   cmpControls();

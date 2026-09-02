@@ -3666,7 +3666,7 @@
       </div>
       <div class="hd-page" data-hero="rating" hidden>
         <h1 class="hd-h1">ตารางอันดับรายประเทศ</h1>
-        <p class="hd-sub">อันดับโบรกเกอร์ของแต่ละประเทศ แยกตามหมวดสินทรัพย์และปีผลตรวจ พร้อมเทียบกันตัวต่อตัวและบทสรุปจาก RedStar Thinking</p>
+        <p class="hd-sub">อันดับโบรกเกอร์ของแต่ละประเทศ แยกตามหมวดสินทรัพย์และปีผลตรวจ</p>
       </div>
       <div class="hd-page" data-hero="review" hidden>
         <h1 class="hd-h1">รีวิวโบรกเกอร์</h1>
@@ -3751,7 +3751,7 @@
     <div class="map-head">
       <div style="max-width: 640px; display: flex; flex-direction: column; gap: 14px;">
         <h2 class="map-h2">Best Overall Broker by Country</h2>
-        <p class="map-sub">คลิกประเทศบนแผนที่เพื่อดูโบรกเกอร์อันดับหนึ่งของประเทศนั้น แล้วเลื่อนลงดูตารางอันดับเต็มและเทียบกันตัวต่อตัว</p>
+        <p class="map-sub">คลิกประเทศบนแผนที่เพื่อดูโบรกเกอร์อันดับหนึ่งของประเทศนั้น แล้วเลื่อนลงดูตารางอันดับเต็ม</p>
       </div>
       <div class="map-picks">
         <label class="rk-pick">
@@ -4071,32 +4071,6 @@
     <p class="rk-note" id="rk-note"></p>
     </div>
 
-    <div style="margin-top: 56px;">
-      <div class="sec-rule" aria-hidden="true"></div>
-      <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; max-width: 760px;">
-        <h2 style="margin: 0; font-size: 34px; font-weight: 700; letter-spacing: -0.03em;">เทียบกันตัวต่อตัว</h2>
-        <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #475467;">เลือกหมวด ประเทศ และปีผลตรวจ แล้วเลือกโบรกเกอร์ที่จะเทียบได้เองสูงสุด 5 ราย — ช่องที่ดีที่สุดของแต่ละแถวจะถูกไฮไลต์ และมีบทสรุปจาก RedStar Thinking ทางขวา</p>
-      </div>
-      <div class="rsframe" data-rsf="cmp">
-        <div class="rsfh">เทียบกันตัวต่อตัว<span class="ct" id="rsf-cmp"></span></div>
-      <div class="cmp-picks">
-        <label class="rk-pick"><span>หมวด</span><select id="cmp-cat" aria-label="เลือกหมวดสินทรัพย์ที่จะเทียบ"></select></label>
-        <label class="rk-pick"><span>ประเทศ</span><select id="cmp-iso" aria-label="เลือกประเทศที่จะเทียบ"></select></label>
-        <label class="rk-pick"><span>ปีผลตรวจ</span><select id="cmp-year" aria-label="เลือกปีผลตรวจที่จะเทียบ"></select></label>
-        <span class="cmp-div" aria-hidden="true"></span>
-        <label class="rk-pick cmp-slot"><span>รายที่ 1</span><select id="cmp-s1" data-cmpslot="0" aria-label="เลือกโบรกเกอร์รายที่ 1"></select></label>
-        <label class="rk-pick cmp-slot"><span>รายที่ 2</span><select id="cmp-s2" data-cmpslot="1" aria-label="เลือกโบรกเกอร์รายที่ 2"></select></label>
-        <label class="rk-pick cmp-slot"><span>รายที่ 3</span><select id="cmp-s3" data-cmpslot="2" aria-label="เลือกโบรกเกอร์รายที่ 3"></select></label>
-        <label class="rk-pick cmp-slot"><span>รายที่ 4</span><select id="cmp-s4" data-cmpslot="3" aria-label="เลือกโบรกเกอร์รายที่ 4"></select></label>
-        <label class="rk-pick cmp-slot"><span>รายที่ 5</span><select id="cmp-s5" data-cmpslot="4" aria-label="เลือกโบรกเกอร์รายที่ 5"></select></label>
-        <button type="button" class="cmp-clear" data-cmpclr="1"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M9 7V5h6v2M6.5 7l1 13h9l1-13"></path></svg>ล้างการเลือก</button>
-      </div>
-      <div class="cmp-grid">
-        <div id="cmp-body"></div>
-        <aside id="cmp-ai" class="cmp-ai" aria-live="polite"></aside>
-      </div>
-      </div>
-    </div>
 
   </div>
   </div>
@@ -5806,6 +5780,9 @@ function aiIcon(kind){
 var cmpN = 5;
 var cmpPick = [];   /* รายชื่อ id ที่ผู้ใช้เลือกเอง — null คือใช้ตามอันดับ */
 function cmpRender(){
+  /* บล็อก "เทียบกันตัวต่อตัว" ถูกถอดออกจากหน้าแล้ว (คำสั่ง Boss 1 ก.ย. 69)
+     ไม่มีที่ให้วาด ต้องหยุดตรงนี้ — ถ้าปล่อยผ่านจะ setInnerHTML ของ null แล้วสคริปต์ตายทั้งไฟล์ */
+  if (!document.getElementById("cmp-body")) { return; }
   cmpFixIso();
   var rows = cmpRows();
   cmpControls();
