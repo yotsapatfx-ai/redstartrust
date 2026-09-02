@@ -1061,65 +1061,6 @@
     border: 1px solid rgba(201,162,39,0.22); border-radius: 5px; padding: 3px 9px; }
   .aw-hxr { display: block; font-family: 'IBM Plex Sans', sans-serif; font-size: 11px;
     font-weight: 700; letter-spacing: 0.14em; color: #C9A227; margin-bottom: 11px; }
-  /* ── Hall of Fame โหมดสว่าง ──
-     ติดคลาส .lt ที่ .aw-hofw แล้วทั้งแผงกลับด้าน — ใช้ร่วมกันทั้งหน้าแรกและหน้า Awards
-     สีทุกตัวผ่าน WCAG AA บนพื้น #FDFCF8 และการ์ด #FBF8EF */
-  .aw-hofw.lt { background: #FDFCF8; border: 1px solid #EBDCA8; }
-  .aw-hofw.lt::before {
-    background-image:
-      repeating-linear-gradient(0deg, rgba(169,132,32,0.07) 0 1px, transparent 1px 26px),
-      repeating-linear-gradient(90deg, rgba(169,132,32,0.07) 0 1px, transparent 1px 26px); }
-  .aw-hofw.lt::after { background: linear-gradient(90deg, transparent, rgba(169,132,32,0.55), transparent); }
-  .aw-hofw.lt .aw-hoft b { color: #7A5C11; }
-  .aw-hofw.lt .aw-hoft span { color: #52525B; }
-  .aw-hofw.lt .aw-hx { border-color: rgba(169,132,32,0.42);
-    background: linear-gradient(180deg, #FFFFFF 0%, #FBF8EF 100%); }
-  .aw-hofw.lt .aw-hx:hover { border-color: #A98420;
-    box-shadow: 0 18px 40px -22px rgba(122,92,17,0.45); }
-  .aw-hofw.lt .aw-hxr { color: #7A5C11; }
-  .aw-hofw.lt .aw-hxlg { background: #FFFFFF;
-    box-shadow: 0 0 0 1px rgba(169,132,32,0.55), 0 0 0 6px rgba(201,162,39,0.12),
-      0 8px 20px -14px rgba(20,18,12,0.45); }
-  .aw-hofw.lt .aw-hx:hover .aw-hxlg { box-shadow: 0 0 0 1px #A98420,
-      0 0 0 7px rgba(201,162,39,0.2), 0 10px 24px -14px rgba(20,18,12,0.5); }
-  .aw-hofw.lt .aw-hxs { border-color: rgba(169,132,32,0.5);
-    background: radial-gradient(120% 160% at 50% 50%, rgba(217,45,32,0.11) 0%,
-      rgba(201,162,39,0.13) 55%, transparent 100%);
-    box-shadow: inset 0 0 12px -8px rgba(169,132,32,0.7); }
-  .aw-hofw.lt .aw-hx:hover .aw-hxs { border-color: #A98420;
-    box-shadow: 0 0 16px -8px rgba(217,45,32,0.5), inset 0 0 12px -7px rgba(169,132,32,0.85); }
-  .aw-hofw.lt .aw-hxt b { color: #0A0A0A; }
-  .aw-hofw.lt .aw-hxt b + span { color: #7A5C11; }
-  .aw-hofw.lt .aw-hxb { border-top-color: rgba(169,132,32,0.24); }
-  .aw-hofw.lt .aw-hxb strong { color: #0A0A0A; }
-  .aw-hofw.lt .aw-hxb em { color: #52525B; }
-  .aw-hofw.lt .aw-hxy { border-top-color: rgba(169,132,32,0.22); }
-  .aw-hofw.lt .aw-hxy i { color: #7A5C11; background: rgba(201,162,39,0.15);
-    border-color: rgba(169,132,32,0.32); }
-  .aw-hofw.lt .aw-hxvh b { color: #7A5C11; }
-  .aw-hofw.lt .aw-hxvh span { color: #52525B; }
-  .aw-hofw.lt .aw-vc { border-color: rgba(169,132,32,0.3); background: #FFFFFF; }
-  .aw-hofw.lt .aw-vc .nm { color: #0A0A0A; }
-  .aw-hofw.lt .aw-vc .rl { color: #7A5C11; }
-  .aw-hofw.lt .aw-vc blockquote { color: #3F3F46; }
-  .aw-hofw.lt .aw-vc blockquote b { color: #0A0A0A; }
-  .aw-hofw.lt .aw-vc .mt { border-top-color: rgba(169,132,32,0.22); }
-  .aw-hofw.lt .aw-vc .mt i { color: #7A5C11; background: rgba(201,162,39,0.15); }
-  .aw-hofw.lt .aw-hxvn { color: #52525B; }
-  .aw-hofw.lt .aw-hxvn b { color: #0A0A0A; }
-  .aw-hofw.lt .aw-hofpz { border-color: rgba(169,132,32,0.5);
-    background: rgba(201,162,39,0.13); color: #7A5C11; }
-  .aw-hofw.lt .aw-hofpz:hover { background: rgba(201,162,39,0.24); color: #4A3809; }
-  .aw-hofw.lt .aw-hoft .pk-hof { color: #7A5C11; border-color: rgba(169,132,32,0.5); }
-  .aw-hofw.lt .aw-hoft .pk-hof:hover { background: rgba(201,162,39,0.16);
-    border-color: #A98420; color: #4A3809; }
-  /* กลุ่มปุ่มมุมขวาบน — หยุดเลื่อน + สลับโทน วางคู่กันไม่ซ้อนกัน */
-  .aw-hofbz { position: absolute; z-index: 3; right: 30px; top: 30px;
-    display: flex; gap: 8px; align-items: center; }
-  .aw-hofbz .aw-hofpz { position: static; right: auto; top: auto; }
-  .aw-hofpz.sw { display: inline-flex; align-items: center; gap: 6px; }
-  .aw-hofpz.sw svg { display: block; }
-
   .aw-mark { display: flex; align-items: center; gap: var(--s3); }
   .aw-mark .tx h3 { margin: 0 0 4px; font-size: 34px; font-weight: 700; letter-spacing: -0.035em;
     color: #FFFFFF; line-height: 1; }
@@ -1280,17 +1221,6 @@
     color: #101828; text-align: right; }
   .br-scf { padding: 0 22px 20px; }
   .br-scf .btn-solid { display: block; text-align: center; }
-  /* ปุ่มเปิดบัญชี — เป็นปุ่มรอง (outline) จงใจให้เบากว่าปุ่มดูใบรับรอง
-     ตัวตนของเว็บคือการตรวจสอบ ไม่ใช่การพาคนไปสมัคร — ลำดับความเด่นจึงต้องสะท้อนอย่างนั้น */
-  .br-open { display: flex; align-items: center; justify-content: center; gap: 7px;
-    margin-top: 10px; padding: 9px 14px; text-align: center;
-    font: inherit; font-size: 13.5px; font-weight: 600; line-height: 1.45;
-    color: #344054; background: #FFFFFF; border: 1px solid #D0D5DD; border-radius: 10px;
-    text-decoration: none; cursor: pointer;
-    transition: border-color .15s, color .15s, background .15s; }
-  .br-open:hover { border-color: #D92D20; color: #B42318; background: #FEF3F2; }
-  .br-open:focus-visible { outline: 2px solid #D92D20; outline-offset: 2px; }
-  .br-open svg { flex: 0 0 auto; }
   .br-disc { margin: 14px 0 0; padding: 12px 14px; background: #F5F7FA; border-radius: 10px;
     font-size: 11.5px; line-height: 1.7; color: #667085; }
 
@@ -5242,7 +5172,6 @@
           <a href="#/" data-nav="home">Home</a>
           <a href="#/rating" data-nav="rating">Rating</a>
           <a href="#/review" data-nav="review">Review</a>
-          <a href="#/awards" data-nav="awards">Awards</a>
           <a href="#/news" data-nav="news">News</a>
           <a href="#/analytics" data-nav="analytics">Trade Analytics</a>
           <a href="#/alerts" data-nav="alerts">Broker Alerts</a>
@@ -5276,7 +5205,7 @@
       </div>
       <div class="hd-page" data-hero="rating" hidden>
         <h1 class="hd-h1">ตารางอันดับรายประเทศ</h1>
-        <p class="hd-sub">อันดับโบรกเกอร์ของแต่ละประเทศ แยกตามหมวดสินทรัพย์และปีผลตรวจ</p>
+        <p class="hd-sub">อันดับโบรกเกอร์ของแต่ละประเทศ แยกตามหมวดสินทรัพย์และปีผลตรวจ พร้อมเทียบกันตัวต่อตัวและบทสรุปจาก RedStar Thinking</p>
       </div>
       <div class="hd-page" data-hero="review" hidden>
         <h1 class="hd-h1">รีวิวโบรกเกอร์</h1>
@@ -5289,6 +5218,46 @@
       <div class="hd-page" data-hero="awards" hidden>
         <h1 class="hd-h1">RED STAR · Q2 2026</h1>
         <p class="hd-sub">รางวัลทรงคุณค่าของเรามีชื่อเดียวคือ ดาวแดง — มอบตามหมวดโบรกเกอร์ ระดับบอกด้วยจำนวนดาว 1 ถึง 5 · ตัดสินจากข้อมูลการเทรดจริง ไม่ใช่การโหวตและไม่ใช่การซื้อ</p>
+      </div>
+      <div class="hd-page" data-hero="eadetail" hidden>
+        <h1 class="hd-h1" id="edh-title">RedStar EA</h1>
+        <p class="hd-sub" id="edh-sub">รายละเอียดเครื่องมือรายตัว</p>
+      </div>
+      <div class="hd-page" data-hero="newsart" hidden>
+        <h1 class="hd-h1" id="nah-title">บทความ</h1>
+        <p class="hd-sub" id="nah-sub">บทความจากทีม RedStarTrust</p>
+      </div>
+      <div class="hd-page" data-hero="reviewsec" hidden>
+        <h1 class="hd-h1" id="rsh-title">หัวข้อรีวิว</h1>
+        <p class="hd-sub" id="rsh-sub">บทรีวิวแยกรายหัวข้อ เขียนโดยทีม RedStarTrust</p>
+      </div>
+      <div class="hd-page" data-hero="brokerreview" hidden>
+        <h1 class="hd-h1" id="brh-title">รีวิวฉบับเต็ม</h1>
+        <p class="hd-sub" id="brh-sub">บทรีวิวจากทีม RedStarTrust — ตรวจข้อเท็จจริงแยกตามนิติบุคคลก่อนตัดสินใจ</p>
+      </div>
+      <div class="hd-page" data-hero="criteria" hidden>
+        <h1 class="hd-h1">เกณฑ์การให้ดาว</h1>
+        <p class="hd-sub">ดาวแต่ละดวงหมายถึงอะไร ต้องผ่านอะไรบ้าง และเมื่อไหร่ที่ดาวจะถูกถอน — เกณฑ์เดียวกันทุกโบรกเกอร์ ประกาศก่อนตรวจเสมอ</p>
+      </div>
+      <div class="hd-page" data-hero="awards2026" hidden>
+        <h1 class="hd-h1">โบรกเกอร์ที่ได้ดาว Q2 2026</h1>
+        <p class="hd-sub">รายชื่อทั้งหมดพร้อมคะแนน ใบรับรอง และปุ่มตรวจสอบ — กรองตามภูมิภาค หมวดรางวัล และหน่วยงานกำกับ</p>
+      </div>
+      <div class="hd-page" data-hero="verify" hidden>
+        <h1 class="hd-h1">ตรวจสอบใบรับรอง</h1>
+        <p class="hd-sub">ยืนยันว่ารางวัลที่แสดงบนเว็บไซต์โบรกเกอร์เป็นของจริง ออกโดย RedStarTrust และยังไม่ถูกเพิกถอน</p>
+      </div>
+      <div class="hd-page" data-hero="brokerawards" hidden>
+        <h1 class="hd-h1">Hall of Fame</h1>
+        <p class="hd-sub">ประวัติรางวัลรายโบรกเกอร์ ย้อนหลังทุกปีที่เราตรวจ พร้อมคะแนนและเหตุผลที่ได้รับ</p>
+      </div>
+      <div class="hd-page" data-hero="partner" hidden>
+        <h1 class="hd-h1">Partner Dashboard</h1>
+        <p class="hd-sub">พื้นที่ของโบรกเกอร์ที่ได้รับรางวัล — ดาวน์โหลดตรารางวัล ฝังโค้ด และดูสถิติการแสดงผล</p>
+      </div>
+      <div class="hd-page" data-hero="brokerdash" hidden>
+        <h1 class="hd-h1">Broker Dashboard</h1>
+        <p class="hd-sub">พื้นที่ของตัวแทนโบรกเกอร์ที่ยืนยันตัวตนแล้ว — รับทราบเรื่องที่ทีมตรวจแจ้ง ส่งคำชี้แจง และติดตามสถานะได้ทุกขั้นตอน</p>
       </div>
       <div class="hd-page" data-hero="analytics" hidden>
         <h1 class="hd-h1">Trade Analytics</h1>
@@ -5321,7 +5290,7 @@
     <div class="map-head">
       <div style="max-width: 640px; display: flex; flex-direction: column; gap: 14px;">
         <h2 class="map-h2">Best Overall Broker by Country</h2>
-        <p class="map-sub">คลิกประเทศบนแผนที่เพื่อดูโบรกเกอร์อันดับหนึ่งของประเทศนั้น แล้วเลื่อนลงดูตารางอันดับเต็ม</p>
+        <p class="map-sub">คลิกประเทศบนแผนที่เพื่อดูโบรกเกอร์อันดับหนึ่งของประเทศนั้น แล้วเลื่อนลงดูตารางอันดับเต็มและเทียบกันตัวต่อตัว</p>
       </div>
       <div class="map-picks">
         <label class="rk-pick">
@@ -5641,6 +5610,32 @@
     <p class="rk-note" id="rk-note"></p>
     </div>
 
+    <div style="margin-top: 56px;">
+      <div class="sec-rule" aria-hidden="true"></div>
+      <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; max-width: 760px;">
+        <h2 style="margin: 0; font-size: 34px; font-weight: 700; letter-spacing: -0.03em;">เทียบกันตัวต่อตัว</h2>
+        <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #475467;">เลือกหมวด ประเทศ และปีผลตรวจ แล้วเลือกโบรกเกอร์ที่จะเทียบได้เองสูงสุด 5 ราย — ช่องที่ดีที่สุดของแต่ละแถวจะถูกไฮไลต์ และมีบทสรุปจาก RedStar Thinking ทางขวา</p>
+      </div>
+      <div class="rsframe" data-rsf="cmp">
+        <div class="rsfh">เทียบกันตัวต่อตัว<span class="ct" id="rsf-cmp"></span></div>
+      <div class="cmp-picks">
+        <label class="rk-pick"><span>หมวด</span><select id="cmp-cat" aria-label="เลือกหมวดสินทรัพย์ที่จะเทียบ"></select></label>
+        <label class="rk-pick"><span>ประเทศ</span><select id="cmp-iso" aria-label="เลือกประเทศที่จะเทียบ"></select></label>
+        <label class="rk-pick"><span>ปีผลตรวจ</span><select id="cmp-year" aria-label="เลือกปีผลตรวจที่จะเทียบ"></select></label>
+        <span class="cmp-div" aria-hidden="true"></span>
+        <label class="rk-pick cmp-slot"><span>รายที่ 1</span><select id="cmp-s1" data-cmpslot="0" aria-label="เลือกโบรกเกอร์รายที่ 1"></select></label>
+        <label class="rk-pick cmp-slot"><span>รายที่ 2</span><select id="cmp-s2" data-cmpslot="1" aria-label="เลือกโบรกเกอร์รายที่ 2"></select></label>
+        <label class="rk-pick cmp-slot"><span>รายที่ 3</span><select id="cmp-s3" data-cmpslot="2" aria-label="เลือกโบรกเกอร์รายที่ 3"></select></label>
+        <label class="rk-pick cmp-slot"><span>รายที่ 4</span><select id="cmp-s4" data-cmpslot="3" aria-label="เลือกโบรกเกอร์รายที่ 4"></select></label>
+        <label class="rk-pick cmp-slot"><span>รายที่ 5</span><select id="cmp-s5" data-cmpslot="4" aria-label="เลือกโบรกเกอร์รายที่ 5"></select></label>
+        <button type="button" class="cmp-clear" data-cmpclr="1"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M9 7V5h6v2M6.5 7l1 13h9l1-13"></path></svg>ล้างการเลือก</button>
+      </div>
+      <div class="cmp-grid">
+        <div id="cmp-body"></div>
+        <aside id="cmp-ai" class="cmp-ai" aria-live="polite"></aside>
+      </div>
+      </div>
+    </div>
 
   </div>
   </div>
@@ -7350,9 +7345,6 @@ function aiIcon(kind){
 var cmpN = 5;
 var cmpPick = [];   /* รายชื่อ id ที่ผู้ใช้เลือกเอง — null คือใช้ตามอันดับ */
 function cmpRender(){
-  /* บล็อก "เทียบกันตัวต่อตัว" ถูกถอดออกจากหน้าแล้ว (คำสั่ง Boss 1 ก.ย. 69)
-     ไม่มีที่ให้วาด ต้องหยุดตรงนี้ — ถ้าปล่อยผ่านจะ setInnerHTML ของ null แล้วสคริปต์ตายทั้งไฟล์ */
-  if (!document.getElementById("cmp-body")) { return; }
   cmpFixIso();
   var rows = cmpRows();
   cmpControls();
@@ -7808,12 +7800,6 @@ function pkMatch(c){
   return hit;
 }
 function pkCatList(){ return PICK_CATS.filter(pkMatch); }
-/* คำที่ผู้ใช้พิมพ์เอาไปต่อเป็น HTML ต้องหนีอักขระพิเศษก่อนเสมอ
-   ไม่งั้นพิมพ์ " หรือ < แล้วโครง HTML ของช่องค้นหาพังทั้งบล็อก */
-function pkEsc(s){
-  return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
-}
 function renderPicks(){
   var host = document.getElementById("picks");
   if (!host) { return; }
@@ -7829,19 +7815,11 @@ function renderPicks(){
         '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#98A2B3" ' +
         'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
         '<circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4.2-4.2"></path></svg>' +
-        '<input id="pk-q" type="search" value="' + pkEsc(pkQ) + '" autocomplete="off" ' +
+        '<input id="pk-q" type="search" value="' + pkQ + '" autocomplete="off" ' +
         'placeholder="ค้นหาชื่อโบรกเกอร์ หรือหมวด เช่น กองทุน" ' +
         'aria-label="ค้นหาโบรกเกอร์หรือหมวด"></span>' +
       '<span class="pk-hits" id="pk-hits"></span></div>' +
-    '<div class="pk-wrap" id="pk-wrap">' + pkGridHTML() + '</div>';
-  pkHits();
-  var qel = document.getElementById("pk-q");
-  if (qel && qel.value !== pkQ) { qel.value = pkQ; }
-  paintLogos();
-}
-/* การ์ดผลลัพธ์อย่างเดียว — แยกออกมาเพื่อให้วาดใหม่ได้โดยไม่แตะช่องค้นหา */
-function pkGridHTML(){
-  return (pkCatList().map(function(c){
+    '<div class="pk-wrap">' + (pkCatList().map(function(c){
       var rows = topPicks(c.k, 3);
       if (!rows.length) {
         return '<div class="pk-col"><h2>' + c.title + '</h2>' +
@@ -7885,23 +7863,15 @@ function pkGridHTML(){
       return '<div class="pk-col"><h2>' + c.title + '</h2>' + big +
              '<div class="pk-rest">' + rest + '</div></div>';
     }).join("") || '<div class="pk-none">ไม่พบหมวดหรือโบรกเกอร์ที่ตรงกับคำค้นนี้<br>' +
-      'ลองพิมพ์ชื่อหมวด เช่น กองทุน คริปโต ฟิวเจอร์ส หรือพิมพ์ชื่อโบรกเกอร์</div>');
-}
-function pkHits(){
+      'ลองพิมพ์ชื่อหมวด เช่น กองทุน คริปโต ฟิวเจอร์ส หรือพิมพ์ชื่อโบรกเกอร์') + '</div>';
   var hits = document.getElementById("pk-hits");
-  if (!hits) { return; }
-  hits.innerHTML = (pkQ || "").trim()
-    ? 'พบ <b>' + pkCatList().length + '</b> หมวดที่ตรงกับ “' + pkEsc(pkQ) + '”'
-    : 'แสดงครบทั้ง <b>' + PICK_CATS.length + '</b> หมวด';
-}
-/* ระหว่างพิมพ์ให้วาดใหม่แค่การ์ดกับตัวนับ ห้ามวาดกล่องค้นหาใหม่เด็ดขาด —
-   ถ้าอินพุตถูกสร้างใหม่ทุกตัวอักษร การประกอบสระ/วรรณยุกต์ไทยจะหลุดลำดับ
-   และเคอร์เซอร์จะกระโดดไปท้ายช่องทุกครั้ง */
-function pkRefresh(){
-  var wrap = document.getElementById("pk-wrap");
-  if (!wrap) { renderPicks(); return; }
-  wrap.innerHTML = pkGridHTML();
-  pkHits();
+  if (hits) {
+    hits.innerHTML = (pkQ || "").trim()
+      ? 'พบ <b>' + pkCatList().length + '</b> หมวดที่ตรงกับ “' + pkQ + '”'
+      : 'แสดงครบทั้ง <b>' + PICK_CATS.length + '</b> หมวด';
+  }
+  var qel = document.getElementById("pk-q");
+  if (qel && qel.value !== pkQ) { qel.value = pkQ; }
   paintLogos();
 }
 
@@ -10155,7 +10125,9 @@ document.addEventListener("change", function(ev){
 document.addEventListener("input", function(ev){
   if (ev.target && ev.target.id === "pk-q") {
     pkQ = ev.target.value;
-    pkRefresh();
+    renderPicks();
+    var el = document.getElementById("pk-q");
+    if (el) { el.focus(); }
   }
 });
 document.addEventListener("click", function(ev){
@@ -11136,7 +11108,6 @@ var AW_VOICE = [
    พอ track เลื่อนไปถึง -50% ชุดที่สองจะมาอยู่ตำแหน่งเดิมของชุดแรกพอดี ภาพจึงต่อเนียนไม่มีรอยต่อ
    ชุดที่สองเป็นภาพซ้ำ ไม่ใช่ข้อมูลใหม่ จึงใส่ aria-hidden ไว้ กันโปรแกรมอ่านหน้าจออ่านซ้ำสองรอบ */
 var awHofPaused = false;
-var awHofLight = false;
 function awHofCards(dup){
   return AW_HOF.map(function(r, hi){
     var c = awCat(r.cat);
@@ -11150,55 +11121,20 @@ function awHofCards(dup){
       '<span class="aw-hxy"><i>ตั้งแต่ ' + r.since + '</i><i>รวม ' + r.q + ' ไตรมาส</i></span></a>';
   }).join("");
 }
-function awHofThemeIcon(light){
-  /* สว่างอยู่ = ขึ้นรูปพระจันทร์ (กดแล้วจะเป็นมืด) มืดอยู่ = ขึ้นรูปดวงอาทิตย์ */
-  var a = 'width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
-    'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"';
-  return light
-    ? '<svg ' + a + '><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"></path></svg>'
-    : '<svg ' + a + '><circle cx="12" cy="12" r="4.2"></circle>' +
-      '<path d="M12 2.6v2M12 19.4v2M2.6 12h2M19.4 12h2M5.4 5.4l1.4 1.4M17.2 17.2l1.4 1.4' +
-      'M18.6 5.4l-1.4 1.4M6.8 17.2l-1.4 1.4"></path></svg>';
-}
-function awHofThemeBtn(){
-  return '<button type="button" class="aw-hofpz sw" data-hoftheme="1" aria-pressed="' +
-    awHofLight + '" aria-label="สลับโทนสีของแผง Hall of Fame">' +
-    awHofThemeIcon(awHofLight) +
-    '<span>' + (awHofLight ? "มืด" : "สว่าง") + '</span></button>';
-}
 function awHofRow(){
-  return '<div class="aw-hofbz">' + awHofThemeBtn() +
-    '<button type="button" class="aw-hofpz" data-hofpause="1" aria-pressed="' +
-      awHofPaused + '">' + (awHofPaused ? "เล่น" : "หยุด") + '</button></div>' +
+  return '<button type="button" class="aw-hofpz" data-hofpause="1" aria-pressed="' +
+      awHofPaused + '">' + (awHofPaused ? "เล่น" : "หยุด") + '</button>' +
     '<div class="aw-hofx' + (awHofPaused ? " off" : "") + '" id="aw-hofx">' +
       '<div class="aw-hoftrack">' + awHofCards(false) + awHofCards(true) + '</div></div>';
 }
-/* แผง Hall of Fame มีสองที่ (หน้าแรก + หน้า Awards)
-   กดที่หนึ่งต้องเปลี่ยนทั้งสอง ไม่งั้นสลับหน้าแล้วโทนจะไม่ตรงกัน */
-document.addEventListener("click", function(ev){
-  var b = ev.target.closest("[data-hoftheme]");
-  if (!b) { return; }
-  awHofLight = !awHofLight;
-  Array.prototype.forEach.call(document.querySelectorAll(".aw-hofw"), function(w){
-    w.classList.toggle("lt", awHofLight);
-  });
-  Array.prototype.forEach.call(document.querySelectorAll("[data-hoftheme]"), function(t){
-    t.innerHTML = awHofThemeIcon(awHofLight) +
-      '<span>' + (awHofLight ? "มืด" : "สว่าง") + '</span>';
-    t.setAttribute("aria-pressed", String(awHofLight));
-  });
-});
 document.addEventListener("click", function(ev){
   var b = ev.target.closest("[data-hofpause]");
   if (!b) { return; }
   awHofPaused = !awHofPaused;
-  Array.prototype.forEach.call(document.querySelectorAll(".aw-hofx"), function(sc){
-    sc.classList.toggle("off", awHofPaused);
-  });
-  Array.prototype.forEach.call(document.querySelectorAll("[data-hofpause]"), function(t){
-    t.textContent = awHofPaused ? "เล่น" : "หยุด";
-    t.setAttribute("aria-pressed", String(awHofPaused));
-  });
+  var sc = document.getElementById("aw-hofx");
+  if (sc) { sc.classList.toggle("off", awHofPaused); }
+  b.textContent = awHofPaused ? "เล่น" : "หยุด";
+  b.setAttribute("aria-pressed", String(awHofPaused));
 });
 
 function awVoices(){
@@ -12025,20 +11961,6 @@ function brFind(){
   }
   return "icm";
 }
-/* ปุ่มเปิดบัญชีของการ์ดคะแนนหน้ารีวิว
-   href เป็น "#" เพราะ META ยังไม่มีช่องเว็บทางการของโบรก — ตอนใช้จริงต้องเติม URL ทางการรายโบรก
-   และต้องเป็นลิงก์ธรรมดา ไม่มีพารามิเตอร์ติดตาม ตาม CORE-PILLAR ที่ว่ารายได้ต้องไม่ผูกกับผลคะแนน */
-function brOpenBtn(m){
-  var nm = m && m.n ? m.n : "โบรกนี้";
-  return '<a class="br-open" href="#" rel="nofollow noopener" ' +
-    'aria-label="เปิดบัญชีกับ ' + nm +
-    ' (ไปเว็บทางการของโบรก)">' +
-    '<span>เปิดบัญชีกับ ' + nm + '</span>' +
-    '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
-    'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
-    '<path d="M14 4h6v6M20 4l-9 9"></path>' +
-    '<path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"></path></svg></a>';
-}
 function brRender(){
   var head = document.getElementById("br-head");
   if (!head) { return; }
@@ -12100,10 +12022,8 @@ function brRender(){
         '<div class="br-fact"><span>ฝากขั้นต่ำ</span><b>เริ่ม $10</b></div>' +
         '<div class="br-fact"><span>แพลตฟอร์ม</span><b>MT4 · MT5 · App</b></div></div>' +
       '<div class="br-scf"><a class="btn-solid" href="#/verify">ดูใบรับรองดาว</a>' +
-        brOpenBtn(m) +
         '<p class="br-disc">คะแนนและดาวมาจากการตรวจของทีมเราเอง ' +
-        '<b>ไม่มีการรับเงินเพื่อเปลี่ยนอันดับ</b> · ปุ่มเปิดบัญชีเป็นลิงก์ไปเว็บทางการของโบรกโดยตรง ' +
-        '<b>ไม่ใช่ลิงก์แนะนำที่ได้ค่าคอมมิชชั่น</b></p></div>' +
+        '<b>ไม่มีการรับเงินเพื่อเปลี่ยนอันดับ</b> และหน้านี้ไม่มีลิงก์สมัครที่ได้ค่าคอมมิชชั่น</p></div>' +
       '</div>';
   }
 
