@@ -718,14 +718,13 @@
     <div style="width: 1200px; margin: 0 auto; padding: 52px 0 0;">
       <div class="sec-rule" aria-hidden="true"></div>
       <div class="art-head">
-        <h2 class="art-h1">RedStar EA</h2>
-        <span class="art-h2">EA ตัวเดียว ติดตั้งครั้งเดียว ทำงาน 6 อย่าง และแจ้งคุณเมื่อมีอะไรผิดปกติ</span>
+        <h2 class="art-h1">RedStar EA Suite</h2>
+        <span class="art-h2">เครื่องมือวัดต้นทุนการเทรด ใช้ฟรีสำหรับสมาชิก</span>
         <p>คุณได้เครื่องมือวิเคราะห์ระดับมืออาชีพไปใช้ฟรี · เราได้หลักฐานการส่งคำสั่งจริงที่ไม่ระบุตัวตน ไปใช้ทำให้คะแนนโบรกเกอร์แม่นขึ้น</p>
       </div>
       <div id="ea-intro"></div>
       <div id="ea-suitehead"></div>
       <div class="ea-blocks" id="ea-cards"></div>
-      <div id="ea-notify"></div>
       <div id="ea-mt5"></div>
       <div id="ea-dash"></div>
       <div id="ea-legend"></div>

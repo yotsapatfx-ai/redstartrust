@@ -2221,6 +2221,45 @@ HEAD = """<title>RedStarTrust Homepage</title>
   .ea-cta { margin-top: auto; padding-top: 4px; display: flex; align-items: center;
     gap: 11px; flex-wrap: wrap; }
 
+  /* ── บล็อกการแจ้งเตือนของ EA ตัวเดียว ── */
+  .ean { margin-top: 44px; }
+  .ean-h { margin-bottom: 18px; }
+  .ean-h .cap { display: block; font-family: 'IBM Plex Sans', sans-serif; font-size: 11px;
+    font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #D92D20;
+    margin-bottom: 7px; }
+  .ean-h h3 { margin: 0 0 6px; font-size: 26px; font-weight: 700; letter-spacing: -0.025em;
+    color: #101828; }
+  .ean-h p { margin: 0; max-width: 76ch; font-size: 14.5px; line-height: 1.75; color: #475467; }
+  .ean-h p b { color: #101828; font-weight: 600; }
+  .ean-g { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+  .ean-c { border: 1px solid #EAECF0; border-left-width: 3px; border-radius: 12px;
+    background: #FFFFFF; padding: 16px 18px 14px; }
+  .ean-c.hi { border-left-color: #D92D20; }
+  .ean-c.md { border-left-color: #DC6803; }
+  .ean-c.lo { border-left-color: #667085; }
+  .ean-t { display: flex; align-items: center; gap: 8px; margin-bottom: 9px; }
+  .ean-b { font-family: 'IBM Plex Sans', sans-serif; font-size: 10.5px; font-weight: 700;
+    letter-spacing: 0.03em; border-radius: 999px; padding: 3px 9px; }
+  .ean-b.hi { color: #B42318; background: #FEF3F2; border: 1px solid #FECDCA; }
+  .ean-b.md { color: #B54708; background: #FFFAEB; border: 1px solid #FEDF89; }
+  .ean-b.lo { color: #475467; background: #F2F4F7; border: 1px solid #EAECF0; }
+  .ean-cap { margin-left: auto; font-size: 11px; color: #667085; }
+  .ean-c strong { display: block; font-size: 14px; font-weight: 600; line-height: 1.5;
+    color: #101828; margin-bottom: 7px; }
+  .ean-c p { margin: 0 0 10px; font-size: 12.5px; line-height: 1.7; color: #475467; }
+  .ean-c p b { color: #101828; font-weight: 600; }
+  .ean-w { display: inline-block; font-family: 'IBM Plex Sans', sans-serif; font-size: 10.5px;
+    font-weight: 600; color: #475467; background: #F9FAFB; border: 1px solid #EAECF0;
+    border-radius: 6px; padding: 3px 8px; }
+  .ean-ch { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px;
+    margin-top: 14px; }
+  .ean-chc { border: 1px dashed #D0D5DD; border-radius: 12px; background: #F9FAFB;
+    padding: 14px 16px; }
+  .ean-chc b { display: block; font-size: 13.5px; font-weight: 600; color: #101828;
+    margin-bottom: 4px; }
+  .ean-chc span { display: block; font-size: 12px; line-height: 1.65; color: #475467; }
+  .ean-n { margin: 14px 0 0; font-size: 11.5px; line-height: 1.7; color: #B54708;
+    background: #FFFAEB; border: 1px solid #FEDF89; border-radius: 10px; padding: 10px 14px; }
   .ea-priv { margin-top: 34px; border: 1px solid #EAECF0; border-radius: 18px; background: #F5F7FA;
     padding: 26px 28px; }
   .ea-priv h3 { margin: 0 0 6px; font-size: 19px; font-weight: 700; letter-spacing: -0.02em; color: #101828; }
@@ -7905,9 +7944,12 @@ var TOC_MINI = {
 
 /* \u0e2b\u0e31\u0e27\u0e02\u0e49\u0e2d \xb7 \u0e04\u0e33\u0e2d\u0e18\u0e34\u0e1a\u0e32\u0e22 \xb7 \u0e20\u0e32\u0e1e\u0e22\u0e48\u0e2d \xb7 \u0e15\u0e31\u0e27\u0e19\u0e31\u0e1a\u0e17\u0e35\u0e48\u0e08\u0e30\u0e44\u0e1b\u0e19\u0e31\u0e1a\u0e02\u0e2d\u0e07\u0e08\u0e23\u0e34\u0e07\u0e08\u0e32\u0e01\u0e2b\u0e19\u0e49\u0e32\u0e40\u0e27\u0e47\u0e1a */
 var TOC = [
-  ["ea-suitehead", "EA \u0e17\u0e31\u0e49\u0e07 6 \u0e15\u0e31\u0e27\u0e43\u0e19\u0e0a\u0e38\u0e14",
-   "\u0e41\u0e15\u0e48\u0e25\u0e30\u0e15\u0e31\u0e27\u0e17\u0e33\u0e2d\u0e30\u0e44\u0e23 \u0e40\u0e2b\u0e21\u0e32\u0e30\u0e01\u0e31\u0e1a\u0e43\u0e04\u0e23 \u0e01\u0e14\u0e40\u0e02\u0e49\u0e32\u0e44\u0e1b\u0e2d\u0e48\u0e32\u0e19\u0e15\u0e48\u0e2d\u0e44\u0e14\u0e49\u0e17\u0e35\u0e25\u0e30\u0e15\u0e31\u0e27",
-   "cards", "#ea-cards .eac-c", "\u0e15\u0e31\u0e27"],
+  ["ea-suitehead", "6 \u0e04\u0e27\u0e32\u0e21\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e43\u0e19 EA \u0e15\u0e31\u0e27\u0e40\u0e14\u0e35\u0e22\u0e27",
+   "\u0e41\u0e15\u0e48\u0e25\u0e30\u0e04\u0e27\u0e32\u0e21\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e17\u0e33\u0e2d\u0e30\u0e44\u0e23 \u0e40\u0e2b\u0e21\u0e32\u0e30\u0e01\u0e31\u0e1a\u0e43\u0e04\u0e23 \u0e01\u0e14\u0e40\u0e02\u0e49\u0e32\u0e44\u0e1b\u0e2d\u0e48\u0e32\u0e19\u0e15\u0e48\u0e2d\u0e44\u0e14\u0e49\u0e17\u0e35\u0e25\u0e30\u0e02\u0e49\u0e2d",
+   "cards", "#ea-cards .eac-c", "\u0e04\u0e27\u0e32\u0e21\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16"],
+  ["ea-notify", "EA \u0e41\u0e08\u0e49\u0e07\u0e04\u0e38\u0e13\u0e40\u0e21\u0e37\u0e48\u0e2d\u0e44\u0e23",
+   "\u0e40\u0e2b\u0e15\u0e38\u0e01\u0e32\u0e23\u0e13\u0e4c\u0e17\u0e35\u0e48 EA \u0e08\u0e30\u0e2a\u0e48\u0e07\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e2b\u0e32\u0e04\u0e38\u0e13 \u0e41\u0e25\u0e30\u0e2a\u0e48\u0e07\u0e17\u0e32\u0e07\u0e44\u0e2b\u0e19",
+   "notify", "#ea-notify .ean-c", "\u0e40\u0e2b\u0e15\u0e38\u0e01\u0e32\u0e23\u0e13\u0e4c"],
   ["ea-mt5", "\u0e2b\u0e19\u0e49\u0e32\u0e15\u0e32\u0e08\u0e23\u0e34\u0e07\u0e15\u0e2d\u0e19\u0e40\u0e1b\u0e34\u0e14\u0e04\u0e39\u0e48 MT5",
    "\u0e08\u0e33\u0e25\u0e2d\u0e07\u0e2b\u0e19\u0e49\u0e32\u0e08\u0e2d MetaTrader \u0e27\u0e48\u0e32 EA \u0e44\u0e1b\u0e42\u0e1c\u0e25\u0e48\u0e15\u0e23\u0e07\u0e44\u0e2b\u0e19\u0e1a\u0e49\u0e32\u0e07",
    "mt5", "#ea-mt5 .m5w-n", "\u0e41\u0e16\u0e27\u0e23\u0e32\u0e04\u0e32"],
@@ -8123,17 +8165,17 @@ var TOC = [
   if (sh) {
     sh.className = "es-head";
     sh.style.paddingTop = "44px";
-    sh.innerHTML = '<div class="tx"><span class="cap">RedStar EA Suite</span>' +
-      '<h3>EA \u0e17\u0e31\u0e49\u0e07 6 \u0e15\u0e31\u0e27\u0e43\u0e19\u0e0a\u0e38\u0e14</h3>' +
-      '<p><b>\u0e40\u0e23\u0e34\u0e48\u0e21\u0e2d\u0e48\u0e32\u0e19\u0e17\u0e35\u0e48\u0e15\u0e31\u0e27\u0e41\u0e23\u0e01</b> \u2014 Trade Analytics EA \u0e04\u0e37\u0e2d\u0e15\u0e31\u0e27\u0e2b\u0e25\u0e31\u0e01\u0e17\u0e35\u0e48\u0e04\u0e19\u0e2a\u0e48\u0e27\u0e19\u0e43\u0e2b\u0e0d\u0e48\u0e43\u0e0a\u0e49\u0e15\u0e31\u0e27\u0e40\u0e14\u0e35\u0e22\u0e27\u0e01\u0e47\u0e1e\u0e2d ' +
-      '\u0e2d\u0e35\u0e01\u0e2b\u0e49\u0e32\u0e15\u0e31\u0e27\u0e17\u0e35\u0e48\u0e40\u0e2b\u0e25\u0e37\u0e2d\u0e40\u0e1b\u0e47\u0e19\u0e15\u0e31\u0e27\u0e40\u0e2a\u0e23\u0e34\u0e21\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e04\u0e19\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e32\u0e01\u0e14\u0e39\u0e25\u0e36\u0e01\u0e25\u0e07\u0e44\u0e1b\u0e43\u0e19\u0e41\u0e15\u0e48\u0e25\u0e30\u0e14\u0e49\u0e32\u0e19 ' +
-      '\u0e17\u0e38\u0e01\u0e15\u0e31\u0e27\u0e2d\u0e22\u0e39\u0e48\u0e43\u0e19\u0e44\u0e1f\u0e25\u0e4c\u0e14\u0e32\u0e27\u0e19\u0e4c\u0e42\u0e2b\u0e25\u0e14\u0e0a\u0e38\u0e14\u0e40\u0e14\u0e35\u0e22\u0e27\u0e01\u0e31\u0e19</p></div>';
+    sh.innerHTML = '<div class="tx"><span class="cap">RedStar EA</span>' +
+      '<h3>EA \u0e15\u0e31\u0e27\u0e40\u0e14\u0e35\u0e22\u0e27 \u0e17\u0e33\u0e07\u0e32\u0e19 6 \u0e2d\u0e22\u0e48\u0e32\u0e07</h3>' +
+      '<p><b>\u0e15\u0e34\u0e14\u0e15\u0e31\u0e49\u0e07\u0e44\u0e1f\u0e25\u0e4c\u0e40\u0e14\u0e35\u0e22\u0e27 \u0e44\u0e14\u0e49\u0e04\u0e23\u0e1a\u0e17\u0e31\u0e49\u0e07 6 \u0e04\u0e27\u0e32\u0e21\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16</b> \u2014 \u0e44\u0e21\u0e48\u0e15\u0e49\u0e2d\u0e07\u0e40\u0e25\u0e37\u0e2d\u0e01 \u0e44\u0e21\u0e48\u0e15\u0e49\u0e2d\u0e07\u0e25\u0e07\u0e40\u0e1e\u0e34\u0e48\u0e21\u0e17\u0e35\u0e2b\u0e25\u0e31\u0e07 ' +
+      '\u0e04\u0e27\u0e32\u0e21\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e17\u0e35\u0e48 1 \u0e04\u0e37\u0e2d\u0e2a\u0e48\u0e27\u0e19\u0e17\u0e35\u0e48\u0e04\u0e19\u0e2a\u0e48\u0e27\u0e19\u0e43\u0e2b\u0e0d\u0e48\u0e43\u0e0a\u0e49\u0e17\u0e38\u0e01\u0e27\u0e31\u0e19 ' +
+      '\u0e2d\u0e35\u0e01\u0e2b\u0e49\u0e32\u0e02\u0e49\u0e2d\u0e17\u0e33\u0e07\u0e32\u0e19\u0e2d\u0e22\u0e39\u0e48\u0e40\u0e1a\u0e37\u0e49\u0e2d\u0e07\u0e2b\u0e25\u0e31\u0e07 \u0e41\u0e25\u0e30<b>\u0e08\u0e30\u0e2a\u0e48\u0e07\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e2b\u0e32\u0e04\u0e38\u0e13\u0e40\u0e21\u0e37\u0e48\u0e2d\u0e40\u0e08\u0e2d\u0e2a\u0e34\u0e48\u0e07\u0e17\u0e35\u0e48\u0e1c\u0e34\u0e14\u0e1b\u0e01\u0e15\u0e34</b></p></div>';
   }
 
   var host = document.getElementById("ea-cards");
   if (host) {
     /* ข้อมูลของสองส่วนนี้ประกาศทีหลังในไฟล์ จึงต้องรอให้สคริปต์อ่านจบก่อน */
-  setTimeout(function(){ eaCardsRender(); m5Render(); eaTocMeasure(); dgFillBroker(); }, 0);
+  setTimeout(function(){ eaCardsRender(); eaNotifyRender(); m5Render(); eaTocMeasure(); dgFillBroker(); }, 0);
   eaWatch();
   }
 
@@ -10690,6 +10732,63 @@ function eaTocMeasure(){
   }
 }
 
+/* ซอง EA ตัวเดียว — เดิมแยกเป็น 6 ตัว (คำสั่ง Boss 1 ก.ย. 69)
+   ข้อมูลเดิมใช้ ph เป็น "Phase 1..4" ตอนนี้เป็นความสามารถที่ 1..6 ของ EA ตัวเดียว */
+function eaCapLabel(ix){
+  return "ความสามารถที่ " + (ix + 1);
+}
+/* สิ่งที่ EA แจ้งกลับมาหาผู้ใช้
+   ⚠ เงื่อนไขการแจ้งทั้งหมดเป็นข้อเสนอของงานออกแบบ ต้องให้ฝ่ายพัฒนา EA ยืนยันก่อน (หัวข้อ 31 ใน STATE.md) */
+var EA_NOTI = [
+  {k:"cost", c:"hi", t:"ต้นทุนต่อออร์เดอร์สูงกว่าปกติ",
+   d:"ออร์เดอร์ล่าสุดมีต้นทุนรวม <b>$14.20</b> ต่อล็อต สูงกว่าค่ากลาง 30 วันของคุณ 41%",
+   w:"ทันที"},
+  {k:"spread", c:"md", t:"สเปรดกว้างผิดปกติช่วงข่าว",
+   d:"ช่วงประกาศตัวเลข สเปรด EURUSD กว้างเป็น <b>3.4 pip</b> นาน 8 นาที — นานกว่าค่ากลางของโบรกนี้",
+   w:"ทันที"},
+  {k:"health", c:"hi", t:"โบรกที่คุณใช้มีสัญญาณผิดปกติ",
+   d:"พบการรีโควตถี่ขึ้นผิดปกติในช่วง 24 ชม. ที่ผ่านมา",
+   w:"ทันที"},
+  {k:"community", c:"md", t:"มีเรื่องเตือนภัยจากผู้ใช้คนอื่น",
+   d:"มีผู้ใช้ <b>11 ราย</b> แจ้งเรื่องเดียวกันใน 9 วัน — ทีมตรวจรับเรื่องแล้ว",
+   w:"ทันที"},
+  {k:"withdraw", c:"hi", t:"คำสั่งถอนช้ากว่าที่โบรกแจ้งไว้",
+   d:"คำสั่งถอนของคุณค้าง <b>38 ชม.</b> จากที่โบรกระบุไว้ 24 ชม. — บันทึกเป็นหลักฐานแล้ว",
+   w:"ทันที"},
+  {k:"summary", c:"lo", t:"สรุปต้นทุนรายเดือน พร้อมหลักฐาน",
+   d:"สรุปต้นทุนทั้งเดือน เทียบค่ากลางหมวด พร้อมไฟล์หลักฐานที่ยื่นเรื่องได้ทันที",
+   w:"ทุกสิ้นเดือน"}
+];
+var EA_CHAN = [
+  ["บนกราฟ MetaTrader", "กล่องข้อความเด้งขึ้นตรงมุมกราฟ ไม่บังออร์เดอร์"],
+  ["หน้าสมาชิกบนเว็บ", "รวมทุกเรื่องไว้ที่เดียว กดดูย้อนหลังได้"],
+  ["อีเมลสรุป", "ส่งเฉพาะเรื่องสำคัญและสรุปรายเดือน"]
+];
+function eaNotifyRender(){
+  var host = document.getElementById("ea-notify");
+  if (!host) { return; }
+  host.className = "ean";
+  var LB = {hi: "ด่วน", md: "ควรรู้", lo: "สรุป"};
+  host.innerHTML =
+    '<div class="ean-h"><div><span class="cap">Notifications</span>' +
+      '<h3>EA แจ้งคุณเมื่อไร</h3>' +
+      '<p>คุณไม่ต้องนั่งเฝ้าหน้าจอ — ' +
+      '<b>EA ตัวเดียวนี้เฝ้าดูให้ทั้ง 6 เรื่อง</b> ' +
+      'แล้วส่งข้อความมาหาเมื่อเจอสิ่งที่ผิดปกติ</p></div></div>' +
+    '<div class="ean-g">' + EA_NOTI.map(function(n, ix){
+      return '<div class="ean-c ' + n.c + '">' +
+        '<div class="ean-t"><span class="ean-b ' + n.c + '">' + (LB[n.c] || "") + '</span>' +
+        '<span class="ean-cap">' + eaCapLabel(ix) + '</span></div>' +
+        '<strong>' + n.t + '</strong><p>' + n.d + '</p>' +
+        '<span class="ean-w">เช็คทุก ' + n.w + '</span></div>';
+    }).join("") + '</div>' +
+    '<div class="ean-ch">' + EA_CHAN.map(function(c){
+      return '<div class="ean-chc"><b>' + c[0] + '</b><span>' + c[1] + '</span></div>';
+    }).join("") + '</div>' +
+    '<p class="ean-n">เงื่อนไขการแจ้งเตือนและตัวเลขทั้งหมดในส่วนนี้' +
+    '<b>เป็นข้อเสนอของงานออกแบบ</b> ' +
+    'ต้องให้ฝ่ายพัฒนา EA ยืนยันว่าตรวจจับได้จริงก่อนขึ้นเว็บจริง</p>';
+}
 function eaCardsRender(){
   var host = document.getElementById("ea-cards");
   if (!host) { return; }
@@ -10707,7 +10806,7 @@ function eaCardsRender(){
         }).join("") +
         '<div class="eac-popf"><b>\u0e15\u0e34\u0e14\u0e15\u0e31\u0e49\u0e07\u0e41\u0e25\u0e49\u0e27\u0e40\u0e2b\u0e47\u0e19\u0e41\u0e1a\u0e1a\u0e19\u0e35\u0e49</b> \u2014 ' +
         '\u0e41\u0e1c\u0e07\u0e19\u0e35\u0e49\u0e08\u0e30\u0e44\u0e1b\u0e40\u0e01\u0e32\u0e30\u0e1a\u0e19\u0e01\u0e23\u0e32\u0e1f MT5 \u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13 \u0e22\u0e49\u0e32\u0e22\u0e15\u0e33\u0e41\u0e2b\u0e19\u0e48\u0e07\u0e41\u0e25\u0e30\u0e1b\u0e34\u0e14\u0e44\u0e14\u0e49</div></div>' +
-      '<div class="eac-h"><span class="ph">' + e.ph + '</span>' +
+      '<div class="eac-h"><span class="ph">' + eaCapLabel(ix) + '</span>' +
         '<span class="st">' + awardStar(22) + '</span></div>' +
       '<div class="eac-b"><h4>' + e.n + '</h4>' +
         '<p class="eac-sell">' + s.sell + '</p>' +
@@ -10721,7 +10820,7 @@ function eaCardsRender(){
         '<path d="M4.5 3.5v13l3.4-3.2h6.4z"></path><path d="M11 14.5l3.6 6 2.6-1.4-3.5-5.9"></path>' +
         '</svg>\u0e0a\u0e35\u0e49\u0e40\u0e21\u0e32\u0e2a\u0e4c\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e14\u0e39\u0e27\u0e48\u0e32\u0e15\u0e34\u0e14\u0e15\u0e31\u0e49\u0e07\u0e41\u0e25\u0e49\u0e27\u0e42\u0e0a\u0e27\u0e4c\u0e2d\u0e30\u0e44\u0e23</span></div>' +
       '<div class="eac-f"><button type="button" class="eac-go" data-eaopen="' + ix + '">' +
-        '\u0e40\u0e02\u0e49\u0e32\u0e44\u0e1b\u0e14\u0e39\u0e23\u0e32\u0e22\u0e25\u0e30\u0e40\u0e2d\u0e35\u0e22\u0e14' +
+        '\u0e14\u0e39\u0e04\u0e27\u0e32\u0e21\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e19\u0e35\u0e49' +
         '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
         'stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
         '<path d="M5 12h13M13 6l6 6-6 6"></path></svg></button></div></article>';
@@ -11192,7 +11291,7 @@ function edRender(){
       '<span aria-hidden="true">/</span><a href="#/analytics" data-nav="analytics">Trade Analytics</a>' +
       '<span aria-hidden="true">/</span><b style="color:#101828">' + e.n + '</b></nav>' +
     '<div class="ed-top"><div>' +
-      '<span class="ed-ph">' + awardStar(13) + e.ph + '</span>' +
+      '<span class="ed-ph">' + awardStar(13) + eaCapLabel(edIdx) + '</span>' +
       '<h1 class="ed-h1">' + e.n + '</h1>' +
       '<p class="ed-lead">' + s.sell + '</p>' +
       '<p class="aw-body" style="max-width:70ch">' + e.p + '</p></div>' +
