@@ -1559,6 +1559,37 @@ HEAD = """<title>RedStarTrust Homepage</title>
   .rs-ti[aria-current="true"] { background: #FEF3F2; }
   .rs-ti[aria-current="true"] .n { color: #B42318; }
   .rs-ti[aria-current="true"] b { color: #B42318; }
+  /* ── แผงข่าวใต้สารบัญ — popup เปิดไปทางซ้าย
+     เพราะแถบข้างอยู่คอลัมน์ขวาสุด เปิดขวาจะล้นกรอบ 1440px */
+  .rs-news { margin-top: 16px; border: 1px solid #EAECF0; border-radius: 14px;
+    overflow: visible; }
+  .rs-nwh { padding: 13px 16px; background: #FAFAFA; border-bottom: 1px solid #EAECF0;
+    border-radius: 14px 14px 0 0; }
+  .rs-nwh b { display: block; font-size: 13px; font-weight: 700; color: #101828;
+    line-height: 1.4; }
+  .rs-nwh span { display: block; margin-top: 3px; font-size: 11px; color: #667085; }
+  .rs-nw { position: relative; display: block; padding: 12px 16px;
+    border-bottom: 1px solid #F2F4F7; text-decoration: none; cursor: pointer;
+    transition: background .15s; }
+  .rs-nw:hover { background: #FCFCFD; }
+  .rs-nw .dt { display: block; font-size: 10.5px; color: #667085; margin-bottom: 4px; }
+  .rs-nw b { display: block; font-size: 12.5px; font-weight: 600; line-height: 1.55;
+    color: #101828; }
+  .rs-nw:hover b { color: #B42318; }
+  .rs-nwpop { position: absolute; z-index: 40; right: calc(100% + 12px); top: 6px;
+    width: 268px; padding: 12px 14px; font-size: 12px; line-height: 1.7; color: #475467;
+    background: #FFFFFF; border: 1px solid #EAECF0; border-radius: 12px;
+    box-shadow: 0 18px 40px -18px rgba(16,24,40,0.3);
+    opacity: 0; visibility: hidden; transform: translateX(6px);
+    transition: opacity .16s ease, transform .16s ease, visibility .16s; }
+  .rs-nw:hover .rs-nwpop, .rs-nw:focus-visible .rs-nwpop {
+    opacity: 1; visibility: visible; transform: translateX(0); }
+  .rs-nw:focus-visible { outline: 2px solid #D92D20; outline-offset: -2px; }
+  .rs-nwall { display: block; padding: 12px 16px; font-size: 12.5px; font-weight: 600;
+    color: #D92D20; text-decoration: none; }
+  .rs-nwall:hover { background: #FEF3F2; }
+  .rs-nwn { margin: 0; padding: 0 16px 13px; font-size: 10.5px; line-height: 1.6;
+    color: #B54708; }
   .rs-mini { border: 1px solid #EAECF0; border-radius: 14px; padding: 18px;
     margin-bottom: 16px; text-align: center; }
   .rs-mini .n { font-family: 'IBM Plex Sans', sans-serif; font-size: 34px; font-weight: 700;
@@ -12565,6 +12596,41 @@ function rsBlock(b){
   return '<div class="rs-blk"><div class="rs-blkh"><b>' + b.t + '</b>' +
     '<span class="src">\u0e17\u0e35\u0e48\u0e21\u0e32: ' + b.src + '</span></div>' + body + '</div>';
 }
+/* \u0e41\u0e1c\u0e07\u0e02\u0e48\u0e32\u0e27\u0e40\u0e01\u0e35\u0e48\u0e22\u0e27\u0e01\u0e31\u0e1a\u0e42\u0e1a\u0e23\u0e01\u0e23\u0e32\u0e22\u0e19\u0e35\u0e49 \u0e43\u0e15\u0e49\u0e2a\u0e32\u0e23\u0e1a\u0e31\u0e0d (\u0e04\u0e33\u0e2a\u0e31\u0e48\u0e07 Boss 3 \u0e01.\u0e22. 69)
+   \u0e43\u0e0a\u0e49\u0e40\u0e01\u0e13\u0e11\u0e4c\u0e04\u0e27\u0e32\u0e21\u0e40\u0e01\u0e35\u0e48\u0e22\u0e27\u0e02\u0e49\u0e2d\u0e07\u0e0a\u0e38\u0e14\u0e40\u0e14\u0e35\u0e22\u0e27\u0e01\u0e31\u0e1a brArts()
+   \u0e0a\u0e37\u0e48\u0e2d\u0e43\u0e19\u0e2b\u0e31\u0e27\u0e40\u0e23\u0e37\u0e48\u0e2d\u0e07 +6 \u00b7 \u0e43\u0e19\u0e40\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e22\u0e48\u0e2d +4 \u00b7 \u0e43\u0e19\u0e40\u0e19\u0e37\u0e49\u0e2d\u0e2b\u0e32 +3 \u00b7 \u0e2b\u0e21\u0e27\u0e14\u0e40\u0e14\u0e35\u0e22\u0e27\u0e01\u0e31\u0e19 +1 */
+function rsNews(m){
+  if (typeof ARTICLES === "undefined" || !m || !m.n) { return ""; }
+  var nm = String(m.n).toLowerCase();
+  var scored = ARTICLES.map(function(a, i){
+    var body = (typeof ART_BODY !== "undefined" && ART_BODY[i])
+      ? JSON.stringify(ART_BODY[i]).toLowerCase() : "";
+    var sc = 0;
+    if (String(a.t).toLowerCase().indexOf(nm) >= 0) { sc += 6; }
+    if (String(a.x).toLowerCase().indexOf(nm) >= 0) { sc += 4; }
+    if (body.indexOf(nm) >= 0) { sc += 3; }
+    if (typeof brCat !== "undefined" && a.c === brCat) { sc += 1; }
+    return {a: a, i: i, s: sc};
+  }).sort(function(p, q){ return q.s - p.s || Date.parse(q.a.d) - Date.parse(p.a.d); });
+  var direct = scored.filter(function(x){ return x.s >= 3; }).length;
+  var list = scored.slice(0, 4);
+  if (!list.length) { return ""; }
+  return '<div class="rs-news">' +
+    '<div class="rs-nwh"><b>\u0e02\u0e48\u0e32\u0e27\u0e40\u0e01\u0e35\u0e48\u0e22\u0e27\u0e01\u0e31\u0e1a ' + m.n + '</b>' +
+      '<span>' + (direct
+        ? direct + ' \u0e1a\u0e17\u0e17\u0e35\u0e48\u0e40\u0e2d\u0e48\u0e22\u0e16\u0e36\u0e07\u0e42\u0e14\u0e22\u0e15\u0e23\u0e07'
+        : '\u0e22\u0e31\u0e07\u0e44\u0e21\u0e48\u0e21\u0e35\u0e1a\u0e17\u0e17\u0e35\u0e48\u0e40\u0e2d\u0e48\u0e22\u0e16\u0e36\u0e07\u0e23\u0e32\u0e22\u0e19\u0e35\u0e49') + '</span></div>' +
+    list.map(function(x){
+      var a = x.a;
+      return '<a class="rs-nw" href="#" data-article="' + x.i + '">' +
+        '<span class="dt">' + (typeof artDate === "function" ? artDate(a.d) : a.d) +
+        ' \u00b7 ' + (typeof catShort === "function" ? catShort(a.c) : a.c) + '</span>' +
+        '<b>' + a.t + '</b>' +
+        '<span class="rs-nwpop" role="tooltip">' + a.x + '</span></a>';
+    }).join("") +
+    '<a class="rs-nwall" href="#/news" data-nav="news">\u0e14\u0e39\u0e02\u0e48\u0e32\u0e27\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14 \u2192</a>' +
+    '<p class="rs-nwn">\u0e1a\u0e17\u0e04\u0e27\u0e32\u0e21\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14\u0e40\u0e1b\u0e47\u0e19\u0e40\u0e19\u0e37\u0e49\u0e2d\u0e2b\u0e32\u0e2a\u0e21\u0e21\u0e15\u0e34\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e07\u0e32\u0e19\u0e2d\u0e2d\u0e01\u0e41\u0e1a\u0e1a</p></div>';
+}
 function rsRender(){
   var head = document.getElementById("rs-head");
   if (!head) { return; }
@@ -12628,7 +12694,7 @@ function rsRender(){
           (j === i ? ' aria-current="true"' : '') + '>' +
           '<span class="n">' + (j + 1 < 10 ? "0" : "") + (j + 1) + '</span>' +
           '<span><b>' + x[2] + '</b><span>' + x[1] + '</span></span></a>';
-      }).join("") + '</div>';
+      }).join("") + '</div>' + rsNews(m);
   }
 
   var foot = document.getElementById("rs-foot");
