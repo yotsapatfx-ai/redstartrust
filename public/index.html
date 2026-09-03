@@ -2,7 +2,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>RedStarTrust Homepage</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Sans:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Noto+Serif+Thai:wght@500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Sans:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Noto+Serif+Thai:wght@500;600&display=swap">
   <style>
     body { margin: 0; background: #FFFFFF; }
     * { box-sizing: border-box; }
@@ -3772,7 +3772,7 @@
   .frame:has(.page[data-page="home"]:not([hidden])) .pk-award { color: var(--rst-red-dark); }
   .frame:has(.page[data-page="home"]:not([hidden])) .pk-search { margin: 24px 0 26px; }
   .frame:has(.page[data-page="home"]:not([hidden])) .pk-sbox input,
-  .frame:has(.page[data-page="home"]:not([hidden])) .rk-pick select {
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-picks-ctl .rk-pick select {
     min-height: 44px;
     border-color: var(--rst-rule-strong);
     border-radius: 6px;
@@ -4297,7 +4297,7 @@
     font-weight: 500;
   }
   .frame:has(.page[data-page="home"]:not([hidden])) .pk-sbox input,
-  .frame:has(.page[data-page="home"]:not([hidden])) .rk-pick select {
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-picks-ctl .rk-pick select {
     border-color: var(--lux-line);
     border-radius: 2px;
     background: var(--lux-surface);
@@ -5143,8 +5143,501 @@
     border-top: 1px solid var(--rs-line);
   }
 
+  /* Hallmark · Hostinger DNA translation
+   * H2 split hero · oversized grotesque · layered proof panel · rounded product surfaces
+   * LOCKED: coverage/map section and all of its descendants are intentionally untouched.
+   */
+  .frame:has(.page[data-page="home"]:not([hidden])) {
+    --rs-modern: 'DM Sans', 'IBM Plex Sans Thai', sans-serif;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .hero-dark {
+    min-height: 760px;
+    padding-bottom: 92px !important;
+    color: var(--rs-white);
+    background: var(--rs-accent-deep) !important;
+    border-radius: 0 0 44px 44px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .hero-dark::before {
+    inset: auto -160px -340px auto;
+    width: 720px;
+    height: 720px;
+    border: 120px solid var(--rs-accent);
+    border-radius: 50%;
+    background: transparent;
+    opacity: .32;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .hd-top {
+    min-height: 96px;
+    margin-bottom: 72px;
+    border-bottom-color: rgba(255,255,255,.18);
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .mh-brand {
+    color: var(--rs-white) !important;
+    font-family: var(--rs-modern) !important;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -.035em;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .mh-nav a,
+  .frame:has(.page[data-page="home"]:not([hidden])) .btn-ghost { color: var(--rs-white) !important; }
+  .frame:has(.page[data-page="home"]:not([hidden])) .mh-nav a { opacity: .78; }
+  .frame:has(.page[data-page="home"]:not([hidden])) .mh-nav a:hover { opacity: 1; }
+  .frame:has(.page[data-page="home"]:not([hidden])) .mh-nav a::after { background: var(--rs-white); }
+  .frame:has(.page[data-page="home"]:not([hidden])) .lang-sw { border-color: rgba(255,255,255,.35); }
+  .frame:has(.page[data-page="home"]:not([hidden])) .lang-sw button { color: var(--rs-white); }
+  .frame:has(.page[data-page="home"]:not([hidden])) .lang-sw button[aria-pressed="true"] {
+    color: var(--rs-accent-deep);
+    background: var(--rs-white);
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .btn-solid {
+    color: var(--rs-accent-deep);
+    background: var(--rs-white);
+    border-color: var(--rs-white);
+    border-radius: 14px;
+    box-shadow: 0 14px 32px rgba(54,0,5,.24);
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .btn-solid:hover { background: var(--rs-accent-soft); }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] {
+    grid-template-columns: minmax(0, .93fr) minmax(500px, 1.07fr);
+    grid-template-areas: "title evidence" "lede evidence" "search evidence";
+    column-gap: 76px;
+    align-items: center;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"]::before {
+    top: -28px;
+    color: var(--rs-accent-soft);
+    font-family: var(--rs-modern);
+    opacity: .84;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"]::after {
+    content: "★";
+    right: 18px;
+    top: -82px;
+    color: var(--rs-accent);
+    font: 700 290px/1 var(--rs-modern);
+    opacity: .22;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] .hd-h1 {
+    max-width: 9ch;
+    margin-bottom: 28px;
+    color: var(--rs-white) !important;
+    font-family: var(--rs-modern) !important;
+    font-size: 72px;
+    font-weight: 500;
+    line-height: 1.02;
+    letter-spacing: -.055em;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] .hd-sub {
+    max-width: 520px;
+    margin-bottom: 34px;
+    color: var(--rs-white) !important;
+    font-family: var(--rs-modern) !important;
+    font-size: 17px;
+    line-height: 1.65;
+    opacity: .78;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] .mh-search {
+    max-width: 520px;
+    min-height: 62px;
+    background: var(--rs-white) !important;
+    border: 0 !important;
+    border-radius: 17px;
+    box-shadow: 0 22px 54px rgba(54,0,5,.28);
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] .hd-stats {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 14px;
+    align-content: center;
+    min-height: 450px;
+    padding: 46px;
+    background: rgba(255,255,255,.10);
+    border: 1px solid rgba(255,255,255,.20);
+    border-radius: 30px;
+    box-shadow: 0 36px 80px rgba(54,0,5,.30);
+    backdrop-filter: blur(8px);
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] .hd-stats::before {
+    grid-column: 1/-1;
+    padding: 0 0 10px;
+    color: var(--rs-white);
+    font-family: var(--rs-modern);
+    opacity: .72;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] .hd-stats > div {
+    display: flex;
+    min-height: 126px;
+    padding: 22px;
+    color: var(--rs-white) !important;
+    background: var(--rs-white);
+    border: 0;
+    border-radius: 18px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] .hd-stats b {
+    color: var(--rs-accent-deep) !important;
+    font-family: var(--rs-modern) !important;
+    font-size: 36px;
+    font-weight: 600;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] .hd-stats > div { color: var(--rs-muted) !important; }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] .hd-stats .hd-fine {
+    grid-column: 1/-1;
+    min-height: 0;
+    padding: 10px 0 0;
+    color: var(--rs-white) !important;
+    background: transparent;
+    opacity: .68;
+  }
+
+  .frame:has(.page[data-page="home"]:not([hidden])) #picks { padding-top: 124px !important; }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-head {
+    padding: 42px;
+    background: var(--rs-accent-soft);
+    border: 0;
+    border-radius: 28px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-title h2,
+  .frame:has(.page[data-page="home"]:not([hidden])) .art-h1 {
+    font-family: var(--rs-modern) !important;
+    font-weight: 600;
+    letter-spacing: -.045em;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-search {
+    margin: 22px 0 42px;
+    padding: 0;
+    border: 0;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-sbox input,
+  .frame:has(.page[data-page="home"]:not([hidden])) .rk-pick select {
+    border-radius: 14px;
+    box-shadow: none;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-col > h2 { font-family: var(--rs-modern) !important; }
+
+  .frame:has(.page[data-page="home"]:not([hidden])) .aw-hofw {
+    padding: 82px 0 62px;
+    border-radius: 32px;
+    box-shadow: 0 34px 76px rgba(54,0,5,.20);
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .aw-hoft { width: 520px; }
+  .frame:has(.page[data-page="home"]:not([hidden])) .aw-hoft b { font-family: var(--rs-modern) !important; }
+
+  /* Locked boss-approved module: #coverage / map-head / map-stage / movers / card / vol-zones. */
+
+  .frame:has(.page[data-page="home"]:not([hidden])) #art-home {
+    margin-top: 118px !important;
+    padding: 80px 56px 64px !important;
+    background: var(--rs-accent-soft);
+    border-radius: 32px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) #art-home .sec-rule { display: none; }
+  .frame:has(.page[data-page="home"]:not([hidden])) .art-card,
+  .frame:has(.page[data-page="home"]:not([hidden])) .art-main,
+  .frame:has(.page[data-page="home"]:not([hidden])) .art-side {
+    background: var(--rs-white);
+    border: 0;
+    border-radius: 20px;
+    box-shadow: 0 18px 42px rgba(121,15,20,.08);
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .art-viewmore {
+    min-height: 48px;
+    padding-inline: 20px;
+    color: var(--rs-white);
+    background: var(--rs-accent);
+    border-color: var(--rs-accent);
+    border-radius: 14px;
+  }
+
+  /* Final polish · compact hero, unified type, refined award cards. */
+  .frame:has(.page[data-page="home"]:not([hidden])) .hero-dark {
+    min-height: 684px;
+    padding-bottom: 72px !important;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .hd-top { margin-bottom: 52px; }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] .hd-h1 {
+    font-size: 66px;
+    line-height: 1.01;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] .hd-stats {
+    min-height: 392px;
+    padding: 34px;
+    border-radius: 26px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] .hd-stats > div {
+    min-height: 106px;
+    padding: 18px;
+    border-radius: 16px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] .hd-stats b { font-size: 32px; }
+  .frame:has(.page[data-page="home"]:not([hidden])) #picks { padding-top: 96px !important; }
+  .frame:has(.page[data-page="home"]:not([hidden])) #hof-home { padding-top: 108px !important; }
+  .frame:has(.page[data-page="home"]:not([hidden])) .scroll-cue { margin-top: 46px; }
+  .frame:has(.page[data-page="home"]:not([hidden])) #art-home { margin-top: 96px !important; }
+
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-card.first,
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-mini {
+    height: 166px;
+    min-height: 166px;
+    padding: 17px 15px 14px 18px;
+    background: var(--rs-white);
+    border: 1px solid var(--rs-line) !important;
+    border-left: 4px solid var(--rs-accent) !important;
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(121,15,20,.07) !important;
+    overflow: hidden;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-card.first::after,
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-mini::after { display: none; }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-card.first::before,
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-mini::before {
+    right: 12px;
+    top: 12px;
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    color: var(--rs-accent);
+    background: var(--rs-accent-soft);
+    border-radius: 9px;
+    font: 700 11px/1 var(--rs-modern);
+    letter-spacing: 0;
+    opacity: 1;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-card.first:hover,
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-mini:hover {
+    padding: 17px 15px 14px 18px;
+    background: var(--rs-white);
+    border-radius: 18px;
+    transform: translateY(-3px);
+    box-shadow: 0 18px 38px rgba(121,15,20,.12) !important;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-card .pk-body,
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-mini .mb { padding-top: 18px; }
+
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-award,
+  .frame:has(.page[data-page="home"]:not([hidden])) .aw-hoft span,
+  .frame:has(.page[data-page="home"]:not([hidden])) .art-h2,
+  .frame:has(.page[data-page="home"]:not([hidden])) .art-head p,
+  .frame:has(.page[data-page="home"]:not([hidden])) .art-card,
+  .frame:has(.page[data-page="home"]:not([hidden])) .art-main,
+  .frame:has(.page[data-page="home"]:not([hidden])) .art-side {
+    font-family: var(--rs-modern) !important;
+  }
+
+  /* Institutional pass · rating authority rather than campaign landing page. */
+  .frame:has(.page[data-page="home"]:not([hidden])) .hero-dark {
+    min-height: 650px;
+    border-radius: 0 0 28px 28px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .hero-dark::before {
+    inset: auto 0 0;
+    width: auto;
+    height: 1px;
+    border: 0;
+    border-radius: 0;
+    background: rgba(255,255,255,.25);
+    opacity: 1;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"]::after { display: none; }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"]::before {
+    content: "REDSTAR TRUST  /  INDEPENDENT RATING AUTHORITY  /  2026 REGISTER";
+    letter-spacing: .16em;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] {
+    grid-template-columns: minmax(0,1.02fr) minmax(480px,.98fr);
+    column-gap: 92px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] .hd-h1 {
+    max-width: 10ch;
+    font-size: 61px;
+    font-weight: 600;
+    line-height: 1.04;
+    letter-spacing: -.048em;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] .hd-sub {
+    max-width: 500px;
+    font-size: 16px;
+    opacity: .82;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] .mh-search {
+    min-height: 58px;
+    border: 1px solid rgba(255,255,255,.30) !important;
+    border-radius: 12px;
+    box-shadow: none;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] .hd-stats {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 0;
+    min-height: 360px;
+    padding: 28px 30px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,.28);
+    border-radius: 18px;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] .hd-stats::before {
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(255,255,255,.22);
+    font-size: 10px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] .hd-stats > div {
+    min-height: 98px;
+    padding: 20px 18px;
+    color: var(--rs-white) !important;
+    background: transparent;
+    border-top: 1px solid rgba(255,255,255,.18);
+    border-radius: 0;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] .hd-stats > div:nth-of-type(even) {
+    border-left: 1px solid rgba(255,255,255,.18);
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] .hd-stats b {
+    color: var(--rs-white) !important;
+    font-size: 31px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-hero="home"] .hd-stats .hd-fine {
+    padding: 16px 0 0;
+    border: 0;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .frame:has(.page[data-page="home"]:not([hidden])) * { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+  }
+  /* LIVE PAGE MODE — remove the mockup presentation shell. */
+  html,
+  body {
+    background: #FFFFFF !important;
+  }
+  .stage {
+    padding: 0 !important;
+  }
+  .stage > .bar {
+    display: none !important;
+  }
+  .viewport {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: visible;
+  }
+  .frame {
+    width: 1440px;
+    margin: 0 auto !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Hallmark · component: ranking cards · genre: editorial · theme: RedStar institutional
+   * states: default · hover · focus · active · disabled · loading · error · success
+   * pre-emit critique: P5 H5 E4 S5 R5 V4
+   */
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-wrap {
+    gap: 38px 36px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-col,
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-col:first-child {
+    gap: 14px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-col > h2 {
+    margin-bottom: 5px;
+    padding-bottom: 12px;
+    color: var(--rs-accent-deep);
+    font-family: var(--rs-display);
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -.015em;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-card.first,
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-mini {
+    height: 142px;
+    min-height: 142px;
+    padding: 16px 16px 13px;
+    background: var(--rs-white);
+    border: 1px solid var(--rs-line) !important;
+    border-left: 1px solid var(--rs-line) !important;
+    border-radius: 14px;
+    box-shadow: none !important;
+    overflow: hidden;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-card.first {
+    background: linear-gradient(180deg, var(--rs-accent-soft) 0, var(--rs-white) 62%);
+    border-color: rgba(198, 40, 40, .42) !important;
+    border-top: 3px solid var(--rs-accent) !important;
+    padding-top: 14px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-card.first::before,
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-mini::before {
+    top: 14px;
+    right: 14px;
+    width: auto;
+    height: auto;
+    display: block;
+    color: var(--rs-muted);
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    font: 600 10px/1.2 var(--rs-modern);
+    letter-spacing: .06em;
+    opacity: 1;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-card.first::before { content: "อันดับ 1"; color: var(--rs-accent); }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-mini:first-child::before { content: "อันดับ 2"; }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-mini:nth-child(2)::before { content: "อันดับ 3"; }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-card.first:hover,
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-mini:hover {
+    padding: 16px 16px 13px;
+    background: var(--rs-white);
+    border-radius: 14px;
+    border-color: rgba(198, 40, 40, .55) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(65, 13, 16, .08) !important;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-card.first:hover {
+    padding-top: 14px;
+    background: linear-gradient(180deg, var(--rs-accent-soft) 0, var(--rs-white) 62%);
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-card .pk-body,
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-mini .mb {
+    grid-template-columns: 36px minmax(0, 1fr);
+    gap: 1px 10px;
+    padding: 16px 48px 7px 0;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-card .pk-logo,
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-mini .pk-logo {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-card .pk-name,
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-mini .nm {
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-card .pk-stars,
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-mini .st {
+    min-height: 16px;
+    padding: 0;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-card .pk-cta,
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-mini .go {
+    margin-top: auto;
+    padding: 9px 0 0;
+    border-top-color: var(--rs-line);
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-card .pk-cta a,
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-card.first[data-stars="3"] a,
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-mini .go a {
+    min-height: 22px;
+    align-items: center;
+    font-size: 11px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-card .pk-cta a:focus-visible,
+  .frame:has(.page[data-page="home"]:not([hidden])) .pk-mini .go a:focus-visible {
+    outline: 2px solid var(--rs-accent);
+    outline-offset: 3px;
+    border-radius: 2px;
   }
 </style>
 
@@ -6055,27 +6548,11 @@
 <script>
   var frame = document.getElementById('frame');
   var vp = document.getElementById('vp');
-  var mode = 'fit';
   function apply() {
-    var avail = vp.clientWidth || document.documentElement.clientWidth || 1440;
     frame.style.transform = 'none';
-    var h = frame.offsetHeight;
-    var s = mode === 'fit' ? Math.max(0.2, Math.min(1, (avail - 2) / 1440)) : 1;
-    frame.style.transform = 'scale(' + s + ')';
-    vp.style.height = Math.ceil(h * s) + 'px';
-    frame.style.marginLeft = s < 1 ? Math.max(0, (avail - 1440 * s) / 2) + 'px' : 'auto';
+    frame.style.marginLeft = 'auto';
+    vp.style.height = 'auto';
   }
-  document.querySelectorAll('[data-z]').forEach(function (b) {
-    b.addEventListener('click', function () {
-      mode = b.dataset.z;
-      document.querySelectorAll('[data-z]').forEach(function (o) {
-        o.setAttribute('aria-pressed', String(o === b));
-      });
-      apply();
-    });
-  });
-  window.addEventListener('resize', apply);
-  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(apply); }
   apply();
 </script>
 
@@ -7840,7 +8317,7 @@ function renderPicks(){
             CNAME[one.iso] + '</span>' +
           '<span class="pk-stars">' + starHTML(one.r.stars, 27) + '</span>' +
         '</div>' +
-        '<div class="pk-cta"><a href="/broker/' + m1.slug + '/review" data-review="' + m1.slug + '">View Review</a>' +
+        '<div class="pk-cta"><a href="/broker/' + m1.slug + '/review" data-review="' + m1.slug + '">อ่านรีวิว</a>' +
           '<span class="pk-when">ตรวจล่าสุด ' +
           pkAudit(one.r.id, one.iso) + '</span></div>' +
       '</article>';
