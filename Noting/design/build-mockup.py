@@ -270,9 +270,15 @@ HEAD = """<title>RedStarTrust Homepage</title>
   .ea-arrow { width: 1px; height: 16px; background: #D0D5DD; margin: 0 auto; }
   .ea-save { border: 1.5px solid #067647; background: #F0FBF5; border-radius: 12px; padding: 13px 15px; }
   .ea-save b { display: block; font-size: 14.5px; font-weight: 700; color: #05603A; }
-  /* แถวที่มีโลโก้โบรกนำหน้าชื่อ */
+  /* แถวอันดับ 1 — โลโก้นำหน้าชื่อ */
   .dg-wlogo { display: inline-flex !important; align-items: center; gap: 8px; }
   .dg-wlogo .lg-tile { flex: 0 0 auto; }
+  /* การ์ด “ย้ายไป X” — ชื่อซ้าย โลโก้ขวา ดันสุดขอบด้วย space-between */
+  .dg-mv { display: flex !important; align-items: center; justify-content: space-between;
+    gap: 12px; }
+  .dg-mv > span { min-width: 0; }
+  .dg-mv .lg-tile { flex: 0 0 auto; box-shadow: 0 0 0 1px rgba(6,118,71,0.22),
+    0 6px 14px -8px rgba(5,96,58,0.5); }
   .ea-save span { display: block; font-size: 12px; color: #067647; margin: 3px 0 2px; }
   .ea-save em { display: block; font-style: normal; font-family: 'IBM Plex Sans', sans-serif;
     font-size: 25px; font-weight: 700; letter-spacing: -0.03em; color: #05603A; line-height: 1.2; }
@@ -12909,9 +12915,10 @@ function dgFillBroker(){
   }
   var mv = document.querySelector("[data-dgmove]");
   if (mv) {
-    mv.innerHTML = ((typeof logoSpan === "function" && b.m) ? logoSpan(b.m, 22, 6) : "") +
-      '<span>' + "\u0e22\u0e49\u0e32\u0e22\u0e44\u0e1b " + b.name + '</span>';
-    mv.classList.add("dg-wlogo");
+    /* \u0e42\u0e25\u0e42\u0e01\u0e49\u0e2d\u0e22\u0e39\u0e48\u0e02\u0e27\u0e32\u0e41\u0e25\u0e30\u0e43\u0e2b\u0e0d\u0e48\u0e02\u0e36\u0e49\u0e19 (\u0e04\u0e33\u0e2a\u0e31\u0e48\u0e07 Boss 3 \u0e01.\u0e22. 69) */
+    mv.innerHTML = '<span>' + "\u0e22\u0e49\u0e32\u0e22\u0e44\u0e1b " + b.name + '</span>' +
+      ((typeof logoSpan === "function" && b.m) ? logoSpan(b.m, 40, 10) : "");
+    mv.classList.add("dg-mv");
   }
   var go = document.querySelector("[data-dgreview]");
   if (go) {
