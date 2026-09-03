@@ -782,6 +782,19 @@ HEAD = """<title>RedStarTrust Homepage</title>
   .vf-seal b { font-size: 13px; font-weight: 700; letter-spacing: 0.06em; color: var(--aw-ok); }
   .vf-seal span { font-size: 11px; color: var(--aw-ok); }
 
+  /* แถวปุ่มท้ายบล็อกคะแนน — ชิดขวา */
+  .vf-acts { display: flex; justify-content: flex-end; align-items: center; gap: 10px;
+    margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--aw-line); }
+  .vf-go, .vf-rv { display: inline-flex; align-items: center; gap: 7px;
+    font-size: 13.5px; font-weight: 600; line-height: 1.3; white-space: nowrap;
+    border-radius: 10px; padding: 10px 18px; text-decoration: none;
+    transition: background .15s, border-color .15s, color .15s; }
+  .vf-go { color: #344054; background: #FFFFFF; border: 1px solid #D0D5DD; }
+  .vf-go:hover { border-color: var(--aw-red); color: var(--aw-red); background: #FEF3F2; }
+  .vf-rv { color: #FFFFFF; background: var(--aw-red); border: 1px solid var(--aw-red); }
+  .vf-rv:hover { background: var(--aw-red-d); border-color: var(--aw-red-d); color: #FFFFFF; }
+  .vf-go:focus-visible, .vf-rv:focus-visible { outline: 2px solid var(--aw-red);
+    outline-offset: 2px; }
   .vf-bars { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--s3) var(--s6); }
   .vf-bar .lb { display: flex; align-items: baseline; justify-content: space-between;
@@ -11153,7 +11166,7 @@ function w26Render(){
   var QO = AW_QS.map(function(q){ return [q, q]; });
   var seen = {};
   AW_WIN.forEach(function(w){ if (!seen[w.lic]) { seen[w.lic] = 1; LICO.push([w.lic, w.lic]); } });
-  function fld(id, lb, opts){
+function fld(id, lb, opts){
     return '<label class="w26-f"><span>' + lb + '</span><select id="' + id + '">' +
       opts.map(function(o){ return '<option value="' + o[0] + '">' + o[1] + '</option>'; }).join("") +
       '</select></label>';
@@ -11180,6 +11193,26 @@ function w26Render(){
 })();
 
 /* \u2500\u2500 PAGE 3 \u2014 /verify/RS-2026-000128 \u2500\u2500 */
+/* \u0e41\u0e16\u0e27\u0e1b\u0e38\u0e48\u0e21\u0e21\u0e38\u0e21\u0e02\u0e27\u0e32\u0e25\u0e48\u0e32\u0e07\u0e02\u0e2d\u0e07\u0e1a\u0e25\u0e47\u0e2d\u0e01\u0e04\u0e30\u0e41\u0e19\u0e19 (\u0e04\u0e33\u0e2a\u0e31\u0e48\u0e07 Boss 3 \u0e01.\u0e22. 69)
+ \u0e1b\u0e38\u0e48\u0e21\u0e44\u0e1b\u0e17\u0e35\u0e48\u0e42\u0e1a\u0e23\u0e01\u0e40\u0e1b\u0e47\u0e19 href="#" \u0e40\u0e1e\u0e23\u0e32\u0e30 META \u0e22\u0e31\u0e07\u0e44\u0e21\u0e48\u0e21\u0e35\u0e40\u0e27\u0e47\u0e1a\u0e17\u0e32\u0e07\u0e01\u0e32\u0e23\u0e02\u0e2d\u0e07\u0e42\u0e1a\u0e23\u0e01 */
+function vfActions(W){
+var m = (typeof META !== "undefined" && W && W.b) ? META[W.b] : null;
+if (!m) { return ""; }
+var arrow = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" '
+  + 'stroke="currentColor" stroke-width="2.4" stroke-linecap="round" '
+  + 'stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"></path></svg>';
+var out = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" '
+  + 'stroke="currentColor" stroke-width="2.2" stroke-linecap="round" '
+  + 'stroke-linejoin="round" aria-hidden="true">'
+  + '<path d="M14 4h6v6M20 4l-9 9"></path>'
+  + '<path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"></path></svg>';
+return '<div class="vf-acts">' +
+  '<a class="vf-go" href="#" rel="nofollow noopener" '
+    + 'aria-label="\u0e44\u0e1b\u0e17\u0e35\u0e48 ' + m.n + ' (\u0e40\u0e1b\u0e34\u0e14\u0e40\u0e27\u0e47\u0e1a\u0e17\u0e32\u0e07\u0e01\u0e32\u0e23\u0e02\u0e2d\u0e07\u0e42\u0e1a\u0e23\u0e01)">' +
+    '\u0e44\u0e1b\u0e17\u0e35\u0e48 ' + m.n + out + '</a>' +
+  '<a class="vf-rv" href="#/brokerreview" data-review="' + m.slug + '">' +
+    '\u0e2d\u0e48\u0e32\u0e19\u0e23\u0e35\u0e27\u0e34\u0e27' + arrow + '</a></div>';
+}
 var VF_DIM = [["Execution", 96.8, "\u0e2a\u0e48\u0e07\u0e04\u0e33\u0e2a\u0e31\u0e48\u0e07\u0e40\u0e09\u0e25\u0e35\u0e48\u0e22 34 ms"],
   ["Spread & Cost", 95.2, "\u0e15\u0e49\u0e19\u0e17\u0e38\u0e19\u0e23\u0e27\u0e21 $7.10 / \u0e25\u0e47\u0e2d\u0e15"],
   ["Liquidity", 97.5, "\u0e2a\u0e25\u0e34\u0e1b\u0e40\u0e1e\u0e08\u0e1a\u0e27\u0e01 63% \u0e02\u0e2d\u0e07\u0e04\u0e33\u0e2a\u0e31\u0e48\u0e07"],
@@ -11253,7 +11286,7 @@ var VF_TL = [
         return '<div class="vf-bar"><div class="lb"><span>' + d[0] + '</span><i>' + d[2] + '</i>' +
           '<b>' + d[1].toFixed(1) + '</b></div><div class="vf-tr">' +
           '<i class="' + (d[1] >= 96 ? "gold" : "") + '" data-vfbar="' + d[1] + '"></i></div></div>';
-      }).join("") + '</div>';
+      }).join("") + '</div>' + vfActions(W) + '';
   }
 
   var wy = document.getElementById("vf-why");
