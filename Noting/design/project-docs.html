@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>เอกสารและขั้นตอนการทำงาน RedStarTrust</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#D92D20; --red-dk:#B42318;
+    --ink:#0A0A0A; --body:#344054; --muted:#667085;
+    --line:#EAECF0; --line-dk:#D0D5DD;
+    --wash:#F9FAFB; --wash2:#F2F4F7; --page:#F7F6F2;
+    --ok:#067647; --ok-bg:#ECFDF3; --ok-line:#ABEFC6;
+    --warn:#B54708; --warn-bg:#FFFAEB; --warn-line:#FEDF89;
+    --plan:#175CD3; --plan-bg:#EFF8FF; --plan-line:#B2DDFF;
+    color-scheme: light;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0; background:var(--page); color:var(--body);
+    font-family:"Inter","IBM Plex Sans Thai",-apple-system,"Segoe UI",sans-serif;
+    font-size:15px; line-height:1.62; -webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4{color:var(--ink); font-weight:700; line-height:1.28; margin:0}
+  p{margin:0}
+  .mono,code{font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace; font-size:.88em}
+
+  .tabs{position:sticky; top:0; z-index:20; background:#fff; border-bottom:1px solid var(--line); box-shadow:0 1px 2px rgba(16,24,40,.04)}
+  .tabs-in{max-width:1400px; margin:0 auto; padding:0 26px; display:flex; gap:4px; overflow-x:auto}
+  .tab{appearance:none; border:0; background:none; font:inherit; font-size:13.5px; font-weight:600; color:var(--muted);
+       padding:15px 14px 13px; border-bottom:2px solid transparent; cursor:pointer; white-space:nowrap}
+  .tab:hover{color:var(--ink)}
+  .tab[aria-selected="true"]{color:var(--ink); border-bottom-color:var(--red)}
+
+  .wrap{max-width:1400px; margin:0 auto; padding:26px 26px 90px}
+  .panel{background:#fff; border:1px solid var(--line); border-radius:12px; overflow:hidden; margin-bottom:22px}
+  .panel-head{padding:20px 26px; border-bottom:1px solid var(--line); display:flex; gap:20px; align-items:flex-start; flex-wrap:wrap; justify-content:space-between}
+  .panel-head h2{font-size:17px}
+  .panel-head .sub{margin-top:5px; font-size:13px; color:var(--muted); max-width:760px}
+  .panel-body{padding:22px 26px 28px}
+
+  .legend{display:flex; flex-wrap:wrap; gap:7px}
+  .lg{display:inline-flex; align-items:center; gap:6px; font-size:11.5px; font-weight:600; padding:4px 10px; border-radius:100px; border:1px solid; white-space:nowrap}
+  .lg::before{content:""; width:7px; height:7px; border-radius:50%}
+  .lg-doc{color:#0E7490; background:#ECFAFD; border-color:#8FD3E8}   .lg-doc::before{background:#0E7490}
+  .lg-person{color:#3538CD; background:#EEF0FF; border-color:#A5A8F5} .lg-person::before{background:#3538CD}
+  .lg-gate{color:var(--warn); background:var(--warn-bg); border-color:var(--warn-line)} .lg-gate::before{background:var(--warn)}
+  .lg-out{color:var(--ok); background:var(--ok-bg); border-color:var(--ok-line)} .lg-out::before{background:var(--ok)}
+  .lg-risk{color:var(--red-dk); background:#FEF3F2; border-color:#FDA29B} .lg-risk::before{background:var(--red-dk)}
+
+  .canvas{overflow-x:auto; padding:28px 26px 34px; background:
+      linear-gradient(#FCFCFD 1px, transparent 1px) 0 0/100% 26px,
+      linear-gradient(90deg,#FCFCFD 1px, transparent 1px) 0 0/26px 100%, #fff}
+
+  /* ── กลุ่มเอกสาร ── */
+  .grp{margin-top:26px}
+  .grp:first-child{margin-top:0}
+  .grp-h{display:flex; align-items:baseline; gap:12px; border-top:2px solid var(--c,#0E7490); padding-top:12px}
+  .grp-h h3{font-size:16.5px}
+  .grp-h .cnt{font-size:12px; color:var(--muted); font-family:"SFMono-Regular",Consolas,monospace}
+  .grp-h .q{margin-left:auto; font-size:12.5px; color:var(--muted); text-align:right; max-width:460px}
+
+  .tw{margin-top:14px; overflow-x:auto; border:1px solid var(--line); border-radius:8px}
+  table{border-collapse:collapse; width:100%; min-width:840px; font-size:13.5px}
+  th{background:var(--wash2); color:var(--ink); font-weight:600; text-align:left; padding:10px 14px; border-bottom:1px solid var(--line-dk); font-size:12.5px; white-space:nowrap}
+  td{padding:10px 14px; border-bottom:1px solid var(--line); vertical-align:top}
+  tbody tr:last-child td{border-bottom:0}
+  tbody tr:hover{background:#FCFCFD}
+  td .fn{font-family:"SFMono-Regular",Consolas,monospace; font-size:12.5px; color:var(--ink); font-weight:600; display:block; word-break:break-all}
+  td .by{display:block; margin-top:2px; font-size:11.5px; color:var(--muted)}
+  .tag{display:inline-flex; align-items:center; gap:6px; font-size:11.5px; font-weight:600; padding:3px 9px; border-radius:100px; border:1px solid; white-space:nowrap}
+  .tag::before{content:""; width:6px; height:6px; border-radius:50%}
+  .t-wait{color:var(--warn); background:var(--warn-bg); border-color:var(--warn-line)} .t-wait::before{background:var(--warn)}
+  .t-locked{color:var(--ok); background:var(--ok-bg); border-color:var(--ok-line)} .t-locked::before{background:var(--ok)}
+  .t-ref{color:var(--plan); background:var(--plan-bg); border-color:var(--plan-line)} .t-ref::before{background:var(--plan)}
+  .t-conf{color:var(--red-dk); background:#FEF3F2; border-color:#FDA29B} .t-conf::before{background:var(--red-dk)}
+
+  .note{margin-top:22px; background:var(--wash); border:1px solid var(--line); border-left:3px solid var(--red); border-radius:6px; padding:18px 20px}
+  .note h3{font-size:15px; margin-bottom:8px}
+  .note ul{margin:8px 0 0; padding-left:20px}
+  .note li{margin-top:6px}
+  .board-note{margin-top:22px; padding:14px 16px; border:1px solid var(--line); border-left:3px solid var(--red); background:var(--wash); border-radius:6px; font-size:13px; max-width:1000px}
+  .board-note b{color:var(--ink)}
+
+  .stats{display:grid; grid-template-columns:repeat(4,1fr); border:1px solid var(--line); border-radius:8px; overflow:hidden; margin-bottom:22px}
+  .stat{padding:16px 18px; border-right:1px solid var(--line)}
+  .stat:last-child{border-right:0}
+  .stat .n{font-size:26px; font-weight:700; color:var(--ink); line-height:1.1; letter-spacing:-.02em}
+  .stat .l{margin-top:5px; font-size:12.5px; color:var(--muted); line-height:1.45}
+
+  .foot{margin-top:10px; font-size:12.5px; color:var(--muted); text-align:center}
+  [hidden]{display:none !important}
+
+  @media print{
+    body{background:#fff}
+    .tabs{display:none}
+    .view[hidden]{display:block !important}
+    .panel{border:0}
+    .canvas,.tw{overflow:visible}
+  }
+</style>
+</head>
+<body>
+
+<nav class="tabs">
+  <div class="tabs-in" role="tablist">
+    <button class="tab" role="tab" aria-selected="true"  data-v="docs">เอกสารที่ใช้สร้างเว็บ</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="flow">ขั้นตอนการทำงาน</button>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <!-- ═════════ แท็บ 1 ═════════ -->
+  <section class="view" data-view="docs">
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h2>เอกสารทั้งหมดที่ใช้สร้างเว็บ RedStarTrust</h2>
+          <p class="sub">ไล่จากไฟล์จริงในโปรเจ็คเมื่อ 3 ก.ย. 2569 · เรียงเป็น 5 ชั้นตามหน้าที่ ไม่ใช่ตามโฟลเดอร์ — ชั้นบนตัดสินชั้นล่างเสมอ ถ้าชั้นล่างขัดกับชั้นบน ให้ถือว่าชั้นล่างผิด</p>
+        </div>
+        <div class="legend">
+          <span class="lg lg-doc">เอกสารหลัก</span>
+          <span class="lg lg-gate">ร่าง รอ Boss อนุมัติ</span>
+          <span class="lg lg-risk">ขัดกันเอง ต้องชี้ขาด</span>
+        </div>
+      </div>
+      <div class="panel-body">
+
+        <div class="stats">
+          <div class="stat"><div class="n">~110</div><div class="l">ไฟล์เอกสารทั้งโปรเจ็ค (ไม่รวมรูปและ PDF)</div></div>
+          <div class="stat"><div class="n">60</div><div class="l">ไฟล์ข้อตรวจในเสา GCSI (ไฟล์ละ 50 ข้อ = 3,000 ข้อ)</div></div>
+          <div class="stat"><div class="n">6</div><div class="l">สเปกงานออกแบบของ Noting</div></div>
+          <div class="stat"><div class="n">0</div><div class="l">เอกสารที่ระบุว่า Boss อนุมัติแล้ว</div></div>
+        </div>
+
+        <!-- ชั้น 1 -->
+        <div class="grp" style="--c:#B42318">
+          <div class="grp-h">
+            <h3>ชั้น 1 · ตัวตนและกลยุทธ์</h3><span class="cnt">5 ไฟล์</span>
+            <span class="q">ตอบว่า “เว็บนี้คืออะไร และมีไว้ทำไม” — ทุกอย่างที่เหลือต้องไม่ขัดกับชั้นนี้</span>
+          </div>
+          <div class="tw">
+            <table>
+              <thead><tr><th>ไฟล์</th><th>ตัดสินอะไร</th><th>สถานะ</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><span class="fn">CORE-PILLAR.md</span><span class="by">Doing · ร่าง 0.4 · 17 ส.ค. 2569 · 30 KB</span></td>
+                  <td><b>เอกสารยึดหลักของทั้งเว็บ</b> — Core Pillar 3 ข้อ · ตัวตน “สถาบันจัดเรทติ้ง + โมเดลดาวแบบมิชลิน” · สโลแกน “หลักฐานมาก่อนความเห็น” · หลักการตรวจ 3 ข้อ · เสาความน่าเชื่อถือ 6 ข้อ · โครง 10 เสาสากล · ผลผลิต 3 แบบ (ดาว / อันดับ / บทรีวิว)</td>
+                  <td><span class="tag t-wait">ร่าง รออนุมัติ</span></td>
+                </tr>
+                <tr>
+                  <td><span class="fn">Doing/WEB-INFORMATION.md</span><span class="by">Doing · 14 ส.ค. 2569</span></td>
+                  <td>เอกสารตัวตนฉบับแรกสุด ถอดมาจาก HANDOFF-PACK ของโปรเจ็คก่อนหน้า ทุกจุดที่ต้นทางไม่ระบุถูกทำเครื่องหมาย “รอ Boss ตัดสิน”</td>
+                  <td><span class="tag t-wait">ร่าง รออนุมัติ</span></td>
+                </tr>
+                <tr>
+                  <td><span class="fn">SITE-EA-TOOL-BRIEF.md</span><span class="by">Doing · 21 ส.ค. 2569 · 19 KB</span></td>
+                  <td>โจทย์หน้าเว็บ + เครื่องมือ EA ที่ Boss สั่ง · เอกสารนี้เป็นที่แรกที่เขียน <b>Core Loop</b> ออกมาชัด: Collect → Analyze → Decide → Update แล้ววนกลับ — ยิ่งมีคนใช้ EA มาก ข้อมูลยิ่งแม่น</td>
+                  <td><span class="tag t-wait">ร่าง รออนุมัติ</span></td>
+                </tr>
+                <tr>
+                  <td><span class="fn">SITEMAP-FEATURES-DRAFT.md</span><span class="by">Doing · 21–24 ส.ค. 2569 · 28 KB</span></td>
+                  <td>ร่างโครงสร้างเว็บ + ฟีเจอร์ 8 ข้อ ฉบับแรกของโปรเจ็ค · เอกสารเขียนเตือนตัวเองว่าเป็น “การสังเคราะห์ครั้งแรก” ไม่ใช่สิ่งที่ Boss เคยอนุมัติ</td>
+                  <td><span class="tag t-wait">ร่าง รออนุมัติ</span></td>
+                </tr>
+                <tr>
+                  <td><span class="fn">SESSION-LOG-2569-08-17.md</span><span class="by">Doing · 17 ส.ค. 2569</span></td>
+                  <td>บันทึกงานทั้งเซสชันก่อนล้างแชท พร้อม<b>รายการหัวข้อเปิดที่ยังไม่ตัดสิน</b> — เช่นข้อ 8 เรื่องช่องทางรับเบาะแสจากผู้ใช้</td>
+                  <td><span class="tag t-ref">บันทึกอ้างอิง</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ชั้น 2 -->
+        <div class="grp" style="--c:#0E7490">
+          <div class="grp-h">
+            <h3>ชั้น 2 · เกณฑ์ตรวจ GCSI</h3><span class="cnt">14 ไฟล์ + 60 ไฟล์ในเสา</span>
+            <span class="q">ตอบว่า “ใครได้ดาว ด้วยหลักฐานอะไร” — เป็นแกนของผลผลิต A</span>
+          </div>
+          <div class="tw">
+            <table>
+              <thead><tr><th>ไฟล์</th><th>ตัดสินอะไร</th><th>สถานะ</th></tr></thead>
+              <tbody>
+                <tr><td><span class="fn">gcsi/README.md</span><span class="by">Doing · ร่าง 2.0 · 14 ส.ค. 2569</span></td>
+                    <td>ภาพรวมชุดเกณฑ์ CFD/Forex — ออกแบบใหม่ทั้งชุด ไม่ต่อยอดจากชุด 4,000 ข้อเดิมตามคำสั่ง Boss</td><td><span class="tag t-wait">ร่าง รออนุมัติ</span></td></tr>
+                <tr><td><span class="fn">gcsi/INSPECTION-STANDARD.md</span><span class="by">Doing · ฉบับ 1.0</span></td>
+                    <td><b>กฎการเขียนข้อตรวจ</b> ที่ผู้ตรวจและผู้เขียนทุกคนต้องยึด — ข้อตรวจทั้ง 3,000 ข้อต้องเขียนตามนี้ทุกข้อ</td><td><span class="tag t-wait">ร่าง รออนุมัติ</span></td></tr>
+                <tr><td><span class="fn">gcsi/ITEM-MAP.md</span><span class="by">Doing · ฉบับ 1.0</span></td>
+                    <td>ผังแบ่งงาน 10 เสา × 300 ข้อ = 3,000 ข้อ กระจายลง 60 ไฟล์ ไฟล์ละ 50 ข้อ กันเขียนซ้ำกัน</td><td><span class="tag t-wait">ร่าง รออนุมัติ</span></td></tr>
+                <tr><td><span class="fn">gcsi/pillars/p01-01.md … p10-06.md</span><span class="by">Doing + Going · 60 ไฟล์</span></td>
+                    <td><b>ตัวข้อตรวจจริงทั้งหมด</b> — เนื้อของระบบดาว เขียนครบแล้ว</td><td><span class="tag t-wait">เขียนครบ รออนุมัติ</span></td></tr>
+                <tr><td><span class="fn">gcsi/WEIGHTS.md</span><span class="by">Doing · ฉบับ 2.0 · 15 ส.ค. 2569</span></td>
+                    <td>กฎที่ Boss ตัดสินเมื่อ 15 ส.ค.: <b>เลิกใช้ระบบถ่วงน้ำหนักทั้งหมด</b> · 1 ดาว = ผ่านครบทุกข้อใน 3,000 ข้อ ไม่มีข้อยกเว้น</td><td><span class="tag t-conf">ขัดกับ 3.0</span></td></tr>
+                <tr><td><span class="fn">gcsi/GCSI-3.0-PROPOSAL.md</span><span class="by">Doing · 21 ส.ค. 2569</span></td>
+                    <td>ข้อเสนอ<b>ย้อนกลับไปใช้ระบบถ่วงน้ำหนัก</b>แบบ Web1 + ด่านบังคับ 6 ข้อ และถอดหมวด Trust ออก (6 หมวด → 5 หมวด)</td><td><span class="tag t-conf">ขัดกับ 2.0</span></td></tr>
+                <tr><td><span class="fn">gcsi/PENDING-CRITERIA.md</span><span class="by">Doing · ฉบับ 1.0</span></td>
+                    <td>ทะเบียนรวม<b>ทุกตัวเลขเกณฑ์ที่ยังไม่มีคนอนุมัติ</b> ดึงออกมาจากทั้ง 60 ไฟล์ ให้ Boss เคาะทีละจุด — มาจากกฎ “ห้ามแต่งตัวเลข ห้ามตั้งเกณฑ์หลังเห็นผล”</td><td><span class="tag t-wait">รอ Boss เคาะ</span></td></tr>
+                <tr><td><span class="fn">gcsi/checklist-1000-public.md</span> <span class="fn">gcsi/checklist-tick-1000.md</span><span class="by">Doing · ฉบับ 1.0</span></td>
+                    <td>ชุด 1,000 ข้อที่จะ<b>เปิดเผยต่อสาธารณะ</b> คัดจาก 3,000 ข้อ เสาละ 100 ข้อพอดี</td><td><span class="tag t-wait">ร่าง รออนุมัติ</span></td></tr>
+                <tr><td><span class="fn">gcsi/checklist_interactive.html</span></td>
+                    <td>ต้นแบบเช็กลิสต์ให้ผู้ใช้ติ๊กเอง (10 ข้อตัวอย่าง) — <b>ยังไม่ถูกต่อเข้าเว็บ</b></td><td><span class="tag t-ref">ต้นแบบแยก</span></td></tr>
+                <tr><td><span class="fn">gcsi/WRITER-BRIEF.md · RESUME.md</span></td>
+                    <td>บรีฟผู้เขียนข้อตรวจ และวิธีกลับเข้างานเมื่อเปิดแชทใหม่</td><td><span class="tag t-ref">คู่มือทำงาน</span></td></tr>
+                <tr><td><span class="fn">gcsi/output/*.pdf</span><span class="by">2 ไฟล์</span></td>
+                    <td>ฉบับส่ง — เอกสารทีมตรวจ และเอกสารสาธารณะ (ฉบับร่าง)</td><td><span class="tag t-ref">ไฟล์ส่งออก</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ชั้น 3 -->
+        <div class="grp" style="--c:#3538CD">
+          <div class="grp-h">
+            <h3>ชั้น 3 · สเปกงานออกแบบ (Noting)</h3><span class="cnt">6 สเปก + 3 ใบงาน + STATE</span>
+            <span class="q">ตอบว่า “หน้าเว็บหน้าตาแบบไหน และทำไมต้องเป็นแบบนั้น”</span>
+          </div>
+          <div class="tw">
+            <table>
+              <thead><tr><th>ไฟล์</th><th>ตัดสินอะไร</th><th>สถานะ</th></tr></thead>
+              <tbody>
+                <tr><td><span class="fn">Noting/AWARDS-DESIGN-SPEC.md</span><span class="by">28 ส.ค. 2569 · 53 KB — สเปกที่ใหญ่ที่สุด</span></td>
+                    <td>ระบบรางวัลดาวแดงทั้งชุด — หน้า Awards · ใบรับรอง · หน้าตรวจสอบ · Hall of Fame · Partner Dashboard</td><td><span class="tag t-wait">ข้อเสนอ รออนุมัติ</span></td></tr>
+                <tr><td><span class="fn">Noting/HOMEPAGE-REDESIGN-SPEC.md</span><span class="by">26 ส.ค. 2569 · 36 KB</span></td>
+                    <td>ออกแบบหน้าแรกใหม่ตามคำสั่ง Boss</td><td><span class="tag t-wait">ข้อเสนอ รออนุมัติ</span></td></tr>
+                <tr><td><span class="fn">Noting/FIGMA-MOCKUP-SPEC.md</span><span class="by">26 ส.ค. 2569</span></td>
+                    <td>หน้าแรกแนว Minimal Luxury + ระบุไฟล์งานที่ใช้จริง (<span class="mono">Main.dc.html</span> · <span class="mono">redstartrust-homepage-mockup.html</span>)</td><td><span class="tag t-wait">ข้อเสนอ รออนุมัติ</span></td></tr>
+                <tr><td><span class="fn">Noting/DISPUTES-SPEC.md</span><span class="by">26 ส.ค. 2569</span></td>
+                    <td>พื้นที่ข้อพิพาท ให้ตัวแทนโบรกเข้ามาชี้แจง — <b>ตัวฟีเจอร์เองยังไม่ถูกยืนยันว่าจะมี</b></td><td><span class="tag t-wait">รอ Boss ยืนยันฟีเจอร์</span></td></tr>
+                <tr><td><span class="fn">Noting/REGISTRY-SEARCH-SPEC.md</span><span class="by">26 ส.ค. 2569</span></td>
+                    <td>หน้าทะเบียนอันดับ + ค้นหาข้ามปี</td><td><span class="tag t-wait">ข้อเสนอ รออนุมัติ</span></td></tr>
+                <tr><td><span class="fn">Noting/REPO-REFERENCE-UXUI.md</span></td>
+                    <td>คลัง repo อ้างอิงสำหรับงานออกแบบ</td><td><span class="tag t-ref">อ้างอิง</span></td></tr>
+                <tr><td><span class="fn">Noting/STATE.md</span><span class="by">231 KB · อัปเดตทุกรอบงาน</span></td>
+                    <td><b>สมุดบันทึกงานออกแบบทั้งหมด</b> — รอบงานที่ทำ เหตุผลที่ตัดสินใจ กติกาสีที่ Boss ล็อกไว้ และรายการเรื่องค้างรอ Boss</td><td><span class="tag t-locked">บันทึกจริง ใช้ทุกวัน</span></td></tr>
+                <tr><td><span class="fn">Noting/TASK-CERT-DESIGN.md</span> <span class="fn">TASK-NEWS-INTEGRATE.md</span> <span class="fn">TASK-UPDATE-SCORING-5CAT.md</span></td>
+                    <td>ใบสั่งงานที่ Doing/Boss มอบให้ Noting เป็นเรื่อง ๆ</td><td><span class="tag t-ref">ใบสั่งงาน</span></td></tr>
+                <tr><td><span class="fn">Noting/REVIEW-SECTION-BRIEF-FOR-MOVING.md</span><span class="by">28 ส.ค. 2569</span></td>
+                    <td>บรีฟจาก Noting ถึง Moving — โครงบทรีวิว 10 หัวข้อที่หน้าเว็บต้องการ</td><td><span class="tag t-ref">บรีฟข้ามทีม</span></td></tr>
+                <tr><td><span class="fn">Noting/ASK-DOING-LOGO-RIGHTS.md</span></td>
+                    <td>เรื่องเสนอขอสิทธิ์ใช้โลโก้โบรกเกอร์ — <b>ยังไม่ได้คำตอบ</b> Boss สั่งให้ดำเนินการไปก่อน</td><td><span class="tag t-wait">รอคำตอบ</span></td></tr>
+                <tr><td><span class="fn">design/sitemap.html · user-info.html</span><span class="by">2 ก.ย. 2569</span></td>
+                    <td>ผังเว็บ 21 หน้า + เส้นเชื่อมระหว่างหน้า และกลุ่มผู้ใช้ 5 กลุ่มพร้อมเส้นทางการใช้งาน</td><td><span class="tag t-ref">เอกสารใหม่</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ชั้น 4 -->
+        <div class="grp" style="--c:#475467">
+          <div class="grp-h">
+            <h3>ชั้น 4 · เอกสารอ้างอิงภายนอก</h3><span class="cnt">4 ไฟล์</span>
+            <span class="q">ไม่ใช่กฎของเรา แต่เป็นของที่เอามาเทียบ</span>
+          </div>
+          <div class="tw">
+            <table>
+              <thead><tr><th>ไฟล์</th><th>ใช้ทำอะไร</th><th>สถานะ</th></tr></thead>
+              <tbody>
+                <tr><td><span class="fn">COMPETITOR-WIKIFX.md</span><span class="by">20 ส.ค. 2569</span></td><td>วิเคราะห์คู่แข่งรายใหญ่ที่สุดของตลาดนี้</td><td><span class="tag t-ref">อ้างอิง</span></td></tr>
+                <tr><td><span class="fn">COMPETITOR-THAIBROKERFOREX.md</span><span class="by">20 ส.ค. 2569</span></td><td>วิเคราะห์คู่แข่งฝั่งไทย</td><td><span class="tag t-ref">อ้างอิง</span></td></tr>
+                <tr><td><span class="fn">WEB1-SCORING-ANALYSIS.md</span><span class="by">21 ส.ค. 2569 · 22 KB</span></td><td>ถอดระบบให้คะแนนของเว็บ “Web1” (คนละโปรเจ็ค) — เป็นต้นทางของสูตรถ่วงน้ำหนักใน GCSI 3.0 และของหัวข้อจัดอันดับ 28 หัวข้อ</td><td><span class="tag t-ref">อ้างอิง</span></td></tr>
+                <tr><td><span class="fn">BROKER-TYPES-REFERENCE.md</span><span class="by">21 ส.ค. 2569</span></td><td>นิยามประเภทโบรกเกอร์ เตรียมไว้ตอนขยาย GCSI ไปหุ้น/กองทุนรวม</td><td><span class="tag t-ref">อ้างอิง</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ชั้น 5 -->
+        <div class="grp" style="--c:#667085">
+          <div class="grp-h">
+            <h3>ชั้น 5 · เอกสารปฏิบัติการของทีม</h3><span class="cnt">4 ทีม + เนื้อหา + สคริปต์</span>
+            <span class="q">ไม่ได้กำหนดหน้าตาเว็บ แต่กำหนดว่าใครทำอะไรและงานเดินยังไง</span>
+          </div>
+          <div class="tw">
+            <table>
+              <thead><tr><th>ไฟล์</th><th>ใช้ทำอะไร</th><th>สถานะ</th></tr></thead>
+              <tbody>
+                <tr><td><span class="fn">Doing/ · Going/ · Moving/ · Noting/ — CLAUDE.md + Skill.md</span></td>
+                    <td>ตัวตน ขอบเขต และกฎเหล็กของแต่ละตำแหน่ง — รวมถึงกฎ “ห้ามทำอะไรที่ไม่ได้สั่ง” และ “เผยแพร่ต้องขออนุมัติ”</td><td><span class="tag t-locked">ใช้จริงทุกวัน</span></td></tr>
+                <tr><td><span class="fn">Going/STATE.md · Moving/STATE.md</span></td><td>สมุดบันทึกงานของอีกสองทีม</td><td><span class="tag t-locked">ใช้จริง</span></td></tr>
+                <tr><td><span class="fn">News/ (9 เรื่อง)</span><span class="by">แต่ละเรื่องมี th.md · en.md · cover.webp</span></td><td>เนื้อข่าวจริงสองภาษาพร้อมภาพปก ที่ถูกฉีดเข้าไปในต้นแบบ</td><td><span class="tag t-locked">เนื้อหาจริง</span></td></tr>
+                <tr><td><span class="fn">inject_news.py · make_news_covers.py · apply_auditor_voices.py</span></td><td>สคริปต์ฉีดเนื้อหาเข้าไฟล์ต้นแบบ และสร้างภาพปกข่าว</td><td><span class="tag t-locked">เครื่องมือ</span></td></tr>
+                <tr><td><span class="fn">CLOUDFLARE-DEPLOY.md · wrangler.jsonc · package.json · public/</span><span class="by">1–2 ก.ย. 2569</span></td><td>ตั้งค่าให้เอาต้นแบบขึ้น Cloudflare เป็น static worker — <span class="mono">public/index.html</span> คือ<b>สำเนาอีกใบ</b>ของต้นแบบ</td><td><span class="tag t-conf">สำเนาซ้อน ต้องซิงก์</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="note">
+          <h3>สามเรื่องที่ต้องบอกตรง ๆ หลังไล่เอกสารครบ</h3>
+          <ul>
+            <li><b>ไม่มีเอกสารฉบับไหนเลยที่เขียนว่า “Boss อนุมัติแล้ว”</b> — ทุกฉบับหลักยังเป็นร่างรออนุมัติ รวมถึง CORE-PILLAR ที่เป็นตัวยึดหลักของทั้งเว็บ · งานทั้งหมดที่ทำมาจึงยืนอยู่บนฐานที่ยังไม่ถูกล็อก</li>
+            <li><b>เกณฑ์ให้ดาวมีสองฉบับที่ขัดกันอยู่</b> — <span class="mono">WEIGHTS.md</span> 2.0 บอกว่าเลิกถ่วงน้ำหนัก ผ่านครบทุกข้อถึงได้ดาว (Boss ตัดสิน 15 ส.ค.) ส่วน <span class="mono">GCSI-3.0-PROPOSAL.md</span> เสนอกลับไปถ่วงน้ำหนัก (21 ส.ค.) · ตราบใดที่ยังไม่ชี้ขาด หน้าเว็บที่อธิบายเกณฑ์ก็จะอ้างอิงกฎที่อาจถูกยกเลิก</li>
+            <li><b>Core Loop ยังไม่เคยถูกเขียนเป็นเอกสารทางการ</b> — ตัว <span class="mono">SITE-EA-TOOL-BRIEF.md</span> เขียนเตือนไว้เองว่าควรเขียนสักที · ทั้งที่มันคือเหตุผลว่าทำไมต้องมี EA และทำไมข้อมูลถึงจะแม่นขึ้นเรื่อย ๆ</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════ แท็บ 2 ═════════ -->
+  <section class="view" data-view="flow" hidden>
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h2>ขั้นตอนที่ 1 — งานเดินยังไงในทีม</h2>
+          <p class="sub">จากคำสั่ง Boss ไปจนถึงผลงานที่ส่งกลับ · กล่องสีเหลืองคือด่านที่งานต้องหยุดรอ ไม่ใช่ขั้นตอนที่เดินผ่านได้เอง</p>
+        </div>
+        <div class="legend">
+          <span class="lg lg-person">คน</span>
+          <span class="lg lg-doc">ผลงาน/เอกสาร</span>
+          <span class="lg lg-gate">ด่านรออนุมัติ</span>
+        </div>
+      </div>
+      <div class="canvas"><div id="d1" style="min-width:1260px"></div></div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h2>ขั้นตอนที่ 2 — ต้นแบบเว็บถูกผลิตยังไง</h2>
+          <p class="sub">ท่อการผลิตจริงที่ Noting ใช้ทุกรอบ · เส้นแดงคือทางที่<b>ทำให้งานหาย</b> ไม่ใช่ทางปกติ</p>
+        </div>
+        <div class="legend">
+          <span class="lg lg-doc">ขั้นตอนปกติ</span>
+          <span class="lg lg-gate">ด่านรออนุมัติ</span>
+          <span class="lg lg-out">ปลายทางที่เผยแพร่</span>
+          <span class="lg lg-risk">ทางที่ทำให้งานหาย</span>
+        </div>
+      </div>
+      <div class="canvas"><div id="d2" style="min-width:1260px"></div></div>
+      <div style="padding:0 26px 26px">
+        <div class="board-note" style="margin-top:0">
+          <b>กติกาที่ยึดทุกรอบ:</b> แก้ที่ <span class="mono">build-mockup.py</span> ที่เดียวเสมอ แล้วบิลด์ใหม่ ·
+          หลังบิลด์ต้องเช็ก <span class="mono">typeof showPage</span> เป็นอย่างแรก ถ้าได้ <span class="mono">undefined</span> แปลว่าสคริปต์ตายทั้งไฟล์ ·
+          ต้องห่อ <span class="mono">_preview.html</span> เองเพราะไฟล์ที่บิลด์ไม่มี <span class="mono">&lt;head&gt;</span> ถ้าไม่ห่อภาษาไทยจะเพี้ยนทั้งหน้า ·
+          เปิดตรวจในแท็บใหม่เสมอ เพราะแท็บเดิมค้างแคช · จบรอบแล้วบันทึกลง <span class="mono">STATE.md</span> ก่อนปิดงาน
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <p class="foot">Noting (นักออกแบบ UX/UI) · 3 กันยายน 2569 · เอกสารภายใน ยังไม่ผ่านการอนุมัติจาก Boss</p>
+</div>
+
+<script>
+/* ══ ตัววาดไดอะแกรมใช้ร่วมกันสองภาพ ══ */
+(function(){
+  var STYLE = {
+    boss:  {fill:'#0A0A0A', stroke:'#0A0A0A', dash:'', text:'#FFFFFF', rt:'#D0D5DD'},
+    person:{fill:'#EEF0FF', stroke:'#A5A8F5', dash:'', text:'#0A0A0A', rt:'#3538CD'},
+    doc:   {fill:'#ECFAFD', stroke:'#8FD3E8', dash:'', text:'#0A0A0A', rt:'#0E7490'},
+    gate:  {fill:'#FFFAEB', stroke:'#FEDF89', dash:'5 4', text:'#0A0A0A', rt:'#B54708'},
+    out:   {fill:'#ECFDF3', stroke:'#ABEFC6', dash:'', text:'#0A0A0A', rt:'#067647'},
+    risk:  {fill:'#FEF3F2', stroke:'#FDA29B', dash:'6 5', text:'#0A0A0A', rt:'#B42318'}
+  };
+  var LINE = {def:'#98A2B3', gate:'#B54708', risk:'#B42318', out:'#067647'};
+
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  function draw(hostId, spec){
+    var N = spec.nodes, out = [];
+    out.push('<svg viewBox="0 0 '+spec.w+' '+spec.h+'" width="'+spec.w+'" height="'+spec.h+'" xmlns="http://www.w3.org/2000/svg" font-family="Inter, IBM Plex Sans Thai, sans-serif">');
+    out.push('<defs>');
+    Object.keys(LINE).forEach(function(k){
+      out.push('<marker id="'+hostId+'-ah-'+k+'" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">'
+        +'<path d="M0,0 L10,5 L0,10 z" fill="'+LINE[k]+'"/></marker>');
+    });
+    out.push('</defs>');
+
+    spec.edges.forEach(function(e){
+      var A=N[e.a], B=N[e.b], k=e.k||'def', col=LINE[k];
+      var dash = (k==='risk' ? '6 5' : (k==='gate' ? '5 4' : ''));
+      var d, lx, ly, anchor='middle';
+      if(e.path){
+        d = e.path; lx = e.lx; ly = e.ly;
+      } else if(e.dir==='down' || e.dir==='up'){
+        var down = e.dir==='down';
+        var x1=A.x+A.w/2, y1=down?A.y+A.h:A.y, x2=B.x+B.w/2, y2=down?B.y:B.y+B.h;
+        d='M '+x1+' '+y1+' L '+x2+' '+y2;
+        lx=x1+9; ly=(y1+y2)/2; anchor='start';
+      } else {
+        var toRight = (B.x >= A.x);
+        var x1b = toRight ? A.x+A.w : A.x, x2b = toRight ? B.x : B.x+B.w;
+        var y1b = A.y+A.h/2, y2b = B.y+B.h/2;
+        var dx = Math.max(34, Math.abs(x2b-x1b)*0.45) * (toRight?1:-1);
+        d='M '+x1b+' '+y1b+' C '+(x1b+dx)+' '+y1b+' '+(x2b-dx)+' '+y2b+' '+x2b+' '+y2b;
+        lx=(x1b+x2b)/2; ly=(y1b+y2b)/2-7;
+      }
+      if(e.lx!=null) lx=e.lx;
+      if(e.ly!=null) ly=e.ly;
+      if(e.anchor) anchor=e.anchor;
+      out.push('<path d="'+d+'" fill="none" stroke="'+col+'" stroke-width="1.6"'+(dash?' stroke-dasharray="'+dash+'"':'')+' marker-end="url(#'+hostId+'-ah-'+k+')"/>');
+      if(e.l){
+        out.push('<text x="'+lx+'" y="'+ly+'" text-anchor="'+anchor+'" font-size="11" fill="'+(k==='def'?'#667085':col)+'" '
+          +'stroke="#ffffff" stroke-width="4" paint-order="stroke" stroke-linejoin="round">'+esc(e.l)+'</text>');
+      }
+    });
+
+    Object.keys(N).forEach(function(id){
+      var n=N[id], s=STYLE[n.k];
+      out.push('<g>'
+        +'<rect x="'+n.x+'" y="'+n.y+'" width="'+n.w+'" height="'+n.h+'" rx="9" fill="'+s.fill+'" stroke="'+s.stroke+'" stroke-width="1.6"'+(s.dash?' stroke-dasharray="'+s.dash+'"':'')+'/>'
+        +'<text x="'+(n.x+n.w/2)+'" y="'+(n.y+24)+'" text-anchor="middle" font-size="13.5" font-weight="600" fill="'+s.text+'">'+esc(n.t)+'</text>'
+        +'<text x="'+(n.x+n.w/2)+'" y="'+(n.y+42)+'" text-anchor="middle" font-size="10.5" fill="'+s.rt+'">'+esc(n.r)+'</text>'
+        +'</g>');
+    });
+
+    out.push('</svg>');
+    var host=document.getElementById(hostId);
+    if(host) host.innerHTML = out.join('');
+  }
+
+  /* ── ภาพที่ 1 · งานเดินยังไงในทีม ── */
+  draw('d1', {
+    w:1260, h:520,
+    nodes:{
+      boss:   {x:20,  y:210, w:190, h:60, t:'Boss',              r:'สั่งงาน · ตัดสิน · อนุมัติ', k:'boss'},
+      doing:  {x:270, y:210, w:200, h:60, t:'Doing — GM',        r:'แปลงคำสั่งเป็นเอกสาร',      k:'person'},
+      going:  {x:530, y:40,  w:190, h:60, t:'Going',             r:'งานปริมาณมาก · ข้อตรวจ',   k:'person'},
+      moving: {x:530, y:210, w:190, h:60, t:'Moving',            r:'บทรีวิว · ข่าว',            k:'person'},
+      noting: {x:530, y:380, w:190, h:60, t:'Noting',            r:'UX/UI · ต้นแบบเว็บ',        k:'person'},
+      gcsi:   {x:790, y:40,  w:200, h:60, t:'เกณฑ์ GCSI',        r:'60 ไฟล์ · 3,000 ข้อ',       k:'doc'},
+      art:    {x:790, y:210, w:200, h:60, t:'บทรีวิว + ข่าว',    r:'News/ · รีวิว 10 หัวข้อ',   k:'doc'},
+      proto:  {x:790, y:380, w:200, h:60, t:'ต้นแบบเว็บ',        r:'21 หน้า + สเปก',            k:'doc'},
+      gate:   {x:1050,y:210, w:190, h:60, t:'รอ Boss อนุมัติ',   r:'ทุกฉบับยังเป็นร่าง',        k:'gate'},
+      state:  {x:270, y:380, w:200, h:60, t:'STATE.md',          r:'บันทึกก่อนจบทุกรอบ',        k:'doc'}
+    },
+    edges:[
+      {a:'boss', b:'doing', l:'โจทย์ดิบ'},
+      {a:'doing', b:'going',  l:'มอบหมายได้เองไม่ต้องขอ'},
+      {a:'doing', b:'moving'},
+      {a:'doing', b:'noting'},
+      {a:'going', b:'gcsi'},
+      {a:'moving', b:'art'},
+      {a:'noting', b:'proto'},
+      {a:'noting', b:'moving', dir:'up', l:'บรีฟงานเขียน'},
+      {a:'gcsi', b:'gate', k:'gate'},
+      {a:'art', b:'gate', k:'gate'},
+      {a:'proto', b:'gate', k:'gate'},
+      {a:'noting', b:'state', l:'ทุกคนต้องเขียน', lx:500, ly:462},
+      {a:'gate', b:'boss', k:'gate', l:'ส่งกลับให้ Boss ตัดสิน — ถ้าไม่ผ่าน วนกลับไปแก้',
+       path:'M 1145 210 L 1145 150 L 1145 20 L 115 20 L 115 210', lx:630, ly:14}
+    ]
+  });
+
+  /* ── ภาพที่ 2 · ต้นแบบถูกผลิตยังไง ── */
+  draw('d2', {
+    w:1260, h:430,
+    nodes:{
+      spec:   {x:20,  y:40,  w:210, h:62, t:'เอกสารสเปก',        r:'CORE-PILLAR + SPEC ของ Noting', k:'doc'},
+      build:  {x:280, y:40,  w:210, h:62, t:'build-mockup.py',   r:'แหล่งความจริงเดียว',            k:'doc'},
+      mock:   {x:540, y:40,  w:230, h:62, t:'ไฟล์ต้นแบบที่บิลด์', r:'redstartrust-homepage-mockup.html', k:'doc'},
+      prev:   {x:820, y:40,  w:190, h:62, t:'_preview.html',     r:'ห่อ doctype + charset เอง',     k:'doc'},
+      check:  {x:1060,y:40,  w:180, h:62, t:'ตรวจก่อนส่ง',       r:'console · showPage · คอนทราสต์', k:'doc'},
+      gate:   {x:1060,y:190, w:180, h:62, t:'รอ Boss อนุมัติ',   r:'ก่อนเผยแพร่ทุกครั้ง',           k:'gate'},
+      artif:  {x:820, y:190, w:190, h:62, t:'Artifact',          r:'ลิงก์ที่ส่งให้ Boss ดู',        k:'out'},
+      pub:    {x:540, y:190, w:230, h:62, t:'public/index.html', r:'สำเนาอีกใบ ต้องซิงก์เอง',       k:'out'},
+      cf:     {x:280, y:190, w:210, h:62, t:'Cloudflare preview',r:'wrangler.jsonc',                k:'out'},
+      risk:   {x:540, y:330, w:230, h:62, t:'แก้ที่ไฟล์ผลลัพธ์ตรง ๆ', r:'ไม่ผ่าน build-mockup.py',  k:'risk'}
+    },
+    edges:[
+      {a:'spec', b:'build', l:'แก้ที่นี่ที่เดียว', ly:30},
+      {a:'build', b:'mock', l:'python build-mockup.py', ly:30},
+      {a:'mock', b:'prev', l:'ห่อเอง', ly:30},
+      {a:'prev', b:'check', l:'เปิดแท็บใหม่', ly:30},
+      {a:'check', b:'gate', dir:'down', k:'gate'},
+      {a:'gate', b:'artif', k:'gate'},
+      {a:'artif', b:'pub'},
+      {a:'pub', b:'cf'},
+      {a:'risk', b:'mock', dir:'up', k:'risk', l:'รีดีไซน์หน้าแรก 2 ก.ย. เข้ามาทางนี้', lx:785, ly:322, anchor:'end'},
+      {a:'risk', b:'build', k:'risk', l:'งานหายทันทีที่บิลด์รอบถัดไป',
+       path:'M 540 361 L 385 361 L 385 102', lx:462, ly:378}
+    ]
+  });
+})();
+
+(function(){
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  var views = Array.prototype.slice.call(document.querySelectorAll('.view'));
+  function show(name){
+    tabs.forEach(function(t){ t.setAttribute('aria-selected', String(t.dataset.v === name)); });
+    views.forEach(function(v){ v.hidden = (v.dataset.view !== name); });
+    window.scrollTo(0,0);
+  }
+  tabs.forEach(function(t){ t.addEventListener('click', function(){ show(t.dataset.v); }); });
+})();
+</script>
+</body>
+</html>
