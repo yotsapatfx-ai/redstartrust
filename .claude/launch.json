@@ -4,8 +4,26 @@
     {
       "name": "mockup",
       "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "8731", "--directory", "C:/RedStarTrust/Noting/design"],
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8731",
+        "--directory",
+        "C:/RedStarTrust/Noting/design"
+      ],
       "port": 8731
+    },
+    {
+      "name": "mockup-verify",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8742",
+        "--directory",
+        "C:/RedStarTrust/Noting/design"
+      ],
+      "port": 8742
     }
   ]
 }

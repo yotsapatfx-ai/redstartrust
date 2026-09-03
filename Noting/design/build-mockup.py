@@ -269,6 +269,9 @@ HEAD = """<title>RedStarTrust Homepage</title>
   .ea-arrow { width: 1px; height: 16px; background: #D0D5DD; margin: 0 auto; }
   .ea-save { border: 1.5px solid #067647; background: #F0FBF5; border-radius: 12px; padding: 13px 15px; }
   .ea-save b { display: block; font-size: 14.5px; font-weight: 700; color: #05603A; }
+  /* แถวที่มีโลโก้โบรกนำหน้าชื่อ */
+  .dg-wlogo { display: inline-flex !important; align-items: center; gap: 8px; }
+  .dg-wlogo .lg-tile { flex: 0 0 auto; }
   .ea-save span { display: block; font-size: 12px; color: #067647; margin: 3px 0 2px; }
   .ea-save em { display: block; font-style: normal; font-family: 'IBM Plex Sans', sans-serif;
     font-size: 25px; font-weight: 700; letter-spacing: -0.03em; color: #05603A; line-height: 1.2; }
@@ -2258,6 +2261,26 @@ HEAD = """<title>RedStarTrust Homepage</title>
   .ean-chc b { display: block; font-size: 13.5px; font-weight: 600; color: #101828;
     margin-bottom: 4px; }
   .ean-chc span { display: block; font-size: 12px; line-height: 1.65; color: #475467; }
+  /* ช่องทางร้องเรียนจากใน EA */
+  .ean-cp { margin-top: 14px; border: 1.5px solid #D92D20; border-radius: 14px;
+    background: #FEF3F2; padding: 18px 20px 16px; }
+  .ean-cp b { display: block; font-size: 15.5px; font-weight: 700; color: #912018;
+    margin-bottom: 6px; }
+  .ean-cp p { margin: 0 0 13px; max-width: 78ch; font-size: 13px; line-height: 1.75;
+    color: #7A271A; }
+  .ean-cs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+  .ean-cs span { display: flex; align-items: flex-start; gap: 8px; font-size: 12px;
+    line-height: 1.6; color: #7A271A; background: #FFFFFF; border: 1px solid #FECDCA;
+    border-radius: 10px; padding: 10px 12px; }
+  .ean-cs i { flex: 0 0 auto; font-style: normal; font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 11px; font-weight: 700; color: #FFFFFF; background: #D92D20;
+    width: 18px; height: 18px; border-radius: 999px; display: flex;
+    align-items: center; justify-content: center; }
+  .ean-cgo { display: inline-block; margin-top: 13px; font-size: 13.5px; font-weight: 600;
+    color: #FFFFFF; background: #D92D20; border: 1px solid #D92D20; border-radius: 10px;
+    padding: 9px 18px; text-decoration: none; }
+  .ean-cgo:hover { background: #912018; border-color: #912018; color: #FFFFFF; }
+  .ean-cgo:focus-visible { outline: 2px solid #912018; outline-offset: 2px; }
   .ean-n { margin: 14px 0 0; font-size: 11.5px; line-height: 1.7; color: #B54708;
     background: #FFFAEB; border: 1px solid #FEDF89; border-radius: 10px; padding: 10px 14px; }
   .ea-priv { margin-top: 34px; border: 1px solid #EAECF0; border-radius: 18px; background: #F5F7FA;
@@ -8597,11 +8620,11 @@ var AW_HOF = [
   {b:"ibkr", q:6, run:6, cat:"stocks", since:"Q1 2025"}
 ];
 var AW_METH = [
-  ["25%", "Execution", "\u0e40\u0e27\u0e25\u0e32\u0e2a\u0e48\u0e07\u0e04\u0e33\u0e2a\u0e31\u0e48\u0e07\u0e41\u0e25\u0e30\u0e2d\u0e31\u0e15\u0e23\u0e32\u0e23\u0e35\u0e42\u0e04\u0e27\u0e15 \u0e08\u0e32\u0e01\u0e2d\u0e2d\u0e23\u0e4c\u0e40\u0e14\u0e2d\u0e23\u0e4c\u0e08\u0e23\u0e34\u0e07\u0e17\u0e35\u0e48 EA \u0e40\u0e01\u0e47\u0e1a"],
-  ["25%", "Spread & Cost", "\u0e15\u0e49\u0e19\u0e17\u0e38\u0e19\u0e23\u0e27\u0e21\u0e15\u0e48\u0e2d\u0e25\u0e47\u0e2d\u0e15 \u0e40\u0e17\u0e35\u0e22\u0e1a\u0e01\u0e31\u0e1a\u0e04\u0e48\u0e32\u0e01\u0e25\u0e32\u0e07\u0e02\u0e2d\u0e07\u0e2b\u0e21\u0e27\u0e14\u0e40\u0e14\u0e35\u0e22\u0e27\u0e01\u0e31\u0e19"],
-  ["20%", "Liquidity", "\u0e04\u0e27\u0e32\u0e21\u0e25\u0e36\u0e01\u0e02\u0e2d\u0e07\u0e2a\u0e20\u0e32\u0e1e\u0e04\u0e25\u0e48\u0e2d\u0e07 \u0e2a\u0e25\u0e34\u0e1b\u0e40\u0e1e\u0e08 \u0e41\u0e25\u0e30\u0e01\u0e32\u0e23\u0e23\u0e35\u0e42\u0e04\u0e27\u0e15\u0e0a\u0e48\u0e27\u0e07\u0e02\u0e48\u0e32\u0e27"],
-  ["15%", "Fund Safety", "\u0e43\u0e1a\u0e2d\u0e19\u0e38\u0e0d\u0e32\u0e15 \u0e01\u0e32\u0e23\u0e41\u0e22\u0e01\u0e1a\u0e31\u0e0d\u0e0a\u0e35 \u0e01\u0e2d\u0e07\u0e17\u0e38\u0e19\u0e0a\u0e14\u0e40\u0e0a\u0e22 \u0e2a\u0e16\u0e34\u0e15\u0e34\u0e01\u0e32\u0e23\u0e16\u0e2d\u0e19"],
-  ["15%", "Support", "\u0e40\u0e27\u0e25\u0e32\u0e15\u0e2d\u0e1a\u0e08\u0e23\u0e34\u0e07 \u0e2d\u0e31\u0e15\u0e23\u0e32\u0e01\u0e32\u0e23\u0e41\u0e01\u0e49\u0e40\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e08\u0e19\u0e08\u0e1a \u0e41\u0e25\u0e30\u0e04\u0e27\u0e32\u0e21\u0e1e\u0e36\u0e07\u0e1e\u0e2d\u0e43\u0e08\u0e02\u0e2d\u0e07\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49"]
+  ["640 \u0e02\u0e49\u0e2d", "Execution", "\u0e08\u0e31\u0e1a\u0e40\u0e27\u0e25\u0e32\u0e2a\u0e48\u0e07\u0e04\u0e33\u0e2a\u0e31\u0e48\u0e07\u0e17\u0e38\u0e01\u0e2d\u0e2d\u0e23\u0e4c\u0e40\u0e14\u0e2d\u0e23\u0e4c\u0e08\u0e23\u0e34\u0e07\u0e17\u0e35\u0e48 EA \u0e40\u0e01\u0e47\u0e1a \u00b7 \u0e19\u0e31\u0e1a\u0e23\u0e35\u0e42\u0e04\u0e27\u0e15\u0e41\u0e25\u0e30\u0e2d\u0e2d\u0e23\u0e4c\u0e40\u0e14\u0e2d\u0e23\u0e4c\u0e17\u0e35\u0e48\u0e16\u0e39\u0e01\u0e1b\u0e0f\u0e34\u0e40\u0e2a\u0e18 \u00b7 \u0e40\u0e17\u0e35\u0e22\u0e1a\u0e0a\u0e48\u0e27\u0e07\u0e1b\u0e01\u0e15\u0e34\u0e01\u0e31\u0e1a\u0e0a\u0e48\u0e27\u0e07\u0e02\u0e48\u0e32\u0e27"],
+  ["720 \u0e02\u0e49\u0e2d", "Spread & Cost", "\u0e27\u0e31\u0e14\u0e2a\u0e40\u0e1b\u0e23\u0e14\u0e08\u0e23\u0e34\u0e07\u0e17\u0e38\u0e01\u0e19\u0e32\u0e17\u0e35\u0e17\u0e33\u0e01\u0e32\u0e23 \u00b7 \u0e23\u0e27\u0e21\u0e04\u0e48\u0e32\u0e04\u0e2d\u0e21\u0e21\u0e34\u0e0a\u0e0a\u0e31\u0e19\u0e41\u0e25\u0e30\u0e2a\u0e27\u0e2d\u0e1b\u0e40\u0e1b\u0e47\u0e19\u0e15\u0e49\u0e19\u0e17\u0e38\u0e19\u0e15\u0e48\u0e2d\u0e25\u0e47\u0e2d\u0e15 \u00b7 \u0e17\u0e27\u0e19\u0e01\u0e31\u0e1a\u0e15\u0e32\u0e23\u0e32\u0e07\u0e04\u0e48\u0e32\u0e18\u0e23\u0e23\u0e21\u0e40\u0e19\u0e35\u0e22\u0e21\u0e17\u0e35\u0e48\u0e1b\u0e23\u0e30\u0e01\u0e32\u0e28\u0e44\u0e27\u0e49"],
+  ["510 \u0e02\u0e49\u0e2d", "Liquidity", "\u0e27\u0e31\u0e14\u0e2a\u0e25\u0e34\u0e1b\u0e40\u0e1e\u0e08\u0e17\u0e31\u0e49\u0e07\u0e1d\u0e31\u0e48\u0e07\u0e44\u0e14\u0e49\u0e41\u0e25\u0e30\u0e40\u0e2a\u0e35\u0e22 \u00b7 \u0e14\u0e39\u0e04\u0e27\u0e32\u0e21\u0e25\u0e36\u0e01\u0e02\u0e2d\u0e07\u0e23\u0e32\u0e04\u0e32\u0e17\u0e35\u0e48\u0e23\u0e31\u0e1a\u0e44\u0e14\u0e49\u0e08\u0e23\u0e34\u0e07 \u00b7 \u0e17\u0e14\u0e2a\u0e2d\u0e1a\u0e15\u0e2d\u0e19\u0e15\u0e25\u0e32\u0e14\u0e1c\u0e31\u0e19\u0e1c\u0e27\u0e19"],
+  ["680 \u0e02\u0e49\u0e2d", "Fund Safety", "\u0e15\u0e23\u0e27\u0e08\u0e43\u0e1a\u0e2d\u0e19\u0e38\u0e0d\u0e32\u0e15\u0e01\u0e31\u0e1a\u0e2b\u0e19\u0e48\u0e27\u0e22\u0e07\u0e32\u0e19\u0e01\u0e33\u0e01\u0e31\u0e1a\u0e42\u0e14\u0e22\u0e15\u0e23\u0e07 \u00b7 \u0e17\u0e14\u0e2a\u0e2d\u0e1a\u0e1d\u0e32\u0e01-\u0e16\u0e2d\u0e19\u0e08\u0e23\u0e34\u0e07\u0e41\u0e25\u0e30\u0e08\u0e31\u0e1a\u0e40\u0e27\u0e25\u0e32 \u00b7 \u0e2d\u0e48\u0e32\u0e19\u0e2a\u0e31\u0e0d\u0e0d\u0e32\u0e25\u0e39\u0e01\u0e04\u0e49\u0e32\u0e41\u0e25\u0e30\u0e19\u0e42\u0e22\u0e1a\u0e32\u0e22\u0e41\u0e22\u0e01\u0e1a\u0e31\u0e0d\u0e0a\u0e35"],
+  ["450 \u0e02\u0e49\u0e2d", "Support", "\u0e2a\u0e48\u0e07\u0e04\u0e33\u0e16\u0e32\u0e21\u0e08\u0e23\u0e34\u0e07\u0e42\u0e14\u0e22\u0e44\u0e21\u0e48\u0e1a\u0e2d\u0e01\u0e27\u0e48\u0e32\u0e40\u0e1b\u0e47\u0e19\u0e1c\u0e39\u0e49\u0e15\u0e23\u0e27\u0e08 \u00b7 \u0e08\u0e31\u0e1a\u0e40\u0e27\u0e25\u0e32\u0e15\u0e2d\u0e1a\u0e17\u0e38\u0e01\u0e0a\u0e48\u0e2d\u0e07\u0e17\u0e32\u0e07 \u00b7 \u0e17\u0e14\u0e2a\u0e2d\u0e1a\u0e15\u0e2d\u0e19\u0e40\u0e01\u0e34\u0e14\u0e1b\u0e31\u0e0d\u0e2b\u0e32\u0e08\u0e23\u0e34\u0e07 \u0e44\u0e21\u0e48\u0e43\u0e0a\u0e48\u0e04\u0e33\u0e16\u0e32\u0e21\u0e17\u0e31\u0e48\u0e27\u0e44\u0e1b"]
 ];
 function awCat(k){
   for (var i = 0; i < AW_CATS.length; i++) { if (AW_CATS[i].k === k) { return AW_CATS[i]; } }
@@ -8970,8 +8993,8 @@ function awVoices(){
   if (mt) {
     mt.className = "aw-sec";
     mt.innerHTML = '<div class="aw-shd"><div class="tx"><p class="aw-cap">Methodology</p>' +
-      '<h2 class="aw-h2">\u0e19\u0e49\u0e33\u0e2b\u0e19\u0e31\u0e01\u0e17\u0e35\u0e48\u0e43\u0e0a\u0e49\u0e15\u0e31\u0e14\u0e2a\u0e34\u0e19</h2>' +
-      '<p>\u0e04\u0e30\u0e41\u0e19\u0e19\u0e17\u0e38\u0e01\u0e15\u0e31\u0e27\u0e21\u0e32\u0e08\u0e32\u0e01\u0e01\u0e32\u0e23\u0e27\u0e31\u0e14 \u0e44\u0e21\u0e48\u0e21\u0e35\u0e04\u0e30\u0e41\u0e19\u0e19\u0e08\u0e32\u0e01\u0e04\u0e27\u0e32\u0e21\u0e40\u0e2b\u0e47\u0e19\u0e2b\u0e23\u0e37\u0e2d\u0e01\u0e32\u0e23\u0e42\u0e2b\u0e27\u0e15\u0e02\u0e2d\u0e07\u0e01\u0e23\u0e23\u0e21\u0e01\u0e32\u0e23</p></div>' +
+      '<h2 class="aw-h2">\u0e40\u0e23\u0e32\u0e15\u0e23\u0e27\u0e08\u0e2d\u0e30\u0e44\u0e23\u0e1a\u0e49\u0e32\u0e07</h2>' +
+      '<p>\u0e14\u0e32\u0e27\u0e44\u0e21\u0e48\u0e44\u0e14\u0e49\u0e21\u0e32\u0e08\u0e32\u0e01\u0e01\u0e32\u0e23\u0e16\u0e48\u0e27\u0e07\u0e19\u0e49\u0e33\u0e2b\u0e19\u0e31\u0e01\u0e04\u0e30\u0e41\u0e19\u0e19 \u0e41\u0e15\u0e48\u0e21\u0e32\u0e08\u0e32\u0e01\u0e01\u0e32\u0e23\u0e1c\u0e48\u0e32\u0e19\u0e04\u0e23\u0e1a\u0e17\u0e38\u0e01\u0e02\u0e49\u0e2d \u2014 \u0e2b\u0e49\u0e32\u0e2b\u0e21\u0e27\u0e14\u0e02\u0e49\u0e32\u0e07\u0e25\u0e48\u0e32\u0e07\u0e04\u0e37\u0e2d\u0e2a\u0e34\u0e48\u0e07\u0e17\u0e35\u0e48\u0e40\u0e23\u0e32\u0e25\u0e07\u0e21\u0e37\u0e2d\u0e15\u0e23\u0e27\u0e08 \u0e17\u0e38\u0e01\u0e02\u0e49\u0e2d\u0e27\u0e31\u0e14\u0e08\u0e32\u0e01\u0e01\u0e32\u0e23\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19\u0e08\u0e23\u0e34\u0e07 \u0e44\u0e21\u0e48\u0e21\u0e35\u0e02\u0e49\u0e2d\u0e44\u0e2b\u0e19\u0e21\u0e32\u0e08\u0e32\u0e01\u0e04\u0e27\u0e32\u0e21\u0e40\u0e2b\u0e47\u0e19\u0e2b\u0e23\u0e37\u0e2d\u0e01\u0e32\u0e23\u0e42\u0e2b\u0e27\u0e15\u0e02\u0e2d\u0e07\u0e01\u0e23\u0e23\u0e21\u0e01\u0e32\u0e23</p>' +
       '<span class="rt"><a class="aw-btn ghost" href="#/criteria">\u0e14\u0e39\u0e40\u0e01\u0e13\u0e11\u0e4c\u0e01\u0e32\u0e23\u0e43\u0e2b\u0e49\u0e14\u0e32\u0e27 \u2192</a></span></div>' +
       '<div class="aw-meth">' + AW_METH.map(function(m){
         return '<div class="aw-mi"><b>' + m[0] + '</b><em>' + m[1] + '</em><span>' + m[2] + '</span></div>';
@@ -10690,20 +10713,32 @@ function dgBest(){
   var rows = topPicks("fx", 1);
   if (!rows || !rows.length) { return null; }
   var m = META[rows[0].r.id];
-  return m ? {slug: m.slug, name: m.n} : null;
+  return m ? {slug: m.slug, name: m.n, m: m} : null;
 }
 function dgFillBroker(){
   var b = dgBest();
   if (!b) { return; }
+  /* \u0e43\u0e2a\u0e48\u0e42\u0e25\u0e42\u0e01\u0e49\u0e04\u0e39\u0e48\u0e0a\u0e37\u0e48\u0e2d\u0e42\u0e1a\u0e23\u0e01 \u2014 \u0e16\u0e49\u0e32 logoSpan \u0e22\u0e31\u0e07\u0e44\u0e21\u0e48\u0e16\u0e39\u0e01\u0e19\u0e34\u0e22\u0e32\u0e21 \u0e43\u0e2b\u0e49\u0e41\u0e2a\u0e14\u0e07\u0e0a\u0e37\u0e48\u0e2d\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e40\u0e14\u0e35\u0e22\u0e27\u0e44\u0e1b\u0e01\u0e48\u0e2d\u0e19 */
+  var lg = (typeof logoSpan === "function" && b.m) ? logoSpan(b.m, 20, 5) : "";
   var row = document.querySelector("[data-dgbest]");
-  if (row) { row.textContent = b.name + " \u2014 \u0e2d\u0e31\u0e19\u0e14\u0e31\u0e1a 1"; }
+  if (row) {
+    row.innerHTML = lg + '<span>' + b.name +
+      " \u2014 \u0e2d\u0e31\u0e19\u0e14\u0e31\u0e1a 1" + '</span>';
+    row.classList.add("dg-wlogo");
+  }
   var mv = document.querySelector("[data-dgmove]");
-  if (mv) { mv.textContent = "\u0e22\u0e49\u0e32\u0e22\u0e44\u0e1b " + b.name; }
+  if (mv) {
+    mv.innerHTML = ((typeof logoSpan === "function" && b.m) ? logoSpan(b.m, 22, 6) : "") +
+      '<span>' + "\u0e22\u0e49\u0e32\u0e22\u0e44\u0e1b " + b.name + '</span>';
+    mv.classList.add("dg-wlogo");
+  }
   var go = document.querySelector("[data-dgreview]");
   if (go) {
     go.setAttribute("data-review", b.slug);
     go.setAttribute("href", "/broker/" + b.slug + "/review");
   }
+  /* logoSpan วางแค่ placeholder [data-logo] ต้องเรียก paintLogos ให้วาดรูปจริง */
+  if (typeof paintLogos === "function") { paintLogos(); }
 }
 
 function eaTocMeasure(){
@@ -10785,6 +10820,16 @@ function eaNotifyRender(){
     '<div class="ean-ch">' + EA_CHAN.map(function(c){
       return '<div class="ean-chc"><b>' + c[0] + '</b><span>' + c[1] + '</span></div>';
     }).join("") + '</div>' +
+    '<div class="ean-cp"><div class="tx">' +
+      '<b>\u0e40\u0e08\u0e2d\u0e1b\u0e31\u0e0d\u0e2b\u0e32\u0e41\u0e25\u0e49\u0e27\u0e23\u0e49\u0e2d\u0e07\u0e40\u0e23\u0e35\u0e22\u0e19\u0e44\u0e14\u0e49\u0e08\u0e32\u0e01\u0e43\u0e19 EA \u0e40\u0e25\u0e22</b>' +
+      '<p>\u0e01\u0e14\u0e1b\u0e38\u0e48\u0e21\u0e23\u0e49\u0e2d\u0e07\u0e40\u0e23\u0e35\u0e22\u0e19\u0e1a\u0e19\u0e41\u0e1c\u0e07 EA \u0e44\u0e14\u0e49\u0e17\u0e31\u0e19\u0e17\u0e35\u0e17\u0e35\u0e48\u0e40\u0e08\u0e2d\u0e40\u0e23\u0e37\u0e48\u0e2d\u0e07 \u2014 EA \u0e08\u0e30\u0e41\u0e19\u0e1a\u0e1a\u0e31\u0e19\u0e17\u0e36\u0e01\u0e17\u0e35\u0e48\u0e40\u0e01\u0e47\u0e1a\u0e44\u0e27\u0e49\u0e43\u0e2b\u0e49\u0e40\u0e2d\u0e07 \u0e17\u0e31\u0e49\u0e07\u0e40\u0e27\u0e25\u0e32\u0e2a\u0e48\u0e07\u0e04\u0e33\u0e2a\u0e31\u0e48\u0e07 \u0e15\u0e49\u0e19\u0e17\u0e38\u0e19\u0e17\u0e35\u0e48\u0e27\u0e31\u0e14\u0e44\u0e14\u0e49 \u0e41\u0e25\u0e30\u0e40\u0e27\u0e25\u0e32\u0e16\u0e2d\u0e19\u0e40\u0e07\u0e34\u0e19 \u0e04\u0e38\u0e13\u0e44\u0e21\u0e48\u0e15\u0e49\u0e2d\u0e07\u0e21\u0e32\u0e19\u0e31\u0e48\u0e07\u0e23\u0e27\u0e1a\u0e23\u0e27\u0e21\u0e2b\u0e25\u0e31\u0e01\u0e10\u0e32\u0e19\u0e40\u0e2d\u0e07</p>' +
+      '<div class="ean-cs">' +
+        '<span><i>1</i>\u0e01\u0e14\u0e23\u0e49\u0e2d\u0e07\u0e40\u0e23\u0e35\u0e22\u0e19\u0e1a\u0e19\u0e41\u0e1c\u0e07 EA</span>' +
+        '<span><i>2</i>EA \u0e41\u0e19\u0e1a\u0e2b\u0e25\u0e31\u0e01\u0e10\u0e32\u0e19\u0e17\u0e35\u0e48\u0e1a\u0e31\u0e19\u0e17\u0e36\u0e01\u0e44\u0e27\u0e49\u0e43\u0e2b\u0e49\u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34</span>' +
+        '<span><i>3</i>\u0e17\u0e35\u0e21\u0e15\u0e23\u0e27\u0e08\u0e23\u0e31\u0e1a\u0e40\u0e23\u0e37\u0e48\u0e2d\u0e07 \u0e41\u0e25\u0e49\u0e27\u0e2a\u0e48\u0e07\u0e43\u0e2b\u0e49\u0e42\u0e1a\u0e23\u0e01\u0e0a\u0e35\u0e49\u0e41\u0e08\u0e07</span>' +
+        '<span><i>4</i>\u0e15\u0e34\u0e14\u0e15\u0e32\u0e21\u0e2a\u0e16\u0e32\u0e19\u0e30\u0e44\u0e14\u0e49\u0e17\u0e35\u0e48\u0e2b\u0e19\u0e49\u0e32\u0e40\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e23\u0e49\u0e2d\u0e07\u0e40\u0e23\u0e35\u0e22\u0e19\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13</span>' +
+      '</div>' +
+      '<a class="ean-cgo" href="#/usercase" data-nav="usercase">\u0e14\u0e39\u0e2b\u0e19\u0e49\u0e32\u0e40\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e23\u0e49\u0e2d\u0e07\u0e40\u0e23\u0e35\u0e22\u0e19\u0e02\u0e2d\u0e07\u0e09\u0e31\u0e19</a></div></div>' +
     '<p class="ean-n">เงื่อนไขการแจ้งเตือนและตัวเลขทั้งหมดในส่วนนี้' +
     '<b>เป็นข้อเสนอของงานออกแบบ</b> ' +
     'ต้องให้ฝ่ายพัฒนา EA ยืนยันว่าตรวจจับได้จริงก่อนขึ้นเว็บจริง</p>';
