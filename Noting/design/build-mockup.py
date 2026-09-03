@@ -1291,6 +1291,54 @@ HEAD = """<title>RedStarTrust Homepage</title>
   .br-disc { margin: 14px 0 0; padding: 12px 14px; background: #F5F7FA; border-radius: 10px;
     font-size: 11.5px; line-height: 1.7; color: #667085; }
 
+  /* ── การ์ดวิ่ง: เรื่องร้องเรียนและคำชี้แจงของตัวแทนโบรก ──
+     ใช้โครงเดียวกับแถว Hall of Fame — วางการ์ดสองชุดต่อกัน แล้วเลื่อน -50% ภาพจึงต่อเนียน */
+  .br-cs { margin-bottom: 44px; }
+  .br-csh { display: flex; align-items: flex-end; justify-content: space-between;
+    gap: 16px; margin-bottom: 14px; }
+  .br-csh h3 { margin: 0 0 4px; font-size: 19px; font-weight: 700; letter-spacing: -0.02em;
+    color: #101828; }
+  .br-csh p { margin: 0; font-size: 13px; line-height: 1.6; color: #475467; }
+  .br-csp { flex: 0 0 auto; font: inherit; font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 11.5px; font-weight: 600; color: #475467; background: #FFFFFF;
+    border: 1px solid #D0D5DD; border-radius: 999px; padding: 5px 13px; cursor: pointer;
+    transition: border-color .15s, color .15s; }
+  .br-csp:hover { border-color: #98A2B3; color: #101828; }
+  .br-csp:focus-visible { outline: 2px solid #D92D20; outline-offset: 2px; }
+  .br-cx { position: relative; overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 56px,
+      #000 calc(100% - 56px), transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 56px,
+      #000 calc(100% - 56px), transparent 100%); }
+  .br-ctrack { display: flex; width: max-content; animation: brcroll 54s linear infinite; }
+  .br-cx.off .br-ctrack, .br-cx:hover .br-ctrack { animation-play-state: paused; }
+  @keyframes brcroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .br-ctrack { animation: none; } }
+  .br-cc { flex: 0 0 336px; width: 336px; margin-right: 14px;
+    border: 1px solid #EAECF0; border-radius: 14px; background: #FFFFFF;
+    padding: 16px 18px 15px; text-decoration: none; color: inherit; display: block;
+    transition: border-color .18s ease, box-shadow .18s ease; }
+  .br-cc:hover { border-color: #D0D5DD; box-shadow: 0 10px 26px -18px rgba(16,24,40,0.4); }
+  .br-cc:focus-visible { outline: 2px solid #D92D20; outline-offset: 2px; }
+  .br-cct { display: flex; align-items: center; gap: 8px; margin-bottom: 9px; }
+  .br-cst { font-family: 'IBM Plex Sans', sans-serif; font-size: 10.5px; font-weight: 700;
+    letter-spacing: 0.03em; border-radius: 999px; padding: 3px 9px; }
+  .br-cst.wait { color: #B54708; background: #FFFAEB; border: 1px solid #FEDF89; }
+  .br-cst.replied { color: #175CD3; background: #EFF8FF; border: 1px solid #B2DDFF; }
+  .br-cst.closed { color: #067647; background: #ECFDF3; border: 1px solid #ABEFC6; }
+  .br-ccd { margin-left: auto; font-size: 11px; color: #667085; }
+  .br-cc strong { display: block; font-size: 13.5px; font-weight: 600; line-height: 1.55;
+    color: #101828; margin-bottom: 9px; }
+  .br-ccr { border-top: 1px solid #F2F4F7; padding-top: 10px; }
+  .br-ccr .who { display: flex; align-items: center; gap: 6px; margin-bottom: 5px;
+    font-family: 'IBM Plex Sans', sans-serif; font-size: 10.5px; font-weight: 700;
+    letter-spacing: 0.02em; color: #475467; }
+  .br-ccr .who i { font-style: normal; color: #067647; }
+  .br-ccr p { margin: 0; font-size: 12px; line-height: 1.65; color: #475467; }
+  .br-ccn { font-size: 12px; line-height: 1.65; color: #667085; margin: 0;
+    border-top: 1px solid #F2F4F7; padding-top: 10px; }
+  .br-csn { margin: 12px 0 0; font-size: 11.5px; line-height: 1.7; color: #B54708;
+    background: #FFFAEB; border: 1px solid #FEDF89; border-radius: 10px; padding: 9px 13px; }
   .br-kpi { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px;
     margin-bottom: 44px; }
   .br-k { border: 1px solid #EAECF0; border-radius: 14px; padding: 18px 20px; }
@@ -1495,7 +1543,7 @@ HEAD = """<title>RedStarTrust Homepage</title>
   .rs-ti[aria-current="true"] .n { color: #B42318; }
   .rs-ti[aria-current="true"] b { color: #B42318; }
   .rs-mini { border: 1px solid #EAECF0; border-radius: 14px; padding: 18px;
-    margin-top: 16px; text-align: center; }
+    margin-bottom: 16px; text-align: center; }
   .rs-mini .n { font-family: 'IBM Plex Sans', sans-serif; font-size: 34px; font-weight: 700;
     letter-spacing: -0.035em; color: #101828; line-height: 1; }
   .rs-mini .of { font-family: 'IBM Plex Sans', sans-serif; font-size: 13px; color: #667085; }
@@ -9593,12 +9641,86 @@ function brFind(){
 /* ปุ่มเปิดบัญชีของการ์ดคะแนนหน้ารีวิว
    href เป็น "#" เพราะ META ยังไม่มีช่องเว็บทางการของโบรก — ตอนใช้จริงต้องเติม URL ทางการรายโบรก
    และต้องเป็นลิงก์ธรรมดา ไม่มีพารามิเตอร์ติดตาม ตาม CORE-PILLAR ที่ว่ารายได้ต้องไม่ผูกกับผลคะแนน */
+/* เรื่องร้องเรียนของโบรกรายนี้ — ดึงจากชุดเดียวกับหน้า Broker Alerts (`ALERTS_D`)
+   โบรกจริงที่ถูกรีวิวยังไม่มีเคสในชุดนั้น จึงหยิบเคสมาด้วย seed() ของชื่อโบรก
+   ค่าจึงคงที่ทุกครั้งที่เปิด ไม่สุ่มใหม่
+   ⚠ เคสทั้งหมดเป็นข้อมูลสมมติ มีแถบกำกับใต้การ์ด — ดูหัวข้อ 9 ใน STATE.md */
+var BR_CN = 4;
+function brCases(m){
+  if (typeof ALERTS_D === "undefined" || !m || !m.n) { return []; }
+  var own = ALERTS_D.filter(function(a){ return a.b === m.n; });
+  if (own.length) { return own; }
+  /* seed() คืนค่าทศนิยม 0–1 ต้องคูณแล้วปัดเป็นจำนวนเต็มก่อน
+     ไม่งั้นดัชนีเป็นทศนิยม ALERTS_D[1.7] = undefined แล้วการ์ดจะว่างเงียบ ๆ ไม่มี error */
+  var k = Math.floor(seed(m.n) * ALERTS_D.length), out = [];
+  for (var i = 0; i < BR_CN && i < ALERTS_D.length; i++) {
+    var src = ALERTS_D[(k + i * 3) % ALERTS_D.length], c = {};
+    if (!src || !src.st) { continue; }
+    for (var p in src) { if (Object.prototype.hasOwnProperty.call(src, p)) { c[p] = src[p]; } }
+    c.b = m.n;
+    out.push(c);
+  }
+  return out;
+}
+function brCaseCards(list, m, dup){
+  var LB = {wait: "\u0e23\u0e2d\u0e42\u0e1a\u0e23\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c\u0e0a\u0e35\u0e49\u0e41\u0e08\u0e07",
+            replied: "\u0e0a\u0e35\u0e49\u0e41\u0e08\u0e07\u0e41\u0e25\u0e49\u0e27",
+            closed: "\u0e1b\u0e34\u0e14\u0e40\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e41\u0e25\u0e49\u0e27"};
+  return list.map(function(a){
+    var body = a.r
+      ? '<div class="br-ccr"><div class="who"><i>\u25cf</i>' +
+        '\u0e15\u0e31\u0e27\u0e41\u0e17\u0e19 ' + a.b +
+        ' \u0e0a\u0e35\u0e49\u0e41\u0e08\u0e07 \u00b7 ' + a.r.d + '</div>' +
+        '<p>' + a.r.p + '</p></div>'
+      : '<p class="br-ccn">' + (a.n || "") + '</p>';
+    return '<a class="br-cc" href="#/alerts" data-nav="alerts"' +
+      (dup ? ' aria-hidden="true" tabindex="-1"' : '') + '>' +
+      '<div class="br-cct"><span class="br-cst ' + a.st + '">' + (LB[a.st] || a.st) + '</span>' +
+      '<span class="br-ccd">' + a.d + '</span></div>' +
+      '<strong>' + a.t + '</strong>' + body + '</a>';
+  }).join("");
+}
+var brCasePaused = false;
+function brCaseRow(m){
+  var list = brCases(m);
+  if (!list.length) { return ""; }
+  var done = list.filter(function(a){ return a.st !== "wait"; }).length;
+  return '<section class="br-cs">' +
+    '<div class="br-csh"><div>' +
+      '<h3>\u0e01\u0e32\u0e23\u0e41\u0e01\u0e49\u0e44\u0e02\u0e1b\u0e31\u0e0d\u0e2b\u0e32\u0e02\u0e2d\u0e07 ' + m.n + '</h3>' +
+      '<p>\u0e40\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e17\u0e35\u0e48\u0e21\u0e35\u0e04\u0e19\u0e23\u0e49\u0e2d\u0e07\u0e40\u0e23\u0e35\u0e22\u0e19\u0e40\u0e02\u0e49\u0e32\u0e21\u0e32 ' +
+      '\u0e41\u0e25\u0e30\u0e04\u0e33\u0e0a\u0e35\u0e49\u0e41\u0e08\u0e07\u0e17\u0e35\u0e48\u0e15\u0e31\u0e27\u0e41\u0e17\u0e19\u0e42\u0e1a\u0e23\u0e01\u0e2a\u0e48\u0e07\u0e01\u0e25\u0e31\u0e1a\u0e21\u0e32 \u2014 ' +
+      '<b>' + done + ' \u0e08\u0e32\u0e01 ' + list.length + ' \u0e40\u0e23\u0e37\u0e48\u0e2d\u0e07</b> ' +
+      '\u0e21\u0e35\u0e04\u0e27\u0e32\u0e21\u0e04\u0e37\u0e1a\u0e2b\u0e19\u0e49\u0e32\u0e41\u0e25\u0e49\u0e27 \u00b7 \u0e01\u0e14\u0e01\u0e32\u0e23\u0e4c\u0e14\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e14\u0e39\u0e17\u0e35\u0e48\u0e2b\u0e19\u0e49\u0e32 Broker Alerts</p></div>' +
+      '<button type="button" class="br-csp" data-brcpause="1" aria-pressed="' + brCasePaused + '">' +
+      (brCasePaused ? "\u0e40\u0e25\u0e48\u0e19" : "\u0e2b\u0e22\u0e38\u0e14") + '</button></div>' +
+    '<div class="br-cx' + (brCasePaused ? " off" : "") + '" id="br-cx">' +
+      '<div class="br-ctrack">' + brCaseCards(list, m, false) + brCaseCards(list, m, true) +
+      '</div></div>' +
+    '<p class="br-csn">\u0e40\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e23\u0e49\u0e2d\u0e07\u0e40\u0e23\u0e35\u0e22\u0e19\u0e41\u0e25\u0e30\u0e04\u0e33\u0e0a\u0e35\u0e49\u0e41\u0e08\u0e07\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14\u0e43\u0e19\u0e41\u0e16\u0e1a\u0e19\u0e35\u0e49' +
+    '<b>\u0e40\u0e1b\u0e47\u0e19\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e2a\u0e21\u0e21\u0e15\u0e34\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e07\u0e32\u0e19\u0e2d\u0e2d\u0e01\u0e41\u0e1a\u0e1a</b> ' +
+    '\u0e22\u0e31\u0e07\u0e44\u0e21\u0e48\u0e43\u0e0a\u0e48\u0e40\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e23\u0e49\u0e2d\u0e07\u0e40\u0e23\u0e35\u0e22\u0e19\u0e08\u0e23\u0e34\u0e07\u0e02\u0e2d\u0e07 ' + m.n + '</p></section>';
+}
+/* \u0e1b\u0e38\u0e48\u0e21\u0e2b\u0e22\u0e38\u0e14/\u0e40\u0e25\u0e48\u0e19\u0e02\u0e2d\u0e07\u0e41\u0e16\u0e1a\u0e01\u0e32\u0e23\u0e4c\u0e14\u0e27\u0e34\u0e48\u0e07 */
+document.addEventListener("click", function(ev){
+  var b = ev.target.closest("[data-brcpause]");
+  if (!b) { return; }
+  ev.preventDefault();
+  brCasePaused = !brCasePaused;
+  Array.prototype.forEach.call(document.querySelectorAll(".br-cx"), function(x){
+    x.classList.toggle("off", brCasePaused);
+  });
+  Array.prototype.forEach.call(document.querySelectorAll("[data-brcpause]"), function(t){
+    t.textContent = brCasePaused ? "\u0e40\u0e25\u0e48\u0e19" : "\u0e2b\u0e22\u0e38\u0e14";
+    t.setAttribute("aria-pressed", String(brCasePaused));
+  });
+});
 function brOpenBtn(m){
   var nm = m && m.n ? m.n : "\u0e42\u0e1a\u0e23\u0e01\u0e19\u0e35\u0e49";
   return '<a class="br-open" href="#" rel="nofollow noopener" ' +
-    'aria-label="\u0e40\u0e1b\u0e34\u0e14\u0e1a\u0e31\u0e0d\u0e0a\u0e35\u0e01\u0e31\u0e1a ' + nm +
-    ' (\u0e44\u0e1b\u0e40\u0e27\u0e47\u0e1a\u0e17\u0e32\u0e07\u0e01\u0e32\u0e23\u0e02\u0e2d\u0e07\u0e42\u0e1a\u0e23\u0e01)">' +
-    '<span>\u0e40\u0e1b\u0e34\u0e14\u0e1a\u0e31\u0e0d\u0e0a\u0e35\u0e01\u0e31\u0e1a ' + nm + '</span>' +
+    'aria-label="\u0e44\u0e1b\u0e17\u0e35\u0e48 ' + nm +
+    ' (\u0e40\u0e1b\u0e34\u0e14\u0e40\u0e27\u0e47\u0e1a\u0e17\u0e32\u0e07\u0e01\u0e32\u0e23\u0e02\u0e2d\u0e07\u0e42\u0e1a\u0e23\u0e01)">' +
+    '<span>\u0e44\u0e1b\u0e17\u0e35\u0e48 ' + nm + '</span>' +
     '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
     'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
     '<path d="M14 4h6v6M20 4l-9 9"></path>' +
@@ -9667,7 +9789,7 @@ function brRender(){
       '<div class="br-scf"><a class="btn-solid" href="#/verify">\u0e14\u0e39\u0e43\u0e1a\u0e23\u0e31\u0e1a\u0e23\u0e2d\u0e07\u0e14\u0e32\u0e27</a>' +
         brOpenBtn(m) +
         '<p class="br-disc">\u0e04\u0e30\u0e41\u0e19\u0e19\u0e41\u0e25\u0e30\u0e14\u0e32\u0e27\u0e21\u0e32\u0e08\u0e32\u0e01\u0e01\u0e32\u0e23\u0e15\u0e23\u0e27\u0e08\u0e02\u0e2d\u0e07\u0e17\u0e35\u0e21\u0e40\u0e23\u0e32\u0e40\u0e2d\u0e07 ' +
-        '<b>\u0e44\u0e21\u0e48\u0e21\u0e35\u0e01\u0e32\u0e23\u0e23\u0e31\u0e1a\u0e40\u0e07\u0e34\u0e19\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e2d\u0e31\u0e19\u0e14\u0e31\u0e1a</b> \u00b7 \u0e1b\u0e38\u0e48\u0e21\u0e40\u0e1b\u0e34\u0e14\u0e1a\u0e31\u0e0d\u0e0a\u0e35\u0e40\u0e1b\u0e47\u0e19\u0e25\u0e34\u0e07\u0e01\u0e4c\u0e44\u0e1b\u0e40\u0e27\u0e47\u0e1a\u0e17\u0e32\u0e07\u0e01\u0e32\u0e23\u0e02\u0e2d\u0e07\u0e42\u0e1a\u0e23\u0e01\u0e42\u0e14\u0e22\u0e15\u0e23\u0e07 ' +
+        '<b>\u0e44\u0e21\u0e48\u0e21\u0e35\u0e01\u0e32\u0e23\u0e23\u0e31\u0e1a\u0e40\u0e07\u0e34\u0e19\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e2d\u0e31\u0e19\u0e14\u0e31\u0e1a</b> \u00b7 \u0e1b\u0e38\u0e48\u0e21\u0e44\u0e1b\u0e17\u0e35\u0e48\u0e42\u0e1a\u0e23\u0e01\u0e40\u0e1b\u0e47\u0e19\u0e25\u0e34\u0e07\u0e01\u0e4c\u0e44\u0e1b\u0e40\u0e27\u0e47\u0e1a\u0e17\u0e32\u0e07\u0e01\u0e32\u0e23\u0e02\u0e2d\u0e07\u0e42\u0e1a\u0e23\u0e01\u0e42\u0e14\u0e22\u0e15\u0e23\u0e07 ' +
         '<b>\u0e44\u0e21\u0e48\u0e43\u0e0a\u0e48\u0e25\u0e34\u0e07\u0e01\u0e4c\u0e41\u0e19\u0e30\u0e19\u0e33\u0e17\u0e35\u0e48\u0e44\u0e14\u0e49\u0e04\u0e48\u0e32\u0e04\u0e2d\u0e21\u0e21\u0e34\u0e0a\u0e0a\u0e31\u0e48\u0e19</b></p></div>' +
       '</div>';
   }
@@ -9675,11 +9797,7 @@ function brRender(){
   var main = document.getElementById("br-main");
   if (main) {
     main.innerHTML =
-      '<div class="br-kpi">' +
-        '<div class="br-k"><span>\u0e1b\u0e23\u0e34\u0e21\u0e32\u0e13\u0e40\u0e17\u0e23\u0e14\u0e15\u0e48\u0e2d\u0e40\u0e14\u0e37\u0e2d\u0e19</span><b>\u2248 $130,000 \u0e25\u0e49\u0e32\u0e19/\u0e27\u0e31\u0e19</b></div>' +
-        '<div class="br-k"><span>\u0e1a\u0e31\u0e0d\u0e0a\u0e35\u0e17\u0e35\u0e48\u0e2a\u0e48\u0e07\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e43\u0e2b\u0e49\u0e40\u0e23\u0e32</span><b>412 \u0e1a\u0e31\u0e0d\u0e0a\u0e35</b></div>' +
-        '<div class="br-k"><span>\u0e40\u0e27\u0e25\u0e32\u0e16\u0e2d\u0e19\u0e40\u0e07\u0e34\u0e19\u0e40\u0e09\u0e25\u0e35\u0e48\u0e22</span><b>1 \u0e0a\u0e21. 12 \u0e19.</b></div>' +
-        '<div class="br-k"><span>\u0e04\u0e27\u0e32\u0e21\u0e40\u0e23\u0e47\u0e27\u0e2a\u0e48\u0e07\u0e04\u0e33\u0e2a\u0e31\u0e48\u0e07</span><b>34 ms</b></div></div>' +
+      brCaseRow(m) +
 
       '<section class="br-sec" id="brs-cost"><span class="cap">\u0e04\u0e30\u0e41\u0e19\u0e19\u0e41\u0e22\u0e01\u0e2b\u0e21\u0e27\u0e14</span>' +
         '<h2>\u0e40\u0e23\u0e32\u0e43\u0e2b\u0e49\u0e04\u0e30\u0e41\u0e19\u0e19 ' + m.n + ' \u0e2d\u0e22\u0e48\u0e32\u0e07\u0e44\u0e23</h2>' +
@@ -10306,17 +10424,19 @@ function rsRender(){
 
   var side = document.getElementById("rs-side");
   if (side) {
-    side.innerHTML = '<div class="rs-toc"><div class="rs-toch">\u0e2b\u0e31\u0e27\u0e02\u0e49\u0e2d\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14</div>' +
+    /* \u0e04\u0e30\u0e41\u0e19\u0e19\u0e02\u0e36\u0e49\u0e19\u0e01\u0e48\u0e2d\u0e19\u0e2a\u0e32\u0e23\u0e1a\u0e31\u0e0d (\u0e04\u0e33\u0e2a\u0e31\u0e48\u0e07 Boss 1 \u0e01.\u0e22. 69) */
+    side.innerHTML =
+      '<div class="rs-mini"><span class="n">' + sc.toFixed(1) + '</span>' +
+        '<span class="of"> / 10</span>' +
+        '<span class="st">' + awStarRow(st, 15) + '</span>' +
+        '<a class="btn-ghost" href="#" data-rsback="1">\u0e01\u0e25\u0e31\u0e1a\u0e2b\u0e19\u0e49\u0e32\u0e23\u0e35\u0e27\u0e34\u0e27\u0e23\u0e27\u0e21</a></div>' +
+      '<div class="rs-toc"><div class="rs-toch">\u0e2b\u0e31\u0e27\u0e02\u0e49\u0e2d\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14</div>' +
       BR_SECS.map(function(x, j){
         return '<a class="rs-ti" href="#" data-rssec="' + x[0] + '"' +
           (j === i ? ' aria-current="true"' : '') + '>' +
           '<span class="n">' + (j + 1 < 10 ? "0" : "") + (j + 1) + '</span>' +
           '<span><b>' + x[2] + '</b><span>' + x[1] + '</span></span></a>';
-      }).join("") + '</div>' +
-      '<div class="rs-mini"><span class="n">' + sc.toFixed(1) + '</span>' +
-        '<span class="of"> / 10</span>' +
-        '<span class="st">' + awStarRow(st, 15) + '</span>' +
-        '<a class="btn-ghost" href="#" data-rsback="1">\u0e01\u0e25\u0e31\u0e1a\u0e2b\u0e19\u0e49\u0e32\u0e23\u0e35\u0e27\u0e34\u0e27\u0e23\u0e27\u0e21</a></div>';
+      }).join("") + '</div>';
   }
 
   var foot = document.getElementById("rs-foot");
