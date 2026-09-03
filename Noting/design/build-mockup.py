@@ -11841,6 +11841,26 @@ routeFromHash();
 
 </script>"""
 
-io.open(OUT, "w", encoding="utf-8").write(HEAD + "\n\n" + PAGE + "\n")
+NEW_HTML = HEAD + "\n\n" + PAGE + "\n"
+
+# \u2500\u2500 \u0e22\u0e32\u0e21\u0e01\u0e31\u0e19\u0e40\u0e02\u0e35\u0e22\u0e19\u0e17\u0e31\u0e1a\u0e07\u0e32\u0e19\u0e04\u0e19\u0e2d\u0e37\u0e48\u0e19 \u2500\u2500
+# \u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e19\u0e23\u0e48\u0e27\u0e21\u0e17\u0e35\u0e21\u0e41\u0e01\u0e49\u0e44\u0e1f\u0e25\u0e4c\u0e1c\u0e25\u0e25\u0e31\u0e1e\u0e18\u0e4c\u0e19\u0e35\u0e49\u0e42\u0e14\u0e22\u0e15\u0e23\u0e07 \u0e07\u0e32\u0e19\u0e19\u0e31\u0e49\u0e19\u0e08\u0e36\u0e07\u0e44\u0e21\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e43\u0e19\u0e0b\u0e2d\u0e23\u0e4c\u0e2a
+# \u0e16\u0e49\u0e32 build \u0e17\u0e31\u0e1a\u0e40\u0e09\u0e22 \u0e46 \u0e07\u0e32\u0e19\u0e02\u0e2d\u0e07\u0e40\u0e02\u0e32\u0e08\u0e30\u0e2b\u0e32\u0e22\u0e42\u0e14\u0e22\u0e44\u0e21\u0e48\u0e21\u0e35 error \u2014 \u0e40\u0e04\u0e22\u0e40\u0e01\u0e34\u0e14\u0e21\u0e32\u0e41\u0e25\u0e49\u0e27 3 \u0e01.\u0e22. 69
+if os.path.exists(OUT):
+    old_html = io.open(OUT, encoding="utf-8").read()
+    lost = len(old_html) - len(NEW_HTML)
+    if lost > 8192:
+        bak = OUT + ".before-build"
+        io.open(bak, "w", encoding="utf-8").write(old_html)
+        print("=" * 68)
+        print("STOP: the file on disk is %d KB larger than this build." % (lost // 1024))
+        print("      Someone else's work is probably in it and NOT in the source.")
+        print("      Saved it to: %s" % bak)
+        print("      Nothing was overwritten. Merge that work into Main.dc.html /")
+        print("      build-mockup.py first, or delete the file if you are sure.")
+        print("=" * 68)
+        raise SystemExit(1)
+
+io.open(OUT, "w", encoding="utf-8").write(NEW_HTML)
 print("wrote", OUT)
 print("KB:", round(os.path.getsize(OUT) / 1024, 1))
