@@ -35,6 +35,7 @@
         <nav class="mh-nav" aria-label="เมนูหลัก">
           <a href="#/" data-nav="home">Home</a>
           <a href="#/rating" data-nav="rating">Rating</a>
+          <a href="#/review" data-nav="review">Review</a>
           <a href="#/awards" data-nav="awards">Awards</a>
           <a href="#/news" data-nav="news">News</a>
           <a href="#/analytics" data-nav="analytics">Trade Analytics</a>
@@ -70,6 +71,10 @@
       <div class="hd-page" data-hero="rating" hidden>
         <h1 class="hd-h1">ตารางอันดับรายประเทศ</h1>
         <p class="hd-sub">อันดับโบรกเกอร์ของแต่ละประเทศ แยกตามหมวดสินทรัพย์และปีผลตรวจ</p>
+      </div>
+      <div class="hd-page" data-hero="review" hidden>
+        <h1 class="hd-h1">รีวิวโบรกเกอร์</h1>
+        <p class="hd-sub">ทุกรายที่อยู่ในทะเบียน แยกตามหมวดสินทรัพย์ — ดาว คะแนนรวม และประเทศที่ทำคะแนนได้สูงสุด</p>
       </div>
       <div class="hd-page" data-hero="alerts" hidden>
         <h1 class="hd-h1">Broker Alerts</h1>
@@ -734,6 +739,26 @@
   </div>
 
 
+  <div class="page" data-page="review" hidden>
+    <div style="width: 1200px; margin: 0 auto; padding: 52px 0 0;">
+      <div class="sec-rule" aria-hidden="true"></div>
+      <div class="art-ctl">
+        <div class="art-cats" id="rv-cats" role="group" aria-label="กรองรีวิวตามหมวด"></div>
+        <div class="rv-tools">
+          <label class="rk-pick"><span>เรียงตาม</span><select id="rv-sort" aria-label="เรียงลำดับรีวิว"></select></label>
+          <label class="rk-qbox art-qbox">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#667085" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.6-3.6"></path>
+            </svg>
+            <input id="rv-q" type="search" placeholder="ค้นหาชื่อโบรกเกอร์..." aria-label="ค้นหาชื่อโบรกเกอร์">
+          </label>
+        </div>
+      </div>
+      <div class="rv-grid" id="rv-grid"></div>
+      <p class="art-note" id="rv-note"></p>
+    </div>
+  </div>
 
   <div class="page" data-page="news" hidden>
     <div style="width: 1200px; margin: 0 auto; padding: 52px 0 0;">

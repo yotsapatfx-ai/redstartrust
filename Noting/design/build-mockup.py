@@ -3162,6 +3162,16 @@ HEAD = """<title>RedStarTrust Homepage</title>
   .rk-table thead th.rk-sticky { background: #F5F7FA; z-index: 3; }
   .rk-table tbody tr:hover td.rk-sticky { background: #FCFCFD; }
   .rk-cta { padding: 6px 12px !important; font-size: 12.5px !important; }
+  /* สองปุ่มซ้อนแนวตั้ง — วางแนวนอนแล้วคอลัมน์สุดท้ายจะกว้างจนกินตาราง */
+  .rk-acts { display: flex; flex-direction: column; align-items: stretch; gap: 6px; }
+  .rk-acts .rk-cta { justify-content: center; }
+  .rk-go { display: inline-flex; align-items: center; justify-content: center; gap: 5px;
+    font-size: 11.5px; font-weight: 600; line-height: 1.3; white-space: nowrap;
+    color: #344054; background: #FFFFFF; border: 1px solid #D0D5DD; border-radius: 8px;
+    padding: 5px 10px; text-decoration: none;
+    transition: border-color .15s, color .15s, background .15s; }
+  .rk-go:hover { border-color: #D92D20; color: #B42318; background: #FEF3F2; }
+  .rk-go:focus-visible { outline: 2px solid #D92D20; outline-offset: 2px; }
 
 
   /* ── ซูมแผนที่ ── */
@@ -4887,7 +4897,9 @@ function rkRender(){
       '<td class="num">' + trendCell(r.series, {name:c.metric, unit:c.unit, lowerBetter:true, dp:2, bar:false}) + '</td>' +
       '<td class="num">' + trendCell(r.costSeries, {name:"ต้นทุนรวม", unit:c.costUnit, lowerBetter:true, dp:2, bar:false}) + '</td>' +
       '<td class="num">' + dimQuad(r, best) + '</td>' +
-      '<td class="rk-sticky"><span class="rk-cta" data-review="' + m.slug + '" tabindex="0" role="button">อ่านรีวิว &rarr;</span></td>' +
+      '<td class="rk-sticky"><span class="rk-acts">' +
+      '<span class="rk-cta" data-review="' + m.slug + '" tabindex="0" role="button">อ่านรีวิว &rarr;</span>' +
+      '<a class="rk-go" href="#" rel="nofollow noopener" aria-label="ไปที่ ' + m.n + ' (เปิดเว็บทางการของโบรก)">ไปที่ ' + m.n + '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9"></path><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"></path></svg></a></span></td>' +
     '</tr>';
   }).join("");
   }
@@ -9746,7 +9758,7 @@ function brRender(){
 
   head.innerHTML =
     '<nav class="br-crumb" aria-label="\u0e40\u0e2a\u0e49\u0e19\u0e17\u0e32\u0e07"><a href="#/home" data-nav="home">\u0e2b\u0e19\u0e49\u0e32\u0e41\u0e23\u0e01</a>' +
-      '<span aria-hidden="true">/</span><a href="#/review" data-nav="review">\u0e23\u0e35\u0e27\u0e34\u0e27\u0e42\u0e1a\u0e23\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c</a>' +
+      '<span aria-hidden="true">/</span><a href="#/rating" data-nav="rating">\u0e15\u0e32\u0e23\u0e32\u0e07\u0e2d\u0e31\u0e19\u0e14\u0e31\u0e1a</a>' +
       '<span aria-hidden="true">/</span><b style="color:#101828">' + m.n + '</b></nav>' +
     '<div class="br-chips">' + logoSpan(m, 30, 8) +
       '<span class="br-chip live">\u0e40\u0e1b\u0e34\u0e14\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19 \xb7 ' + m.reg + '</span>' +
@@ -10388,7 +10400,7 @@ function rsRender(){
 
   head.innerHTML =
     '<nav class="br-crumb" aria-label="\u0e40\u0e2a\u0e49\u0e19\u0e17\u0e32\u0e07"><a href="#/home" data-nav="home">\u0e2b\u0e19\u0e49\u0e32\u0e41\u0e23\u0e01</a>' +
-      '<span aria-hidden="true">/</span><a href="#/review" data-nav="review">\u0e23\u0e35\u0e27\u0e34\u0e27\u0e42\u0e1a\u0e23\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c</a>' +
+      '<span aria-hidden="true">/</span><a href="#/rating" data-nav="rating">\u0e15\u0e32\u0e23\u0e32\u0e07\u0e2d\u0e31\u0e19\u0e14\u0e31\u0e1a</a>' +
       '<span aria-hidden="true">/</span><a href="#" data-rsback="1">' + m.n + '</a>' +
       '<span aria-hidden="true">/</span><b style="color:#101828">' + s[2] + '</b></nav>' +
     '<span class="rs-no">\u0e2b\u0e31\u0e27\u0e02\u0e49\u0e2d\u0e17\u0e35\u0e48 ' + (i + 1) + ' \u0e08\u0e32\u0e01 ' + BR_SECS.length + '</span>' +
@@ -11251,11 +11263,11 @@ document.addEventListener("click", function(ev){
   }
 });
 
-var PAGE_IDS = ["home", "rating", "review", "news", "analytics", "alerts", "login", "signup", "member", "usercase",
+var PAGE_IDS = ["home", "rating", "news", "analytics", "alerts", "login", "signup", "member", "usercase",
   "brokerdash", "awards", "awards2026", "verify", "brokerawards", "partner", "criteria", "brokerreview", "reviewsec", "newsart", "eadetail"];
 /* \u0e2b\u0e19\u0e49\u0e32\u0e22\u0e48\u0e2d\u0e22 \u2014 \u0e40\u0e21\u0e19\u0e39\u0e2b\u0e25\u0e31\u0e01\u0e22\u0e31\u0e07\u0e15\u0e49\u0e2d\u0e07\u0e04\u0e49\u0e32\u0e07\u0e2d\u0e22\u0e39\u0e48\u0e17\u0e35\u0e48\u0e2b\u0e19\u0e49\u0e32\u0e41\u0e21\u0e48 */
 var SUB_OF = {brokerdash: "alerts", awards2026: "awards", verify: "awards",
-  brokerawards: "awards", partner: "awards", criteria: "awards", brokerreview: "review", reviewsec: "review", newsart: "news", eadetail: "analytics"};
+  brokerawards: "awards", partner: "awards", criteria: "awards", brokerreview: "rating", reviewsec: "rating", newsart: "news", eadetail: "analytics"};
 /* \u2550\u2550 \u0e40\u0e27\u0e2d\u0e23\u0e4c\u0e0a\u0e31\u0e19\u0e20\u0e32\u0e29\u0e32\u0e2d\u0e31\u0e07\u0e01\u0e24\u0e29 \u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550
    \u0e41\u0e1b\u0e25\u0e15\u0e2d\u0e19\u0e2b\u0e19\u0e49\u0e32\u0e40\u0e27\u0e47\u0e1a\u0e27\u0e32\u0e14\u0e40\u0e2a\u0e23\u0e47\u0e08 \u0e44\u0e21\u0e48\u0e44\u0e14\u0e49\u0e23\u0e37\u0e49\u0e2d\u0e42\u0e04\u0e49\u0e14\u0e40\u0e14\u0e34\u0e21
    \u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e17\u0e35\u0e48\u0e22\u0e31\u0e07\u0e44\u0e21\u0e48\u0e21\u0e35\u0e43\u0e19\u0e1e\u0e08\u0e19\u0e32\u0e19\u0e38\u0e01\u0e23\u0e21\u0e08\u0e30\u0e04\u0e07\u0e40\u0e1b\u0e47\u0e19\u0e20\u0e32\u0e29\u0e32\u0e44\u0e17\u0e22 \u0e40\u0e2b\u0e47\u0e19\u0e0a\u0e31\u0e14\u0e27\u0e48\u0e32\u0e40\u0e2b\u0e25\u0e37\u0e2d\u0e2d\u0e30\u0e44\u0e23   */

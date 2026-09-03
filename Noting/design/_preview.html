@@ -3164,6 +3164,16 @@
   .rk-table thead th.rk-sticky { background: #F5F7FA; z-index: 3; }
   .rk-table tbody tr:hover td.rk-sticky { background: #FCFCFD; }
   .rk-cta { padding: 6px 12px !important; font-size: 12.5px !important; }
+  /* สองปุ่มซ้อนแนวตั้ง — วางแนวนอนแล้วคอลัมน์สุดท้ายจะกว้างจนกินตาราง */
+  .rk-acts { display: flex; flex-direction: column; align-items: stretch; gap: 6px; }
+  .rk-acts .rk-cta { justify-content: center; }
+  .rk-go { display: inline-flex; align-items: center; justify-content: center; gap: 5px;
+    font-size: 11.5px; font-weight: 600; line-height: 1.3; white-space: nowrap;
+    color: #344054; background: #FFFFFF; border: 1px solid #D0D5DD; border-radius: 8px;
+    padding: 5px 10px; text-decoration: none;
+    transition: border-color .15s, color .15s, background .15s; }
+  .rk-go:hover { border-color: #D92D20; color: #B42318; background: #FEF3F2; }
+  .rk-go:focus-visible { outline: 2px solid #D92D20; outline-offset: 2px; }
 
 
   /* ── ซูมแผนที่ ── */
@@ -3681,7 +3691,6 @@
         <nav class="mh-nav" aria-label="เมนูหลัก">
           <a href="#/" data-nav="home">Home</a>
           <a href="#/rating" data-nav="rating">Rating</a>
-          <a href="#/review" data-nav="review">Review</a>
           <a href="#/awards" data-nav="awards">Awards</a>
           <a href="#/news" data-nav="news">News</a>
           <a href="#/analytics" data-nav="analytics">Trade Analytics</a>
@@ -3717,10 +3726,6 @@
       <div class="hd-page" data-hero="rating" hidden>
         <h1 class="hd-h1">ตารางอันดับรายประเทศ</h1>
         <p class="hd-sub">อันดับโบรกเกอร์ของแต่ละประเทศ แยกตามหมวดสินทรัพย์และปีผลตรวจ</p>
-      </div>
-      <div class="hd-page" data-hero="review" hidden>
-        <h1 class="hd-h1">รีวิวโบรกเกอร์</h1>
-        <p class="hd-sub">ทุกรายที่อยู่ในทะเบียน แยกตามหมวดสินทรัพย์ — ดาว คะแนนรวม และประเทศที่ทำคะแนนได้สูงสุด</p>
       </div>
       <div class="hd-page" data-hero="alerts" hidden>
         <h1 class="hd-h1">Broker Alerts</h1>
@@ -4385,26 +4390,6 @@
   </div>
 
 
-  <div class="page" data-page="review" hidden>
-    <div style="width: 1200px; margin: 0 auto; padding: 52px 0 0;">
-      <div class="sec-rule" aria-hidden="true"></div>
-      <div class="art-ctl">
-        <div class="art-cats" id="rv-cats" role="group" aria-label="กรองรีวิวตามหมวด"></div>
-        <div class="rv-tools">
-          <label class="rk-pick"><span>เรียงตาม</span><select id="rv-sort" aria-label="เรียงลำดับรีวิว"></select></label>
-          <label class="rk-qbox art-qbox">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#667085" stroke-width="2"
-                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.6-3.6"></path>
-            </svg>
-            <input id="rv-q" type="search" placeholder="ค้นหาชื่อโบรกเกอร์..." aria-label="ค้นหาชื่อโบรกเกอร์">
-          </label>
-        </div>
-      </div>
-      <div class="rv-grid" id="rv-grid"></div>
-      <p class="art-note" id="rv-note"></p>
-    </div>
-  </div>
 
   <div class="page" data-page="news" hidden>
     <div style="width: 1200px; margin: 0 auto; padding: 52px 0 0;">
@@ -5713,7 +5698,9 @@ function rkRender(){
       '<td class="num">' + trendCell(r.series, {name:c.metric, unit:c.unit, lowerBetter:true, dp:2, bar:false}) + '</td>' +
       '<td class="num">' + trendCell(r.costSeries, {name:"ต้นทุนรวม", unit:c.costUnit, lowerBetter:true, dp:2, bar:false}) + '</td>' +
       '<td class="num">' + dimQuad(r, best) + '</td>' +
-      '<td class="rk-sticky"><span class="rk-cta" data-review="' + m.slug + '" tabindex="0" role="button">อ่านรีวิว &rarr;</span></td>' +
+      '<td class="rk-sticky"><span class="rk-acts">' +
+      '<span class="rk-cta" data-review="' + m.slug + '" tabindex="0" role="button">อ่านรีวิว &rarr;</span>' +
+      '<a class="rk-go" href="#" rel="nofollow noopener" aria-label="ไปที่ ' + m.n + ' (เปิดเว็บทางการของโบรก)">ไปที่ ' + m.n + '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9"></path><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"></path></svg></a></span></td>' +
     '</tr>';
   }).join("");
   }
@@ -10572,7 +10559,7 @@ function brRender(){
 
   head.innerHTML =
     '<nav class="br-crumb" aria-label="เส้นทาง"><a href="#/home" data-nav="home">หน้าแรก</a>' +
-      '<span aria-hidden="true">/</span><a href="#/review" data-nav="review">รีวิวโบรกเกอร์</a>' +
+      '<span aria-hidden="true">/</span><a href="#/rating" data-nav="rating">ตารางอันดับ</a>' +
       '<span aria-hidden="true">/</span><b style="color:#101828">' + m.n + '</b></nav>' +
     '<div class="br-chips">' + logoSpan(m, 30, 8) +
       '<span class="br-chip live">เปิดใช้งาน · ' + m.reg + '</span>' +
@@ -11214,7 +11201,7 @@ function rsRender(){
 
   head.innerHTML =
     '<nav class="br-crumb" aria-label="เส้นทาง"><a href="#/home" data-nav="home">หน้าแรก</a>' +
-      '<span aria-hidden="true">/</span><a href="#/review" data-nav="review">รีวิวโบรกเกอร์</a>' +
+      '<span aria-hidden="true">/</span><a href="#/rating" data-nav="rating">ตารางอันดับ</a>' +
       '<span aria-hidden="true">/</span><a href="#" data-rsback="1">' + m.n + '</a>' +
       '<span aria-hidden="true">/</span><b style="color:#101828">' + s[2] + '</b></nav>' +
     '<span class="rs-no">หัวข้อที่ ' + (i + 1) + ' จาก ' + BR_SECS.length + '</span>' +
@@ -12077,11 +12064,11 @@ document.addEventListener("click", function(ev){
   }
 });
 
-var PAGE_IDS = ["home", "rating", "review", "news", "analytics", "alerts", "login", "signup", "member", "usercase",
+var PAGE_IDS = ["home", "rating", "news", "analytics", "alerts", "login", "signup", "member", "usercase",
   "brokerdash", "awards", "awards2026", "verify", "brokerawards", "partner", "criteria", "brokerreview", "reviewsec", "newsart", "eadetail"];
 /* หน้าย่อย — เมนูหลักยังต้องค้างอยู่ที่หน้าแม่ */
 var SUB_OF = {brokerdash: "alerts", awards2026: "awards", verify: "awards",
-  brokerawards: "awards", partner: "awards", criteria: "awards", brokerreview: "review", reviewsec: "review", newsart: "news", eadetail: "analytics"};
+  brokerawards: "awards", partner: "awards", criteria: "awards", brokerreview: "rating", reviewsec: "rating", newsart: "news", eadetail: "analytics"};
 /* ══ เวอร์ชันภาษาอังกฤษ ══════════════════════════════════════════
    แปลตอนหน้าเว็บวาดเสร็จ ไม่ได้รื้อโค้ดเดิม
    ข้อความที่ยังไม่มีในพจนานุกรมจะคงเป็นภาษาไทย เห็นชัดว่าเหลืออะไร   */
