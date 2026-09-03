@@ -1,5 +1,6 @@
 <title>RedStarTrust Homepage</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Sans:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Noto+Serif+Thai:wght@500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Sans:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap">
   <style>
     body { margin: 0; background: #FFFFFF; }
     * { box-sizing: border-box; }
@@ -269,6 +270,9 @@
   .ea-arrow { width: 1px; height: 16px; background: #D0D5DD; margin: 0 auto; }
   .ea-save { border: 1.5px solid #067647; background: #F0FBF5; border-radius: 12px; padding: 13px 15px; }
   .ea-save b { display: block; font-size: 14.5px; font-weight: 700; color: #05603A; }
+  /* แถวที่มีโลโก้โบรกนำหน้าชื่อ */
+  .dg-wlogo { display: inline-flex !important; align-items: center; gap: 8px; }
+  .dg-wlogo .lg-tile { flex: 0 0 auto; }
   .ea-save span { display: block; font-size: 12px; color: #067647; margin: 3px 0 2px; }
   .ea-save em { display: block; font-style: normal; font-family: 'IBM Plex Sans', sans-serif;
     font-size: 25px; font-weight: 700; letter-spacing: -0.03em; color: #05603A; line-height: 1.2; }
@@ -693,10 +697,10 @@
   /* ─ Methodology ─ */
   .aw-meth { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--s2); }
   .aw-mi { border-top: 2px solid var(--aw-red); padding-top: var(--s2); }
-  .aw-mi b { display: block; font-family: 'IBM Plex Sans', sans-serif; font-size: 26px;
-    font-weight: 700; letter-spacing: -0.03em; color: var(--aw-ink); line-height: 1.1; }
-  .aw-mi em { display: block; font-style: normal; font-size: 13.5px; font-weight: 600;
-    color: var(--aw-ink); margin: 8px 0 5px; }
+  /* ไม่มีตัวเลขจำนวนข้อแล้ว — ชื่อหมวดขึ้นเป็นหัวแทน (คำสั่ง Boss 3 ก.ย. 69) */
+  .aw-mi b { display: block; font-family: 'IBM Plex Sans', sans-serif; font-size: 16px;
+    font-weight: 700; letter-spacing: -0.01em; color: var(--aw-ink); line-height: 1.35;
+    margin-bottom: 7px; }
   .aw-mi span { display: block; font-size: 12px; line-height: 1.7; color: var(--aw-ink-3); }
 
   /* ─ CTA verify ─ */
@@ -2258,6 +2262,26 @@
   .ean-chc b { display: block; font-size: 13.5px; font-weight: 600; color: #101828;
     margin-bottom: 4px; }
   .ean-chc span { display: block; font-size: 12px; line-height: 1.65; color: #475467; }
+  /* ช่องทางร้องเรียนจากใน EA */
+  .ean-cp { margin-top: 14px; border: 1.5px solid #D92D20; border-radius: 14px;
+    background: #FEF3F2; padding: 18px 20px 16px; }
+  .ean-cp b { display: block; font-size: 15.5px; font-weight: 700; color: #912018;
+    margin-bottom: 6px; }
+  .ean-cp p { margin: 0 0 13px; max-width: 78ch; font-size: 13px; line-height: 1.75;
+    color: #7A271A; }
+  .ean-cs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+  .ean-cs span { display: flex; align-items: flex-start; gap: 8px; font-size: 12px;
+    line-height: 1.6; color: #7A271A; background: #FFFFFF; border: 1px solid #FECDCA;
+    border-radius: 10px; padding: 10px 12px; }
+  .ean-cs i { flex: 0 0 auto; font-style: normal; font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 11px; font-weight: 700; color: #FFFFFF; background: #D92D20;
+    width: 18px; height: 18px; border-radius: 999px; display: flex;
+    align-items: center; justify-content: center; }
+  .ean-cgo { display: inline-block; margin-top: 13px; font-size: 13.5px; font-weight: 600;
+    color: #FFFFFF; background: #D92D20; border: 1px solid #D92D20; border-radius: 10px;
+    padding: 9px 18px; text-decoration: none; }
+  .ean-cgo:hover { background: #912018; border-color: #912018; color: #FFFFFF; }
+  .ean-cgo:focus-visible { outline: 2px solid #912018; outline-offset: 2px; }
   .ean-n { margin: 14px 0 0; font-size: 11.5px; line-height: 1.7; color: #B54708;
     background: #FFFAEB; border: 1px solid #FEDF89; border-radius: 10px; padding: 10px 14px; }
   .ea-priv { margin-top: 34px; border: 1px solid #EAECF0; border-radius: 18px; background: #F5F7FA;
@@ -11481,11 +11505,11 @@ var AW_HOF = [
   {b:"ibkr", q:6, run:6, cat:"stocks", since:"Q1 2025"}
 ];
 var AW_METH = [
-  ["25%", "Execution", "เวลาส่งคำสั่งและอัตรารีโควต จากออร์เดอร์จริงที่ EA เก็บ"],
-  ["25%", "Spread & Cost", "ต้นทุนรวมต่อล็อต เทียบกับค่ากลางของหมวดเดียวกัน"],
-  ["20%", "Liquidity", "ความลึกของสภาพคล่อง สลิปเพจ และการรีโควตช่วงข่าว"],
-  ["15%", "Fund Safety", "ใบอนุญาต การแยกบัญชี กองทุนชดเชย สถิติการถอน"],
-  ["15%", "Support", "เวลาตอบจริง อัตราการแก้เรื่องจนจบ และความพึงพอใจของผู้ใช้"]
+  ["Execution", "จับเวลาส่งคำสั่งทุกออร์เดอร์จริงที่ EA เก็บ · นับรีโควตและออร์เดอร์ที่ถูกปฏิเสธ · เทียบช่วงปกติกับช่วงข่าว"],
+  ["Spread &amp; Cost", "วัดสเปรดจริงทุกนาทีทำการ · รวมค่าคอมมิชชันและสวอปเป็นต้นทุนต่อล็อต · ทวนกับตารางค่าธรรมเนียมที่ประกาศไว้"],
+  ["Liquidity", "วัดสลิปเพจทั้งฝั่งได้และเสีย · ดูความลึกของราคาที่รับได้จริง · ทดสอบตอนตลาดผันผวน"],
+  ["Fund Safety", "ตรวจใบอนุญาตกับหน่วยงานกำกับโดยตรง · ทดสอบฝาก-ถอนจริงและจับเวลา · อ่านสัญญาลูกค้าและนโยบายแยกบัญชี"],
+  ["Support", "ส่งคำถามจริงโดยไม่บอกว่าเป็นผู้ตรวจ · จับเวลาตอบทุกช่องทาง · ทดสอบตอนเกิดปัญหาจริง ไม่ใช่คำถามทั่วไป"]
 ];
 function awCat(k){
   for (var i = 0; i < AW_CATS.length; i++) { if (AW_CATS[i].k === k) { return AW_CATS[i]; } }
@@ -11854,11 +11878,11 @@ function awVoices(){
   if (mt) {
     mt.className = "aw-sec";
     mt.innerHTML = '<div class="aw-shd"><div class="tx"><p class="aw-cap">Methodology</p>' +
-      '<h2 class="aw-h2">น้ำหนักที่ใช้ตัดสิน</h2>' +
-      '<p>คะแนนทุกตัวมาจากการวัด ไม่มีคะแนนจากความเห็นหรือการโหวตของกรรมการ</p></div>' +
+      '<h2 class="aw-h2">เราตรวจอะไรบ้าง</h2>' +
+      '<p>ดาวไม่ได้มาจากการถ่วงน้ำหนักคะแนน แต่มาจากการผ่านครบทุกข้อ — ห้าหมวดข้างล่างคือสิ่งที่เราลงมือตรวจ ทุกข้อวัดจากการใช้งานจริง ไม่มีข้อไหนมาจากความเห็นหรือการโหวตของกรรมการ</p>' +
       '<span class="rt"><a class="aw-btn ghost" href="#/criteria">ดูเกณฑ์การให้ดาว →</a></span></div>' +
       '<div class="aw-meth">' + AW_METH.map(function(m){
-        return '<div class="aw-mi"><b>' + m[0] + '</b><em>' + m[1] + '</em><span>' + m[2] + '</span></div>';
+        return '<div class="aw-mi"><b>' + m[0] + '</b><span>' + m[1] + '</span></div>';
       }).join("") + '</div>';
   }
 
@@ -12068,7 +12092,7 @@ var VF_TL = [
       '<h2 class="aw-h2">เกณฑ์ที่ใช้กับรางวัลนี้</h2></div>' +
       '<span class="rt"><a class="aw-btn out" href="#/criteria">เกณฑ์การให้ดาวเต็ม</a></span></div>' +
       '<div class="aw-meth">' + AW_METH.map(function(m){
-        return '<div class="aw-mi"><b>' + m[0] + '</b><em>' + m[1] + '</em><span>' + m[2] + '</span></div>';
+        return '<div class="aw-mi"><b>' + m[0] + '</b><span>' + m[1] + '</span></div>';
       }).join("") + '</div>' +
       '<div style="margin-top:32px">' + awDemo("หน้านี้เป็น <b>ต้นแบบงานออกแบบ</b> เลขใบรับรอง คะแนน และรางวัลทั้งหมดเป็นข้อมูลสมมติ ยังไม่มีการออกรางวัลจริง และ QR ยังสแกนไม่ได้") + '</div>';
   }
@@ -13574,20 +13598,32 @@ function dgBest(){
   var rows = topPicks("fx", 1);
   if (!rows || !rows.length) { return null; }
   var m = META[rows[0].r.id];
-  return m ? {slug: m.slug, name: m.n} : null;
+  return m ? {slug: m.slug, name: m.n, m: m} : null;
 }
 function dgFillBroker(){
   var b = dgBest();
   if (!b) { return; }
+  /* ใส่โลโก้คู่ชื่อโบรก — ถ้า logoSpan ยังไม่ถูกนิยาม ให้แสดงชื่ออย่างเดียวไปก่อน */
+  var lg = (typeof logoSpan === "function" && b.m) ? logoSpan(b.m, 20, 5) : "";
   var row = document.querySelector("[data-dgbest]");
-  if (row) { row.textContent = b.name + " — อันดับ 1"; }
+  if (row) {
+    row.innerHTML = lg + '<span>' + b.name +
+      " — อันดับ 1" + '</span>';
+    row.classList.add("dg-wlogo");
+  }
   var mv = document.querySelector("[data-dgmove]");
-  if (mv) { mv.textContent = "ย้ายไป " + b.name; }
+  if (mv) {
+    mv.innerHTML = ((typeof logoSpan === "function" && b.m) ? logoSpan(b.m, 22, 6) : "") +
+      '<span>' + "ย้ายไป " + b.name + '</span>';
+    mv.classList.add("dg-wlogo");
+  }
   var go = document.querySelector("[data-dgreview]");
   if (go) {
     go.setAttribute("data-review", b.slug);
     go.setAttribute("href", "/broker/" + b.slug + "/review");
   }
+  /* logoSpan วางแค่ placeholder [data-logo] ต้องเรียก paintLogos ให้วาดรูปจริง */
+  if (typeof paintLogos === "function") { paintLogos(); }
 }
 
 function eaTocMeasure(){
@@ -13669,6 +13705,16 @@ function eaNotifyRender(){
     '<div class="ean-ch">' + EA_CHAN.map(function(c){
       return '<div class="ean-chc"><b>' + c[0] + '</b><span>' + c[1] + '</span></div>';
     }).join("") + '</div>' +
+    '<div class="ean-cp"><div class="tx">' +
+      '<b>เจอปัญหาแล้วร้องเรียนได้จากใน EA เลย</b>' +
+      '<p>กดปุ่มร้องเรียนบนแผง EA ได้ทันทีที่เจอเรื่อง — EA จะแนบบันทึกที่เก็บไว้ให้เอง ทั้งเวลาส่งคำสั่ง ต้นทุนที่วัดได้ และเวลาถอนเงิน คุณไม่ต้องมานั่งรวบรวมหลักฐานเอง</p>' +
+      '<div class="ean-cs">' +
+        '<span><i>1</i>กดร้องเรียนบนแผง EA</span>' +
+        '<span><i>2</i>EA แนบหลักฐานที่บันทึกไว้ให้อัตโนมัติ</span>' +
+        '<span><i>3</i>ทีมตรวจรับเรื่อง แล้วส่งให้โบรกชี้แจง</span>' +
+        '<span><i>4</i>ติดตามสถานะได้ที่หน้าเรื่องร้องเรียนของคุณ</span>' +
+      '</div>' +
+      '<a class="ean-cgo" href="#/usercase" data-nav="usercase">ดูหน้าเรื่องร้องเรียนของฉัน</a></div></div>' +
     '<p class="ean-n">เงื่อนไขการแจ้งเตือนและตัวเลขทั้งหมดในส่วนนี้' +
     '<b>เป็นข้อเสนอของงานออกแบบ</b> ' +
     'ต้องให้ฝ่ายพัฒนา EA ยืนยันว่าตรวจจับได้จริงก่อนขึ้นเว็บจริง</p>';
