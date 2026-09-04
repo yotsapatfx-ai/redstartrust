@@ -1,8 +1,6 @@
-<!doctype html>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>RedStarTrust Homepage</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Sans:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Noto+Serif+Thai:wght@500;600&display=swap">
+<link rel="stylesheet" href="design-system.css">
   <style>
     body { margin: 0; background: #FFFFFF; }
     * { box-sizing: border-box; }
@@ -272,6 +270,15 @@
   .ea-arrow { width: 1px; height: 16px; background: #D0D5DD; margin: 0 auto; }
   .ea-save { border: 1.5px solid #067647; background: #F0FBF5; border-radius: 12px; padding: 13px 15px; }
   .ea-save b { display: block; font-size: 14.5px; font-weight: 700; color: #05603A; }
+  /* แถวอันดับ 1 — โลโก้นำหน้าชื่อ */
+  .dg-wlogo { display: inline-flex !important; align-items: center; gap: 8px; }
+  .dg-wlogo .lg-tile { flex: 0 0 auto; }
+  /* การ์ด “ย้ายไป X” — ชื่อซ้าย โลโก้ขวา ดันสุดขอบด้วย space-between */
+  .dg-mv { display: flex !important; align-items: center; justify-content: space-between;
+    gap: 12px; }
+  .dg-mv > span { min-width: 0; }
+  .dg-mv .lg-tile { flex: 0 0 auto; box-shadow: 0 0 0 1px rgba(6,118,71,0.22),
+    0 6px 14px -8px rgba(5,96,58,0.5); }
   .ea-save span { display: block; font-size: 12px; color: #067647; margin: 3px 0 2px; }
   .ea-save em { display: block; font-style: normal; font-family: 'IBM Plex Sans', sans-serif;
     font-size: 25px; font-weight: 700; letter-spacing: -0.03em; color: #05603A; line-height: 1.2; }
@@ -696,10 +703,10 @@
   /* ─ Methodology ─ */
   .aw-meth { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--s2); }
   .aw-mi { border-top: 2px solid var(--aw-red); padding-top: var(--s2); }
-  .aw-mi b { display: block; font-family: 'IBM Plex Sans', sans-serif; font-size: 26px;
-    font-weight: 700; letter-spacing: -0.03em; color: var(--aw-ink); line-height: 1.1; }
-  .aw-mi em { display: block; font-style: normal; font-size: 13.5px; font-weight: 600;
-    color: var(--aw-ink); margin: 8px 0 5px; }
+  /* ไม่มีตัวเลขจำนวนข้อแล้ว — ชื่อหมวดขึ้นเป็นหัวแทน (คำสั่ง Boss 3 ก.ย. 69) */
+  .aw-mi b { display: block; font-family: 'IBM Plex Sans', sans-serif; font-size: 16px;
+    font-weight: 700; letter-spacing: -0.01em; color: var(--aw-ink); line-height: 1.35;
+    margin-bottom: 7px; }
   .aw-mi span { display: block; font-size: 12px; line-height: 1.7; color: var(--aw-ink-3); }
 
   /* ─ CTA verify ─ */
@@ -781,6 +788,19 @@
   .vf-seal b { font-size: 13px; font-weight: 700; letter-spacing: 0.06em; color: var(--aw-ok); }
   .vf-seal span { font-size: 11px; color: var(--aw-ok); }
 
+  /* แถวปุ่มท้ายบล็อกคะแนน — ชิดขวา */
+  .vf-acts { display: flex; justify-content: flex-end; align-items: center; gap: 10px;
+    margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--aw-line); }
+  .vf-go, .vf-rv { display: inline-flex; align-items: center; gap: 7px;
+    font-size: 13.5px; font-weight: 600; line-height: 1.3; white-space: nowrap;
+    border-radius: 10px; padding: 10px 18px; text-decoration: none;
+    transition: background .15s, border-color .15s, color .15s; }
+  .vf-go { color: #344054; background: #FFFFFF; border: 1px solid #D0D5DD; }
+  .vf-go:hover { border-color: var(--aw-red); color: var(--aw-red); background: #FEF3F2; }
+  .vf-rv { color: #FFFFFF; background: var(--aw-red); border: 1px solid var(--aw-red); }
+  .vf-rv:hover { background: var(--aw-red-d); border-color: var(--aw-red-d); color: #FFFFFF; }
+  .vf-go:focus-visible, .vf-rv:focus-visible { outline: 2px solid var(--aw-red);
+    outline-offset: 2px; }
   .vf-bars { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--s3) var(--s6); }
   .vf-bar .lb { display: flex; align-items: baseline; justify-content: space-between;
@@ -1061,6 +1081,65 @@
     border: 1px solid rgba(201,162,39,0.22); border-radius: 5px; padding: 3px 9px; }
   .aw-hxr { display: block; font-family: 'IBM Plex Sans', sans-serif; font-size: 11px;
     font-weight: 700; letter-spacing: 0.14em; color: #C9A227; margin-bottom: 11px; }
+  /* ── Hall of Fame โหมดสว่าง ──
+     ติดคลาส .lt ที่ .aw-hofw แล้วทั้งแผงกลับด้าน — ใช้ร่วมกันทั้งหน้าแรกและหน้า Awards
+     สีทุกตัวผ่าน WCAG AA บนพื้น #FDFCF8 และการ์ด #FBF8EF */
+  .aw-hofw.lt { background: #FDFCF8; border: 1px solid #EBDCA8; }
+  .aw-hofw.lt::before {
+    background-image:
+      repeating-linear-gradient(0deg, rgba(169,132,32,0.07) 0 1px, transparent 1px 26px),
+      repeating-linear-gradient(90deg, rgba(169,132,32,0.07) 0 1px, transparent 1px 26px); }
+  .aw-hofw.lt::after { background: linear-gradient(90deg, transparent, rgba(169,132,32,0.55), transparent); }
+  .aw-hofw.lt .aw-hoft b { color: #7A5C11; }
+  .aw-hofw.lt .aw-hoft span { color: #52525B; }
+  .aw-hofw.lt .aw-hx { border-color: rgba(169,132,32,0.42);
+    background: linear-gradient(180deg, #FFFFFF 0%, #FBF8EF 100%); }
+  .aw-hofw.lt .aw-hx:hover { border-color: #A98420;
+    box-shadow: 0 18px 40px -22px rgba(122,92,17,0.45); }
+  .aw-hofw.lt .aw-hxr { color: #7A5C11; }
+  .aw-hofw.lt .aw-hxlg { background: #FFFFFF;
+    box-shadow: 0 0 0 1px rgba(169,132,32,0.55), 0 0 0 6px rgba(201,162,39,0.12),
+      0 8px 20px -14px rgba(20,18,12,0.45); }
+  .aw-hofw.lt .aw-hx:hover .aw-hxlg { box-shadow: 0 0 0 1px #A98420,
+      0 0 0 7px rgba(201,162,39,0.2), 0 10px 24px -14px rgba(20,18,12,0.5); }
+  .aw-hofw.lt .aw-hxs { border-color: rgba(169,132,32,0.5);
+    background: radial-gradient(120% 160% at 50% 50%, rgba(217,45,32,0.11) 0%,
+      rgba(201,162,39,0.13) 55%, transparent 100%);
+    box-shadow: inset 0 0 12px -8px rgba(169,132,32,0.7); }
+  .aw-hofw.lt .aw-hx:hover .aw-hxs { border-color: #A98420;
+    box-shadow: 0 0 16px -8px rgba(217,45,32,0.5), inset 0 0 12px -7px rgba(169,132,32,0.85); }
+  .aw-hofw.lt .aw-hxt b { color: #0A0A0A; }
+  .aw-hofw.lt .aw-hxt b + span { color: #7A5C11; }
+  .aw-hofw.lt .aw-hxb { border-top-color: rgba(169,132,32,0.24); }
+  .aw-hofw.lt .aw-hxb strong { color: #0A0A0A; }
+  .aw-hofw.lt .aw-hxb em { color: #52525B; }
+  .aw-hofw.lt .aw-hxy { border-top-color: rgba(169,132,32,0.22); }
+  .aw-hofw.lt .aw-hxy i { color: #7A5C11; background: rgba(201,162,39,0.15);
+    border-color: rgba(169,132,32,0.32); }
+  .aw-hofw.lt .aw-hxvh b { color: #7A5C11; }
+  .aw-hofw.lt .aw-hxvh span { color: #52525B; }
+  .aw-hofw.lt .aw-vc { border-color: rgba(169,132,32,0.3); background: #FFFFFF; }
+  .aw-hofw.lt .aw-vc .nm { color: #0A0A0A; }
+  .aw-hofw.lt .aw-vc .rl { color: #7A5C11; }
+  .aw-hofw.lt .aw-vc blockquote { color: #3F3F46; }
+  .aw-hofw.lt .aw-vc blockquote b { color: #0A0A0A; }
+  .aw-hofw.lt .aw-vc .mt { border-top-color: rgba(169,132,32,0.22); }
+  .aw-hofw.lt .aw-vc .mt i { color: #7A5C11; background: rgba(201,162,39,0.15); }
+  .aw-hofw.lt .aw-hxvn { color: #52525B; }
+  .aw-hofw.lt .aw-hxvn b { color: #0A0A0A; }
+  .aw-hofw.lt .aw-hofpz { border-color: rgba(169,132,32,0.5);
+    background: rgba(201,162,39,0.13); color: #7A5C11; }
+  .aw-hofw.lt .aw-hofpz:hover { background: rgba(201,162,39,0.24); color: #4A3809; }
+  .aw-hofw.lt .aw-hoft .pk-hof { color: #7A5C11; border-color: rgba(169,132,32,0.5); }
+  .aw-hofw.lt .aw-hoft .pk-hof:hover { background: rgba(201,162,39,0.16);
+    border-color: #A98420; color: #4A3809; }
+  /* กลุ่มปุ่มมุมขวาบน — หยุดเลื่อน + สลับโทน วางคู่กันไม่ซ้อนกัน */
+  .aw-hofbz { position: absolute; z-index: 3; right: 30px; top: 30px;
+    display: flex; gap: 8px; align-items: center; }
+  .aw-hofbz .aw-hofpz { position: static; right: auto; top: auto; }
+  .aw-hofpz.sw { display: inline-flex; align-items: center; gap: 6px; }
+  .aw-hofpz.sw svg { display: block; }
+
   .aw-mark { display: flex; align-items: center; gap: var(--s3); }
   .aw-mark .tx h3 { margin: 0 0 4px; font-size: 34px; font-weight: 700; letter-spacing: -0.035em;
     color: #FFFFFF; line-height: 1; }
@@ -1221,9 +1300,68 @@
     color: #101828; text-align: right; }
   .br-scf { padding: 0 22px 20px; }
   .br-scf .btn-solid { display: block; text-align: center; }
+  /* ปุ่มเปิดบัญชี — เป็นปุ่มรอง (outline) จงใจให้เบากว่าปุ่มดูใบรับรอง
+     ตัวตนของเว็บคือการตรวจสอบ ไม่ใช่การพาคนไปสมัคร — ลำดับความเด่นจึงต้องสะท้อนอย่างนั้น */
+  .br-open { display: flex; align-items: center; justify-content: center; gap: 7px;
+    margin-top: 10px; padding: 9px 14px; text-align: center;
+    font: inherit; font-size: 13.5px; font-weight: 600; line-height: 1.45;
+    color: #344054; background: #FFFFFF; border: 1px solid #D0D5DD; border-radius: 10px;
+    text-decoration: none; cursor: pointer;
+    transition: border-color .15s, color .15s, background .15s; }
+  .br-open:hover { border-color: #D92D20; color: #B42318; background: #FEF3F2; }
+  .br-open:focus-visible { outline: 2px solid #D92D20; outline-offset: 2px; }
+  .br-open svg { flex: 0 0 auto; }
   .br-disc { margin: 14px 0 0; padding: 12px 14px; background: #F5F7FA; border-radius: 10px;
     font-size: 11.5px; line-height: 1.7; color: #667085; }
 
+  /* ── การ์ดวิ่ง: เรื่องร้องเรียนและคำชี้แจงของตัวแทนโบรก ──
+     ใช้โครงเดียวกับแถว Hall of Fame — วางการ์ดสองชุดต่อกัน แล้วเลื่อน -50% ภาพจึงต่อเนียน */
+  .br-cs { margin-bottom: 44px; }
+  .br-csh { display: flex; align-items: flex-end; justify-content: space-between;
+    gap: 16px; margin-bottom: 14px; }
+  .br-csh h3 { margin: 0 0 4px; font-size: 19px; font-weight: 700; letter-spacing: -0.02em;
+    color: #101828; }
+  .br-csh p { margin: 0; font-size: 13px; line-height: 1.6; color: #475467; }
+  .br-csp { flex: 0 0 auto; font: inherit; font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 11.5px; font-weight: 600; color: #475467; background: #FFFFFF;
+    border: 1px solid #D0D5DD; border-radius: 999px; padding: 5px 13px; cursor: pointer;
+    transition: border-color .15s, color .15s; }
+  .br-csp:hover { border-color: #98A2B3; color: #101828; }
+  .br-csp:focus-visible { outline: 2px solid #D92D20; outline-offset: 2px; }
+  .br-cx { position: relative; overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 56px,
+      #000 calc(100% - 56px), transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 56px,
+      #000 calc(100% - 56px), transparent 100%); }
+  .br-ctrack { display: flex; width: max-content; animation: brcroll 54s linear infinite; }
+  .br-cx.off .br-ctrack, .br-cx:hover .br-ctrack { animation-play-state: paused; }
+  @keyframes brcroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .br-ctrack { animation: none; } }
+  .br-cc { flex: 0 0 336px; width: 336px; margin-right: 14px;
+    border: 1px solid #EAECF0; border-radius: 14px; background: #FFFFFF;
+    padding: 16px 18px 15px; text-decoration: none; color: inherit; display: block;
+    transition: border-color .18s ease, box-shadow .18s ease; }
+  .br-cc:hover { border-color: #D0D5DD; box-shadow: 0 10px 26px -18px rgba(16,24,40,0.4); }
+  .br-cc:focus-visible { outline: 2px solid #D92D20; outline-offset: 2px; }
+  .br-cct { display: flex; align-items: center; gap: 8px; margin-bottom: 9px; }
+  .br-cst { font-family: 'IBM Plex Sans', sans-serif; font-size: 10.5px; font-weight: 700;
+    letter-spacing: 0.03em; border-radius: 999px; padding: 3px 9px; }
+  .br-cst.wait { color: #B54708; background: #FFFAEB; border: 1px solid #FEDF89; }
+  .br-cst.replied { color: #175CD3; background: #EFF8FF; border: 1px solid #B2DDFF; }
+  .br-cst.closed { color: #067647; background: #ECFDF3; border: 1px solid #ABEFC6; }
+  .br-ccd { margin-left: auto; font-size: 11px; color: #667085; }
+  .br-cc strong { display: block; font-size: 13.5px; font-weight: 600; line-height: 1.55;
+    color: #101828; margin-bottom: 9px; }
+  .br-ccr { border-top: 1px solid #F2F4F7; padding-top: 10px; }
+  .br-ccr .who { display: flex; align-items: center; gap: 6px; margin-bottom: 5px;
+    font-family: 'IBM Plex Sans', sans-serif; font-size: 10.5px; font-weight: 700;
+    letter-spacing: 0.02em; color: #475467; }
+  .br-ccr .who i { font-style: normal; color: #067647; }
+  .br-ccr p { margin: 0; font-size: 12px; line-height: 1.65; color: #475467; }
+  .br-ccn { font-size: 12px; line-height: 1.65; color: #667085; margin: 0;
+    border-top: 1px solid #F2F4F7; padding-top: 10px; }
+  .br-csn { margin: 12px 0 0; font-size: 11.5px; line-height: 1.7; color: #B54708;
+    background: #FFFAEB; border: 1px solid #FEDF89; border-radius: 10px; padding: 9px 13px; }
   .br-kpi { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px;
     margin-bottom: 44px; }
   .br-k { border: 1px solid #EAECF0; border-radius: 14px; padding: 18px 20px; }
@@ -1427,8 +1565,39 @@
   .rs-ti[aria-current="true"] { background: #FEF3F2; }
   .rs-ti[aria-current="true"] .n { color: #B42318; }
   .rs-ti[aria-current="true"] b { color: #B42318; }
+  /* ── แผงข่าวใต้สารบัญ — popup เปิดไปทางซ้าย
+     เพราะแถบข้างอยู่คอลัมน์ขวาสุด เปิดขวาจะล้นกรอบ 1440px */
+  .rs-news { margin-top: 16px; border: 1px solid #EAECF0; border-radius: 14px;
+    overflow: visible; }
+  .rs-nwh { padding: 13px 16px; background: #FAFAFA; border-bottom: 1px solid #EAECF0;
+    border-radius: 14px 14px 0 0; }
+  .rs-nwh b { display: block; font-size: 13px; font-weight: 700; color: #101828;
+    line-height: 1.4; }
+  .rs-nwh span { display: block; margin-top: 3px; font-size: 11px; color: #667085; }
+  .rs-nw { position: relative; display: block; padding: 12px 16px;
+    border-bottom: 1px solid #F2F4F7; text-decoration: none; cursor: pointer;
+    transition: background .15s; }
+  .rs-nw:hover { background: #FCFCFD; }
+  .rs-nw .dt { display: block; font-size: 10.5px; color: #667085; margin-bottom: 4px; }
+  .rs-nw b { display: block; font-size: 12.5px; font-weight: 600; line-height: 1.55;
+    color: #101828; }
+  .rs-nw:hover b { color: #B42318; }
+  .rs-nwpop { position: absolute; z-index: 40; right: calc(100% + 12px); top: 6px;
+    width: 268px; padding: 12px 14px; font-size: 12px; line-height: 1.7; color: #475467;
+    background: #FFFFFF; border: 1px solid #EAECF0; border-radius: 12px;
+    box-shadow: 0 18px 40px -18px rgba(16,24,40,0.3);
+    opacity: 0; visibility: hidden; transform: translateX(6px);
+    transition: opacity .16s ease, transform .16s ease, visibility .16s; }
+  .rs-nw:hover .rs-nwpop, .rs-nw:focus-visible .rs-nwpop {
+    opacity: 1; visibility: visible; transform: translateX(0); }
+  .rs-nw:focus-visible { outline: 2px solid #D92D20; outline-offset: -2px; }
+  .rs-nwall { display: block; padding: 12px 16px; font-size: 12.5px; font-weight: 600;
+    color: #D92D20; text-decoration: none; }
+  .rs-nwall:hover { background: #FEF3F2; }
+  .rs-nwn { margin: 0; padding: 0 16px 13px; font-size: 10.5px; line-height: 1.6;
+    color: #B54708; }
   .rs-mini { border: 1px solid #EAECF0; border-radius: 14px; padding: 18px;
-    margin-top: 16px; text-align: center; }
+    margin-bottom: 16px; text-align: center; }
   .rs-mini .n { font-family: 'IBM Plex Sans', sans-serif; font-size: 34px; font-weight: 700;
     letter-spacing: -0.035em; color: #101828; line-height: 1; }
   .rs-mini .of { font-family: 'IBM Plex Sans', sans-serif; font-size: 13px; color: #667085; }
@@ -1829,7 +1998,6 @@
     border-radius: 16px; background: #FFFFFF;
     transition: border-color .2s, box-shadow .2s, transform .2s; }
   .eac-c:hover, .eac-c:focus-within { z-index: 30; }
-  .eac-f { border-radius: 0 0 15px 15px; }
   .eac-c:hover { border-color: #D0D5DD; box-shadow: 0 16px 36px -26px rgba(16,24,40,0.5);
     transform: translateY(-2px); }
   .eac-c.lead { border-color: #FECDCA; }
@@ -1851,12 +2019,6 @@
     font-size: 12px; line-height: 1.7; color: #667085; }
   .eac-for b { display: block; font-size: 10.5px; font-weight: 700; letter-spacing: 0.05em;
     text-transform: uppercase; color: #667085; margin-bottom: 4px; }
-  .eac-f { border-top: 1px solid #F0F2F5; background: #FAFAFA; padding: 13px 20px; }
-  .eac-go { display: flex; align-items: center; justify-content: space-between; gap: 10px;
-    width: 100%; border: 0; background: transparent; padding: 0; font: inherit;
-    font-size: 13.5px; font-weight: 700; color: #B42318; cursor: pointer; }
-  .eac-go:hover { color: #912018; }
-  .eac-go:focus-visible { outline: 2px solid #D92D20; outline-offset: 3px; }
 
   /* หน้ารายละเอียด EA */
   .ed-top { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 44px;
@@ -2106,6 +2268,65 @@
   .ea-cta { margin-top: auto; padding-top: 4px; display: flex; align-items: center;
     gap: 11px; flex-wrap: wrap; }
 
+  /* ── บล็อกการแจ้งเตือนของ EA ตัวเดียว ── */
+  .ean { margin-top: 44px; }
+  .ean-h { margin-bottom: 18px; }
+  .ean-h .cap { display: block; font-family: 'IBM Plex Sans', sans-serif; font-size: 11px;
+    font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #D92D20;
+    margin-bottom: 7px; }
+  .ean-h h3 { margin: 0 0 6px; font-size: 26px; font-weight: 700; letter-spacing: -0.025em;
+    color: #101828; }
+  .ean-h p { margin: 0; max-width: 76ch; font-size: 14.5px; line-height: 1.75; color: #475467; }
+  .ean-h p b { color: #101828; font-weight: 600; }
+  .ean-g { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+  .ean-c { border: 1px solid #EAECF0; border-left-width: 3px; border-radius: 12px;
+    background: #FFFFFF; padding: 16px 18px 14px; }
+  .ean-c.hi { border-left-color: #D92D20; }
+  .ean-c.md { border-left-color: #DC6803; }
+  .ean-c.lo { border-left-color: #667085; }
+  .ean-t { display: flex; align-items: center; gap: 8px; margin-bottom: 9px; }
+  .ean-b { font-family: 'IBM Plex Sans', sans-serif; font-size: 10.5px; font-weight: 700;
+    letter-spacing: 0.03em; border-radius: 999px; padding: 3px 9px; }
+  .ean-b.hi { color: #B42318; background: #FEF3F2; border: 1px solid #FECDCA; }
+  .ean-b.md { color: #B54708; background: #FFFAEB; border: 1px solid #FEDF89; }
+  .ean-b.lo { color: #475467; background: #F2F4F7; border: 1px solid #EAECF0; }
+  .ean-cap { margin-left: auto; font-size: 11px; color: #667085; }
+  .ean-c strong { display: block; font-size: 14px; font-weight: 600; line-height: 1.5;
+    color: #101828; margin-bottom: 7px; }
+  .ean-c p { margin: 0 0 10px; font-size: 12.5px; line-height: 1.7; color: #475467; }
+  .ean-c p b { color: #101828; font-weight: 600; }
+  .ean-w { display: inline-block; font-family: 'IBM Plex Sans', sans-serif; font-size: 10.5px;
+    font-weight: 600; color: #475467; background: #F9FAFB; border: 1px solid #EAECF0;
+    border-radius: 6px; padding: 3px 8px; }
+  .ean-ch { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px;
+    margin-top: 14px; }
+  .ean-chc { border: 1px dashed #D0D5DD; border-radius: 12px; background: #F9FAFB;
+    padding: 14px 16px; }
+  .ean-chc b { display: block; font-size: 13.5px; font-weight: 600; color: #101828;
+    margin-bottom: 4px; }
+  .ean-chc span { display: block; font-size: 12px; line-height: 1.65; color: #475467; }
+  /* ช่องทางร้องเรียนจากใน EA */
+  .ean-cp { margin-top: 14px; border: 1.5px solid #D92D20; border-radius: 14px;
+    background: #FEF3F2; padding: 18px 20px 16px; }
+  .ean-cp b { display: block; font-size: 15.5px; font-weight: 700; color: #912018;
+    margin-bottom: 6px; }
+  .ean-cp p { margin: 0 0 13px; max-width: 78ch; font-size: 13px; line-height: 1.75;
+    color: #7A271A; }
+  .ean-cs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+  .ean-cs span { display: flex; align-items: flex-start; gap: 8px; font-size: 12px;
+    line-height: 1.6; color: #7A271A; background: #FFFFFF; border: 1px solid #FECDCA;
+    border-radius: 10px; padding: 10px 12px; }
+  .ean-cs i { flex: 0 0 auto; font-style: normal; font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 11px; font-weight: 700; color: #FFFFFF; background: #D92D20;
+    width: 18px; height: 18px; border-radius: 999px; display: flex;
+    align-items: center; justify-content: center; }
+  .ean-cgo { display: inline-block; margin-top: 13px; font-size: 13.5px; font-weight: 600;
+    color: #FFFFFF; background: #D92D20; border: 1px solid #D92D20; border-radius: 10px;
+    padding: 9px 18px; text-decoration: none; }
+  .ean-cgo:hover { background: #912018; border-color: #912018; color: #FFFFFF; }
+  .ean-cgo:focus-visible { outline: 2px solid #912018; outline-offset: 2px; }
+  .ean-n { margin: 14px 0 0; font-size: 11.5px; line-height: 1.7; color: #B54708;
+    background: #FFFAEB; border: 1px solid #FEDF89; border-radius: 10px; padding: 10px 14px; }
   .ea-priv { margin-top: 34px; border: 1px solid #EAECF0; border-radius: 18px; background: #F5F7FA;
     padding: 26px 28px; }
   .ea-priv h3 { margin: 0 0 6px; font-size: 19px; font-weight: 700; letter-spacing: -0.02em; color: #101828; }
@@ -2231,6 +2452,120 @@
   .uc-b { padding: 16px 20px; font-size: 13.5px; line-height: 1.8; color: #475467; }
   .uc-b b { color: #101828; font-weight: 600; }
   .uc-tl { display: flex; gap: 0; padding: 0 20px 18px; }
+  /* ── ศูนย์ไกล่เกลี่ย — จัดใหม่ตามภาพอ้างอิง (3 ก.ย. 69) ── */
+  .uc-crumb { display: flex; align-items: center; gap: 8px; font-size: 12.5px;
+    color: #667085; margin-bottom: 18px; }
+  .uc-crumb a { color: #667085; text-decoration: none; }
+  .uc-crumb a:hover { color: #D92D20; }
+  .uc-crumb b { color: #101828; font-weight: 600; }
+  .uc-hero { display: flex; align-items: flex-start; justify-content: space-between;
+    gap: 24px; margin-bottom: 20px; }
+  .uc-hero h2 { margin: 0 0 7px; font-size: 32px; font-weight: 700; letter-spacing: -0.03em;
+    color: #101828; }
+  .uc-hero p { margin: 0; max-width: 62ch; font-size: 14.5px; line-height: 1.7; color: #475467; }
+  .uc-new { flex: 0 0 auto; font: inherit; font-size: 14px; font-weight: 600; color: #FFFFFF;
+    background: #101828; border: 1px solid #101828; border-radius: 10px; padding: 11px 20px;
+    cursor: pointer; transition: background .15s; }
+  .uc-new:hover { background: #1D2939; }
+  .uc-new:focus-visible { outline: 2px solid #D92D20; outline-offset: 2px; }
+  .uc-alert { display: flex; align-items: center; gap: 10px; margin-bottom: 22px;
+    padding: 13px 16px; background: #FFFAEB; border: 1px solid #FEDF89; border-radius: 12px;
+    font-size: 13px; line-height: 1.6; color: #7A4708; }
+  .uc-alert i { flex: 0 0 auto; width: 8px; height: 8px; border-radius: 999px; background: #DC6803; }
+  .uc-alert span { flex: 1; }
+  .uc-alert b { color: #7A2E0E; font-weight: 700; }
+  .uc-alert a { flex: 0 0 auto; font-size: 12.5px; font-weight: 600; color: #B54708;
+    text-decoration: none; white-space: nowrap; }
+  .uc-alert a:hover { text-decoration: underline; }
+  .uc-tabs { display: flex; gap: 4px; border-bottom: 1px solid #EAECF0; margin-bottom: 22px; }
+  .uc-tabs button { font: inherit; font-size: 13.5px; font-weight: 600; color: #667085;
+    background: transparent; border: 0; border-bottom: 2px solid transparent;
+    padding: 11px 16px; cursor: pointer; transition: color .15s, border-color .15s; }
+  .uc-tabs button:hover { color: #101828; }
+  .uc-tabs button[aria-selected="true"] { color: #B42318; border-bottom-color: #D92D20; }
+  .uc-tabs button:focus-visible { outline: 2px solid #D92D20; outline-offset: -2px; }
+  .uc-cols { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 22px;
+    align-items: start; }
+  .uc-card { border: 1px solid #EAECF0; border-radius: 16px; padding: 20px 22px 18px;
+    margin-bottom: 16px; background: #FFFFFF; }
+  .uc-ch { display: flex; align-items: center; justify-content: space-between; gap: 14px;
+    margin-bottom: 10px; }
+  .uc-ch .cid { font-family: 'IBM Plex Sans', sans-serif; font-size: 11.5px; color: #667085; }
+  .uc-st { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px;
+    font-weight: 700; border-radius: 999px; padding: 5px 12px; }
+  .uc-st i { width: 7px; height: 7px; border-radius: 999px; background: currentColor; }
+  .uc-st.wait, .uc-st.check { color: #B54708; background: #FFFAEB; border: 1px solid #FEDF89; }
+  .uc-st.replied { color: #067647; background: #ECFDF3; border: 1px solid #ABEFC6; }
+  .uc-st.closed { color: #475467; background: #F2F4F7; border: 1px solid #EAECF0; }
+  .uc-card h3 { margin: 0 0 11px; font-size: 19px; font-weight: 700; letter-spacing: -0.02em;
+    line-height: 1.45; color: #101828; }
+  .uc-meta { display: flex; flex-wrap: wrap; gap: 6px 18px; padding-bottom: 14px;
+    border-bottom: 1px solid #F2F4F7; font-size: 12.5px; color: #667085; }
+  .uc-meta b { color: #101828; font-weight: 600; }
+  .uc-card .uc-b { margin: 14px 0 18px; font-size: 13.5px; line-height: 1.8; color: #475467; }
+  .uc-card .uc-b b { color: #101828; font-weight: 600; }
+  .uc-tlv { border-top: 1px solid #F2F4F7; padding-top: 15px; }
+  .uc-tlv .hd { display: block; font-size: 12.5px; font-weight: 700; color: #101828;
+    margin-bottom: 12px; }
+  .uc-tr { position: relative; display: grid; grid-template-columns: 16px minmax(0, 1fr) auto;
+    gap: 10px; padding-bottom: 15px; }
+  .uc-tr:last-child { padding-bottom: 0; }
+  .uc-tr .dot { position: relative; width: 10px; height: 10px; margin-top: 4px;
+    border-radius: 999px; background: #EAECF0; }
+  .uc-tr.done .dot { background: #067647; }
+  .uc-tr.now .dot { background: #DC6803; box-shadow: 0 0 0 3px #FEF0C7; }
+  .uc-tr:not(:last-child) .dot::after { content: ""; position: absolute; left: 4px; top: 12px;
+    width: 2px; height: calc(100% + 12px); background: #EAECF0; }
+  .uc-tr.done:not(:last-child) .dot::after { background: #ABEFC6; }
+  .uc-tr .tx b { display: block; font-size: 13px; font-weight: 600; color: #101828; }
+  .uc-tr:not(.done):not(.now) .tx b { color: #667085; }
+  .uc-tr .tx span { display: block; margin-top: 3px; font-size: 12px; line-height: 1.6;
+    color: #667085; }
+  .uc-tr .dt { font-size: 11.5px; color: #667085; white-space: nowrap; }
+  .uc-sla { border: 1px solid #EAECF0; border-radius: 16px; padding: 18px 20px 16px;
+    background: #FFFFFF; margin-bottom: 16px; }
+  .uc-sla .hd { font-size: 13px; font-weight: 700; color: #101828; margin-bottom: 12px; }
+  .uc-sla .ck { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+  .uc-sla .ck b { font-family: 'IBM Plex Sans', sans-serif; font-size: 30px; font-weight: 700;
+    letter-spacing: -0.02em; color: #101828; font-variant-numeric: tabular-nums; }
+  .uc-sla .ck span { font-size: 11.5px; color: #667085; }
+  .uc-sla .bar { height: 7px; border-radius: 999px; background: #F2F4F7; overflow: hidden;
+    margin: 12px 0 9px; }
+  .uc-sla .bar i { display: block; height: 100%; border-radius: 999px;
+    background: linear-gradient(90deg, #DC6803, #B54708); }
+  .uc-sla .nt { margin: 0 0 14px; font-size: 12px; line-height: 1.6; color: #667085; }
+  .uc-sla .nt b { color: #101828; font-weight: 600; }
+  .uc-sla .ac { display: flex; gap: 8px; }
+  .uc-sla .ac button { flex: 1; font: inherit; font-size: 12.5px; font-weight: 600;
+    border-radius: 9px; padding: 9px 10px; cursor: pointer; white-space: nowrap; }
+  .uc-sla .gh { color: #344054; background: #FFFFFF; border: 1px solid #D0D5DD; }
+  .uc-sla .gh:hover { border-color: #98A2B3; color: #101828; }
+  .uc-sla .sd { color: #FFFFFF; background: #101828; border: 1px solid #101828; }
+  .uc-sla .sd:hover { background: #1D2939; }
+  .uc-sla .ac button:focus-visible { outline: 2px solid #D92D20; outline-offset: 2px; }
+  .uc-help { border: 1px solid #EAECF0; border-radius: 16px; padding: 17px 20px;
+    background: #F9FAFB; }
+  .uc-help b { display: block; font-size: 13px; font-weight: 700; color: #101828;
+    margin-bottom: 6px; }
+  .uc-help p { margin: 0; font-size: 12.5px; line-height: 1.75; color: #475467; }
+  .uc-help a { color: #B42318; font-weight: 600; text-decoration: none; }
+  .uc-help a:hover { text-decoration: underline; }
+  .uc-howw { border: 1px solid #EAECF0; border-radius: 16px; padding: 24px 26px; }
+  .uc-howw h3 { margin: 0 0 18px; font-size: 20px; font-weight: 700; color: #101828; }
+  .uc-hws { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px;
+    margin-bottom: 20px; }
+  .uc-hw { border: 1px solid #EAECF0; border-radius: 12px; padding: 14px 16px; }
+  .uc-hw .n { display: inline-flex; align-items: center; justify-content: center;
+    width: 22px; height: 22px; border-radius: 999px; background: #D92D20; color: #FFFFFF;
+    font-family: 'IBM Plex Sans', sans-serif; font-size: 11.5px; font-weight: 700;
+    margin-bottom: 8px; }
+  .uc-hw b { display: block; font-size: 13px; font-weight: 600; color: #101828; line-height: 1.5; }
+  .uc-rules { margin: 0; padding-left: 20px; }
+  .uc-rules li { font-size: 13px; line-height: 1.85; color: #475467; margin-bottom: 5px; }
+  .uc-empty { padding: 40px 0; text-align: center; font-size: 13.5px; color: #667085; }
+  .uc-note { margin: 18px 0 0; padding: 11px 15px; font-size: 11.5px; line-height: 1.7;
+    color: #B54708; background: #FFFAEB; border: 1px solid #FEDF89; border-radius: 10px; }
+  .uc-note b { color: #7A2E0E; }
   .uc-s { flex: 1; position: relative; padding-top: 22px; font-size: 11.5px; color: #667085;
     text-align: center; }
   .uc-s::before { content: ""; position: absolute; top: 5px; left: 50%; width: 11px; height: 11px;
@@ -3047,6 +3382,16 @@
   .rk-table thead th.rk-sticky { background: #F5F7FA; z-index: 3; }
   .rk-table tbody tr:hover td.rk-sticky { background: #FCFCFD; }
   .rk-cta { padding: 6px 12px !important; font-size: 12.5px !important; }
+  /* สองปุ่มซ้อนแนวตั้ง — วางแนวนอนแล้วคอลัมน์สุดท้ายจะกว้างจนกินตาราง */
+  .rk-acts { display: flex; flex-direction: column; align-items: stretch; gap: 6px; }
+  .rk-acts .rk-cta { justify-content: center; }
+  .rk-go { display: inline-flex; align-items: center; justify-content: center; gap: 5px;
+    font-size: 11.5px; font-weight: 600; line-height: 1.3; white-space: nowrap;
+    color: #344054; background: #FFFFFF; border: 1px solid #D0D5DD; border-radius: 8px;
+    padding: 5px 10px; text-decoration: none;
+    transition: border-color .15s, color .15s, background .15s; }
+  .rk-go:hover { border-color: #D92D20; color: #B42318; background: #FEF3F2; }
+  .rk-go:focus-visible { outline: 2px solid #D92D20; outline-offset: 2px; }
 
 
   /* ── ซูมแผนที่ ── */
@@ -4386,18 +4731,19 @@
    * REDESIGN-HOME-V4 — the sole active homepage visual system.
    */
   .frame:has(.page[data-page="home"]:not([hidden])) {
-    --rs-paper: #ffffff;
-    --rs-surface: #ffffff;
-    --rs-ink: #4d0b0b;
+    /* Legacy aliases: active Home components now consume the shared system. */
+    --rs-paper: var(--ds-color-canvas);
+    --rs-surface: var(--ds-color-surface);
+    --rs-ink: var(--ds-red-900);
     --rs-muted: #8f4545;
     --rs-line: #efcaca;
-    --rs-accent: #cf2027;
-    --rs-accent-deep: #790f14;
-    --rs-accent-soft: #f9e5e6;
-    --rs-white: #ffffff;
-    --rs-display: 'Cormorant Garamond', Georgia, serif;
-    --rs-thai: 'Noto Serif Thai', serif;
-    --rs-body: Inter, 'IBM Plex Sans Thai', sans-serif;
+    --rs-accent: var(--ds-color-brand);
+    --rs-accent-deep: var(--ds-color-brand-deep);
+    --rs-accent-soft: var(--ds-color-brand-soft);
+    --rs-white: var(--ds-white);
+    --rs-display: var(--ds-font-brand);
+    --rs-thai: var(--ds-font-editorial-th);
+    --rs-body: var(--ds-font-body);
     background: var(--rs-paper);
   }
   .frame:has(.page[data-page="home"]:not([hidden])) > div,
@@ -5388,6 +5734,10 @@
     box-shadow: 0 12px 30px rgba(121,15,20,.07) !important;
     overflow: hidden;
   }
+  .frame:has(.page[data-page="home"]:not([hidden])) #card-detail > div:nth-child(2) {
+    background: #f2f4f7 !important;
+    border-color: #dfe3e8 !important;
+  }
   .frame:has(.page[data-page="home"]:not([hidden])) .pk-card.first::after,
   .frame:has(.page[data-page="home"]:not([hidden])) .pk-mini::after { display: none; }
   .frame:has(.page[data-page="home"]:not([hidden])) .pk-card.first::before,
@@ -5639,6 +5989,183 @@
     outline-offset: 3px;
     border-radius: 2px;
   }
+  /* Header-only refinement — original logo retained. */
+  .frame:has(.page[data-page="home"]:not([hidden])) .hd-top {
+    position: relative;
+    z-index: 5;
+    background: var(--rs-white);
+    border-bottom: 1px solid var(--rs-line);
+    box-shadow: 0 0 0 100vmax var(--rs-white);
+    clip-path: inset(0 -100vmax);
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .mh-brand {
+    color: var(--rs-accent-deep) !important;
+    gap: 13px !important;
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: 29px !important;
+    font-weight: 600;
+    letter-spacing: -.035em;
+    line-height: 1;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .mh-brand .brand-star {
+    width: 36px;
+    height: 36px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .mh-brand .wm-red {
+    color: #9b111e !important;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .mh-nav a {
+    color: var(--rs-accent-deep) !important;
+    opacity: .72;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .mh-nav a:hover,
+  .frame:has(.page[data-page="home"]:not([hidden])) .mh-nav a[aria-current="page"] {
+    opacity: 1;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .mh-nav a::after {
+    background: var(--rs-accent);
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .lang-sw {
+    border-color: var(--rs-line);
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .lang-sw button {
+    color: var(--rs-accent-deep);
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .lang-sw button[aria-pressed="true"] {
+    color: var(--rs-white);
+    background: var(--rs-accent);
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .hd-top .btn-ghost {
+    color: var(--rs-accent-deep) !important;
+    border-color: var(--rs-line);
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .hd-top .btn-solid {
+    color: var(--rs-white);
+    background: var(--rs-accent);
+    border-color: var(--rs-accent);
+  }
+  /* Home uses one 1440px editorial grid from hero through footer. */
+  .frame:has(.page[data-page="home"]:not([hidden])) {
+    --home-grid: 1440px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) #hof-home,
+  .frame:has(.page[data-page="home"]:not([hidden])) #picks {
+    width: var(--home-grid) !important;
+    box-sizing: border-box;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) #hof-home .aw-hin {
+    width: 100%;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) #picks > .sec-rule,
+  .frame:has(.page[data-page="home"]:not([hidden])) #picks > .pk-head,
+  .frame:has(.page[data-page="home"]:not([hidden])) #picks > .pk-search,
+  .frame:has(.page[data-page="home"]:not([hidden])) #picks > .pk-wrap {
+    width: 100%;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .home-map {
+    width: var(--home-grid) !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .home-map-layout { width: 100%; }
+  .frame:has(.page[data-page="home"]:not([hidden])) .home-map-panel {
+    width: 1016px !important;
+    box-sizing: border-box;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .home-map-panel #map-stage {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .home-map #vol-zones {
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-page="home"] > [data-slot="vol"],
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-page="home"] > [data-slot="rank"] {
+    width: var(--home-grid);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-page="home"] > [data-slot="vol"] > #vol-zones,
+  .frame:has(.page[data-page="home"]:not([hidden])) [data-page="home"] > [data-slot="rank"] > #rank-section {
+    width: var(--home-grid) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) #art-home {
+    width: var(--home-grid) !important;
+    padding: 68px 56px 72px !important;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) #art-home .art-head {
+    max-width: 760px;
+    gap: 7px;
+    margin-bottom: 26px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) #art-home .art-h1 {
+    font-size: 40px;
+    line-height: 1.12;
+    letter-spacing: -.035em;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) #art-home .art-h2 {
+    font-size: 19px;
+    line-height: 1.4;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) #art-home .art-head p {
+    max-width: 690px;
+    font-size: 14.5px;
+    line-height: 1.65;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) #art-home .art-ctl {
+    margin-bottom: 28px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) #arth-grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 20px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) #arth-grid .art-card {
+    grid-column: span 4;
+    min-height: 352px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) #arth-grid .art-card.feat {
+    grid-column: span 8;
+    min-height: 352px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) #arth-grid .art-card.feat .art-cover {
+    width: 38%;
+    min-width: 300px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) #arth-grid .art-card.feat .art-body {
+    padding: 28px 30px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) #arth-grid .art-card.feat .art-title {
+    font-size: 21px;
+    line-height: 1.4;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) #arth-grid .art-card:not(.feat) .art-cover {
+    height: 156px;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) #arth-grid .art-card:not(.feat) .art-ex {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .home-trust .home-trust-inner,
+  .frame:has(.page[data-page="home"]:not([hidden])) .home-footer .home-footer-inner {
+    width: var(--home-grid) !important;
+    padding-left: 56px;
+    padding-right: 56px;
+    box-sizing: border-box;
+  }
+  .frame:has(.page[data-page="home"]:not([hidden])) .home-trust .home-trust-inner {
+    gap: 36px !important;
+  }
 </style>
 
 <div class="stage">
@@ -5658,16 +6185,17 @@
     <div class="hd-inner">
       <div class="hd-top">
         <div class="mh-brand">
-          <svg class="brand-star" width="46" height="46" viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M32 8L38 23.75L54.82 24.58L41.7 35.15L46.11 51.42L32 42.2L17.89 51.42L22.3 35.15L9.18 24.58L26 23.75Z" fill="#D92D20" stroke="#A81E14" stroke-width="2.4" stroke-linejoin="round" paint-order="stroke"></path><path d="M32 32L26 23.75L32 8Z" fill="#F8B4AD"></path><path d="M32 32L32 8L38 23.75Z" fill="#F08A81"></path><path d="M32 32L38 23.75L54.82 24.58Z" fill="#E8483E"></path><path d="M32 32L54.82 24.58L41.7 35.15Z" fill="#B42318"></path><path d="M32 32L41.7 35.15L46.11 51.42Z" fill="#E8483E"></path><path d="M32 32L46.11 51.42L32 42.2Z" fill="#B42318"></path><path d="M32 32L32 42.2L17.89 51.42Z" fill="#E8483E"></path><path d="M32 32L17.89 51.42L22.3 35.15Z" fill="#B42318"></path><path d="M32 32L22.3 35.15L9.18 24.58Z" fill="#E8483E"></path><path d="M32 32L9.18 24.58L26 23.75Z" fill="#B42318"></path><path d="M32 8L38 23.75L54.82 24.58L41.7 35.15L46.11 51.42L32 42.2L17.89 51.42L22.3 35.15L9.18 24.58L26 23.75Z" fill="none" stroke="#A81E14" stroke-width="1.6" stroke-linejoin="round"></path></svg>
+          <svg class="brand-star" width="36" height="36" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M24 3.75L29.86 17.12L44.38 18.57L33.43 28.22L36.59 42.48L24 35.08L11.41 42.48L14.57 28.22L3.62 18.57L18.14 17.12L24 3.75Z" fill="#9B111E" stroke="#6F0B13" stroke-width="1.35" stroke-linejoin="round"></path><path d="M24 8.25L28.35 18.19L39.15 19.27L31.01 26.45L33.36 37.05L24 31.55L14.64 37.05L16.99 26.45L8.85 19.27L19.65 18.19L24 8.25Z" fill="none" stroke="#FFFFFF" stroke-width="0.8" stroke-linejoin="round" opacity="0.68"></path></svg>
           <span><i class="wm-red">Red</i>StarTrust</span>
         </div>
         <nav class="mh-nav" aria-label="เมนูหลัก">
           <a href="#/" data-nav="home">Home</a>
           <a href="#/rating" data-nav="rating">Rating</a>
-          <a href="#/review" data-nav="review">Review</a>
+          <a href="#/awards" data-nav="awards">Awards</a>
           <a href="#/news" data-nav="news">News</a>
           <a href="#/analytics" data-nav="analytics">Trade Analytics</a>
           <a href="#/alerts" data-nav="alerts">Broker Alerts</a>
+          <a href="#/usercase" data-nav="usercase">ศูนย์ไกล่เกลี่ย</a>
         </nav>
         <span class="hd-pill">2026 Edition</span>
         <div class="hd-actions">
@@ -5698,11 +6226,7 @@
       </div>
       <div class="hd-page" data-hero="rating" hidden>
         <h1 class="hd-h1">ตารางอันดับรายประเทศ</h1>
-        <p class="hd-sub">อันดับโบรกเกอร์ของแต่ละประเทศ แยกตามหมวดสินทรัพย์และปีผลตรวจ พร้อมเทียบกันตัวต่อตัวและบทสรุปจาก RedStar Thinking</p>
-      </div>
-      <div class="hd-page" data-hero="review" hidden>
-        <h1 class="hd-h1">รีวิวโบรกเกอร์</h1>
-        <p class="hd-sub">ทุกรายที่อยู่ในทะเบียน แยกตามหมวดสินทรัพย์ — ดาว คะแนนรวม และประเทศที่ทำคะแนนได้สูงสุด</p>
+        <p class="hd-sub">อันดับโบรกเกอร์ของแต่ละประเทศ แยกตามหมวดสินทรัพย์และปีผลตรวจ</p>
       </div>
       <div class="hd-page" data-hero="alerts" hidden>
         <h1 class="hd-h1">Broker Alerts</h1>
@@ -5711,46 +6235,6 @@
       <div class="hd-page" data-hero="awards" hidden>
         <h1 class="hd-h1">RED STAR · Q2 2026</h1>
         <p class="hd-sub">รางวัลทรงคุณค่าของเรามีชื่อเดียวคือ ดาวแดง — มอบตามหมวดโบรกเกอร์ ระดับบอกด้วยจำนวนดาว 1 ถึง 5 · ตัดสินจากข้อมูลการเทรดจริง ไม่ใช่การโหวตและไม่ใช่การซื้อ</p>
-      </div>
-      <div class="hd-page" data-hero="eadetail" hidden>
-        <h1 class="hd-h1" id="edh-title">RedStar EA</h1>
-        <p class="hd-sub" id="edh-sub">รายละเอียดเครื่องมือรายตัว</p>
-      </div>
-      <div class="hd-page" data-hero="newsart" hidden>
-        <h1 class="hd-h1" id="nah-title">บทความ</h1>
-        <p class="hd-sub" id="nah-sub">บทความจากทีม RedStarTrust</p>
-      </div>
-      <div class="hd-page" data-hero="reviewsec" hidden>
-        <h1 class="hd-h1" id="rsh-title">หัวข้อรีวิว</h1>
-        <p class="hd-sub" id="rsh-sub">บทรีวิวแยกรายหัวข้อ เขียนโดยทีม RedStarTrust</p>
-      </div>
-      <div class="hd-page" data-hero="brokerreview" hidden>
-        <h1 class="hd-h1" id="brh-title">รีวิวฉบับเต็ม</h1>
-        <p class="hd-sub" id="brh-sub">บทรีวิวจากทีม RedStarTrust — ตรวจข้อเท็จจริงแยกตามนิติบุคคลก่อนตัดสินใจ</p>
-      </div>
-      <div class="hd-page" data-hero="criteria" hidden>
-        <h1 class="hd-h1">เกณฑ์การให้ดาว</h1>
-        <p class="hd-sub">ดาวแต่ละดวงหมายถึงอะไร ต้องผ่านอะไรบ้าง และเมื่อไหร่ที่ดาวจะถูกถอน — เกณฑ์เดียวกันทุกโบรกเกอร์ ประกาศก่อนตรวจเสมอ</p>
-      </div>
-      <div class="hd-page" data-hero="awards2026" hidden>
-        <h1 class="hd-h1">โบรกเกอร์ที่ได้ดาว Q2 2026</h1>
-        <p class="hd-sub">รายชื่อทั้งหมดพร้อมคะแนน ใบรับรอง และปุ่มตรวจสอบ — กรองตามภูมิภาค หมวดรางวัล และหน่วยงานกำกับ</p>
-      </div>
-      <div class="hd-page" data-hero="verify" hidden>
-        <h1 class="hd-h1">ตรวจสอบใบรับรอง</h1>
-        <p class="hd-sub">ยืนยันว่ารางวัลที่แสดงบนเว็บไซต์โบรกเกอร์เป็นของจริง ออกโดย RedStarTrust และยังไม่ถูกเพิกถอน</p>
-      </div>
-      <div class="hd-page" data-hero="brokerawards" hidden>
-        <h1 class="hd-h1">Hall of Fame</h1>
-        <p class="hd-sub">ประวัติรางวัลรายโบรกเกอร์ ย้อนหลังทุกปีที่เราตรวจ พร้อมคะแนนและเหตุผลที่ได้รับ</p>
-      </div>
-      <div class="hd-page" data-hero="partner" hidden>
-        <h1 class="hd-h1">Partner Dashboard</h1>
-        <p class="hd-sub">พื้นที่ของโบรกเกอร์ที่ได้รับรางวัล — ดาวน์โหลดตรารางวัล ฝังโค้ด และดูสถิติการแสดงผล</p>
-      </div>
-      <div class="hd-page" data-hero="brokerdash" hidden>
-        <h1 class="hd-h1">Broker Dashboard</h1>
-        <p class="hd-sub">พื้นที่ของตัวแทนโบรกเกอร์ที่ยืนยันตัวตนแล้ว — รับทราบเรื่องที่ทีมตรวจแจ้ง ส่งคำชี้แจง และติดตามสถานะได้ทุกขั้นตอน</p>
       </div>
       <div class="hd-page" data-hero="analytics" hidden>
         <h1 class="hd-h1">Trade Analytics</h1>
@@ -5765,8 +6249,8 @@
 
   <div class="page" data-page="home">
   <!-- ══ TOP 3 รายหมวด ══ -->
-  <div id="hof-home" style="width: 1200px; margin: 0 auto; padding: 44px 0 0;"></div>
-  <div id="picks" style="width: 1200px; margin: 0 auto; padding: 56px 0 0;"></div>
+  <div id="hof-home" style="width: 1440px; margin: 0 auto; padding: 44px 0 0;"></div>
+  <div id="picks" style="width: 1440px; margin: 0 auto; padding: 56px 0 0;"></div>
 
   <div class="scroll-cue">
     <a href="#coverage" aria-label="เลื่อนลงไปที่แผนที่">
@@ -5778,12 +6262,12 @@
 
 
   <!-- ══ MAP ══ -->
-  <div style="width: 1200px; margin: 0 auto; padding: 64px 0 0;">
+  <div class="home-map" style="width: 1440px; margin: 0 auto; padding: 64px 0 0;">
     <div class="sec-rule" aria-hidden="true"></div>
     <div class="map-head">
       <div style="max-width: 640px; display: flex; flex-direction: column; gap: 14px;">
         <h2 class="map-h2">Best Overall Broker by Country</h2>
-        <p class="map-sub">คลิกประเทศบนแผนที่เพื่อดูโบรกเกอร์อันดับหนึ่งของประเทศนั้น แล้วเลื่อนลงดูตารางอันดับเต็มและเทียบกันตัวต่อตัว</p>
+        <p class="map-sub">คลิกประเทศบนแผนที่เพื่อดูโบรกเกอร์อันดับหนึ่งของประเทศนั้น แล้วเลื่อนลงดูตารางอันดับเต็ม</p>
       </div>
       <div class="map-picks">
         <label class="rk-pick">
@@ -5802,10 +6286,10 @@
     </div>
 
     <!-- map + floating card -->
-    <div style="position: relative; margin-top: 44px; height: 476px;">
+    <div class="home-map-layout" style="position: relative; margin-top: 44px; height: 476px;">
 
       <!-- map panel -->
-      <div style="width: 816px; height: 476px; background: #F5F7FA; border: 1px solid #EAECF0; border-radius: 20px; padding: 32px;">
+      <div class="home-map-panel" style="width: 1016px; height: 476px; background: #F5F7FA; border: 1px solid #EAECF0; border-radius: 20px; padding: 32px;">
         <div id="map-stage" style="position: relative; width: 752px; height: 342px; overflow: hidden;">
           <div class="mapzoom">
             <button type="button" id="zoom-in" aria-label="ซูมเข้า">+</button>
@@ -6018,7 +6502,7 @@
 
   <div data-slot="rank"></div>
 
-  <div id="art-home" style="width: 1200px; margin: 0 auto; padding: 80px 0 0;">
+  <div id="art-home" style="width: 1440px; margin: 0 auto; padding: 80px 0 0;">
     <div class="sec-rule" aria-hidden="true"></div>
     <div class="art-head">
       <h2 class="art-h1">ศูนย์รวมบทความ RedStarTrust</h2>
@@ -6103,32 +6587,6 @@
     <p class="rk-note" id="rk-note"></p>
     </div>
 
-    <div style="margin-top: 56px;">
-      <div class="sec-rule" aria-hidden="true"></div>
-      <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; max-width: 760px;">
-        <h2 style="margin: 0; font-size: 34px; font-weight: 700; letter-spacing: -0.03em;">เทียบกันตัวต่อตัว</h2>
-        <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #475467;">เลือกหมวด ประเทศ และปีผลตรวจ แล้วเลือกโบรกเกอร์ที่จะเทียบได้เองสูงสุด 5 ราย — ช่องที่ดีที่สุดของแต่ละแถวจะถูกไฮไลต์ และมีบทสรุปจาก RedStar Thinking ทางขวา</p>
-      </div>
-      <div class="rsframe" data-rsf="cmp">
-        <div class="rsfh">เทียบกันตัวต่อตัว<span class="ct" id="rsf-cmp"></span></div>
-      <div class="cmp-picks">
-        <label class="rk-pick"><span>หมวด</span><select id="cmp-cat" aria-label="เลือกหมวดสินทรัพย์ที่จะเทียบ"></select></label>
-        <label class="rk-pick"><span>ประเทศ</span><select id="cmp-iso" aria-label="เลือกประเทศที่จะเทียบ"></select></label>
-        <label class="rk-pick"><span>ปีผลตรวจ</span><select id="cmp-year" aria-label="เลือกปีผลตรวจที่จะเทียบ"></select></label>
-        <span class="cmp-div" aria-hidden="true"></span>
-        <label class="rk-pick cmp-slot"><span>รายที่ 1</span><select id="cmp-s1" data-cmpslot="0" aria-label="เลือกโบรกเกอร์รายที่ 1"></select></label>
-        <label class="rk-pick cmp-slot"><span>รายที่ 2</span><select id="cmp-s2" data-cmpslot="1" aria-label="เลือกโบรกเกอร์รายที่ 2"></select></label>
-        <label class="rk-pick cmp-slot"><span>รายที่ 3</span><select id="cmp-s3" data-cmpslot="2" aria-label="เลือกโบรกเกอร์รายที่ 3"></select></label>
-        <label class="rk-pick cmp-slot"><span>รายที่ 4</span><select id="cmp-s4" data-cmpslot="3" aria-label="เลือกโบรกเกอร์รายที่ 4"></select></label>
-        <label class="rk-pick cmp-slot"><span>รายที่ 5</span><select id="cmp-s5" data-cmpslot="4" aria-label="เลือกโบรกเกอร์รายที่ 5"></select></label>
-        <button type="button" class="cmp-clear" data-cmpclr="1"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M9 7V5h6v2M6.5 7l1 13h9l1-13"></path></svg>ล้างการเลือก</button>
-      </div>
-      <div class="cmp-grid">
-        <div id="cmp-body"></div>
-        <aside id="cmp-ai" class="cmp-ai" aria-live="polite"></aside>
-      </div>
-      </div>
-    </div>
 
   </div>
   </div>
@@ -6337,7 +6795,6 @@
       </div>
       <div id="br-network"></div>
       <div id="br-latest"></div>
-      <div id="br-faq"></div>
       <div id="br-note"></div>
     </div>
   </div>
@@ -6418,13 +6875,14 @@
     <div style="width: 1200px; margin: 0 auto; padding: 52px 0 0;">
       <div class="sec-rule" aria-hidden="true"></div>
       <div class="art-head">
-        <h2 class="art-h1">RedStar EA Suite</h2>
-        <span class="art-h2">เครื่องมือวัดต้นทุนการเทรด ใช้ฟรีสำหรับสมาชิก</span>
+        <h2 class="art-h1">RedStar EA</h2>
+        <span class="art-h2">EA ตัวเดียว ติดตั้งครั้งเดียว ทำงาน 6 อย่าง และแจ้งคุณเมื่อมีอะไรผิดปกติ</span>
         <p>คุณได้เครื่องมือวิเคราะห์ระดับมืออาชีพไปใช้ฟรี · เราได้หลักฐานการส่งคำสั่งจริงที่ไม่ระบุตัวตน ไปใช้ทำให้คะแนนโบรกเกอร์แม่นขึ้น</p>
       </div>
       <div id="ea-intro"></div>
       <div id="ea-suitehead"></div>
       <div class="ea-blocks" id="ea-cards"></div>
+      <div id="ea-notify"></div>
       <div id="ea-mt5"></div>
       <div id="ea-dash"></div>
       <div id="ea-legend"></div>
@@ -6434,26 +6892,6 @@
   </div>
 
 
-  <div class="page" data-page="review" hidden>
-    <div style="width: 1200px; margin: 0 auto; padding: 52px 0 0;">
-      <div class="sec-rule" aria-hidden="true"></div>
-      <div class="art-ctl">
-        <div class="art-cats" id="rv-cats" role="group" aria-label="กรองรีวิวตามหมวด"></div>
-        <div class="rv-tools">
-          <label class="rk-pick"><span>เรียงตาม</span><select id="rv-sort" aria-label="เรียงลำดับรีวิว"></select></label>
-          <label class="rk-qbox art-qbox">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#667085" stroke-width="2"
-                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.6-3.6"></path>
-            </svg>
-            <input id="rv-q" type="search" placeholder="ค้นหาชื่อโบรกเกอร์..." aria-label="ค้นหาชื่อโบรกเกอร์">
-          </label>
-        </div>
-      </div>
-      <div class="rv-grid" id="rv-grid"></div>
-      <p class="art-note" id="rv-note"></p>
-    </div>
-  </div>
 
   <div class="page" data-page="news" hidden>
     <div style="width: 1200px; margin: 0 auto; padding: 52px 0 0;">
@@ -6475,8 +6913,8 @@
   </div>
 
   <!-- ══ TRUST SECTION ══ -->
-  <div style="background: #F5F7FA; margin-top: 96px; padding: 80px 0;">
-    <div style="width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px;">
+  <div class="home-trust" style="background: #F5F7FA; margin-top: 96px; padding: 80px 0;">
+    <div class="home-trust-inner" style="width: 1440px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px;">
 
       <div style="display: flex; flex-direction: column; gap: 14px;">
         <div style="width: 44px; height: 44px; border-radius: 10px; background: #FFFFFF; border: 1px solid #EAECF0; display: flex; align-items: center; justify-content: center;">
@@ -6531,11 +6969,11 @@
   </div>
 
   <!-- ══ FOOTER ══ -->
-  <div style="border-top: 1px solid #EAECF0; padding: 28px 0;">
-    <div style="width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between;">
+  <div class="home-footer" style="border-top: 1px solid #EAECF0; padding: 28px 0;">
+    <div class="home-footer-inner" style="width: 1440px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between;">
       <div style="display: flex; align-items: center; gap: 9px;">
-        <svg width="18" height="18" viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M32 8L38 23.75L54.82 24.58L41.7 35.15L46.11 51.42L32 42.2L17.89 51.42L22.3 35.15L9.18 24.58L26 23.75Z" fill="#D92D20" stroke="#A81E14" stroke-width="2.8" stroke-linejoin="round" paint-order="stroke"></path><path d="M32 32L26 23.75L32 8Z" fill="#F8B4AD"></path><path d="M32 32L32 8L38 23.75Z" fill="#F08A81"></path><path d="M32 32L38 23.75L54.82 24.58Z" fill="#E8483E"></path><path d="M32 32L54.82 24.58L41.7 35.15Z" fill="#B42318"></path><path d="M32 32L41.7 35.15L46.11 51.42Z" fill="#E8483E"></path><path d="M32 32L46.11 51.42L32 42.2Z" fill="#B42318"></path><path d="M32 32L32 42.2L17.89 51.42Z" fill="#E8483E"></path><path d="M32 32L17.89 51.42L22.3 35.15Z" fill="#B42318"></path><path d="M32 32L22.3 35.15L9.18 24.58Z" fill="#E8483E"></path><path d="M32 32L9.18 24.58L26 23.75Z" fill="#B42318"></path><path d="M32 8L38 23.75L54.82 24.58L41.7 35.15L46.11 51.42L32 42.2L17.89 51.42L22.3 35.15L9.18 24.58L26 23.75Z" fill="none" stroke="#A81E14" stroke-width="1.6" stroke-linejoin="round"></path></svg>
-        <span style="font-family: 'IBM Plex Sans', Inter, sans-serif; font-size: 14px; font-weight: 600; color: #475467;"><i class="wm-red">Red</i>StarTrust</span>
+        <svg width="20" height="20" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M24 3.75L29.86 17.12L44.38 18.57L33.43 28.22L36.59 42.48L24 35.08L11.41 42.48L14.57 28.22L3.62 18.57L18.14 17.12L24 3.75Z" fill="#9B111E" stroke="#6F0B13" stroke-width="1.35" stroke-linejoin="round"></path><path d="M24 8.25L28.35 18.19L39.15 19.27L31.01 26.45L33.36 37.05L24 31.55L14.64 37.05L16.99 26.45L8.85 19.27L19.65 18.19L24 8.25Z" fill="none" stroke="#FFFFFF" stroke-width="0.8" stroke-linejoin="round" opacity="0.68"></path></svg>
+        <span style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 18px; font-weight: 600; letter-spacing: -0.02em; color: #5E1016;"><i class="wm-red">Red</i>StarTrust</span>
       </div>
       <span style="font-size: 12.5px; color: #5C6675;">ตัวเลข ชื่อโบรกเกอร์ และรางวัลบนหน้านี้เป็นข้อมูลตัวอย่างสำหรับงานออกแบบเท่านั้น</span>
     </div>
@@ -7746,7 +8184,9 @@ function rkRender(){
       '<td class="num">' + trendCell(r.series, {name:c.metric, unit:c.unit, lowerBetter:true, dp:2, bar:false}) + '</td>' +
       '<td class="num">' + trendCell(r.costSeries, {name:"ต้นทุนรวม", unit:c.costUnit, lowerBetter:true, dp:2, bar:false}) + '</td>' +
       '<td class="num">' + dimQuad(r, best) + '</td>' +
-      '<td class="rk-sticky"><span class="rk-cta" data-review="' + m.slug + '" tabindex="0" role="button">อ่านรีวิว &rarr;</span></td>' +
+      '<td class="rk-sticky"><span class="rk-acts">' +
+      '<span class="rk-cta" data-review="' + m.slug + '" tabindex="0" role="button">อ่านรีวิว &rarr;</span>' +
+      '<a class="rk-go" href="#" rel="nofollow noopener" aria-label="ไปที่ ' + m.n + ' (เปิดเว็บทางการของโบรก)">ไปที่ ' + m.n + '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9"></path><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"></path></svg></a></span></td>' +
     '</tr>';
   }).join("");
   }
@@ -7822,6 +8262,9 @@ function aiIcon(kind){
 var cmpN = 5;
 var cmpPick = [];   /* รายชื่อ id ที่ผู้ใช้เลือกเอง — null คือใช้ตามอันดับ */
 function cmpRender(){
+  /* บล็อก "เทียบกันตัวต่อตัว" ถูกถอดออกจากหน้าแล้ว (คำสั่ง Boss 1 ก.ย. 69)
+     ไม่มีที่ให้วาด ต้องหยุดตรงนี้ — ถ้าปล่อยผ่านจะ setInnerHTML ของ null แล้วสคริปต์ตายทั้งไฟล์ */
+  if (!document.getElementById("cmp-body")) { return; }
   cmpFixIso();
   var rows = cmpRows();
   cmpControls();
@@ -8277,6 +8720,12 @@ function pkMatch(c){
   return hit;
 }
 function pkCatList(){ return PICK_CATS.filter(pkMatch); }
+/* คำที่ผู้ใช้พิมพ์เอาไปต่อเป็น HTML ต้องหนีอักขระพิเศษก่อนเสมอ
+   ไม่งั้นพิมพ์ " หรือ < แล้วโครง HTML ของช่องค้นหาพังทั้งบล็อก */
+function pkEsc(s){
+  return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
 function renderPicks(){
   var host = document.getElementById("picks");
   if (!host) { return; }
@@ -8292,11 +8741,19 @@ function renderPicks(){
         '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#98A2B3" ' +
         'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
         '<circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4.2-4.2"></path></svg>' +
-        '<input id="pk-q" type="search" value="' + pkQ + '" autocomplete="off" ' +
+        '<input id="pk-q" type="search" value="' + pkEsc(pkQ) + '" autocomplete="off" ' +
         'placeholder="ค้นหาชื่อโบรกเกอร์ หรือหมวด เช่น กองทุน" ' +
         'aria-label="ค้นหาโบรกเกอร์หรือหมวด"></span>' +
       '<span class="pk-hits" id="pk-hits"></span></div>' +
-    '<div class="pk-wrap">' + (pkCatList().map(function(c){
+    '<div class="pk-wrap" id="pk-wrap">' + pkGridHTML() + '</div>';
+  pkHits();
+  var qel = document.getElementById("pk-q");
+  if (qel && qel.value !== pkQ) { qel.value = pkQ; }
+  paintLogos();
+}
+/* การ์ดผลลัพธ์อย่างเดียว — แยกออกมาเพื่อให้วาดใหม่ได้โดยไม่แตะช่องค้นหา */
+function pkGridHTML(){
+  return (pkCatList().map(function(c){
       var rows = topPicks(c.k, 3);
       if (!rows.length) {
         return '<div class="pk-col"><h2>' + c.title + '</h2>' +
@@ -8340,15 +8797,23 @@ function renderPicks(){
       return '<div class="pk-col"><h2>' + c.title + '</h2>' + big +
              '<div class="pk-rest">' + rest + '</div></div>';
     }).join("") || '<div class="pk-none">ไม่พบหมวดหรือโบรกเกอร์ที่ตรงกับคำค้นนี้<br>' +
-      'ลองพิมพ์ชื่อหมวด เช่น กองทุน คริปโต ฟิวเจอร์ส หรือพิมพ์ชื่อโบรกเกอร์') + '</div>';
+      'ลองพิมพ์ชื่อหมวด เช่น กองทุน คริปโต ฟิวเจอร์ส หรือพิมพ์ชื่อโบรกเกอร์</div>');
+}
+function pkHits(){
   var hits = document.getElementById("pk-hits");
-  if (hits) {
-    hits.innerHTML = (pkQ || "").trim()
-      ? 'พบ <b>' + pkCatList().length + '</b> หมวดที่ตรงกับ “' + pkQ + '”'
-      : 'แสดงครบทั้ง <b>' + PICK_CATS.length + '</b> หมวด';
-  }
-  var qel = document.getElementById("pk-q");
-  if (qel && qel.value !== pkQ) { qel.value = pkQ; }
+  if (!hits) { return; }
+  hits.innerHTML = (pkQ || "").trim()
+    ? 'พบ <b>' + pkCatList().length + '</b> หมวดที่ตรงกับ “' + pkEsc(pkQ) + '”'
+    : 'แสดงครบทั้ง <b>' + PICK_CATS.length + '</b> หมวด';
+}
+/* ระหว่างพิมพ์ให้วาดใหม่แค่การ์ดกับตัวนับ ห้ามวาดกล่องค้นหาใหม่เด็ดขาด —
+   ถ้าอินพุตถูกสร้างใหม่ทุกตัวอักษร การประกอบสระ/วรรณยุกต์ไทยจะหลุดลำดับ
+   และเคอร์เซอร์จะกระโดดไปท้ายช่องทุกครั้ง */
+function pkRefresh(){
+  var wrap = document.getElementById("pk-wrap");
+  if (!wrap) { renderPicks(); return; }
+  wrap.innerHTML = pkGridHTML();
+  pkHits();
   paintLogos();
 }
 
@@ -10602,9 +11067,7 @@ document.addEventListener("change", function(ev){
 document.addEventListener("input", function(ev){
   if (ev.target && ev.target.id === "pk-q") {
     pkQ = ev.target.value;
-    renderPicks();
-    var el = document.getElementById("pk-q");
-    if (el) { el.focus(); }
+    pkRefresh();
   }
 });
 document.addEventListener("click", function(ev){
@@ -10729,9 +11192,12 @@ var TOC_MINI = {
 
 /* หัวข้อ · คำอธิบาย · ภาพย่อ · ตัวนับที่จะไปนับของจริงจากหน้าเว็บ */
 var TOC = [
-  ["ea-suitehead", "EA ทั้ง 6 ตัวในชุด",
-   "แต่ละตัวทำอะไร เหมาะกับใคร กดเข้าไปอ่านต่อได้ทีละตัว",
-   "cards", "#ea-cards .eac-c", "ตัว"],
+  ["ea-suitehead", "6 ความสามารถใน EA ตัวเดียว",
+   "แต่ละความสามารถทำอะไร เหมาะกับใคร กดเข้าไปอ่านต่อได้ทีละข้อ",
+   "cards", "#ea-cards .eac-c", "ความสามารถ"],
+  ["ea-notify", "EA แจ้งคุณเมื่อไร",
+   "เหตุการณ์ที่ EA จะส่งข้อความหาคุณ และส่งทางไหน",
+   "notify", "#ea-notify .ean-c", "เหตุการณ์"],
   ["ea-mt5", "หน้าตาจริงตอนเปิดคู่ MT5",
    "จำลองหน้าจอ MetaTrader ว่า EA ไปโผล่ตรงไหนบ้าง",
    "mt5", "#ea-mt5 .m5w-n", "แถวราคา"],
@@ -10918,7 +11384,7 @@ var TOC = [
           '<b>' + s[0] + '</b><p>' + s[1] + '</p></div>';
       }).join("") + '</div>' +
       '<div class="ei-cta"><span class="cap">ใช้ฟรีสำหรับสมาชิก</span>' +
-        '<h3>รับ EA ทั้งชุด 6 ตัว</h3>' +
+        '<h3>รับ RedStar EA ครบทุกความสามารถ</h3>' +
         '<p>สมัครสมาชิกครั้งเดียว ดาวน์โหลดได้ทั้งหมด ไม่มีค่าใช้จ่ายและไม่มีการขายต่อ</p>' +
         '<a class="go" href="#/signup" data-nav="signup">รับฟรี — สมัครสมาชิก' +
         '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
@@ -10947,17 +11413,17 @@ var TOC = [
   if (sh) {
     sh.className = "es-head";
     sh.style.paddingTop = "44px";
-    sh.innerHTML = '<div class="tx"><span class="cap">RedStar EA Suite</span>' +
-      '<h3>EA ทั้ง 6 ตัวในชุด</h3>' +
-      '<p><b>เริ่มอ่านที่ตัวแรก</b> — Trade Analytics EA คือตัวหลักที่คนส่วนใหญ่ใช้ตัวเดียวก็พอ ' +
-      'อีกห้าตัวที่เหลือเป็นตัวเสริมสำหรับคนที่อยากดูลึกลงไปในแต่ละด้าน ' +
-      'ทุกตัวอยู่ในไฟล์ดาวน์โหลดชุดเดียวกัน</p></div>';
+    sh.innerHTML = '<div class="tx"><span class="cap">RedStar EA</span>' +
+      '<h3>EA ตัวเดียว ทำงาน 6 อย่าง</h3>' +
+      '<p><b>ติดตั้งไฟล์เดียว ได้ครบทั้ง 6 ความสามารถ</b> — ไม่ต้องเลือก ไม่ต้องลงเพิ่มทีหลัง ' +
+      'ความสามารถที่ 1 คือส่วนที่คนส่วนใหญ่ใช้ทุกวัน ' +
+      'อีกห้าข้อทำงานอยู่เบื้องหลัง และ<b>จะส่งข้อความหาคุณเมื่อเจอสิ่งที่ผิดปกติ</b></p></div>';
   }
 
   var host = document.getElementById("ea-cards");
   if (host) {
     /* ข้อมูลของสองส่วนนี้ประกาศทีหลังในไฟล์ จึงต้องรอให้สคริปต์อ่านจบก่อน */
-  setTimeout(function(){ eaCardsRender(); m5Render(); eaTocMeasure(); dgFillBroker(); }, 0);
+  setTimeout(function(){ eaCardsRender(); eaNotifyRender(); m5Render(); eaTocMeasure(); dgFillBroker(); }, 0);
   eaWatch();
   }
 
@@ -11379,11 +11845,11 @@ var AW_HOF = [
   {b:"ibkr", q:6, run:6, cat:"stocks", since:"Q1 2025"}
 ];
 var AW_METH = [
-  ["25%", "Execution", "เวลาส่งคำสั่งและอัตรารีโควต จากออร์เดอร์จริงที่ EA เก็บ"],
-  ["25%", "Spread & Cost", "ต้นทุนรวมต่อล็อต เทียบกับค่ากลางของหมวดเดียวกัน"],
-  ["20%", "Liquidity", "ความลึกของสภาพคล่อง สลิปเพจ และการรีโควตช่วงข่าว"],
-  ["15%", "Fund Safety", "ใบอนุญาต การแยกบัญชี กองทุนชดเชย สถิติการถอน"],
-  ["15%", "Support", "เวลาตอบจริง อัตราการแก้เรื่องจนจบ และความพึงพอใจของผู้ใช้"]
+  ["Execution", "จับเวลาส่งคำสั่งทุกออร์เดอร์จริงที่ EA เก็บ · นับรีโควตและออร์เดอร์ที่ถูกปฏิเสธ · เทียบช่วงปกติกับช่วงข่าว"],
+  ["Spread &amp; Cost", "วัดสเปรดจริงทุกนาทีทำการ · รวมค่าคอมมิชชันและสวอปเป็นต้นทุนต่อล็อต · ทวนกับตารางค่าธรรมเนียมที่ประกาศไว้"],
+  ["Liquidity", "วัดสลิปเพจทั้งฝั่งได้และเสีย · ดูความลึกของราคาที่รับได้จริง · ทดสอบตอนตลาดผันผวน"],
+  ["Fund Safety", "ตรวจใบอนุญาตกับหน่วยงานกำกับโดยตรง · ทดสอบฝาก-ถอนจริงและจับเวลา · อ่านสัญญาลูกค้าและนโยบายแยกบัญชี"],
+  ["Support", "ส่งคำถามจริงโดยไม่บอกว่าเป็นผู้ตรวจ · จับเวลาตอบทุกช่องทาง · ทดสอบตอนเกิดปัญหาจริง ไม่ใช่คำถามทั่วไป"]
 ];
 function awCat(k){
   for (var i = 0; i < AW_CATS.length; i++) { if (AW_CATS[i].k === k) { return AW_CATS[i]; } }
@@ -11585,6 +12051,7 @@ var AW_VOICE = [
    พอ track เลื่อนไปถึง -50% ชุดที่สองจะมาอยู่ตำแหน่งเดิมของชุดแรกพอดี ภาพจึงต่อเนียนไม่มีรอยต่อ
    ชุดที่สองเป็นภาพซ้ำ ไม่ใช่ข้อมูลใหม่ จึงใส่ aria-hidden ไว้ กันโปรแกรมอ่านหน้าจออ่านซ้ำสองรอบ */
 var awHofPaused = false;
+var awHofLight = false;
 function awHofCards(dup){
   return AW_HOF.map(function(r, hi){
     var c = awCat(r.cat);
@@ -11598,20 +12065,55 @@ function awHofCards(dup){
       '<span class="aw-hxy"><i>ตั้งแต่ ' + r.since + '</i><i>รวม ' + r.q + ' ไตรมาส</i></span></a>';
   }).join("");
 }
+function awHofThemeIcon(light){
+  /* สว่างอยู่ = ขึ้นรูปพระจันทร์ (กดแล้วจะเป็นมืด) มืดอยู่ = ขึ้นรูปดวงอาทิตย์ */
+  var a = 'width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+    'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"';
+  return light
+    ? '<svg ' + a + '><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"></path></svg>'
+    : '<svg ' + a + '><circle cx="12" cy="12" r="4.2"></circle>' +
+      '<path d="M12 2.6v2M12 19.4v2M2.6 12h2M19.4 12h2M5.4 5.4l1.4 1.4M17.2 17.2l1.4 1.4' +
+      'M18.6 5.4l-1.4 1.4M6.8 17.2l-1.4 1.4"></path></svg>';
+}
+function awHofThemeBtn(){
+  return '<button type="button" class="aw-hofpz sw" data-hoftheme="1" aria-pressed="' +
+    awHofLight + '" aria-label="สลับโทนสีของแผง Hall of Fame">' +
+    awHofThemeIcon(awHofLight) +
+    '<span>' + (awHofLight ? "มืด" : "สว่าง") + '</span></button>';
+}
 function awHofRow(){
-  return '<button type="button" class="aw-hofpz" data-hofpause="1" aria-pressed="' +
-      awHofPaused + '">' + (awHofPaused ? "เล่น" : "หยุด") + '</button>' +
+  return '<div class="aw-hofbz">' + awHofThemeBtn() +
+    '<button type="button" class="aw-hofpz" data-hofpause="1" aria-pressed="' +
+      awHofPaused + '">' + (awHofPaused ? "เล่น" : "หยุด") + '</button></div>' +
     '<div class="aw-hofx' + (awHofPaused ? " off" : "") + '" id="aw-hofx">' +
       '<div class="aw-hoftrack">' + awHofCards(false) + awHofCards(true) + '</div></div>';
 }
+/* แผง Hall of Fame มีสองที่ (หน้าแรก + หน้า Awards)
+   กดที่หนึ่งต้องเปลี่ยนทั้งสอง ไม่งั้นสลับหน้าแล้วโทนจะไม่ตรงกัน */
+document.addEventListener("click", function(ev){
+  var b = ev.target.closest("[data-hoftheme]");
+  if (!b) { return; }
+  awHofLight = !awHofLight;
+  Array.prototype.forEach.call(document.querySelectorAll(".aw-hofw"), function(w){
+    w.classList.toggle("lt", awHofLight);
+  });
+  Array.prototype.forEach.call(document.querySelectorAll("[data-hoftheme]"), function(t){
+    t.innerHTML = awHofThemeIcon(awHofLight) +
+      '<span>' + (awHofLight ? "มืด" : "สว่าง") + '</span>';
+    t.setAttribute("aria-pressed", String(awHofLight));
+  });
+});
 document.addEventListener("click", function(ev){
   var b = ev.target.closest("[data-hofpause]");
   if (!b) { return; }
   awHofPaused = !awHofPaused;
-  var sc = document.getElementById("aw-hofx");
-  if (sc) { sc.classList.toggle("off", awHofPaused); }
-  b.textContent = awHofPaused ? "เล่น" : "หยุด";
-  b.setAttribute("aria-pressed", String(awHofPaused));
+  Array.prototype.forEach.call(document.querySelectorAll(".aw-hofx"), function(sc){
+    sc.classList.toggle("off", awHofPaused);
+  });
+  Array.prototype.forEach.call(document.querySelectorAll("[data-hofpause]"), function(t){
+    t.textContent = awHofPaused ? "เล่น" : "หยุด";
+    t.setAttribute("aria-pressed", String(awHofPaused));
+  });
 });
 
 function awVoices(){
@@ -11716,11 +12218,11 @@ function awVoices(){
   if (mt) {
     mt.className = "aw-sec";
     mt.innerHTML = '<div class="aw-shd"><div class="tx"><p class="aw-cap">Methodology</p>' +
-      '<h2 class="aw-h2">น้ำหนักที่ใช้ตัดสิน</h2>' +
-      '<p>คะแนนทุกตัวมาจากการวัด ไม่มีคะแนนจากความเห็นหรือการโหวตของกรรมการ</p></div>' +
+      '<h2 class="aw-h2">เราตรวจอะไรบ้าง</h2>' +
+      '<p>ดาวไม่ได้มาจากการถ่วงน้ำหนักคะแนน แต่มาจากการผ่านครบทุกข้อ — ห้าหมวดข้างล่างคือสิ่งที่เราลงมือตรวจ ทุกข้อวัดจากการใช้งานจริง ไม่มีข้อไหนมาจากความเห็นหรือการโหวตของกรรมการ</p>' +
       '<span class="rt"><a class="aw-btn ghost" href="#/criteria">ดูเกณฑ์การให้ดาว →</a></span></div>' +
       '<div class="aw-meth">' + AW_METH.map(function(m){
-        return '<div class="aw-mi"><b>' + m[0] + '</b><em>' + m[1] + '</em><span>' + m[2] + '</span></div>';
+        return '<div class="aw-mi"><b>' + m[0] + '</b><span>' + m[1] + '</span></div>';
       }).join("") + '</div>';
   }
 
@@ -11791,7 +12293,7 @@ function w26Render(){
   var QO = AW_QS.map(function(q){ return [q, q]; });
   var seen = {};
   AW_WIN.forEach(function(w){ if (!seen[w.lic]) { seen[w.lic] = 1; LICO.push([w.lic, w.lic]); } });
-  function fld(id, lb, opts){
+function fld(id, lb, opts){
     return '<label class="w26-f"><span>' + lb + '</span><select id="' + id + '">' +
       opts.map(function(o){ return '<option value="' + o[0] + '">' + o[1] + '</option>'; }).join("") +
       '</select></label>';
@@ -11818,6 +12320,26 @@ function w26Render(){
 })();
 
 /* ── PAGE 3 — /verify/RS-2026-000128 ── */
+/* แถวปุ่มมุมขวาล่างของบล็อกคะแนน (คำสั่ง Boss 3 ก.ย. 69)
+ ปุ่มไปที่โบรกเป็น href="#" เพราะ META ยังไม่มีเว็บทางการของโบรก */
+function vfActions(W){
+var m = (typeof META !== "undefined" && W && W.b) ? META[W.b] : null;
+if (!m) { return ""; }
+var arrow = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" '
+  + 'stroke="currentColor" stroke-width="2.4" stroke-linecap="round" '
+  + 'stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"></path></svg>';
+var out = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" '
+  + 'stroke="currentColor" stroke-width="2.2" stroke-linecap="round" '
+  + 'stroke-linejoin="round" aria-hidden="true">'
+  + '<path d="M14 4h6v6M20 4l-9 9"></path>'
+  + '<path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"></path></svg>';
+return '<div class="vf-acts">' +
+  '<a class="vf-go" href="#" rel="nofollow noopener" '
+    + 'aria-label="ไปที่ ' + m.n + ' (เปิดเว็บทางการของโบรก)">' +
+    'ไปที่ ' + m.n + out + '</a>' +
+  '<a class="vf-rv" href="#/brokerreview" data-review="' + m.slug + '">' +
+    'อ่านรีวิว' + arrow + '</a></div>';
+}
 var VF_DIM = [["Execution", 96.8, "ส่งคำสั่งเฉลี่ย 34 ms"],
   ["Spread & Cost", 95.2, "ต้นทุนรวม $7.10 / ล็อต"],
   ["Liquidity", 97.5, "สลิปเพจบวก 63% ของคำสั่ง"],
@@ -11891,7 +12413,7 @@ var VF_TL = [
         return '<div class="vf-bar"><div class="lb"><span>' + d[0] + '</span><i>' + d[2] + '</i>' +
           '<b>' + d[1].toFixed(1) + '</b></div><div class="vf-tr">' +
           '<i class="' + (d[1] >= 96 ? "gold" : "") + '" data-vfbar="' + d[1] + '"></i></div></div>';
-      }).join("") + '</div>';
+      }).join("") + '</div>' + vfActions(W) + '';
   }
 
   var wy = document.getElementById("vf-why");
@@ -11930,7 +12452,7 @@ var VF_TL = [
       '<h2 class="aw-h2">เกณฑ์ที่ใช้กับรางวัลนี้</h2></div>' +
       '<span class="rt"><a class="aw-btn out" href="#/criteria">เกณฑ์การให้ดาวเต็ม</a></span></div>' +
       '<div class="aw-meth">' + AW_METH.map(function(m){
-        return '<div class="aw-mi"><b>' + m[0] + '</b><em>' + m[1] + '</em><span>' + m[2] + '</span></div>';
+        return '<div class="aw-mi"><b>' + m[0] + '</b><span>' + m[1] + '</span></div>';
       }).join("") + '</div>' +
       '<div style="margin-top:32px">' + awDemo("หน้านี้เป็น <b>ต้นแบบงานออกแบบ</b> เลขใบรับรอง คะแนน และรางวัลทั้งหมดเป็นข้อมูลสมมติ ยังไม่มีการออกรางวัลจริง และ QR ยังสแกนไม่ได้") + '</div>';
   }
@@ -12438,6 +12960,94 @@ function brFind(){
   }
   return "icm";
 }
+/* ปุ่มเปิดบัญชีของการ์ดคะแนนหน้ารีวิว
+   href เป็น "#" เพราะ META ยังไม่มีช่องเว็บทางการของโบรก — ตอนใช้จริงต้องเติม URL ทางการรายโบรก
+   และต้องเป็นลิงก์ธรรมดา ไม่มีพารามิเตอร์ติดตาม ตาม CORE-PILLAR ที่ว่ารายได้ต้องไม่ผูกกับผลคะแนน */
+/* เรื่องร้องเรียนของโบรกรายนี้ — ดึงจากชุดเดียวกับหน้า Broker Alerts (`ALERTS_D`)
+   โบรกจริงที่ถูกรีวิวยังไม่มีเคสในชุดนั้น จึงหยิบเคสมาด้วย seed() ของชื่อโบรก
+   ค่าจึงคงที่ทุกครั้งที่เปิด ไม่สุ่มใหม่
+   ⚠ เคสทั้งหมดเป็นข้อมูลสมมติ มีแถบกำกับใต้การ์ด — ดูหัวข้อ 9 ใน STATE.md */
+var BR_CN = 4;
+function brCases(m){
+  if (typeof ALERTS_D === "undefined" || !m || !m.n) { return []; }
+  var own = ALERTS_D.filter(function(a){ return a.b === m.n; });
+  if (own.length) { return own; }
+  /* seed() คืนค่าทศนิยม 0–1 ต้องคูณแล้วปัดเป็นจำนวนเต็มก่อน
+     ไม่งั้นดัชนีเป็นทศนิยม ALERTS_D[1.7] = undefined แล้วการ์ดจะว่างเงียบ ๆ ไม่มี error */
+  var k = Math.floor(seed(m.n) * ALERTS_D.length), out = [];
+  for (var i = 0; i < BR_CN && i < ALERTS_D.length; i++) {
+    var src = ALERTS_D[(k + i * 3) % ALERTS_D.length], c = {};
+    if (!src || !src.st) { continue; }
+    for (var p in src) { if (Object.prototype.hasOwnProperty.call(src, p)) { c[p] = src[p]; } }
+    c.b = m.n;
+    out.push(c);
+  }
+  return out;
+}
+function brCaseCards(list, m, dup){
+  var LB = {wait: "รอโบรกเกอร์ชี้แจง",
+            replied: "ชี้แจงแล้ว",
+            closed: "ปิดเรื่องแล้ว"};
+  return list.map(function(a){
+    var body = a.r
+      ? '<div class="br-ccr"><div class="who"><i>●</i>' +
+        'ตัวแทน ' + a.b +
+        ' ชี้แจง · ' + a.r.d + '</div>' +
+        '<p>' + a.r.p + '</p></div>'
+      : '<p class="br-ccn">' + (a.n || "") + '</p>';
+    return '<a class="br-cc" href="#/alerts" data-nav="alerts"' +
+      (dup ? ' aria-hidden="true" tabindex="-1"' : '') + '>' +
+      '<div class="br-cct"><span class="br-cst ' + a.st + '">' + (LB[a.st] || a.st) + '</span>' +
+      '<span class="br-ccd">' + a.d + '</span></div>' +
+      '<strong>' + a.t + '</strong>' + body + '</a>';
+  }).join("");
+}
+var brCasePaused = false;
+function brCaseRow(m){
+  var list = brCases(m);
+  if (!list.length) { return ""; }
+  var done = list.filter(function(a){ return a.st !== "wait"; }).length;
+  return '<section class="br-cs">' +
+    '<div class="br-csh"><div>' +
+      '<h3>การแก้ไขปัญหาของ ' + m.n + '</h3>' +
+      '<p>เรื่องที่มีคนร้องเรียนเข้ามา ' +
+      'และคำชี้แจงที่ตัวแทนโบรกส่งกลับมา — ' +
+      '<b>' + done + ' จาก ' + list.length + ' เรื่อง</b> ' +
+      'มีความคืบหน้าแล้ว · กดการ์ดเพื่อดูที่หน้า Broker Alerts</p></div>' +
+      '<button type="button" class="br-csp" data-brcpause="1" aria-pressed="' + brCasePaused + '">' +
+      (brCasePaused ? "เล่น" : "หยุด") + '</button></div>' +
+    '<div class="br-cx' + (brCasePaused ? " off" : "") + '" id="br-cx">' +
+      '<div class="br-ctrack">' + brCaseCards(list, m, false) + brCaseCards(list, m, true) +
+      '</div></div>' +
+    '<p class="br-csn">เรื่องร้องเรียนและคำชี้แจงทั้งหมดในแถบนี้' +
+    '<b>เป็นข้อมูลสมมติเพื่องานออกแบบ</b> ' +
+    'ยังไม่ใช่เรื่องร้องเรียนจริงของ ' + m.n + '</p></section>';
+}
+/* ปุ่มหยุด/เล่นของแถบการ์ดวิ่ง */
+document.addEventListener("click", function(ev){
+  var b = ev.target.closest("[data-brcpause]");
+  if (!b) { return; }
+  ev.preventDefault();
+  brCasePaused = !brCasePaused;
+  Array.prototype.forEach.call(document.querySelectorAll(".br-cx"), function(x){
+    x.classList.toggle("off", brCasePaused);
+  });
+  Array.prototype.forEach.call(document.querySelectorAll("[data-brcpause]"), function(t){
+    t.textContent = brCasePaused ? "เล่น" : "หยุด";
+    t.setAttribute("aria-pressed", String(brCasePaused));
+  });
+});
+function brOpenBtn(m){
+  var nm = m && m.n ? m.n : "โบรกนี้";
+  return '<a class="br-open" href="#" rel="nofollow noopener" ' +
+    'aria-label="ไปที่ ' + nm +
+    ' (เปิดเว็บทางการของโบรก)">' +
+    '<span>ไปที่ ' + nm + '</span>' +
+    '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+    'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+    '<path d="M14 4h6v6M20 4l-9 9"></path>' +
+    '<path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"></path></svg></a>';
+}
 function brRender(){
   var head = document.getElementById("br-head");
   if (!head) { return; }
@@ -12458,16 +13068,13 @@ function brRender(){
 
   head.innerHTML =
     '<nav class="br-crumb" aria-label="เส้นทาง"><a href="#/home" data-nav="home">หน้าแรก</a>' +
-      '<span aria-hidden="true">/</span><a href="#/review" data-nav="review">รีวิวโบรกเกอร์</a>' +
+      '<span aria-hidden="true">/</span><a href="#/rating" data-nav="rating">ตารางอันดับ</a>' +
       '<span aria-hidden="true">/</span><b style="color:#101828">' + m.n + '</b></nav>' +
     '<div class="br-chips">' + logoSpan(m, 30, 8) +
       '<span class="br-chip live">เปิดใช้งาน · ' + m.reg + '</span>' +
       '<span class="br-chip off">' + awardStar(12) + ' Official Team Review</span>' +
       '<span class="br-chip up">อัปเดต ' + AW_PERIOD + '</span></div>' +
-    '<h1 class="br-h1">รีวิว <i>' + m.n + '</i> — อ่านให้จบก่อนเปิดบัญชี</h1>' +
-    '<p class="br-lead">ศูนย์รวมข้อมูล ' + m.n + ' ฉบับสมบูรณ์ — สเปรด ค่าธรรมเนียม ประเภทบัญชี ' +
-      'ความปลอดภัยของเงิน การฝาก–ถอน พร้อมเครื่องมือคำนวณต้นทุน ' +
-      'ทุกตัวเลขในหน้านี้มาจากชุดข้อมูลเดียวกับตารางอันดับ ไม่ได้เขียนแยกกัน</p>' +
+    '<h1 class="br-h1">รีวิว <i>' + m.n + '</i></h1>' +
     '<p class="br-by"><span>รีวิวโดย <b>ทีม RedStarTrust</b></span><span>·</span>' +
       '<span>อ่าน 12 นาที</span><span>·</span>' +
       '<span>ตรวจครบ 3,000 ข้อ รอบ ' + AW_PERIOD + '</span><span>·</span>' +
@@ -12499,19 +13106,17 @@ function brRender(){
         '<div class="br-fact"><span>ฝากขั้นต่ำ</span><b>เริ่ม $10</b></div>' +
         '<div class="br-fact"><span>แพลตฟอร์ม</span><b>MT4 · MT5 · App</b></div></div>' +
       '<div class="br-scf"><a class="btn-solid" href="#/verify">ดูใบรับรองดาว</a>' +
+        brOpenBtn(m) +
         '<p class="br-disc">คะแนนและดาวมาจากการตรวจของทีมเราเอง ' +
-        '<b>ไม่มีการรับเงินเพื่อเปลี่ยนอันดับ</b> และหน้านี้ไม่มีลิงก์สมัครที่ได้ค่าคอมมิชชั่น</p></div>' +
+        '<b>ไม่มีการรับเงินเพื่อเปลี่ยนอันดับ</b> · ปุ่มไปที่โบรกเป็นลิงก์ไปเว็บทางการของโบรกโดยตรง ' +
+        '<b>ไม่ใช่ลิงก์แนะนำที่ได้ค่าคอมมิชชั่น</b></p></div>' +
       '</div>';
   }
 
   var main = document.getElementById("br-main");
   if (main) {
     main.innerHTML =
-      '<div class="br-kpi">' +
-        '<div class="br-k"><span>ปริมาณเทรดต่อเดือน</span><b>≈ $130,000 ล้าน/วัน</b></div>' +
-        '<div class="br-k"><span>บัญชีที่ส่งข้อมูลให้เรา</span><b>412 บัญชี</b></div>' +
-        '<div class="br-k"><span>เวลาถอนเงินเฉลี่ย</span><b>1 ชม. 12 น.</b></div>' +
-        '<div class="br-k"><span>ความเร็วส่งคำสั่ง</span><b>34 ms</b></div></div>' +
+      brCaseRow(m) +
 
       '<section class="br-sec" id="brs-cost"><span class="cap">คะแนนแยกหมวด</span>' +
         '<h2>เราให้คะแนน ' + m.n + ' อย่างไร</h2>' +
@@ -13087,6 +13692,41 @@ function rsBlock(b){
   return '<div class="rs-blk"><div class="rs-blkh"><b>' + b.t + '</b>' +
     '<span class="src">ที่มา: ' + b.src + '</span></div>' + body + '</div>';
 }
+/* แผงข่าวเกี่ยวกับโบรกรายนี้ ใต้สารบัญ (คำสั่ง Boss 3 ก.ย. 69)
+   ใช้เกณฑ์ความเกี่ยวข้องชุดเดียวกับ brArts()
+   ชื่อในหัวเรื่อง +6 · ในเรื่องย่อ +4 · ในเนื้อหา +3 · หมวดเดียวกัน +1 */
+function rsNews(m){
+  if (typeof ARTICLES === "undefined" || !m || !m.n) { return ""; }
+  var nm = String(m.n).toLowerCase();
+  var scored = ARTICLES.map(function(a, i){
+    var body = (typeof ART_BODY !== "undefined" && ART_BODY[i])
+      ? JSON.stringify(ART_BODY[i]).toLowerCase() : "";
+    var sc = 0;
+    if (String(a.t).toLowerCase().indexOf(nm) >= 0) { sc += 6; }
+    if (String(a.x).toLowerCase().indexOf(nm) >= 0) { sc += 4; }
+    if (body.indexOf(nm) >= 0) { sc += 3; }
+    if (typeof brCat !== "undefined" && a.c === brCat) { sc += 1; }
+    return {a: a, i: i, s: sc};
+  }).sort(function(p, q){ return q.s - p.s || Date.parse(q.a.d) - Date.parse(p.a.d); });
+  var direct = scored.filter(function(x){ return x.s >= 3; }).length;
+  var list = scored.slice(0, 4);
+  if (!list.length) { return ""; }
+  return '<div class="rs-news">' +
+    '<div class="rs-nwh"><b>ข่าวเกี่ยวกับ ' + m.n + '</b>' +
+      '<span>' + (direct
+        ? direct + ' บทที่เอ่ยถึงโดยตรง'
+        : 'ยังไม่มีบทที่เอ่ยถึงรายนี้') + '</span></div>' +
+    list.map(function(x){
+      var a = x.a;
+      return '<a class="rs-nw" href="#" data-article="' + x.i + '">' +
+        '<span class="dt">' + (typeof artDate === "function" ? artDate(a.d) : a.d) +
+        ' · ' + (typeof catShort === "function" ? catShort(a.c) : a.c) + '</span>' +
+        '<b>' + a.t + '</b>' +
+        '<span class="rs-nwpop" role="tooltip">' + a.x + '</span></a>';
+    }).join("") +
+    '<a class="rs-nwall" href="#/news" data-nav="news">ดูข่าวทั้งหมด →</a>' +
+    '<p class="rs-nwn">บทความทั้งหมดเป็นเนื้อหาสมมติเพื่องานออกแบบ</p></div>';
+}
 function rsRender(){
   var head = document.getElementById("rs-head");
   if (!head) { return; }
@@ -13102,7 +13742,7 @@ function rsRender(){
 
   head.innerHTML =
     '<nav class="br-crumb" aria-label="เส้นทาง"><a href="#/home" data-nav="home">หน้าแรก</a>' +
-      '<span aria-hidden="true">/</span><a href="#/review" data-nav="review">รีวิวโบรกเกอร์</a>' +
+      '<span aria-hidden="true">/</span><a href="#/rating" data-nav="rating">ตารางอันดับ</a>' +
       '<span aria-hidden="true">/</span><a href="#" data-rsback="1">' + m.n + '</a>' +
       '<span aria-hidden="true">/</span><b style="color:#101828">' + s[2] + '</b></nav>' +
     '<span class="rs-no">หัวข้อที่ ' + (i + 1) + ' จาก ' + BR_SECS.length + '</span>' +
@@ -13138,17 +13778,19 @@ function rsRender(){
 
   var side = document.getElementById("rs-side");
   if (side) {
-    side.innerHTML = '<div class="rs-toc"><div class="rs-toch">หัวข้อทั้งหมด</div>' +
+    /* คะแนนขึ้นก่อนสารบัญ (คำสั่ง Boss 1 ก.ย. 69) */
+    side.innerHTML =
+      '<div class="rs-mini"><span class="n">' + sc.toFixed(1) + '</span>' +
+        '<span class="of"> / 10</span>' +
+        '<span class="st">' + awStarRow(st, 15) + '</span>' +
+        '<a class="btn-ghost" href="#" data-rsback="1">กลับหน้ารีวิวรวม</a></div>' +
+      '<div class="rs-toc"><div class="rs-toch">หัวข้อทั้งหมด</div>' +
       BR_SECS.map(function(x, j){
         return '<a class="rs-ti" href="#" data-rssec="' + x[0] + '"' +
           (j === i ? ' aria-current="true"' : '') + '>' +
           '<span class="n">' + (j + 1 < 10 ? "0" : "") + (j + 1) + '</span>' +
           '<span><b>' + x[2] + '</b><span>' + x[1] + '</span></span></a>';
-      }).join("") + '</div>' +
-      '<div class="rs-mini"><span class="n">' + sc.toFixed(1) + '</span>' +
-        '<span class="of"> / 10</span>' +
-        '<span class="st">' + awStarRow(st, 15) + '</span>' +
-        '<a class="btn-ghost" href="#" data-rsback="1">กลับหน้ารีวิวรวม</a></div>';
+      }).join("") + '</div>' + rsNews(m);
   }
 
   var foot = document.getElementById("rs-foot");
@@ -13348,20 +13990,33 @@ function dgBest(){
   var rows = topPicks("fx", 1);
   if (!rows || !rows.length) { return null; }
   var m = META[rows[0].r.id];
-  return m ? {slug: m.slug, name: m.n} : null;
+  return m ? {slug: m.slug, name: m.n, m: m} : null;
 }
 function dgFillBroker(){
   var b = dgBest();
   if (!b) { return; }
+  /* ใส่โลโก้คู่ชื่อโบรก — ถ้า logoSpan ยังไม่ถูกนิยาม ให้แสดงชื่ออย่างเดียวไปก่อน */
+  var lg = (typeof logoSpan === "function" && b.m) ? logoSpan(b.m, 20, 5) : "";
   var row = document.querySelector("[data-dgbest]");
-  if (row) { row.textContent = b.name + " — อันดับ 1"; }
+  if (row) {
+    row.innerHTML = lg + '<span>' + b.name +
+      " — อันดับ 1" + '</span>';
+    row.classList.add("dg-wlogo");
+  }
   var mv = document.querySelector("[data-dgmove]");
-  if (mv) { mv.textContent = "ย้ายไป " + b.name; }
+  if (mv) {
+    /* โลโก้อยู่ขวาและใหญ่ขึ้น (คำสั่ง Boss 3 ก.ย. 69) */
+    mv.innerHTML = '<span>' + "ย้ายไป " + b.name + '</span>' +
+      ((typeof logoSpan === "function" && b.m) ? logoSpan(b.m, 40, 10) : "");
+    mv.classList.add("dg-mv");
+  }
   var go = document.querySelector("[data-dgreview]");
   if (go) {
     go.setAttribute("data-review", b.slug);
     go.setAttribute("href", "/broker/" + b.slug + "/review");
   }
+  /* logoSpan วางแค่ placeholder [data-logo] ต้องเรียก paintLogos ให้วาดรูปจริง */
+  if (typeof paintLogos === "function") { paintLogos(); }
 }
 
 function eaTocMeasure(){
@@ -13390,6 +14045,73 @@ function eaTocMeasure(){
   }
 }
 
+/* ซอง EA ตัวเดียว — เดิมแยกเป็น 6 ตัว (คำสั่ง Boss 1 ก.ย. 69)
+   ข้อมูลเดิมใช้ ph เป็น "Phase 1..4" ตอนนี้เป็นความสามารถที่ 1..6 ของ EA ตัวเดียว */
+function eaCapLabel(ix){
+  return "ความสามารถที่ " + (ix + 1);
+}
+/* สิ่งที่ EA แจ้งกลับมาหาผู้ใช้
+   ⚠ เงื่อนไขการแจ้งทั้งหมดเป็นข้อเสนอของงานออกแบบ ต้องให้ฝ่ายพัฒนา EA ยืนยันก่อน (หัวข้อ 31 ใน STATE.md) */
+var EA_NOTI = [
+  {k:"cost", c:"hi", t:"ต้นทุนต่อออร์เดอร์สูงกว่าปกติ",
+   d:"ออร์เดอร์ล่าสุดมีต้นทุนรวม <b>$14.20</b> ต่อล็อต สูงกว่าค่ากลาง 30 วันของคุณ 41%",
+   w:"ทันที"},
+  {k:"spread", c:"md", t:"สเปรดกว้างผิดปกติช่วงข่าว",
+   d:"ช่วงประกาศตัวเลข สเปรด EURUSD กว้างเป็น <b>3.4 pip</b> นาน 8 นาที — นานกว่าค่ากลางของโบรกนี้",
+   w:"ทันที"},
+  {k:"health", c:"hi", t:"โบรกที่คุณใช้มีสัญญาณผิดปกติ",
+   d:"พบการรีโควตถี่ขึ้นผิดปกติในช่วง 24 ชม. ที่ผ่านมา",
+   w:"ทันที"},
+  {k:"community", c:"md", t:"มีเรื่องเตือนภัยจากผู้ใช้คนอื่น",
+   d:"มีผู้ใช้ <b>11 ราย</b> แจ้งเรื่องเดียวกันใน 9 วัน — ทีมตรวจรับเรื่องแล้ว",
+   w:"ทันที"},
+  {k:"withdraw", c:"hi", t:"คำสั่งถอนช้ากว่าที่โบรกแจ้งไว้",
+   d:"คำสั่งถอนของคุณค้าง <b>38 ชม.</b> จากที่โบรกระบุไว้ 24 ชม. — บันทึกเป็นหลักฐานแล้ว",
+   w:"ทันที"},
+  {k:"summary", c:"lo", t:"สรุปต้นทุนรายเดือน พร้อมหลักฐาน",
+   d:"สรุปต้นทุนทั้งเดือน เทียบค่ากลางหมวด พร้อมไฟล์หลักฐานที่ยื่นเรื่องได้ทันที",
+   w:"ทุกสิ้นเดือน"}
+];
+var EA_CHAN = [
+  ["บนกราฟ MetaTrader", "กล่องข้อความเด้งขึ้นตรงมุมกราฟ ไม่บังออร์เดอร์"],
+  ["หน้าสมาชิกบนเว็บ", "รวมทุกเรื่องไว้ที่เดียว กดดูย้อนหลังได้"],
+  ["อีเมลสรุป", "ส่งเฉพาะเรื่องสำคัญและสรุปรายเดือน"]
+];
+function eaNotifyRender(){
+  var host = document.getElementById("ea-notify");
+  if (!host) { return; }
+  host.className = "ean";
+  var LB = {hi: "ด่วน", md: "ควรรู้", lo: "สรุป"};
+  host.innerHTML =
+    '<div class="ean-h"><div><span class="cap">Notifications</span>' +
+      '<h3>EA แจ้งคุณเมื่อไร</h3>' +
+      '<p>คุณไม่ต้องนั่งเฝ้าหน้าจอ — ' +
+      '<b>EA ตัวเดียวนี้เฝ้าดูให้ทั้ง 6 เรื่อง</b> ' +
+      'แล้วส่งข้อความมาหาเมื่อเจอสิ่งที่ผิดปกติ</p></div></div>' +
+    '<div class="ean-g">' + EA_NOTI.map(function(n, ix){
+      return '<div class="ean-c ' + n.c + '">' +
+        '<div class="ean-t"><span class="ean-b ' + n.c + '">' + (LB[n.c] || "") + '</span>' +
+        '<span class="ean-cap">' + eaCapLabel(ix) + '</span></div>' +
+        '<strong>' + n.t + '</strong><p>' + n.d + '</p>' +
+        '<span class="ean-w">เช็คทุก ' + n.w + '</span></div>';
+    }).join("") + '</div>' +
+    '<div class="ean-ch">' + EA_CHAN.map(function(c){
+      return '<div class="ean-chc"><b>' + c[0] + '</b><span>' + c[1] + '</span></div>';
+    }).join("") + '</div>' +
+    '<div class="ean-cp"><div class="tx">' +
+      '<b>เจอปัญหาแล้วร้องเรียนได้จากใน EA เลย</b>' +
+      '<p>กดปุ่มร้องเรียนบนแผง EA ได้ทันทีที่เจอเรื่อง — EA จะแนบบันทึกที่เก็บไว้ให้เอง ทั้งเวลาส่งคำสั่ง ต้นทุนที่วัดได้ และเวลาถอนเงิน คุณไม่ต้องมานั่งรวบรวมหลักฐานเอง</p>' +
+      '<div class="ean-cs">' +
+        '<span><i>1</i>กดร้องเรียนบนแผง EA</span>' +
+        '<span><i>2</i>EA แนบหลักฐานที่บันทึกไว้ให้อัตโนมัติ</span>' +
+        '<span><i>3</i>ทีมตรวจรับเรื่อง แล้วส่งให้โบรกชี้แจง</span>' +
+        '<span><i>4</i>ติดตามสถานะได้ที่หน้าเรื่องร้องเรียนของคุณ</span>' +
+      '</div>' +
+      '<a class="ean-cgo" href="#/usercase" data-nav="usercase">ดูหน้าเรื่องร้องเรียนของฉัน</a></div></div>' +
+    '<p class="ean-n">เงื่อนไขการแจ้งเตือนและตัวเลขทั้งหมดในส่วนนี้' +
+    '<b>เป็นข้อเสนอของงานออกแบบ</b> ' +
+    'ต้องให้ฝ่ายพัฒนา EA ยืนยันว่าตรวจจับได้จริงก่อนขึ้นเว็บจริง</p>';
+}
 function eaCardsRender(){
   var host = document.getElementById("ea-cards");
   if (!host) { return; }
@@ -13407,7 +14129,7 @@ function eaCardsRender(){
         }).join("") +
         '<div class="eac-popf"><b>ติดตั้งแล้วเห็นแบบนี้</b> — ' +
         'แผงนี้จะไปเกาะบนกราฟ MT5 ของคุณ ย้ายตำแหน่งและปิดได้</div></div>' +
-      '<div class="eac-h"><span class="ph">' + e.ph + '</span>' +
+      '<div class="eac-h"><span class="ph">' + eaCapLabel(ix) + '</span>' +
         '<span class="st">' + awardStar(22) + '</span></div>' +
       '<div class="eac-b"><h4>' + e.n + '</h4>' +
         '<p class="eac-sell">' + s.sell + '</p>' +
@@ -13420,11 +14142,7 @@ function eaCardsRender(){
         'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
         '<path d="M4.5 3.5v13l3.4-3.2h6.4z"></path><path d="M11 14.5l3.6 6 2.6-1.4-3.5-5.9"></path>' +
         '</svg>ชี้เมาส์เพื่อดูว่าติดตั้งแล้วโชว์อะไร</span></div>' +
-      '<div class="eac-f"><button type="button" class="eac-go" data-eaopen="' + ix + '">' +
-        'เข้าไปดูรายละเอียด' +
-        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
-        'stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
-        '<path d="M5 12h13M13 6l6 6-6 6"></path></svg></button></div></article>';
+      '</article>';
   }).join("");
 }
 
@@ -13892,13 +14610,13 @@ function edRender(){
       '<span aria-hidden="true">/</span><a href="#/analytics" data-nav="analytics">Trade Analytics</a>' +
       '<span aria-hidden="true">/</span><b style="color:#101828">' + e.n + '</b></nav>' +
     '<div class="ed-top"><div>' +
-      '<span class="ed-ph">' + awardStar(13) + e.ph + '</span>' +
+      '<span class="ed-ph">' + awardStar(13) + eaCapLabel(edIdx) + '</span>' +
       '<h1 class="ed-h1">' + e.n + '</h1>' +
       '<p class="ed-lead">' + s.sell + '</p>' +
       '<p class="aw-body" style="max-width:70ch">' + e.p + '</p></div>' +
       '<div class="ed-side"><span class="cap">ใช้ฟรีสำหรับสมาชิก</span>' +
-        '<h3>รับ EA ทั้งชุด 6 ตัว</h3>' +
-        '<p>ตัวนี้อยู่ในไฟล์ดาวน์โหลดชุดเดียวกับอีก 5 ตัว สมัครครั้งเดียวได้ทั้งหมด</p>' +
+        '<h3>รับ RedStar EA ครบทุกความสามารถ</h3>' +
+        '<p>ทุกความสามารถอยู่ในไฟล์เดียว ติดตั้งครั้งเดียวได้ครบ ไม่ต้องลงเพิ่มทีหลัง</p>' +
         '<a class="go" href="#/signup" data-nav="signup">รับฟรี — สมัครสมาชิก' +
         '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
         'stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
@@ -13926,7 +14644,7 @@ function edRender(){
         '<div class="ed-demo">' + eaDemo(edIdx) + '</div></section>' +
       '<section class="ed-sec" style="padding-bottom:8px"><span class="cap">การติดตั้ง</span>' +
         '<h2>ติดตั้งอย่างไร</h2>' +
-        '<p class="sub">ขั้นตอนเดียวกันทุกตัวในชุด</p>' +
+        '<p class="sub">ติดตั้งครั้งเดียว ได้ครบทุกความสามารถ</p>' +
         '<div class="ed-card">' + EA_STEPS.map(function(x, i){
           return '<div class="row"><i>' + (i + 1) + '</i><span>' + x + '</span></div>';
         }).join("") +
@@ -13942,13 +14660,13 @@ function edRender(){
     nav.className = "ed-nav";
     nav.innerHTML =
       (p ? '<button type="button" class="rs-nb" data-eaopen="' + (edIdx - 1) + '" style="text-align:left">' +
-        '<span>ตัวก่อนหน้า</span><b>' + p.n + '</b><em>' + p.ph + '</em></button>'
+        '<span>ความสามารถก่อนหน้า</span><b>' + p.n + '</b><em>' + eaCapLabel(edIdx - 1) + '</em></button>'
         : '<a class="rs-nb" href="#/analytics" data-nav="analytics"><span>กลับ</span>' +
-          '<b>Trade Analytics</b><em>ดู EA ทั้ง 6 ตัว</em></a>') +
+          '<b>Trade Analytics</b><em>ดูครบทั้ง 6 ความสามารถ</em></a>') +
       (n ? '<button type="button" class="rs-nb next" data-eaopen="' + (edIdx + 1) + '" style="text-align:right">' +
-        '<span>ตัวถัดไป</span><b>' + n.n + '</b><em>' + n.ph + '</em></button>'
+        '<span>ความสามารถถัดไป</span><b>' + n.n + '</b><em>' + eaCapLabel(edIdx + 1) + '</em></button>'
         : '<a class="rs-nb next" href="#/analytics" data-nav="analytics"><span>ครบแล้ว</span>' +
-          '<b>กลับหน้า Trade Analytics</b><em>ดู EA ทั้ง 6 ตัว</em></a>');
+          '<b>กลับหน้า Trade Analytics</b><em>ดูครบทั้ง 6 ความสามารถ</em></a>');
   }
   if (typeof paintLogos === "function") { paintLogos(); }
   eaStart(edIdx);
@@ -13963,16 +14681,16 @@ document.addEventListener("click", function(ev){
   }
 });
 
-var PAGE_IDS = ["home", "rating", "review", "news", "analytics", "alerts", "login", "signup", "member", "usercase",
+var PAGE_IDS = ["home", "rating", "news", "analytics", "alerts", "login", "signup", "member", "usercase",
   "brokerdash", "awards", "awards2026", "verify", "brokerawards", "partner", "criteria", "brokerreview", "reviewsec", "newsart", "eadetail"];
 /* หน้าย่อย — เมนูหลักยังต้องค้างอยู่ที่หน้าแม่ */
 var SUB_OF = {brokerdash: "alerts", awards2026: "awards", verify: "awards",
-  brokerawards: "awards", partner: "awards", criteria: "awards", brokerreview: "review", reviewsec: "review", newsart: "news", eadetail: "analytics"};
+  brokerawards: "awards", partner: "awards", criteria: "awards", brokerreview: "rating", reviewsec: "rating", newsart: "news", eadetail: "analytics"};
 /* ══ เวอร์ชันภาษาอังกฤษ ══════════════════════════════════════════
    แปลตอนหน้าเว็บวาดเสร็จ ไม่ได้รื้อโค้ดเดิม
    ข้อความที่ยังไม่มีในพจนานุกรมจะคงเป็นภาษาไทย เห็นชัดว่าเหลืออะไร   */
 var LANG = "th";
-var TX2 = {"ไม่พบใบอนุญาตในเขตที่เปิดให้บริการ":"No licence found in the region it serves","ถูกหน่วยงานกำกับเพิกถอนใบอนุญาต":"Licence revoked by the regulator","พบการปฏิเสธคำสั่งถอนเงินซ้ำหลายราย":"Repeated withdrawal refusals reported","ใช้ชื่อและหน้าเว็บคล้ายโบรกที่มีใบอนุญาต":"Name and website mimic a licensed broker","โฆษณาผลตอบแทนรับประกัน ผิดเงื่อนไขการกำกับ":"Advertises guaranteed returns, against regulatory rules","ไม่พบที่อยู่จดทะเบียนตามที่แจ้งไว้":"Registered address does not exist as stated","ย้ายเขตอำนาจกำกับ 3 ครั้งใน 12 เดือน":"Moved regulatory jurisdiction three times in 12 months","ถูกขึ้นบัญชีเตือนโดยหน่วยงานกำกับต่างประเทศ":"Named on a foreign regulator's warning list","ชื่อทั้งหมดในแถบนี้ตั้งขึ้นเพื่องานออกแบบ ไม่ใช่บริษัทที่มีอยู่จริง":"Every name in this ticker is invented for the prototype, not a real company","คลิกประเทศบนแผนที่เพื่อดูโบรกเกอร์อันดับหนึ่งของประเทศนั้น":"Click a country on the map to see its top-ranked broker","ดูทั้งหมด":"See all","ดูเพิ่ม":"See more","ปิด":"Close","ถัดไป":"Next","ก่อนหน้า":"Previous","กลับ":"Back","ตัวก่อนหน้า":"Previous tool","ตัวถัดไป":"Next tool","ครบแล้ว":"That's all","อ่านต่อ":"Read more","อ่านบทความ →":"Read article →","รับฟรี — สมัครสมาชิก":"Get it free — sign up","ใช้ฟรีสำหรับสมาชิก":"Free for members","รับ EA ทั้งชุด 6 ตัว":"Get all six EAs","เครื่องมือและชุมชน":"Tools and community","บทความเด่นจากทีมเรา":"Featured from our team","บทความอื่นจากทีมเรา":"More from our team","ดูทั้งหมด":"See all","อ่านทั้งหมด":"Read all","เนื้อหาสมมติ":"placeholder content","ต้นแบบงานออกแบบ":"design prototype","ยังไม่ได้ต่อระบบจริง":"not connected to a live system","ยังไม่ใช่ผลตรวจจริง":"not a real audit result","ชื่อสมมติ":"invented name","สรุปสั้น":"In short","สิ่งที่ต้องมี":"What you need","วิธีติดตั้ง":"How to install","ติดตั้งอย่างไร":"How to install","เราเก็บอะไร และไม่เก็บอะไร":"What we collect and what we don't","เราเก็บอะไรบ้าง":"What we collect","หน้าต่างแสดงผลบอกอะไร":"What the panel is telling you","ตัวอย่างหน้าจอ":"Screen preview","หน้าตาบน MT5":"How it looks on MT5","EA ทั้ง 6 ตัว":"All six EAs","EA ทั้ง 6 ตัวในชุด":"All six EAs in the suite","โบรกเกอร์แนะนำ":"Recommended broker","โบรกเกอร์ที่ดีกว่า":"Brokers that score higher","รีวิวจากผู้ใช้งานจริง ของ EA ตัวนี้":"Reviews from people using this EA","เสียงจากผู้ใช้":"User voices","ภาพที่ผู้ใช้แนบ":"User-supplied screenshot","ยังไม่มีผู้ใช้จริง":"no real users yet","อีเมล":"Email","รหัสผ่าน":"Password","ยืนยันรหัสผ่าน":"Confirm password","จำฉันไว้":"Remember me","ลืมรหัสผ่าน?":"Forgot password?","ยังไม่มีบัญชี?":"No account yet?","ผู้ใช้ทั่วไป":"Individual user","ตัวแทนโบรกเกอร์":"Broker representative","ชื่อ-นามสกุล":"Full name","ยอมรับเงื่อนไข":"I accept the terms","เกี่ยวกับเรา":"About us","ติดต่อ":"Contact","นโยบายความเป็นส่วนตัว":"Privacy policy","เงื่อนไขการใช้งาน":"Terms of use","วิธีให้คะแนน":"How we score","ทีมตรวจ":"Audit team"};
+var TX2 = {"ไม่พบใบอนุญาตในเขตที่เปิดให้บริการ":"No licence found in the region it serves","ถูกหน่วยงานกำกับเพิกถอนใบอนุญาต":"Licence revoked by the regulator","พบการปฏิเสธคำสั่งถอนเงินซ้ำหลายราย":"Repeated withdrawal refusals reported","ใช้ชื่อและหน้าเว็บคล้ายโบรกที่มีใบอนุญาต":"Name and website mimic a licensed broker","โฆษณาผลตอบแทนรับประกัน ผิดเงื่อนไขการกำกับ":"Advertises guaranteed returns, against regulatory rules","ไม่พบที่อยู่จดทะเบียนตามที่แจ้งไว้":"Registered address does not exist as stated","ย้ายเขตอำนาจกำกับ 3 ครั้งใน 12 เดือน":"Moved regulatory jurisdiction three times in 12 months","ถูกขึ้นบัญชีเตือนโดยหน่วยงานกำกับต่างประเทศ":"Named on a foreign regulator's warning list","ชื่อทั้งหมดในแถบนี้ตั้งขึ้นเพื่องานออกแบบ ไม่ใช่บริษัทที่มีอยู่จริง":"Every name in this ticker is invented for the prototype, not a real company","คลิกประเทศบนแผนที่เพื่อดูโบรกเกอร์อันดับหนึ่งของประเทศนั้น":"Click a country on the map to see its top-ranked broker","ดูทั้งหมด":"See all","ดูเพิ่ม":"See more","ปิด":"Close","ถัดไป":"Next","ก่อนหน้า":"Previous","กลับ":"Back","ความสามารถก่อนหน้า":"Previous capability","ความสามารถถัดไป":"Next capability","ครบแล้ว":"That's all","อ่านต่อ":"Read more","อ่านบทความ →":"Read article →","รับฟรี — สมัครสมาชิก":"Get it free — sign up","ใช้ฟรีสำหรับสมาชิก":"Free for members","รับ RedStar EA ครบทุกความสามารถ":"Get RedStar EA with every capability","เครื่องมือและชุมชน":"Tools and community","บทความเด่นจากทีมเรา":"Featured from our team","บทความอื่นจากทีมเรา":"More from our team","ดูทั้งหมด":"See all","อ่านทั้งหมด":"Read all","เนื้อหาสมมติ":"placeholder content","ต้นแบบงานออกแบบ":"design prototype","ยังไม่ได้ต่อระบบจริง":"not connected to a live system","ยังไม่ใช่ผลตรวจจริง":"not a real audit result","ชื่อสมมติ":"invented name","สรุปสั้น":"In short","สิ่งที่ต้องมี":"What you need","วิธีติดตั้ง":"How to install","ติดตั้งอย่างไร":"How to install","เราเก็บอะไร และไม่เก็บอะไร":"What we collect and what we don't","เราเก็บอะไรบ้าง":"What we collect","หน้าต่างแสดงผลบอกอะไร":"What the panel is telling you","ตัวอย่างหน้าจอ":"Screen preview","หน้าตาบน MT5":"How it looks on MT5","EA ทั้ง 6 ตัว":"All six EAs","6 ความสามารถใน EA ตัวเดียว":"Six capabilities in one EA","โบรกเกอร์แนะนำ":"Recommended broker","โบรกเกอร์ที่ดีกว่า":"Brokers that score higher","รีวิวจากผู้ใช้งานจริง ของ EA ตัวนี้":"Reviews from people using this EA","เสียงจากผู้ใช้":"User voices","ภาพที่ผู้ใช้แนบ":"User-supplied screenshot","ยังไม่มีผู้ใช้จริง":"no real users yet","อีเมล":"Email","รหัสผ่าน":"Password","ยืนยันรหัสผ่าน":"Confirm password","จำฉันไว้":"Remember me","ลืมรหัสผ่าน?":"Forgot password?","ยังไม่มีบัญชี?":"No account yet?","ผู้ใช้ทั่วไป":"Individual user","ตัวแทนโบรกเกอร์":"Broker representative","ชื่อ-นามสกุล":"Full name","ยอมรับเงื่อนไข":"I accept the terms","เกี่ยวกับเรา":"About us","ติดต่อ":"Contact","นโยบายความเป็นส่วนตัว":"Privacy policy","เงื่อนไขการใช้งาน":"Terms of use","วิธีให้คะแนน":"How we score","ทีมตรวจ":"Audit team"};
 var TX = {"หน้าแรก":"Home","เตือนภัยโบรกเกอร์":"Broker alerts","เข้าสู่ระบบ":"Log in","สมัครสมาชิก":"Sign up","ตัวอย่าง":"Example","รางวัลทรงคุณค่า":"Our highest honour","ปี":"Year","ภูมิภาค":"Region","ประเทศ":"Country","หมวด":"Category","รีวิว":"Review","หมวดสินทรัพย์":"Asset class","ปีผลตรวจ":"Audit year","รีเซ็ต":"Reset","หมวดโบรกเกอร์":"Broker category","ค้นหาโบรกเกอร์":"Search brokers","เรียงตาม":"Sort by","ทั้งหมด":"All","แสดงครบทั้ง":"Showing all","ดูรีวิวทั้งหมด":"See all reviews","ทุกหมวดรวมกัน":"all categories","ฟิวเจอร์ส":"Futures","หุ้น":"Stocks","กองทุน":"Funds","คริปโต":"Crypto","คริปโต (CFD)":"Crypto (CFD)","Exchange (ซื้อขายเหรียญจริง)":"Exchange (spot crypto)","ตารางอันดับรายประเทศ":"Country rankings","อันดับ":"Rank","โบรกเกอร์":"Broker","ดาว":"Stars","คะแนนรวม":"Total score","คะแนน 4 ด้าน":"Four dimensions","คะแนน":"points","ต้นทุน":"Cost","แพลตฟอร์ม":"Platform","บริการ":"Service","ฝาก–ถอน":"Funding","สเปรดเฉลี่ย":"Average spread","สเปรดเฉลี่ย (pip)":"Average spread (pip)","ต้นทุนรวม (USD ต่อ 1 ล็อต)":"Total cost (USD per lot)","ค่าคอมมิชชันต่อสัญญา":"Commission per contract","ค่าธรรมเนียมซื้อขาย":"Trading fee","ค่าธรรมเนียมฝั่ง Taker":"Taker fee","ค่าธรรมเนียมรายปี":"Annual fee","อ่านรีวิว →":"Read review →","อ่านรีวิวฉบับเต็ม →":"Read the full review →","อ่านบทความ":"Read article","อ่านบทความ →":"Read article →","ดีขึ้น":"better","แย่ลง":"worse","เท่าเดิม":"unchanged","เทียบกันตัวต่อตัว":"Head-to-head comparison","ยังไม่ได้เลือก":"none selected","— ไม่เลือก —":"— none —","ล้างการเลือก":"Clear selection","เลือกโบรกเกอร์ที่อยากเทียบก่อน":"Pick the brokers you want to compare","หัวข้อเทียบ":"Measure","ยังไม่มีอะไรให้สรุป":"nothing to summarise yet","เลือกหมวด ประเทศ และปีผลตรวจ":"Choose category, country and audit year","เลือกโบรกเกอร์อย่างน้อย 2 ราย":"Pick at least two brokers","อ่านตารางแล้วดูสรุปตรงนี้":"Read the table, then check the summary here","ไม่มีผลต่อจำนวนดาวและคะแนน":"has no effect on stars or scores","ดีที่สุดรวม":"Best overall","เท่ากันทุกราย":"tied across all","ดีที่สุดในแถวนี้":"best in this row","เท่ากับที่ดีที่สุด":"tied with the best","ข่าวด่วน":"Breaking","ประเด็นร้อน":"Hot topic","อ่านมากสุด":"Most read","ศูนย์รวมบทความ RedStarTrust":"RedStarTrust newsroom","บทความและข่าวเกี่ยวกับโบรกเกอร์":"Broker news and analysis","ข้อมูลสมมติ":"placeholder data","ยังไม่ได้ต่อระบบนับยอดจริง":"not yet connected to real analytics","จัดอันดับตามยอดอ่าน":"ranked by reads","เรียงตามวันที่เผยแพร่ ·":"ordered by publication date ·","ตัวเลขยอดอ่านในต้นแบบเป็น":"Read counts in this prototype are","หยุด":"Pause","เล่น":"Play","อันดับดีขึ้น":"moved up","อันดับแย่ลง":"moved down","เข้าใหม่":"new entry","คะแนนรวมสูงสุด":"Highest total score","ดาวมากสุด":"Most stars","ต้นทุนต่ำสุด":"Lowest cost","ชื่อ A–Z":"Name A–Z","คลิกหมุดประเทศเพื่อดูโบรกเกอร์อันดับหนึ่ง":"Click a country pin to see its top-ranked broker","วอลลุ่มการเทรดของ":"Trading volume —","วอลลุ่มการเทรดรายโซน":"Trading volume by region","ต่ำ":"low","สูง":"high","ยังไม่เปิดตรวจในภูมิภาคนี้":"not yet audited in this region","South America — ยังไม่เปิดตรวจ":"South America — not yet audited","สารบัญหน้านี้":"On this page","ติดตั้ง EA ลงบน MetaTrader ของคุณ":"Install the EA on your MetaTrader","ไม่ต้องใช้ VPS ไม่ต้องเปิดค้าง":"No VPS, nothing to leave running","EA อ่านค่าจากออร์เดอร์ที่คุณเทรดอยู่แล้ว":"The EA reads the orders you already trade","EA ไม่เปิดและไม่ปิดออร์เดอร์แทนคุณ":"It never opens or closes an order for you","เทียบกับโบรกอื่นในหมวดเดียวกัน":"Compared with brokers in the same category","โบรกที่คุณใช้":"Your broker","ค่ากลางของหมวด":"Category median","ประหยัดได้ต่อปีโดยประมาณ":"Estimated saving per year","อ่านรีวิวโบรกเกอร์นี้":"Read this broker's review","บันทึกที่ EA เก็บ":"What the EA logged","แจ้งเตือนจาก RedStar Team":"Alerts from the RedStar team","เรื่องที่ทีมตรวจพบ":"Cases the audit team found","สรุปตามสถานะ":"By status","รู้ทันโบรกเกอร์เถื่อน":"Spotting an unlicensed broker","รอโบรกเกอร์ชี้แจง":"Awaiting broker response","ชี้แจงแล้ว":"Responded","ปิดเรื่องแล้ว":"Closed","ยังรอคำชี้แจงจากโบรกเกอร์":"Still awaiting a broker response","โบรกเกอร์ชี้แจงแล้ว":"Broker has responded","ค้นหาชื่อโบรกเกอร์...":"Search a broker name...","ค้นหาบทความ...":"Search articles...","พิมพ์ชื่อโบรกเกอร์":"Type a broker name","ค้นหาชื่อโบรกเกอร์ หรือหมวด เช่น กองทุน":"Search a broker or category, e.g. funds","ตัวอย่างงานออกแบบ":"design prototype","ไม่ใช่บริษัทที่มีอยู่จริง":"not a real company"};
 /* รูปแบบที่มีตัวเลขแทรก ต้องใช้กฎ ไม่ใช่พจนานุกรมทีละคำ */
 var TH_MONTH_EN = {"ม.ค.":"Jan","ก.พ.":"Feb","มี.ค.":"Mar",
@@ -14219,11 +14937,9 @@ function mbRender(){
           'อ่านรีวิว →</a></div>';
       }).join("") + '</div>' +
     '<div class="mb-card"><div class="hd">ดาวน์โหลดสำหรับสมาชิก</div>' +
-      (typeof EA_LIST !== "undefined" ? EA_LIST : []).slice(0, 3).map(function(e, i){
-        return '<div class="mb-dl"><span class="tx">' + e.n + '<em>' + e.ph +
-          ' · ไฟล์ .ex5 สำหรับ MetaTrader 5</em></span>' +
-          '<button type="button" class="go" data-eaopen="' + i + '">ดูรายละเอียด</button></div>';
-      }).join("") +
+      '<div class="mb-dl"><span class="tx">RedStar EA<em>' +
+        'ครบทั้ง 6 ความสามารถในไฟล์เดียว · .ex5 สำหรับ MetaTrader 5</em></span>' +
+        '<button type="button" class="go" data-eaopen="0">ดูรายละเอียด</button></div>' +
       '<p class="mb-note">ปุ่มดาวน์โหลดในต้นแบบยังไม่มีไฟล์จริง ' +
       '· <b>EA ยังไม่ได้เปิดให้ใช้จริง</b></p></div>' +
     '</div><aside>' +
@@ -14286,69 +15002,191 @@ var UC_CASES = [
 ];
 var UC_LABEL = {wait: "รอคิว", check: "ทีมตรวจกำลังดู",
   replied: "โบรกชี้แจงแล้ว", closed: "ปิดเรื่องแล้ว"};
+function ucPad(n){ return (n < 10 ? "0" : "") + n; }
+function ucSla(c){
+  /* SLA และเวลาที่เหลือ สร้างจาก seed() ของเลขเคส
+     ไม่ใช้ Math.random() ค่าจึงคงทุกครั้งที่เปิดหน้า */
+  var k = (typeof seed === "function") ? seed(c.id) : 0.5;
+  var total = 72, used = 0.35 + k * 0.45;
+  var left = Math.max(0.02, 1 - used) * total * 3600;
+  return {total: total, pct: Math.round(used * 100), secs: Math.floor(left)};
+}
+function ucClockText(secs){
+  return ucPad(Math.floor(secs / 3600)) + ":" +
+    ucPad(Math.floor(secs % 3600 / 60)) + ":" + ucPad(secs % 60);
+}
+var ucTimer = null;
+function ucStartClock(){
+  if (ucTimer) { clearInterval(ucTimer); ucTimer = null; }
+  var el = document.querySelector("[data-ucclock]");
+  if (!el) { return; }
+  var left = parseInt(el.getAttribute("data-secs"), 10) || 0;
+  ucTimer = setInterval(function(){
+    var n = document.querySelector("[data-ucclock]");
+    if (!n) { clearInterval(ucTimer); ucTimer = null; return; }
+    left = Math.max(0, left - 1);
+    n.textContent = ucClockText(left);
+  }, 1000);
+}
+function ucTimeline(c){
+  var dates = ["2 ก.ย.", "3 ก.ย.", "วันนี้", "—"];
+  var notes = [
+    "ระบบส่งเรื่องให้โบรกเกอร์ และเริ่มนับ SLA",
+    "ทีมตรวจขอเอกสารเพิ่มจากทั้งสองฝ่าย",
+    "รอข้อเสนอการแก้ไขจากโบรกเกอร์",
+    "ปิดเรื่อง พร้อมบันทึกผลลงทะเบียน"
+  ];
+  return '<div class="uc-tlv"><b class="hd">' +
+    "ลำดับการดำเนินการ" + '</b>' +
+    UC_STEPS.map(function(st, i){
+      var cls = i < c.step ? "done" : (i === c.step ? "now" : "");
+      return '<div class="uc-tr ' + cls + '"><span class="dot"></span>' +
+        '<span class="tx"><b>' + st + '</b><span>' + notes[i] + '</span></span>' +
+        '<span class="dt">' + (i <= c.step ? dates[i] : "") + '</span></div>';
+    }).join("") + '</div>';
+}
+function ucCaseCard(c){
+  return '<article class="uc-card"><div class="uc-ch">' +
+    '<span class="cid">เคส #' + c.id + '</span>' +
+    '<span class="uc-st ' + c.st + '"><i></i>' + UC_LABEL[c.st] + '</span></div>' +
+    '<h3>' + c.t + '</h3>' +
+    '<div class="uc-meta">' +
+      '<span>คู่กรณี <b>' + c.b + '</b></span>' +
+      '<span>' + c.d + '</span>' +
+      '<span>หลักฐาน <b>' + c.ev.length +
+      ' รายการ</b></span></div>' +
+    '<p class="uc-b">' + c.x + '</p>' + ucTimeline(c) + '</article>';
+}
+function ucHelpOnly(){
+  return '<div class="uc-help"><b>' +
+    "ต้องการความช่วยเหลือ?" + '</b><p>' +
+    "คุณเพิ่มหลักฐานหรือขอให้ทีมตรวจดูเรื่องซ้ำได้ตลอดเวลา " +
+    '<a href="#/criteria" data-nav="awards">' +
+    "ดูหลักเกณฑ์การพิจารณา" + '</a></p></div>';
+}
+function ucSide(c){
+  var sla = ucSla(c);
+  return '<div class="uc-sla"><div class="hd">' +
+    "กำหนดเวลาการตอบกลับ" + '</div>' +
+    '<div class="ck"><b data-ucclock data-secs="' + sla.secs + '">' + ucClockText(sla.secs) + '</b>' +
+    '<span>' + "เหลือก่อน SLA" + '</span></div>' +
+    '<div class="bar"><i style="width:' + sla.pct + '%"></i></div>' +
+    '<p class="nt">' + "โบรกใช้เวลาไปแล้ว " +
+    '<b>' + sla.pct + '%</b> ' + "ของ SLA " + sla.total + " ชั่วโมง" + '</p>' +
+    '<div class="ac"><button type="button" class="gh">' +
+    "ดูหลักฐาน " + c.ev.length + " รายการ" + '</button>' +
+    '<button type="button" class="sd">' + "ส่งข้อความ" + '</button></div></div>' +
+    ucHelpOnly();
+}
+function ucHow(){
+  var steps = UC_STEPS.map(function(st, i){
+    return '<div class="uc-hw"><span class="n">' + (i + 1) + '</span>' +
+      '<b>' + st + '</b></div>';
+  }).join("");
+  return '<div class="uc-howw"><h3>' +
+    "เรื่องหนึ่งเดินอย่างไร" + '</h3>' +
+    '<div class="uc-hws">' + steps + '</div>' +
+    '<ul class="uc-rules">' +
+    '<li>' + "เราไม่ตัดสินถูกผิดแทนศาล — หน้าที่ของเราคือบันทึกสิ่งที่เกิดขึ้นจริงให้ครบ" + '</li>' +
+    '<li>' + "ทุกเรื่องต้องมีหลักฐาน เรื่องที่ไม่มีหลักฐานจะไม่ถูกส่งต่อ" + '</li>' +
+    '<li>' + "โบรกเกอร์มีสิทธิ์ชี้แจงเสมอ และคำชี้แจงจะขึ้นคู่กันกับเรื่องเสมอ" + '</li>' +
+    '<li>' + "เรื่องที่ปิดแล้วยังคงอยู่ในประวัติ ไม่ถูกลบทิ้ง" + '</li></ul></div>';
+}
+function ucForm(){
+  return '<div class="uc-form"><div class="hd">ยื่นเรื่องใหม่</div>' +
+  '<form class="uc-f" data-ucform="1" autocomplete="off">' +
+  '<label>โบรกเกอร์<select>' +
+  Object.keys(META).slice(0, 12).map(function(k){
+  return '<option>' + META[k].n + '</option>'; }).join("") +
+  '<option>อื่น ๆ (ระบุชื่อเอง)</option></select></label>' +
+  '<label>ประเภทเรื่อง<select>' +
+  '<option>ถอนเงินไม่ได้ หรือล่าช้า</option>' +
+  '<option>ค่าธรรมเนียมที่ไม่ได้แจ้งก่อน</option>' +
+  '<option>สเปรดหรือการส่งคำสั่งผิดปกติ</option>' +
+  '<option>ปิดบัญชีหรือยึดเงิน</option>' +
+  '<option>โฆษณาเกินจริง หรือรับประกันผลตอบแทน</option>' +
+  '<option>อื่น ๆ</option></select></label>' +
+  '<label>เล่าเหตุการณ์' +
+  '<textarea placeholder="เกิดอะไร เมื่อไหร่ ติดต่อโบรกไปกี่ครั้ง โบรกตอบว่าอย่างไร"></textarea></label>' +
+  '<div class="uc-drop">แนบหลักฐาน — ภาพหน้าจอ อีเมลตอบกลับ หรือไฟล์จาก EA<br>' +
+  '<b style="color:#B42318">ช่องนี้ในต้นแบบยังรับไฟล์จริงไม่ได้</b></div>' +
+  '<button type="submit" class="uc-sub">ส่งเรื่องให้ทีมตรวจ</button>' +
+  '</form>' +
+  '<p class="mb-note"><b>หน้านี้เป็นต้นแบบงานออกแบบ</b> ' +
+  'เรื่องทั้งหมดเป็นตัวอย่าง ชื่อโบรกในเรื่องร้องเรียนเป็นชื่อสมมติ ' +
+  'กดส่งแล้วไม่มีการส่งข้อมูลออกไปไหน</p></div></aside></div>';
+}
+function ucNote(){
+  var bd = document.getElementById("uc-body");
+  if (!bd || bd.querySelector(".uc-note")) { return; }
+  var p = document.createElement("p");
+  p.className = "uc-note";
+  p.innerHTML = "เคส ชื่อโบรก กำหนดเวลา และหลักฐานทั้งหมดในหน้านี้" +
+    "<b>เป็นข้อมูลสมมติเพื่งานออกแบบ</b> " +
+    "ชื่อโบรกที่ใช้เป็นชื่อสมมติ กำหนด SLA ยังรอ Boss กำหนดนโยบายจริง";
+  bd.appendChild(p);
+}
+var ucTab = "open";
+document.addEventListener("click", function(ev){
+  var b = ev.target.closest("[data-uctab]");
+  if (!b) { return; }
+  ev.preventDefault();
+  ucTab = b.dataset.uctab;
+  ucRender();
+});
 function ucRender(){
   var hd = document.getElementById("uc-head"), bd = document.getElementById("uc-body");
   if (!hd || !bd) { return; }
   if (!MEMBER) {
     hd.innerHTML = "";
-    bd.innerHTML = '<div class="mb-card"><div class="hd">ต้องเข้าสู่ระบบก่อน</div>' +
+    bd.innerHTML = '<div class="mb-card"><div class="hd">' +
+      "ต้องเข้าสู่ระบบก่อน" + '</div>' +
       '<p style="margin:0;padding:24px 20px;font-size:13.5px;line-height:1.8;color:#475467">' +
-      'หน้านี้สำหรับสมาชิกที่ยื่นเรื่องไว้ — ' +
-      '<a href="#/login" data-nav="login">ไปหน้าเข้าสู่ระบบ</a></p></div>';
+      "หน้านี้สำหรับสมาชิกที่ยื่นเรื่องไว้ — " +
+      '<a href="#/login" data-nav="login">' +
+      "ไปหน้าเข้าสู่ระบบ" + '</a></p></div>';
     return;
   }
-  function cnt(st){ return UC_CASES.filter(function(c){ return c.st === st; }).length; }
-  hd.innerHTML = '<div class="mb-hero"><span class="mb-av">!</span><span class="tx">' +
-    '<b>เรื่องร้องเรียนของคุณ</b>' +
-    '<span>ติดตามสถานะทุกขั้น ตั้งแต่ยื่นจนได้ข้อสรุป</span></span>' +
-    '<button type="button" class="mb-out" data-nav="member">กลับหน้าสมาชิก</button></div>' +
-    '<div class="mb-tiles">' +
-    '<div class="mb-t"><b>' + UC_CASES.length + '</b><span>เรื่องที่ยื่นทั้งหมด</span></div>' +
-    '<div class="mb-t"><b>' + cnt("check") + '</b><span>ทีมตรวจกำลังดู</span></div>' +
-    '<div class="mb-t"><b>' + cnt("replied") + '</b><span>โบรกชี้แจงแล้ว</span></div>' +
-    '<div class="mb-t"><b>' + cnt("closed") + '</b><span>ปิดเรื่องแล้ว</span></div></div>';
-
-  bd.innerHTML = '<div class="uc-grid"><div>' +
-    UC_CASES.map(function(c){
-      return '<div class="uc-case"><div class="uc-top">' +
-        '<span class="mb-av" style="width:38px;height:38px;border-radius:11px;font-size:15px">' +
-        c.b.charAt(0) + '</span>' +
-        '<span><span class="nm">' + c.t + '</span>' +
-        '<span class="id">' + c.id + ' · ' + c.b + ' · ' + c.d + '</span></span>' +
-        '<span class="uc-st ' + c.st + '">' + UC_LABEL[c.st] + '</span></div>' +
-        '<p class="uc-b">' + c.x + '</p>' +
-        '<div class="uc-tl">' + UC_STEPS.map(function(s, i){
-          return '<span class="uc-s' + (i < c.step ? " on" : "") + '">' + s + '</span>';
-        }).join("") + '</div>' +
-        '<div class="uc-ev">' + c.ev.map(function(e){
-          return '<span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" ' +
-            'stroke="#667085" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ' +
-            'aria-hidden="true"><path d="M21 12.8V7a2 2 0 0 0-2-2h-6l-2-2H5a2 2 0 0 0-2 2v12' +
-            'a2 2 0 0 0 2 2h9"></path></svg>' + e + '</span>';
-        }).join("") + '</div></div>';
-    }).join("") + '</div><aside>' +
-    '<div class="uc-form"><div class="hd">ยื่นเรื่องใหม่</div>' +
-      '<form class="uc-f" data-ucform="1" autocomplete="off">' +
-      '<label>โบรกเกอร์<select>' +
-        Object.keys(META).slice(0, 12).map(function(k){
-          return '<option>' + META[k].n + '</option>'; }).join("") +
-        '<option>อื่น ๆ (ระบุชื่อเอง)</option></select></label>' +
-      '<label>ประเภทเรื่อง<select>' +
-        '<option>ถอนเงินไม่ได้ หรือล่าช้า</option>' +
-        '<option>ค่าธรรมเนียมที่ไม่ได้แจ้งก่อน</option>' +
-        '<option>สเปรดหรือการส่งคำสั่งผิดปกติ</option>' +
-        '<option>ปิดบัญชีหรือยึดเงิน</option>' +
-        '<option>โฆษณาเกินจริง หรือรับประกันผลตอบแทน</option>' +
-        '<option>อื่น ๆ</option></select></label>' +
-      '<label>เล่าเหตุการณ์' +
-        '<textarea placeholder="เกิดอะไร เมื่อไหร่ ติดต่อโบรกไปกี่ครั้ง โบรกตอบว่าอย่างไร"></textarea></label>' +
-      '<div class="uc-drop">แนบหลักฐาน — ภาพหน้าจอ อีเมลตอบกลับ หรือไฟล์จาก EA<br>' +
-        '<b style="color:#B42318">ช่องนี้ในต้นแบบยังรับไฟล์จริงไม่ได้</b></div>' +
-      '<button type="submit" class="uc-sub">ส่งเรื่องให้ทีมตรวจ</button>' +
-      '</form>' +
-      '<p class="mb-note"><b>หน้านี้เป็นต้นแบบงานออกแบบ</b> ' +
-      'เรื่องทั้งหมดเป็นตัวอย่าง ชื่อโบรกในเรื่องร้องเรียนเป็นชื่อสมมติ ' +
-      'กดส่งแล้วไม่มีการส่งข้อมูลออกไปไหน</p></div></aside></div>';
+  var open = UC_CASES.filter(function(c){ return c.st !== "closed"; });
+  var done = UC_CASES.filter(function(c){ return c.st === "closed"; });
+  hd.innerHTML =
+    '<nav class="uc-crumb" aria-label="เส้นทาง">' +
+      '<a href="#/" data-nav="home">หน้าแรก</a>' +
+      '<span aria-hidden="true">/</span><b>' +
+      "ศูนย์ไกล่เกลี่ย" + '</b></nav>' +
+    '<div class="uc-hero"><div class="tx"><h2>' +
+      "ศูนย์ไกล่เกลี่ย" + '</h2><p>' +
+      "ติดตามข้อพิพาทอย่างโปร่งใส พร้อมทุกหลักฐานและกำหนดเวลาที่สำคัญ" +
+      '</p></div><button type="button" class="uc-new" data-uctab="new">' +
+      "เปิดข้อพิพาทใหม่" + '</button></div>' +
+    (open.length ? '<div class="uc-alert"><i></i><span><b>' +
+      "มีเหตุการณ์ที่เกี่ยวข้องอยู่" +
+      '</b> — ' + open[0].b + " กำลังอยู่ระหว่างการตรวจสอบ" + '</span>' +
+      '<a href="#/alerts" data-nav="alerts">ดูที่ Broker Alerts</a></div>' : "") +
+    '<div class="uc-tabs" role="tablist">' +
+      ucTabBtn("open", "กำลังดำเนินการ", open.length) +
+      ucTabBtn("done", "ประวัติเคส", done.length) +
+      ucTabBtn("how", "วิธีการไกล่เกลี่ย", null) +
+      ucTabBtn("new", "ยื่นเรื่องใหม่", null) + '</div>';
+  if (ucTab === "how") {
+    bd.innerHTML = ucHow();
+  } else if (ucTab === "new") {
+    bd.innerHTML = '<div class="uc-cols"><div class="uc-main">' + ucForm() +
+      '</div><aside class="uc-aside">' + ucHelpOnly() + '</aside></div>';
+  } else {
+    var list = ucTab === "done" ? done : open;
+    bd.innerHTML = list.length
+      ? '<div class="uc-cols"><div class="uc-main">' + list.map(ucCaseCard).join("") +
+        '</div><aside class="uc-aside">' + ucSide(list[0]) + '</aside></div>'
+      : '<p class="uc-empty">' +
+        "ยังไม่มีเรื่องในหมวดนี้" + '</p>';
+  }
+  ucStartClock();
+  ucNote();
+}
+function ucTabBtn(k, lb, n){
+  return '<button type="button" role="tab" data-uctab="' + k + '" aria-selected="' +
+    (ucTab === k) + '">' + lb + (n === null ? "" : ' (' + n + ')') + '</button>';
 }
 document.addEventListener("submit", function(ev){
   var f = ev.target.closest("[data-ucform]");

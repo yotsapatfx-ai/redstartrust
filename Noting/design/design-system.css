@@ -1,0 +1,182 @@
+/* RedStarTrust Design System v1.0
+ * Source of truth for visual decisions. Components consume semantic tokens;
+ * raw palette values must not be used outside this file.
+ */
+:root {
+  color-scheme: light;
+
+  /* Brand palette — red, white, and neutral only. */
+  --ds-red-900: #5e1016;
+  --ds-red-800: #790f14;
+  --ds-red-700: #9b111e;
+  --ds-red-600: #b42318;
+  --ds-red-500: #cf2027;
+  --ds-red-100: #f7e8e8;
+  --ds-red-050: #fcf5f5;
+  --ds-white: #ffffff;
+  --ds-gray-950: #101828;
+  --ds-gray-700: #344054;
+  --ds-gray-600: #475467;
+  --ds-gray-500: #667085;
+  --ds-gray-300: #d0d5dd;
+  --ds-gray-200: #e4e7ec;
+  --ds-gray-100: #eaecf0;
+  --ds-gray-050: #f2f4f7;
+  --ds-success-700: #067647;
+  --ds-success-050: #ecfdf3;
+  --ds-warning-700: #b54708;
+  --ds-warning-050: #fffaeb;
+  --ds-award-700: #7a5c11;
+  --ds-award-500: #a98420;
+  --ds-award-050: #fbf6e7;
+
+  /* Semantic color roles. */
+  --ds-color-canvas: var(--ds-white);
+  --ds-color-surface: var(--ds-white);
+  --ds-color-surface-muted: var(--ds-gray-050);
+  --ds-color-text: var(--ds-gray-950);
+  --ds-color-text-secondary: var(--ds-gray-600);
+  --ds-color-text-muted: var(--ds-gray-500);
+  --ds-color-border: var(--ds-gray-100);
+  --ds-color-border-subtle: var(--ds-gray-100);
+  --ds-color-border-strong: var(--ds-gray-300);
+  --ds-color-brand: var(--ds-red-500);
+  --ds-color-brand-hover: var(--ds-red-600);
+  --ds-color-brand-deep: var(--ds-red-800);
+  --ds-color-brand-soft: var(--ds-gray-050);
+  --ds-color-focus: var(--ds-red-500);
+  --ds-color-on-brand: var(--ds-white);
+  --ds-color-danger: var(--ds-red-600);
+  --ds-color-danger-soft: var(--ds-gray-050);
+  --ds-color-success: var(--ds-success-700);
+  --ds-color-success-soft: var(--ds-success-050);
+  --ds-color-warning: var(--ds-warning-700);
+  --ds-color-warning-soft: var(--ds-warning-050);
+
+  /* Typography. */
+  --ds-font-brand: 'Cormorant Garamond', Georgia, serif;
+  --ds-font-display: 'DM Sans', 'IBM Plex Sans Thai', sans-serif;
+  --ds-font-body: Inter, 'IBM Plex Sans Thai', system-ui, sans-serif;
+  --ds-font-editorial-th: 'Noto Serif Thai', serif;
+  --ds-font-mono: 'IBM Plex Sans', Inter, sans-serif;
+  --ds-text-xs: 0.75rem;
+  --ds-text-sm: 0.875rem;
+  --ds-text-md: 1rem;
+  --ds-text-lg: 1.125rem;
+  --ds-text-xl: 1.375rem;
+  --ds-text-2xl: 1.875rem;
+  --ds-text-3xl: 2.5rem;
+  --ds-text-display-sm: 3.25rem;
+  --ds-text-display: 4rem;
+  --ds-text-display-lg: 5rem;
+  --ds-leading-tight: 1.15;
+  --ds-leading-body: 1.65;
+
+  /* 4px spacing scale. */
+  --ds-space-1: 4px;
+  --ds-space-2: 8px;
+  --ds-space-3: 12px;
+  --ds-space-4: 16px;
+  --ds-space-5: 20px;
+  --ds-space-6: 24px;
+  --ds-space-7: 28px;
+  --ds-space-8: 32px;
+  --ds-space-9: 36px;
+  --ds-space-10: 40px;
+  --ds-space-12: 48px;
+  --ds-space-14: 56px;
+  --ds-space-16: 64px;
+  --ds-space-20: 80px;
+  --ds-space-24: 96px;
+
+  /* Shape, depth, and motion. */
+  --ds-radius-sm: 8px;
+  --ds-radius-md: 12px;
+  --ds-radius-lg: 16px;
+  --ds-radius-xl: 20px;
+  --ds-radius-2xl: 28px;
+  --ds-radius-pill: 999px;
+  --ds-shadow-sm: 0 1px 2px rgba(16, 24, 40, .06);
+  --ds-shadow-md: 0 12px 30px rgba(16, 24, 40, .08);
+  --ds-shadow-lg: 0 24px 48px -12px rgba(16, 24, 40, .16);
+  --ds-duration-fast: 150ms;
+  --ds-duration-base: 220ms;
+  --ds-duration-slow: 320ms;
+  --ds-ease-out: cubic-bezier(.2, .8, .2, 1);
+  --ds-ease-in: cubic-bezier(.4, 0, 1, 1);
+  --ds-ease-in-out: cubic-bezier(.4, 0, .2, 1);
+  --ds-ease: var(--ds-ease-out);
+
+  /* Layout. */
+  --ds-container: 1440px;
+  --ds-content: 1200px;
+  --ds-gutter: 56px;
+  --ds-control-height: 44px;
+}
+
+.ds-container { width: min(var(--ds-container), 100%); margin-inline: auto; }
+.ds-content { width: min(var(--ds-content), 100%); margin-inline: auto; }
+.ds-safe { padding-inline: var(--ds-gutter); }
+
+.ds-button {
+  min-height: var(--ds-control-height);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ds-space-2);
+  padding: 10px var(--ds-space-5);
+  border: 1px solid transparent;
+  border-radius: var(--ds-radius-md);
+  font: 600 var(--ds-text-sm)/1 var(--ds-font-body);
+  cursor: pointer;
+  transition: color var(--ds-duration-fast) var(--ds-ease), background var(--ds-duration-fast) var(--ds-ease), border-color var(--ds-duration-fast) var(--ds-ease), box-shadow var(--ds-duration-fast) var(--ds-ease);
+}
+.ds-button--primary { color: var(--ds-color-on-brand); background: var(--ds-color-brand); }
+.ds-button--primary:hover { color: var(--ds-color-on-brand); background: var(--ds-color-brand-hover); }
+.ds-button--secondary { color: var(--ds-color-brand-deep); background: var(--ds-color-surface); border-color: var(--ds-color-border-strong); }
+.ds-button--secondary:hover { border-color: var(--ds-color-brand); }
+
+.ds-input {
+  min-height: var(--ds-control-height);
+  width: 100%;
+  padding: 10px var(--ds-space-4);
+  color: var(--ds-color-text);
+  background: var(--ds-color-surface);
+  border: 1px solid var(--ds-color-border-strong);
+  border-radius: var(--ds-radius-md);
+  font: 400 var(--ds-text-sm)/1.4 var(--ds-font-body);
+}
+.ds-input:focus-visible,
+.ds-button:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--ds-color-focus) 24%, transparent);
+  outline-offset: 2px;
+}
+
+.ds-card {
+  color: var(--ds-color-text);
+  background: var(--ds-color-surface);
+  border: 1px solid var(--ds-color-border);
+  border-radius: var(--ds-radius-lg);
+  box-shadow: var(--ds-shadow-sm);
+}
+.ds-card--interactive { cursor: pointer; transition: border-color var(--ds-duration-base) var(--ds-ease), box-shadow var(--ds-duration-base) var(--ds-ease), transform var(--ds-duration-base) var(--ds-ease); }
+.ds-card--interactive:hover { border-color: var(--ds-color-border-strong); box-shadow: var(--ds-shadow-md); transform: translateY(-2px); }
+
+.ds-badge {
+  min-height: 28px;
+  display: inline-flex;
+  align-items: center;
+  padding-inline: var(--ds-space-3);
+  color: var(--ds-color-brand-deep);
+  background: var(--ds-color-surface-muted);
+  border: 1px solid var(--ds-color-border);
+  border-radius: var(--ds-radius-pill);
+  font: 600 var(--ds-text-xs)/1 var(--ds-font-body);
+}
+
+@media (max-width: 767px) {
+  :root { --ds-gutter: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+}
