@@ -264,6 +264,22 @@ HEAD = """<title>RedStarTrust Homepage</title>
   .ea-panes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .ea-pane { padding: 20px 22px; border-right: 1px solid #F0F2F5; }
   .ea-pane:last-child { border-right: 0; }
+  /* กล่องร้องเรียนใต้ Live Community Alerts — เติมช่องว่างที่เหลือ (คำสั่ง Boss 4 ก.ย. 69) */
+  .ea-cp { margin-top: 14px; border: 1.5px solid #D92D20; border-radius: 12px;
+    background: #FEF3F2; padding: 14px 15px 13px; }
+  .ea-cp b { display: block; font-size: 13px; font-weight: 700; color: #912018;
+    line-height: 1.45; margin-bottom: 6px; }
+  .ea-cp p { margin: 0 0 10px; font-size: 11.5px; line-height: 1.7; color: #7A271A; }
+  .ea-cps { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+  .ea-cps span { position: relative; padding-left: 16px; font-size: 11px;
+    line-height: 1.6; color: #7A271A; }
+  .ea-cps span::before { content: ""; position: absolute; left: 0; top: 6px;
+    width: 6px; height: 6px; border-radius: 999px; background: #D92D20; }
+  .ea-cpgo { display: block; text-align: center; font-size: 12.5px; font-weight: 600;
+    color: #FFFFFF; background: #D92D20; border: 1px solid #D92D20; border-radius: 9px;
+    padding: 9px 12px; text-decoration: none; }
+  .ea-cpgo:hover { background: #912018; border-color: #912018; color: #FFFFFF; }
+  .ea-cpgo:focus-visible { outline: 2px solid #912018; outline-offset: 2px; }
   .ea-pane h4 { margin: 0 0 13px; font-size: 14px; font-weight: 600; color: #101828; letter-spacing: -0.01em; }
   .ea-hist { background: #F5F7FA; border: 1px solid #EAECF0; border-radius: 10px;
     padding: 10px 13px; font-size: 12.5px; color: #475467; }
@@ -1567,34 +1583,42 @@ HEAD = """<title>RedStarTrust Homepage</title>
   .rs-ti[aria-current="true"] b { color: #B42318; }
   /* ── แผงข่าวใต้สารบัญ — popup เปิดไปทางซ้าย
      เพราะแถบข้างอยู่คอลัมน์ขวาสุด เปิดขวาจะล้นกรอบ 1440px */
-  .rs-news { margin-top: 16px; border: 1px solid #EAECF0; border-radius: 14px;
+  .rs-news { margin-top: 14px; border: 1px solid #EAECF0; border-radius: 12px;
     overflow: visible; }
-  .rs-nwh { padding: 13px 16px; background: #FAFAFA; border-bottom: 1px solid #EAECF0;
-    border-radius: 14px 14px 0 0; }
-  .rs-nwh b { display: block; font-size: 13px; font-weight: 700; color: #101828;
+  .rs-nwh { padding: 10px 13px; background: #FAFAFA; border-bottom: 1px solid #EAECF0;
+    border-radius: 12px 12px 0 0; }
+  .rs-nwh b { display: block; font-size: 12px; font-weight: 700; color: #101828;
     line-height: 1.4; }
-  .rs-nwh span { display: block; margin-top: 3px; font-size: 11px; color: #667085; }
-  .rs-nw { position: relative; display: block; padding: 12px 16px;
+  .rs-nwh span { display: block; margin-top: 2px; font-size: 10px; color: #667085; }
+  /* แถวข่าว — รูปย่อซ้าย ข้อความขวา ตัดหัวข้อที่ 2 บรรทัดให้ทุกแถวสูงเท่ากัน */
+  .rs-nw { position: relative; display: grid; grid-template-columns: 48px minmax(0, 1fr);
+    gap: 9px; align-items: start; padding: 9px 13px;
     border-bottom: 1px solid #F2F4F7; text-decoration: none; cursor: pointer;
     transition: background .15s; }
   .rs-nw:hover { background: #FCFCFD; }
-  .rs-nw .dt { display: block; font-size: 10.5px; color: #667085; margin-bottom: 4px; }
-  .rs-nw b { display: block; font-size: 12.5px; font-weight: 600; line-height: 1.55;
+  .rs-nw .th { position: relative; width: 48px; height: 38px; border-radius: 6px;
+    overflow: hidden; background: #101828; }
+  .rs-nw .th svg, .rs-nw .th img { display: block; width: 100%; height: 100%;
+    object-fit: cover; }
+  .rs-nw .bd { min-width: 0; }
+  .rs-nw .dt { display: block; font-size: 10px; color: #667085; margin-bottom: 3px; }
+  .rs-nw b { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+    overflow: hidden; font-size: 11.5px; font-weight: 600; line-height: 1.5;
     color: #101828; }
   .rs-nw:hover b { color: #B42318; }
-  .rs-nwpop { position: absolute; z-index: 40; right: calc(100% + 12px); top: 6px;
-    width: 268px; padding: 12px 14px; font-size: 12px; line-height: 1.7; color: #475467;
-    background: #FFFFFF; border: 1px solid #EAECF0; border-radius: 12px;
-    box-shadow: 0 18px 40px -18px rgba(16,24,40,0.3);
-    opacity: 0; visibility: hidden; transform: translateX(6px);
+  .rs-nwpop { position: absolute; z-index: 40; right: calc(100% + 10px); top: 4px;
+    width: 250px; padding: 11px 13px; font-size: 11.5px; line-height: 1.65; color: #475467;
+    background: #FFFFFF; border: 1px solid #EAECF0; border-radius: 10px;
+    box-shadow: 0 16px 34px -16px rgba(16,24,40,0.3);
+    opacity: 0; visibility: hidden; transform: translateX(5px);
     transition: opacity .16s ease, transform .16s ease, visibility .16s; }
   .rs-nw:hover .rs-nwpop, .rs-nw:focus-visible .rs-nwpop {
     opacity: 1; visibility: visible; transform: translateX(0); }
   .rs-nw:focus-visible { outline: 2px solid #D92D20; outline-offset: -2px; }
-  .rs-nwall { display: block; padding: 12px 16px; font-size: 12.5px; font-weight: 600;
+  .rs-nwall { display: block; padding: 9px 13px; font-size: 11.5px; font-weight: 600;
     color: #D92D20; text-decoration: none; }
   .rs-nwall:hover { background: #FEF3F2; }
-  .rs-nwn { margin: 0; padding: 0 16px 13px; font-size: 10.5px; line-height: 1.6;
+  .rs-nwn { margin: 0; padding: 0 13px 10px; font-size: 10px; line-height: 1.55;
     color: #B54708; }
   .rs-mini { border: 1px solid #EAECF0; border-radius: 14px; padding: 18px;
     margin-bottom: 16px; text-align: center; }
@@ -10302,7 +10326,15 @@ var TOC = [
         '<div class="ea-al hi"><b><i></i>Apex Global FX</b>' +
         '<span>\u0e2a\u0e40\u0e1b\u0e23\u0e14\u0e01\u0e23\u0e30\u0e0a\u0e32\u0e01\u0e40\u0e01\u0e34\u0e19 300% \u00b7 <span class="ct" id="da-0">248</span> \u0e04\u0e19\u0e40\u0e08\u0e2d\u0e43\u0e19 30 \u0e19\u0e32\u0e17\u0e35</span></div>' +
         '<div class="ea-al md"><b><i></i>Vertex Bridge Markets</b>' +
-        '<span>\u0e2a\u0e25\u0e34\u0e1b\u0e40\u0e1e\u0e08\u0e2a\u0e39\u0e07\u0e0a\u0e48\u0e27\u0e07\u0e02\u0e48\u0e32\u0e27 \u00b7 91 \u0e23\u0e32\u0e22\u0e07\u0e32\u0e19\u0e04\u0e25\u0e49\u0e32\u0e22\u0e01\u0e31\u0e19</span></div></div>' +
+        '<span>\u0e2a\u0e25\u0e34\u0e1b\u0e40\u0e1e\u0e08\u0e2a\u0e39\u0e07\u0e0a\u0e48\u0e27\u0e07\u0e02\u0e48\u0e32\u0e27 \u00b7 91 \u0e23\u0e32\u0e22\u0e07\u0e32\u0e19\u0e04\u0e25\u0e49\u0e32\u0e22\u0e01\u0e31\u0e19</span></div>' +
+    '<div class="ea-cp">' +
+      '<b>\u0e40\u0e08\u0e2d\u0e1b\u0e31\u0e0d\u0e2b\u0e32 \u0e23\u0e49\u0e2d\u0e07\u0e40\u0e23\u0e35\u0e22\u0e19\u0e08\u0e32\u0e01\u0e43\u0e19 EA \u0e44\u0e14\u0e49\u0e40\u0e25\u0e22</b>' +
+      '<p>\u0e01\u0e14\u0e1b\u0e38\u0e48\u0e21\u0e19\u0e35\u0e49\u0e1a\u0e19\u0e41\u0e1c\u0e07 EA \u0e41\u0e25\u0e49\u0e27 EA \u0e08\u0e30\u0e41\u0e19\u0e1a\u0e1a\u0e31\u0e19\u0e17\u0e36\u0e01\u0e17\u0e35\u0e48\u0e40\u0e01\u0e47\u0e1a\u0e44\u0e27\u0e49\u0e43\u0e2b\u0e49\u0e40\u0e2d\u0e07 \u2014 \u0e15\u0e49\u0e19\u0e17\u0e38\u0e19\u0e15\u0e48\u0e2d\u0e2d\u0e2d\u0e23\u0e4c\u0e40\u0e14\u0e2d\u0e23\u0e4c \u0e40\u0e27\u0e25\u0e32\u0e2a\u0e48\u0e07\u0e04\u0e33\u0e2a\u0e31\u0e48\u0e07 \u0e41\u0e25\u0e30\u0e40\u0e27\u0e25\u0e32\u0e16\u0e2d\u0e19\u0e40\u0e07\u0e34\u0e19 \u0e04\u0e38\u0e13\u0e44\u0e21\u0e48\u0e15\u0e49\u0e2d\u0e07\u0e23\u0e27\u0e1a\u0e23\u0e27\u0e21\u0e2b\u0e25\u0e31\u0e01\u0e10\u0e32\u0e19\u0e40\u0e2d\u0e07</p>' +
+      '<div class="ea-cps">' +
+        '<span>\u0e40\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e40\u0e02\u0e49\u0e32\u0e28\u0e39\u0e19\u0e22\u0e4c\u0e44\u0e01\u0e25\u0e48\u0e40\u0e01\u0e25\u0e35\u0e48\u0e22\u0e17\u0e31\u0e19\u0e17\u0e35 \u0e21\u0e35\u0e01\u0e33\u0e2b\u0e19\u0e14\u0e40\u0e27\u0e25\u0e32\u0e43\u0e2b\u0e49\u0e42\u0e1a\u0e23\u0e01\u0e15\u0e2d\u0e1a</span>' +
+        '<span>\u0e40\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e17\u0e35\u0e48\u0e17\u0e35\u0e21\u0e15\u0e23\u0e27\u0e08\u0e22\u0e37\u0e19\u0e22\u0e31\u0e19\u0e41\u0e25\u0e49\u0e27\u0e08\u0e30\u0e02\u0e36\u0e49\u0e19\u0e2b\u0e19\u0e49\u0e32 Broker Alerts \u0e43\u0e2b\u0e49\u0e04\u0e19\u0e2d\u0e37\u0e48\u0e19\u0e40\u0e2b\u0e47\u0e19</span>' +
+      '</div>' +
+      '<a class="ea-cpgo" href="#/usercase" data-nav="usercase">\u0e23\u0e49\u0e2d\u0e07\u0e40\u0e23\u0e35\u0e22\u0e19\u0e42\u0e1a\u0e23\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c\u0e19\u0e35\u0e49 \u2192</a></div></div>' +
     '</div>' +
     '<div class="ea-dnote"><b>\u0e15\u0e31\u0e27\u0e40\u0e25\u0e02\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14\u0e43\u0e19 Dashboard \u0e19\u0e35\u0e49\u0e40\u0e1b\u0e47\u0e19\u0e15\u0e31\u0e27\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e07\u0e32\u0e19\u0e2d\u0e2d\u0e01\u0e41\u0e1a\u0e1a</b> ' +
     '\u00b7 \u0e0a\u0e37\u0e48\u0e2d\u0e42\u0e1a\u0e23\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c\u0e43\u0e19\u0e2a\u0e48\u0e27\u0e19\u0e40\u0e17\u0e35\u0e22\u0e1a\u0e41\u0e25\u0e30\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19\u0e15\u0e31\u0e49\u0e07\u0e02\u0e36\u0e49\u0e19\u0e40\u0e2d\u0e07 \u0e44\u0e21\u0e48\u0e43\u0e0a\u0e48\u0e1a\u0e23\u0e34\u0e29\u0e31\u0e17\u0e17\u0e35\u0e48\u0e21\u0e35\u0e2d\u0e22\u0e39\u0e48\u0e08\u0e23\u0e34\u0e07 \xb7 \u0e22\u0e01\u0e40\u0e27\u0e49\u0e19\u0e01\u0e32\u0e23\u0e4c\u0e14\u0e41\u0e19\u0e30\u0e19\u0e33\u0e43\u0e2b\u0e49\u0e22\u0e49\u0e32\u0e22 \u0e17\u0e35\u0e48\u0e14\u0e36\u0e07\u0e0a\u0e37\u0e48\u0e2d\u0e2d\u0e31\u0e19\u0e14\u0e31\u0e1a 1 \u0e14\u0e49\u0e32\u0e19\u0e15\u0e49\u0e19\u0e17\u0e38\u0e19\u0e08\u0e32\u0e01\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19\u0e43\u0e19\u0e15\u0e49\u0e19\u0e41\u0e1a\u0e1a \u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e43\u0e2b\u0e49\u0e01\u0e14\u0e2d\u0e48\u0e32\u0e19\u0e23\u0e35\u0e27\u0e34\u0e27\u0e15\u0e48\u0e2d\u0e44\u0e14\u0e49</div>';
@@ -10407,23 +10439,7 @@ var TOC = [
         '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
         'stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
         '<path d="M5 12h13M13 6l6 6-6 6"></path></svg></a>' +
-        '<p class="sub">\u0e01\u0e32\u0e23\u0e21\u0e35\u0e1a\u0e31\u0e0d\u0e0a\u0e35\u0e44\u0e21\u0e48\u0e21\u0e35\u0e1c\u0e25\u0e15\u0e48\u0e2d\u0e14\u0e32\u0e27\u0e2b\u0e23\u0e37\u0e2d\u0e04\u0e30\u0e41\u0e19\u0e19\u0e02\u0e2d\u0e07\u0e42\u0e1a\u0e23\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c\u0e43\u0e14</p></div></div>' +
-      '<div class="eatoc" id="ea-toc">' +
-        '<div class="eatoc-hd">' + awardStar(16) +
-          '<b>\u0e2a\u0e32\u0e23\u0e1a\u0e31\u0e0d\u0e2b\u0e19\u0e49\u0e32\u0e19\u0e35\u0e49</b>' +
-          '<span class="sub">' + TOC.length + ' \u0e2b\u0e31\u0e27\u0e02\u0e49\u0e2d \xb7 \u0e01\u0e14\u0e2b\u0e31\u0e27\u0e02\u0e49\u0e2d\u0e44\u0e2b\u0e19\u0e01\u0e47\u0e40\u0e25\u0e37\u0e48\u0e2d\u0e19\u0e44\u0e1b\u0e15\u0e23\u0e07\u0e19\u0e31\u0e49\u0e19</span>' +
-          '<span class="rt"><s><i></i></s>\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e19\u0e49\u0e32\u0e2d\u0e22\u0e39\u0e48\u0e43\u0e19\u0e2b\u0e19\u0e49\u0e32\u0e40\u0e14\u0e35\u0e22\u0e27</span></div>' +
-        '<div class="eatoc-g">' + TOC.map(function(t, i){
-          return '<button type="button" class="eatoc-c" data-eajump="' + t[0] + '">' +
-            '<span class="eatoc-n">' + (i < 9 ? "0" : "") + (i + 1) + '</span>' +
-            '<span class="eatoc-tx"><b>' + t[1] + '</b><p>' + t[2] + '</p>' +
-              '<span class="eatoc-chip" data-tocchip="' + t[0] + '">' + t[5] + '</span></span>' +
-            '<span class="eatoc-mini"><svg viewBox="0 0 104 58" fill="none" aria-hidden="true">' +
-              (TOC_MINI[t[3]] || "") + '</svg></span>' +
-            '<span class="eatoc-pos"><span data-tocpct>' +
-              '</span><s data-tocpos="' + t[0] + '"><i style="width:0"></i></s></span>' +
-          '</button>';
-        }).join("") + '</div></div>';
+        '<p class="sub">\u0e01\u0e32\u0e23\u0e21\u0e35\u0e1a\u0e31\u0e0d\u0e0a\u0e35\u0e44\u0e21\u0e48\u0e21\u0e35\u0e1c\u0e25\u0e15\u0e48\u0e2d\u0e14\u0e32\u0e27\u0e2b\u0e23\u0e37\u0e2d\u0e04\u0e30\u0e41\u0e19\u0e19\u0e02\u0e2d\u0e07\u0e42\u0e1a\u0e23\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c\u0e43\u0e14</p></div></div>';
   }
 
   var sh = document.getElementById("ea-suitehead");
@@ -12735,10 +12751,14 @@ function rsNews(m){
         : '\u0e22\u0e31\u0e07\u0e44\u0e21\u0e48\u0e21\u0e35\u0e1a\u0e17\u0e17\u0e35\u0e48\u0e40\u0e2d\u0e48\u0e22\u0e16\u0e36\u0e07\u0e23\u0e32\u0e22\u0e19\u0e35\u0e49') + '</span></div>' +
     list.map(function(x){
       var a = x.a;
+      /* \u0e23\u0e39\u0e1b\u0e22\u0e48\u0e2d\u0e43\u0e0a\u0e49 artCover() \u0e15\u0e31\u0e27\u0e40\u0e14\u0e35\u0e22\u0e27\u0e01\u0e31\u0e1a\u0e2b\u0e19\u0e49\u0e32\u0e02\u0e48\u0e32\u0e27 \u2014 \u0e21\u0e35\u0e20\u0e32\u0e1e\u0e08\u0e23\u0e34\u0e07\u0e01\u0e47\u0e43\u0e0a\u0e49\u0e20\u0e32\u0e1e \u0e44\u0e21\u0e48\u0e21\u0e35\u0e01\u0e47\u0e27\u0e32\u0e14\u0e40\u0e27\u0e01\u0e40\u0e15\u0e2d\u0e23\u0e4c\u0e43\u0e2b\u0e49 */
       return '<a class="rs-nw" href="#" data-article="' + x.i + '">' +
-        '<span class="dt">' + (typeof artDate === "function" ? artDate(a.d) : a.d) +
+        '<span class="th">' +
+        (typeof artCover === "function" ? artCover(a, x.i) : "") + '</span>' +
+        '<span class="bd"><span class="dt">' +
+        (typeof artDate === "function" ? artDate(a.d) : a.d) +
         ' \u00b7 ' + (typeof catShort === "function" ? catShort(a.c) : a.c) + '</span>' +
-        '<b>' + a.t + '</b>' +
+        '<b>' + a.t + '</b></span>' +
         '<span class="rs-nwpop" role="tooltip">' + a.x + '</span></a>';
     }).join("") +
     '<a class="rs-nwall" href="#/news" data-nav="news">\u0e14\u0e39\u0e02\u0e48\u0e32\u0e27\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14 \u2192</a>' +

@@ -554,6 +554,7 @@
         <h2 class="art-h1">แจ้งเตือนจาก RedStar Team</h2>
         <span class="art-h2">เรื่องที่ทีมตรวจพบ และคำชี้แจงจากโบรกเกอร์ที่สมัครเข้ามาตอบ</span>
       </div>
+      <div id="al-toc"></div>
       <div class="art-ctl">
         <div class="art-cats" id="al-cats" role="group" aria-label="กรองตามสถานะ"></div>
         <label class="rk-qbox art-qbox">
