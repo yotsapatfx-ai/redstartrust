@@ -39,7 +39,6 @@
           <a href="#/news" data-nav="news">News</a>
           <a href="#/analytics" data-nav="analytics">Trade Analytics</a>
           <a href="#/alerts" data-nav="alerts">Broker Alerts</a>
-          <a href="#/usercase" data-nav="usercase">ศูนย์ไกล่เกลี่ย</a>
         </nav>
         <span class="hd-pill">2026 Edition</span>
         <div class="hd-actions">
