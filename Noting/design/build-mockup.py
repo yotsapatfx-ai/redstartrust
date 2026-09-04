@@ -1998,7 +1998,6 @@ HEAD = """<title>RedStarTrust Homepage</title>
     border-radius: 16px; background: #FFFFFF;
     transition: border-color .2s, box-shadow .2s, transform .2s; }
   .eac-c:hover, .eac-c:focus-within { z-index: 30; }
-  .eac-f { border-radius: 0 0 15px 15px; }
   .eac-c:hover { border-color: #D0D5DD; box-shadow: 0 16px 36px -26px rgba(16,24,40,0.5);
     transform: translateY(-2px); }
   .eac-c.lead { border-color: #FECDCA; }
@@ -2020,12 +2019,6 @@ HEAD = """<title>RedStarTrust Homepage</title>
     font-size: 12px; line-height: 1.7; color: #667085; }
   .eac-for b { display: block; font-size: 10.5px; font-weight: 700; letter-spacing: 0.05em;
     text-transform: uppercase; color: #667085; margin-bottom: 4px; }
-  .eac-f { border-top: 1px solid #F0F2F5; background: #FAFAFA; padding: 13px 20px; }
-  .eac-go { display: flex; align-items: center; justify-content: space-between; gap: 10px;
-    width: 100%; border: 0; background: transparent; padding: 0; font: inherit;
-    font-size: 13.5px; font-weight: 700; color: #B42318; cursor: pointer; }
-  .eac-go:hover { color: #912018; }
-  .eac-go:focus-visible { outline: 2px solid #D92D20; outline-offset: 3px; }
 
   /* \u0e2b\u0e19\u0e49\u0e32\u0e23\u0e32\u0e22\u0e25\u0e30\u0e40\u0e2d\u0e35\u0e22\u0e14 EA */
   .ed-top { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 44px;
@@ -13052,11 +13045,7 @@ function eaCardsRender(){
         'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
         '<path d="M4.5 3.5v13l3.4-3.2h6.4z"></path><path d="M11 14.5l3.6 6 2.6-1.4-3.5-5.9"></path>' +
         '</svg>\u0e0a\u0e35\u0e49\u0e40\u0e21\u0e32\u0e2a\u0e4c\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e14\u0e39\u0e27\u0e48\u0e32\u0e15\u0e34\u0e14\u0e15\u0e31\u0e49\u0e07\u0e41\u0e25\u0e49\u0e27\u0e42\u0e0a\u0e27\u0e4c\u0e2d\u0e30\u0e44\u0e23</span></div>' +
-      '<div class="eac-f"><button type="button" class="eac-go" data-eaopen="' + ix + '">' +
-        '\u0e14\u0e39\u0e04\u0e27\u0e32\u0e21\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e19\u0e35\u0e49' +
-        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
-        'stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
-        '<path d="M5 12h13M13 6l6 6-6 6"></path></svg></button></div></article>';
+      '</article>';
   }).join("");
 }
 
