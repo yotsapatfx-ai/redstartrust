@@ -1,0 +1,189 @@
+<div id="classic-red-star-1000">
+  <div class="crs-toolbar">
+    <div>
+      <h2>1000 Classic Red Stars</h2>
+      <p class="text-muted">ดาวคลาสสิก 40 โครงสร้าง × 25 รายละเอียด — แต่ละหน้ารวมทรงที่ต่างกันชัดเจน</p>
+    </div>
+    <div class="crs-selected" aria-live="polite">
+      <span class="text-muted">แบบที่เลือก</span>
+      <strong id="crs-selected-id">001</strong>
+    </div>
+  </div>
+
+  <div class="crs-preview">
+    <svg id="crs-preview-svg" viewBox="0 0 180 180" role="img" aria-label="ดาวแบบที่เลือก"></svg>
+    <div class="crs-preview-copy">
+      <strong id="crs-preview-name">Heritage Point · 001</strong>
+      <span id="crs-preview-note" class="text-muted">สัดส่วนดั้งเดิม ปลายคม สมดุลแบบตราสัญลักษณ์</span>
+    </div>
+  </div>
+
+  <div id="crs-family-nav" class="crs-family-nav" aria-label="เลือกชุดดาว"></div>
+  <div id="crs-grid" class="crs-grid" role="list" aria-label="ดาวแดงคลาสสิก 1000 แบบ"></div>
+</div>
+
+<style>
+  #classic-red-star-1000 { color: var(--foreground); width: 100%; }
+  #classic-red-star-1000 .crs-toolbar { display:flex; align-items:flex-end; justify-content:space-between; gap:16px; margin-bottom:18px; }
+  #classic-red-star-1000 h2 { margin:0 0 4px; font-weight:500; }
+  #classic-red-star-1000 p { margin:0; }
+  #classic-red-star-1000 .crs-selected { display:flex; gap:8px; align-items:baseline; white-space:nowrap; }
+  #classic-red-star-1000 .crs-preview { display:flex; align-items:center; gap:20px; margin-bottom:20px; min-height:148px; }
+  #classic-red-star-1000 .crs-preview svg { width:148px; height:148px; flex:0 0 148px; }
+  #classic-red-star-1000 .crs-preview-copy { display:grid; gap:5px; }
+  #classic-red-star-1000 .crs-family-nav { display:flex; flex-wrap:wrap; gap:6px; padding:12px 0 16px; border-top:1px solid var(--border); }
+  #classic-red-star-1000 .crs-family-nav .btn { min-width:42px; }
+  #classic-red-star-1000 .crs-grid { display:grid; grid-template-columns:repeat(10,minmax(54px,1fr)); gap:8px; }
+  #classic-red-star-1000 .crs-star { appearance:none; border:0; background:transparent; color:var(--foreground); min-height:78px; padding:7px 4px; display:grid; place-items:center; gap:2px; cursor:pointer; border-radius:8px; }
+  #classic-red-star-1000 .crs-star:hover { background:var(--accent); color:var(--accent-foreground); }
+  #classic-red-star-1000 .crs-star[aria-pressed="true"] { background:var(--primary); color:var(--primary-foreground); }
+  #classic-red-star-1000 .crs-star svg { width:42px; height:42px; display:block; }
+  #classic-red-star-1000 .crs-star span { font-size:11px; line-height:1; font-variant-numeric:tabular-nums; }
+  @media (max-width:700px) {
+    #classic-red-star-1000 .crs-grid { grid-template-columns:repeat(5,minmax(50px,1fr)); }
+    #classic-red-star-1000 .crs-toolbar { align-items:flex-start; }
+  }
+  @media (max-width:390px) {
+    #classic-red-star-1000 .crs-preview { gap:12px; }
+    #classic-red-star-1000 .crs-preview svg { width:112px; height:112px; flex-basis:112px; }
+  }
+</style>
+
+<script>
+(() => {
+  const root = document.getElementById('classic-red-star-1000');
+  const grid = root.querySelector('#crs-grid');
+  const nav = root.querySelector('#crs-family-nav');
+  const preview = root.querySelector('#crs-preview-svg');
+  const selectedId = root.querySelector('#crs-selected-id');
+  const previewName = root.querySelector('#crs-preview-name');
+  const previewNote = root.querySelector('#crs-preview-note');
+  const families = [
+    ['Heritage Point','สัดส่วนดั้งเดิม ปลายคม สมดุลแบบตราสัญลักษณ์'],
+    ['Royal Cut','ทรงสง่า ปลายยาว แกนกลางชัด'],
+    ['Civic Seal','หนักแน่น สุขุม คล้ายตราประจำสถาบัน'],
+    ['Old Press','กลิ่นอายงานพิมพ์เก่า ขอบมีบุคลิก'],
+    ['Medallion','โครงสร้างแบบเหรียญรางวัลคลาสสิก'],
+    ['Banner Star','สัดส่วนเหมาะกับธงและเครื่องหมายเกียรติยศ'],
+    ['Grand Serif','แฉกกว้าง มีจังหวะหนักเบาแบบตัวพิมพ์'],
+    ['Archive Mark','เรียบขรึม คล้ายเครื่องหมายบนเอกสารเก่า'],
+    ['Maritime','ปลายแหลมแบบดาวนำทางดั้งเดิม'],
+    ['Guild Star','แข็งแรง มีรายละเอียดแบบตราสมาคม'],
+    ['Laurel Point','อ่อนช้อยขึ้นเล็กน้อย แต่ยังเป็นทางการ'],
+    ['Heraldic Split','มิติจากการแบ่งระนาบแบบตราประจำตระกูล'],
+    ['Foundry','เนื้อแน่น คล้ายโลหะหล่อ'],
+    ['Engraved','เส้นซ้อนบางแบบงานแกะสลัก'],
+    ['Ribbon Cut','รอยพับน้อย ๆ แบบริบบิ้นรางวัล'],
+    ['Classic Crest','โครงสร้างสง่างามสำหรับโลโก้สถาบัน'],
+    ['Monument','ฐานแน่นและตั้งตรง ให้ความรู้สึกมั่นคง'],
+    ['Vintage Sign','บุคลิกป้ายยุคเก่า อ่านชัดในขนาดเล็ก'],
+    ['Regal Facet','เหลี่ยมมิติแบบอัญมณีโดยไม่ล้ำสมัย'],
+    ['Trust Emblem','สมดุล สุภาพ และน่าเชื่อถือที่สุด'],
+    ['Compass Crown','ยอดเด่นคล้ายเข็มทิศและเครื่องราช'],
+    ['Split Ray','แบ่งแฉกเพื่อสร้างจังหวะแสงแบบโบราณ'],
+    ['Shield Point','ฐานกว้าง แข็งแรงแบบตราโล่'],
+    ['Fine Needle','ปลายเรียวยาวแต่แกนกลางยังคลาสสิก'],
+    ['Broad Medal','แฉกกว้างแบบเหรียญเชิดชูเกียรติ'],
+    ['Double Star','ดาวซ้อนชั้นแบบเครื่องหมายยศ'],
+    ['Pierced Star','ช่องว่างกลางดาวแบบงานโลหะฉลุ'],
+    ['Etched Ray','เส้นแกะจากใจกลางสู่ปลายแฉก'],
+    ['Folded Crest','ระนาบพับเรียบง่ายแบบตราผ้า'],
+    ['North Point','แฉกเหนือยาวเป็นสัญลักษณ์การนำทาง'],
+    ['Victory Star','ไหล่กว้างและจุดศูนย์กลางสูง'],
+    ['Antique Badge','ขอบหนักและมุมมนแบบตรายุคเก่า'],
+    ['Bookplate','สัดส่วนสงบแบบตราประทับในหนังสือ'],
+    ['Ceremonial','ปลายเรียวและแกนสมมาตรสำหรับงานพิธี'],
+    ['Minted Star','มิติวงแหวนบางแบบเหรียญกษาปณ์'],
+    ['Patrician','สัดส่วนสุขุมและสง่างามแบบตราขุนนาง'],
+    ['Radiant Seal','รัศมีสั้นสลับยาวอย่างเป็นระเบียบ'],
+    ['Legacy Cut','รอยตัดเฉียงเล็ก ๆ เพิ่มเอกลักษณ์'],
+    ['Classic Flame','ช่องเว้ากลางคล้ายเปลวไฟอย่างสำรวม'],
+    ['Red Standard','รูปทรงหลักชัดที่สุดสำหรับโลโก้องค์กร']
+  ];
+
+  function points(index, size=100) {
+    const family = index % 40;
+    const variant = Math.floor(index / 40);
+    const outerBase = 39 + (family % 4) * 2.2 + (variant % 5) * .55;
+    const innerBase = 12 + (family % 8) * 2.35 + Math.floor(variant / 5) * .55;
+    const stretch = 0.74 + (family % 7) * .075;
+    const tilt = ((family % 5) - 2) * .035;
+    const pts = [];
+    for (let i=0;i<10;i++) {
+      const outer = i % 2 === 0;
+      let r = outer ? outerBase : innerBase;
+      if (outer && [1,8,16,20,29,33].includes(family)) r += i===0 ? 8 : 0;
+      if (outer && [22,24,30].includes(family)) r += (i===2 || i===8) ? 5 : 0;
+      if (!outer && [2,9,12,22,30,31].includes(family)) r += (i===3 || i===7) ? 5 : 0;
+      const a = -Math.PI/2 + i*Math.PI/5 + tilt;
+      const x = size/2 + Math.cos(a)*r;
+      const y = size/2 + Math.sin(a)*r*stretch;
+      pts.push(`${x.toFixed(2)},${y.toFixed(2)}`);
+    }
+    return pts.join(' ');
+  }
+
+  function svgMarkup(index, large=false) {
+    const family = index%40;
+    const variant = Math.floor(index/40);
+    const base = `var(--red)`;
+    const opacity = 0.82 + (variant%5)*0.035;
+    const inset = points(index,100);
+    let detail = '';
+    if ([3,13,27].includes(family)) detail = `<g fill="none" stroke="var(--background)" stroke-width="${family===13?1:1.8}" opacity=".72"><path d="M50 10V50L87 62"/><path d="M50 50L27 82"/></g>`;
+    if ([11,18,25].includes(family)) detail = `<polygon points="${inset}" fill="none" stroke="var(--background)" stroke-width="${family===18?2.2:1.2}" opacity=".7" transform="scale(.7) translate(21 21)"/>`;
+    if ([14,38].includes(family)) detail = `<path d="M50 7C42 28 58 39 50 50C41 62 59 74 50 93" fill="none" stroke="var(--background)" stroke-width="${family===38?4:2}" opacity=".82"/>`;
+    if ([4,15,34].includes(family)) detail = `<circle cx="50" cy="50" r="${family===34?15:family===4?11:8}" fill="var(--background)" opacity="${family===34?.86:.25}"/>`;
+    if ([21,28,36].includes(family)) detail = `<g stroke="var(--background)" stroke-width="1.5" opacity=".78"><path d="M50 50L50 9"/><path d="M50 50L89 37"/><path d="M50 50L74 83"/><path d="M50 50L26 83"/><path d="M50 50L11 37"/></g>`;
+    if ([26,35].includes(family)) detail = `<polygon points="${points(index+7,100)}" fill="var(--background)" opacity=".55" transform="scale(.48) translate(54 54)"/>`;
+    if (family===37) detail = `<path d="M21 24L50 50L79 24M31 84L50 50L69 84" fill="none" stroke="var(--background)" stroke-width="3" opacity=".7"/>`;
+    const label = String(index+1).padStart(3,'0');
+    return `<svg viewBox="0 0 100 100" role="img" aria-label="ดาวแดงแบบ ${label}"><polygon points="${inset}" fill="${base}" opacity="${opacity.toFixed(2)}"/>${detail}</svg>`;
+  }
+
+  function show(index) {
+    const family = index%40;
+    const label = String(index+1).padStart(3,'0');
+    preview.innerHTML = svgMarkup(index,true).replace(/^<svg[^>]*>|<\/svg>$/g,'');
+    selectedId.textContent = label;
+    previewName.textContent = `${families[family][0]} · ${label}`;
+    previewNote.textContent = families[family][1];
+    root.querySelectorAll('.crs-star[aria-pressed="true"]').forEach(el => el.setAttribute('aria-pressed','false'));
+    const active = root.querySelector(`[data-star="${index}"]`);
+    if (active) active.setAttribute('aria-pressed','true');
+  }
+
+  function renderFamily(page) {
+    grid.innerHTML = '';
+    const fragment = document.createDocumentFragment();
+    for (let i=page*100;i<(page+1)*100;i++) {
+      const label = String(i+1).padStart(3,'0');
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'crs-star';
+      button.dataset.star = i;
+      button.setAttribute('role','listitem');
+      button.setAttribute('aria-pressed', i===page*100 ? 'true':'false');
+      button.setAttribute('aria-label', `${families[i%40][0]} แบบ ${label}`);
+      button.innerHTML = `${svgMarkup(i)}<span>${label}</span>`;
+      button.addEventListener('click', () => show(i));
+      fragment.appendChild(button);
+    }
+    grid.appendChild(fragment);
+    nav.querySelectorAll('button').forEach((b,n) => b.setAttribute('aria-pressed', n===page ? 'true':'false'));
+    show(page*100);
+  }
+
+  Array.from({length:10},(_,index) => {
+    const button = document.createElement('button');
+    button.type='button';
+    button.className='btn';
+    button.textContent=`${index*100+1}–${(index+1)*100}`;
+    button.setAttribute('aria-label',`ชุดที่ ${index+1} แบบ ${index*100+1} ถึง ${(index+1)*100}`);
+    button.setAttribute('aria-pressed',index===0?'true':'false');
+    button.addEventListener('click',()=>renderFamily(index));
+    nav.appendChild(button);
+  });
+  renderFamily(0);
+})();
+</script>
